@@ -29,6 +29,14 @@ module id(
     input wire[`RegBus] reg1_data_i,
     input wire[`RegBus] reg2_data_i,
     
+    input wire[`RegBus] mem_wdata_i, 
+    input wire[`RegAddrBus] mem_wd_i, 
+    input wire mem_wreg_i, 
+    input wire[`RegBus] ex_wdata_i, 
+    input wire[`RegAddrBus] ex_wd_i, 
+    input wire ex_wreg_i, 
+
+
     output reg[`AluOpBus] aluop_o,
     output reg[`AluSelBus] alusel_o,
     
@@ -63,11 +71,19 @@ module id(
                     reg1_read_o <= `Enable ;
                     reg2_read_o <= `Disable ;
                     reg1_addr_o <= inst_i[25:21] ;
-                    wd_o <= `Enable  ;
-                    wreg_o <= inst_i[20:16] ;
+                    wd_o <= inst_i[20:16]  ;
+                    wreg_o <= `Enable ;
                     immi <= {16'h0, inst_i[15:0]} ;
                 end 
-                default: begin end 
+                default: begin
+                    aluop_o <= `ALU_NOP ; 
+                    alusel_o <= `ALUS_LOGIC ;
+                    reg1_read_o <= `Disable ;
+                    reg2_read_o <= `Disable ;
+                    wd_o <= `Disable  ;
+                    wreg_o <= `NopRegAddr ;
+                    immi <= 32'h0 ;                    
+                end
             endcase
         end 
     end
@@ -77,12 +93,27 @@ module id(
             reg1_o <= `Zero ;
             reg2_o <= `Zero ;
         end else begin
+
             if(reg1_read_o == `Enable) begin
-                reg1_o <= reg1_data_i ;
-            end else begin reg1_o <= immi ; end 
+                if((ex_wreg_i == `Enable) && (ex_wd_i == reg1_addr_o)) begin
+                    reg1_o <= ex_wdata_i ;
+                end else if ((mem_wreg_i == `Enable) && (mem_wd_i == reg1_addr_o)) begin
+                    reg1_o <= mem_wdata_i ;
+                end else begin
+                    reg1_o <= reg1_data_i ;
+                end
+            end else begin reg1_o <= immi ; end
+
             if(reg2_read_o == `Enable) begin
-                reg2_o <= reg2_data_i ;
+                if((ex_wreg_i == `Enable) && (ex_wd_i == reg2_addr_o)) begin
+                    reg2_o <= ex_wdata_i ;
+                end else if ((mem_wreg_i == `Enable) && (mem_wd_i == reg2_addr_o)) begin
+                    reg2_o <= mem_wdata_i ;
+                end else begin
+                    reg2_o <= reg2_data_i ;
+                end
             end else begin reg2_o <= immi ; end                         
+
         end 
     end    
         

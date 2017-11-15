@@ -49,24 +49,20 @@ module regfile(
     
     always @ (*) begin
         
-        if (re1 == `Disable) begin
-            rdata1 <= `Zero ;
-        end else if((re1 == `NopRegAddr) || (re1 == `Disable)) begin
+        if((raddr1 == `NopRegAddr) || (re1 == `Disable)) begin
             rdata1 <= `Zero ; 
-        end else if((re1 == waddr) && (we == 1)) begin  //数据提前
+        end else if((raddr1 == waddr) && (we == `Enable)) begin  //数据提前
             rdata1 <= wdata ;
         end else begin
             rdata1 <= register[raddr1] ;
+        end
         
-        if (re2 == `Disable) begin
-                rdata2 <= `Zero ;
-            end else if((re2 == `NopRegAddr) || (re2 == `Disable)) begin
-                rdata2 <= `Zero ; 
-            end else if((re2 == waddr) && (we == 2)) begin  //数据提前
-                rdata2 <= wdata ;
-            end else begin
-                rdata2 <= register[raddr2] ;
-            end
+        if((raddr1 == `NopRegAddr) || (re2 == `Disable)) begin
+            rdata2 <= `Zero ; 
+        end else if((raddr2 == waddr) && (we == `Enable)) begin  //数据提前
+            rdata2 <= wdata ;
+        end else begin
+            rdata2 <= register[raddr2] ;
         end
     end 
       
