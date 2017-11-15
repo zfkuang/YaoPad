@@ -19,6 +19,17 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 `include"defines.vh"
+`include"pc.v"
+`include"if_id.v"
+`include"id.v"
+`include"regfile.v"
+`include"id_ex.v"
+`include"ex.v"
+`include"ex_mem.v"
+`include"mem.v"
+`include"mem_wb.v"
+
+
 
 module cpu(
     input wire rst, 
@@ -69,6 +80,7 @@ module cpu(
     wire[`RegAddrBus] reg1_addr ;
     wire[`RegAddrBus] reg2_addr ;    
     
+    assign rom_addr_o = pc;
     pc_rom pc_rom0(
         .clk(clk), .rst(rst), 
         .pc(pc), 

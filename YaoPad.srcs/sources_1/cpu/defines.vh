@@ -24,6 +24,7 @@
 `define MemNum 262144 // The actual memory size is 256KB 
 `define RegAddrBus 4:0
 `define RegBus 31:0
+`define RegIdBus 0:31
 `define DoubleRegBus 63:0
 
 

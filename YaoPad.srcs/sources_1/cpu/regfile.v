@@ -37,12 +37,12 @@ module regfile(
     output reg[`RegBus] rdata2
     );
     
-    reg[`RegBus] register ; 
+    reg[`RegBus] register[`RegIdBus] ; 
     
     always @ (posedge clk) begin
         if (rst == `Disable) begin 
             if (we == `Enable && waddr != `NopRegAddr) begin 
-                register <= wdata ;
+                register[waddr] <= wdata ;
             end 
         end 
     end 
