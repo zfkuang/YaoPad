@@ -68,7 +68,7 @@ module ex(
                     shiftres <= reg2_i >> reg1_i[4:0] ; 
                 end
                 `ALU_SRA: begin
-                    shiftres <= (({32{reg2_i[31]}} >> reg1_i[4:0]) << reg1_i[4:0] ) | (reg2_i >> reg1_i[4:0]) ;
+                    shiftres <= ((({32{reg2_i[31]}} << reg1_i[4:0]) >> reg1_i[4:0]) ^ {32{reg2_i[31]}}) | (reg2_i >> reg1_i[4:0]) ;
                 end   
                 default: begin
                     logicres <= `Zero ;
