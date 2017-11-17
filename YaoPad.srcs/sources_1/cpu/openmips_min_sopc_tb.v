@@ -57,6 +57,7 @@ module openmips_min_sopc_tb;
     );
 
     initial begin
+        /*
         $monitor("%d\nregs[0]\t=\t%b\nregs[1]\t=\t%b\nregs[2]\t=\t%b\nregs[3]\t=\t%b\nregs[4]\t=\t%b\nraddr1\t=\t%b\nraddr2\t=\t%b\nwaddr\t=\t%b\nwdata\t=\t%b\nrdata1\t=\t%b\nrdata2\t=\t%b\npc_i\t=\t%b\ninst_i\t=\t%b\naluop\t=\t%b\nalusel\t=\t%b\nreg1\t=\t%b\nreg2\t=\t%b\nwdata_o\t=\t%b\nwd_o\t=\t%b\nwreg_o\t=\t%b\n",
             $stime, 
             openmips_min_sopc0.cpu0.regfile0.register[0],
@@ -79,6 +80,15 @@ module openmips_min_sopc_tb;
             openmips_min_sopc0.cpu0.ex0.wdata_o,
             openmips_min_sopc0.cpu0.ex0.wd_o,
             openmips_min_sopc0.cpu0.ex0.wreg_o,
+        );
+        */
+        $monitor("%d\nregs[0]\t=\t%h\nregs[2]\t=\t%h\nregs[5]\t=\t%h\nregs[7]\t=\t%h\nregs[8]\t=\t%h\n",
+            $stime, 
+            openmips_min_sopc0.cpu0.regfile0.register[0],
+            openmips_min_sopc0.cpu0.regfile0.register[2],
+            openmips_min_sopc0.cpu0.regfile0.register[5],
+            openmips_min_sopc0.cpu0.regfile0.register[7],
+            openmips_min_sopc0.cpu0.regfile0.register[8],
         );
         $dumpfile("openmips_min_sopc_tb.vcd");
         $dumpvars(0, openmips_min_sopc0);

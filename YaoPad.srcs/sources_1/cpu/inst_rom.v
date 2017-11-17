@@ -41,7 +41,7 @@ module inst_rom(
 	
 );
 
-	reg[`InstBus]  inst_mem[0:`MemNum-1];
+	reg[`InstBus]  inst_mem[0:50];
 
 	initial $readmemh ( "inst_rom.data", inst_mem );
 

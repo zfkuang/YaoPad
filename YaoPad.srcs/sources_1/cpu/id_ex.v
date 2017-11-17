@@ -53,7 +53,7 @@ module id_ex(
             ex_wreg <= 0 ;
         end else begin 
             ex_alusel <= id_alusel ;
-            ex_aluop <= ex_aluop ;
+            ex_aluop <= id_aluop ;
             ex_reg1 <= id_reg1 ;
             ex_reg2 <= id_reg2 ;
             ex_wd <= id_wd ;
