@@ -38,6 +38,8 @@ module ex(
     );
 
     reg[`RegBus] logicres ;
+    reg[`RegBus] shiftres ;
+    
     
     always @ (*) begin 
         if (rst == `Enable) begin 
@@ -50,6 +52,28 @@ module ex(
                 `ALU_OR: begin 
                     logicres <= (reg1_i | reg2_i) ;
                 end 
+                `ALU_AND: begin
+                    logicres <= (reg1_i & reg2_i) ;
+                end
+                `ALU_XOR: begin
+                    logicres <= (reg1_i ^ reg2_i) ;
+                end
+                `ALU_NOR: begin
+                    logicres <= ~(reg1_i | reg2_i) ;                    
+                end
+                `ALU_SLL: begin
+                    shiftres <= reg2_i << reg1_i[4:0] ;   
+                end
+                `ALU_SRL: begin
+                    shiftres <= reg2_i >> reg1_i[4:0] ; 
+                end
+                `ALU_SRA: begin
+                    shiftres <= (({32{reg2_i[31]}} >> {1'b0,reg1_i[4:0]}) << 6'd32 ) | (reg2_i >> reg1_i[4:0]) ;
+                end   
+                default: begin
+                    logicres <= `Zero ;
+                    shiftres <= `Zero ;
+                end
             endcase 
         end
     end    
@@ -61,6 +85,12 @@ module ex(
             case(alusel_i) 
                 `ALUS_LOGIC: begin
                     wdata_o <= logicres ;
+                end
+                `ALUS_SHIFT: begin
+                    wdata_o <= shiftres ;
+                end
+                default: begin
+                    wdata_o <= `Zero ;
                 end
             endcase 
         end
