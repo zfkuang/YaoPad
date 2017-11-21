@@ -20,25 +20,26 @@
 //////////////////////////////////////////////////////////////////////////////////
 `include"defines.vh"
 
-module pc_rom(
+module hilo(
     input wire rst,
     input wire clk,
-    input wire[`StallBus] stall,
+    input wire we,
+    input wire[`RegBus] hi_i,
+    input wire[`RegBus] lo_i,
     
-    output reg[`AddrBus] pc,
-    output reg ce
+    output reg[`RegBus] hi_o,
+    output reg[`RegBus] lo_o
     );
     
     always @ (posedge clk) begin
-        if (ce == `Disable) begin
-            pc <= 32'h00000000;       
-        end else begin
-            if (rst == `Enable) begin
-                pc <= 32'h00000000;
-            end else if (stall[0] == `Disable) begin
-                pc <= pc+4;
-            end
-        end 
+        if (rst == `Enable) begin
+            hi_o <= `Zero ;
+            lo_o <= `Zero ;
+        end
+        else if (we == `Enable) begin
+            hi_o <= hi_i ;
+            lo_o <= lo_i ;
+        end
     end 
 
 endmodule

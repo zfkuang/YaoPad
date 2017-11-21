@@ -48,7 +48,7 @@ module openmips_min_sopc_tb;
     initial begin
         rst = `Enable;
         #195 rst= `Disable;
-        #1000 $stop;
+        #5000 $stop;
     end
 
     openmips_min_sopc openmips_min_sopc0(
@@ -82,17 +82,19 @@ module openmips_min_sopc_tb;
             openmips_min_sopc0.cpu0.ex0.wreg_o,
         );
         */
-        $monitor("%d\nregs[0]\t=\t%h\nregs[2]\t=\t%h\nregs[5]\t=\t%h\nregs[7]\t=\t%h\nregs[8]\t=\t%h\n",
+        $monitor("%d\nregs[0]\t=\t%h\nregs[1]\t=\t%h\nregs[2]\t=\t%h\nregs[3]\t=\t%h\nregs[4]\t=\t%h\nhi\t=\t%h\nlo\t=\t%h\n",
             $stime, 
             openmips_min_sopc0.cpu0.regfile0.register[0],
+            openmips_min_sopc0.cpu0.regfile0.register[1],
             openmips_min_sopc0.cpu0.regfile0.register[2],
-            openmips_min_sopc0.cpu0.regfile0.register[5],
-            openmips_min_sopc0.cpu0.regfile0.register[7],
-            openmips_min_sopc0.cpu0.regfile0.register[8],
+            openmips_min_sopc0.cpu0.regfile0.register[3],
+            openmips_min_sopc0.cpu0.regfile0.register[4],
+            openmips_min_sopc0.cpu0.hilo0.hi_o,
+            openmips_min_sopc0.cpu0.hilo0.lo_o,
         );
         $dumpfile("openmips_min_sopc_tb.vcd");
         $dumpvars(0, openmips_min_sopc0);
-        #800;
+        #4000;
         $finish;
     end
 

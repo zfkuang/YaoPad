@@ -50,7 +50,9 @@ module id(
     output reg reg1_read_o,
     
     output reg[`RegBus] reg1_o,
-    output reg[`RegBus]  reg2_o
+    output reg[`RegBus]  reg2_o,
+
+    output reg stallreq
     );
     
     reg[`RegBus] immi ;
@@ -63,107 +65,166 @@ module id(
         if(rst == `Enable) begin 
             aluop_o <= `ALU_NOP ; 
             alusel_o <= `ALUS_NOP ;
-            reg1_addr_o <= `Disable ;
-            reg2_addr_o <= `Disable ;
+            reg1_addr_o <= `NopRegAddr ;
+            reg2_addr_o <= `NopRegAddr ;
+            stallreq <= 0 ;
             wd_o <= `Disable ;
             immi <= `Zero ;
-        end else begin
-            case(op1) 
+        end else begin 
+        	// default settings for I-type
+            reg1_read_o <= `Enable ;
+            reg2_read_o <= `Disable ;
+            reg1_addr_o <= inst_i[25:21] ;
+            wd_o <= inst_i[20:16]  ;
+            wreg_o <= `Enable ;
+            immi <= {16'h0, inst_i[15:0]} ;
+            stallreq <= 0 ;
 
+            case(op1) 
+            	//------------------------------------------------------------- I-type
                 `EXE_ORI: begin  // ori I-type 
                     aluop_o <= `ALU_OR ; 
                     alusel_o <= `ALUS_LOGIC ;
-                    reg1_read_o <= `Enable ;
-                    reg2_read_o <= `Disable ;
-                    reg1_addr_o <= inst_i[25:21] ;
-                    wd_o <= inst_i[20:16]  ;
-                    wreg_o <= `Enable ;
-                    immi <= {16'h0, inst_i[15:0]} ;
                 end 
-
                 `EXE_ANDI: begin // andi I-type  
                     aluop_o <= `ALU_AND ; 
                     alusel_o <= `ALUS_LOGIC ;
-                    reg1_read_o <= `Enable ;
-                    reg2_read_o <= `Disable ;
-                    reg1_addr_o <= inst_i[25:21] ;
-                    wd_o <= inst_i[20:16]  ;
-                    wreg_o <= `Enable ;
-                    immi <= {16'h0, inst_i[15:0]} ;
-                end             
-
+                end
                 `EXE_XORI: begin // andi I-type 
                     aluop_o <= `ALU_XOR ; 
                     alusel_o <= `ALUS_LOGIC ;
-                    reg1_read_o <= `Enable ;
-                    reg2_read_o <= `Disable ;
-                    reg1_addr_o <= inst_i[25:21] ;
-                    wd_o <= inst_i[20:16]  ;
-                    wreg_o <= `Enable ;
-                    immi <= {16'h0, inst_i[15:0]} ;
                 end
-                
                 `EXE_LUI: begin // lui I-type
                     aluop_o <= `ALU_OR ; 
                     alusel_o <= `ALUS_LOGIC ;
-                    reg1_read_o <= `Enable ;
-                    reg2_read_o <= `Disable ;
-                    reg1_addr_o <= `NopRegAddr ;
-                    wd_o <= inst_i[20:16]  ;
-                    wreg_o <= `Enable ;
                     immi <= {inst_i[15:0], 16'h0} ;
+                end                
+                `EXE_ADDI: begin // addi I-type
+                    aluop_o <= `ALU_ADD ; 
+                    alusel_o <= `ALUS_ARITHMETIC ;
+            		immi <= {{16{inst_i[15]}}, inst_i[15:0]} ;
+                end               
+                `EXE_ADDIU: begin // addiu I-type
+                    aluop_o <= `ALU_ADDU ; 
+                    alusel_o <= `ALUS_ARITHMETIC ;
+            		immi <= {{16{inst_i[15]}}, inst_i[15:0]} ;
+                end
+                `EXE_SLTI: begin // addi I-type
+                    aluop_o <= `ALU_SLT ; 
+                    alusel_o <= `ALUS_ARITHMETIC ;
+            		immi <= {{16{inst_i[15]}}, inst_i[15:0]} ;
+                end               
+                `EXE_SLTIU: begin // addiu I-type
+                    aluop_o <= `ALU_SLTU ; 
+                    alusel_o <= `ALUS_ARITHMETIC ;
+            		immi <= {{16{inst_i[15]}}, inst_i[15:0]} ;
                 end
 
                 `EXE_PREF: begin // pref, still unfinished
                     aluop_o <= `ALU_NOP ; 
                     alusel_o <= `ALUS_NOP ;
-                    reg1_read_o <= `Enable ;
                     reg2_read_o <= `Enable ;
+                    reg2_addr_o <= `NopRegAddr ;
                     wreg_o <= `Disable ;            
                 end
                 
+                //------------------------------------------------------------- R-type
                 `EXE_SPECIAL: begin // special-instruction
 
+        			// default settings for R-type
                     wd_o <=  inst_i[15:11] ;
-                    immi <= 32'h0 ;
-                    
-                    if((op3 == `ALU_AND) | (op3 == `ALU_XOR) | (op3 == `ALU_NOR) | (op3 == `ALU_OR)) begin 
-                        aluop_o <= {2'h0, op3} ; 
-                        alusel_o <= `ALUS_LOGIC ;
-                        reg1_read_o <= `Enable ;
-                        reg2_read_o <= `Enable ;
-                        reg1_addr_o <= inst_i[25:21] ;
-                        reg2_addr_o <= inst_i[20:16] ;
-                        wreg_o <= `Enable ;
-                    end else if ((op3 == `ALU_SLL) | (op3 == `ALU_SRL) | (op3 == `ALU_SRA)) begin
-                        aluop_o <= {2'h0, op3} ;  
-                        alusel_o <= `ALUS_SHIFT ;
-                        reg1_read_o <= `Disable ;
-                        reg2_read_o <= `Enable ;
-                        reg2_addr_o <= inst_i[20:16] ;
-                        immi <= {26'h0, op2} ;
-                        wreg_o <= `Enable ;
-                    end else if ((op3 == `ALU_SLLV) | (op3 == `ALU_SRLV) | (op3 == `ALU_SRAV)) begin 
-                        aluop_o <= {4'h0, op3[1:0]} ; // some little trick
-                        alusel_o <= `ALUS_SHIFT ;
-                        reg1_read_o <= `Enable ;
-                        reg2_read_o <= `Enable ;
-                        reg1_addr_o <= inst_i[25:21] ;
-                        reg2_addr_o <= inst_i[20:16] ;
-                        wreg_o <= `Enable ;
-                    end else if (op3 == `ALU_SYNC) begin 
-                        aluop_o <= `ALU_NOP ;
-                        alusel_o <= `ALUS_NOP ;
-                        reg1_read_o <= `Enable ;
-                        reg2_read_o <= `Enable ;
-                        reg1_addr_o <= inst_i[25:21] ;
-                        reg2_addr_o <= inst_i[20:16] ;                    
-                        wreg_o <= `Disable ;
-                    end
+            		immi <= 32'h0 ;
+                    reg1_addr_o <= inst_i[25:21] ;
+                    reg2_addr_o <= inst_i[20:16] ;   
+                    reg1_read_o <= `Enable ;
+                    reg2_read_o <= `Enable ;  
+
+                    case(op3) 
+                    	// normal logic op
+		                `ALU_AND, `ALU_XOR, `ALU_NOR, `ALU_OR: begin 
+		                    aluop_o <= {2'h0, op3} ; 
+		                    alusel_o <= `ALUS_LOGIC ;
+		                    wreg_o <= `Enable ;
+		                end 
+		                // normal arithmetic op
+		                `ALU_ADD, `ALU_ADDU, `ALU_SUB, `ALU_SUBU, `ALU_SLT, `ALU_SLTU: begin
+		                    aluop_o <= {2'h0, op3} ; 
+		                    alusel_o <= `ALUS_ARITHMETIC ;
+		                    wreg_o <= `Enable ;
+		                end 
+		                // hi-lo arithmetic op
+		        		`ALU_MULT, `ALU_MULTU: begin
+		                    aluop_o <= {2'h0, op3} ;
+		                    alusel_o <= `ALUS_ARITHMETIC ;           
+		                    wreg_o <= `Disable ;
+		        		end		        		
+		        		`ALU_DIV, `ALU_DIVU: begin
+		                    aluop_o <= {2'h0, op3} ;
+		                    alusel_o <= `ALUS_ARITHMETIC ;           
+		                    wreg_o <= `Disable ;
+		        		end
+		                // normal shift op
+		                `ALU_SLL, `ALU_SRL, `ALU_SRA: begin
+		                    aluop_o <= {2'h0, op3} ;  
+		                    alusel_o <= `ALUS_SHIFT ;
+		                    reg1_read_o <= `Disable ;
+		                    immi <= {26'h0, op2} ;
+		                    wreg_o <= `Enable ;
+		                end 
+		                // normal shift op with register
+		                `ALU_SLLV, `ALU_SRLV, `ALU_SRAV: begin 
+		                    aluop_o <= {4'h0, op3[1:0]} ; // used some little trick
+		                    alusel_o <= `ALUS_SHIFT ;
+		                    wreg_o <= `Enable ;
+		                end 
+		                // sync op 
+		                `ALU_SYNC: begin 
+		                    aluop_o <= `ALU_NOP ;
+		                    alusel_o <= `ALUS_NOP ;           
+		                    wreg_o <= `Disable ;
+		                end
+		                `ALU_MOVN, `ALU_MOVZ: begin
+		                    aluop_o <= {2'h0, op3} ; 
+		                    alusel_o <= `ALUS_MOVE ;
+		                    wreg_o <= ((op3 == `ALU_MOVN) ^ (reg2_data_i == `Zero)) ;
+		                end
+		                `ALU_MFHI, `ALU_MFLO: begin
+		                    aluop_o <= {2'h0, op3} ; 
+		                    alusel_o <= `ALUS_MOVE ;
+		                    wreg_o <= `Enable ;
+		                end
+		                `ALU_MTHI, `ALU_MTLO: begin
+		                    aluop_o <= {2'h0, op3} ; 
+		                    alusel_o <= `ALUS_MOVE ;
+		                    wreg_o <= `Disable ;		                	
+		                end
+            		endcase
+                end
+                `EXE_SPECIAL2: begin // special-instruction
+        			// default settings for R-type
+                    reg1_addr_o <= inst_i[25:21] ;
+                    reg2_addr_o <= inst_i[20:16] ;
+                    wd_o <=  inst_i[15:11] ;
+                    immi <= 32'h0 ;                		    
+                    aluop_o <= {2'b10, op3} ;  
+                	case(aluop_o)
+                		`ALU_CLZ, `ALU_CLO: begin
+	                        alusel_o <= `ALUS_ARITHMETIC ;
+	                        reg1_read_o <= `Enable ;
+	                        reg2_read_o <= `Disable ;
+	                        wreg_o <= `Enable ;
+                		end
+                		`ALU_MUL: begin
+	                        alusel_o <= `ALUS_MUL ;
+	                        reg1_read_o <= `Enable ;
+	                        reg2_read_o <= `Enable ;
+	                        wreg_o <= `Enable ;
+                		end
+                	endcase
                 end
                 default: begin
                     aluop_o <= `ALU_NOP ; 
-                    alusel_o <= `ALUS_LOGIC ;
+                    alusel_o <= `ALUS_NOP ;
                     reg1_read_o <= `Disable ;
                     reg2_read_o <= `Disable ;
                     wd_o <= `Disable  ;

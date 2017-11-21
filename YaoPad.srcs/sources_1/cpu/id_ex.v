@@ -23,7 +23,8 @@
 module id_ex(
     input wire rst,
     input wire clk,
-    
+    input wire[`StallBus] stall,
+
     input wire[`AluSelBus] id_alusel,
     input wire[`AluOpBus] id_aluop,
     
@@ -44,14 +45,14 @@ module id_ex(
     );
     
     always @ (posedge clk) begin 
-        if (rst == `Enable) begin
+        if ((rst == `Enable) || ((stall[2] == `Enable) && (stall[3] == `Disable))) begin
             ex_alusel <= `ALUS_NOP ;
             ex_aluop <= `ALU_NOP ;
             ex_reg1 <= `Zero ;
             ex_reg2 <= `Zero ;
             ex_wd <= `NopRegAddr ;
-            ex_wreg <= 0 ;
-        end else begin 
+            ex_wreg <= 0 ;        
+        end else if (stall[2] == `Disable) begin
             ex_alusel <= id_alusel ;
             ex_aluop <= id_aluop ;
             ex_reg1 <= id_reg1 ;

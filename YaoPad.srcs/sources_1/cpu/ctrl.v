@@ -20,25 +20,25 @@
 //////////////////////////////////////////////////////////////////////////////////
 `include"defines.vh"
 
-module pc_rom(
+module ctrl(
     input wire rst,
-    input wire clk,
-    input wire[`StallBus] stall,
+
+    input wire stalleq_from_id,
+    input wire stalleq_from_ex,
     
-    output reg[`AddrBus] pc,
-    output reg ce
+    output reg[5:0] stall
     );
     
-    always @ (posedge clk) begin
-        if (ce == `Disable) begin
-            pc <= 32'h00000000;       
+    always @ (*) begin
+        if (rst == `Enable) begin
+            stall <= 6'b000000 ;
+        end else if (stalleq_from_ex == `Enable) begin
+            stall <= 6'b001111 ;
+        end else if (stalleq_from_id == `Enable) begin
+            stall <= 6'b000111 ;
         end else begin
-            if (rst == `Enable) begin
-                pc <= 32'h00000000;
-            end else if (stall[0] == `Disable) begin
-                pc <= pc+4;
-            end
-        end 
+            stall <= 6'b000000 ;
+        end
     end 
 
 endmodule
