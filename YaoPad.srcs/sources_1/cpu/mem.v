@@ -67,7 +67,7 @@ module mem(
             mem_sel_o <= 4'b0;
         end else begin 
             wd_o <= wd_i ;
-            wreg_o <= wreg_i ;
+            wreg_o <= wreg_i;
             wdata_o <= wdata_i ;
             whilo_o <= whilo_i ;
             hi_o <= hi_i ;
@@ -231,6 +231,106 @@ module mem(
                             wdata_o <=  mem_data_i;
                         end
                     endcase
+                end
+                `MEM_SB: begin
+                    mem_we_o <= `Enable;
+                    mem_ce_o <= `Enable;
+                    mem_addr_o <= mem_addr_i;
+                    mem_data_o <= {4{reg2_i[7:0]}};
+                    case(addr_mod4)
+                        2'b00: begin
+                            mem_sel_o <= 4'b1000;
+                        end
+                        2'b01: begin
+                            mem_sel_o <= 4'b0100;
+                        end
+                        2'b10: begin
+                            mem_sel_o <= 4'b0010;
+                        end
+                        2'b11: begin
+                            mem_sel_o <= 4'b0001;
+                        end
+                    endcase
+                end
+                `MEM_SH: begin
+                    mem_we_o <= `Enable;
+                    mem_ce_o <= `Enable;
+                    mem_addr_o <= mem_addr_i;
+                    mem_data_o <= {2{reg2_i[15:0]}};
+                    case(addr_mod4)
+                        2'b00: begin
+                            mem_sel_o <= 4'b1100;
+                        end
+                        2'b10: begin
+                            mem_sel_o <= 4'b0011;
+                        end
+                        default: begin
+                            mem_sel_o <= 4'b0000;
+                        end
+                    endcase
+                end
+                `MEM_SW: begin
+                    mem_we_o <= `Enable;
+                    mem_ce_o <= `Enable;
+                    mem_addr_o <= mem_addr_i;
+                    mem_data_o <= reg2_i;
+                    case(addr_mod4)
+                        2'b00: begin
+                            mem_sel_o <= 4'b1111;
+                        end
+                        default: begin
+                            mem_sel_o <= 4'b0000;
+                        end
+                    endcase
+                end
+                `MEM_SWL: begin
+                    mem_we_o <= `Enable;
+                    mem_ce_o <= `Enable;
+                    mem_addr_o <= {mem_addr_i[31:2],2'b00};
+                    case(addr_mod4)
+                        2'b00: begin
+                            mem_sel_o <= 4'b1111;
+                            mem_data_o <= reg2_i;
+                        end
+                        2'b01: begin
+                            mem_sel_o <= 4'b0111;
+                            mem_data_o <= {8'b0, reg2_i[31:8]};
+                        end
+                        2'b10: begin
+                            mem_sel_o <= 4'b0011;
+                            mem_data_o <= {16'b0, reg2_i[31:16]};
+                        end
+                        2'b11: begin
+                            mem_sel_o <= 4'b0001;
+                            mem_data_o <= {24'b0, reg2_i[31:24]};
+                        end
+                    endcase
+                end
+                `MEM_SWR: begin
+                    mem_we_o <= `Enable;
+                    mem_ce_o <= `Enable;
+                    mem_addr_o <= {mem_addr_i[31:2], 2'b00};
+                    case(addr_mod4)
+                        2'b00: begin
+                            mem_sel_o <= 4'b1000;
+                            mem_data_o <= {reg2_i[7:0], 24'b0};
+                        end
+                        2'b01: begin
+                            mem_sel_o <= 4'b1100;
+                            mem_data_o <= {reg2_i[15:0], 16'b0};
+                        end
+                        2'b10: begin
+                            mem_sel_o <= 4'b1110;
+                            mem_data_o <= {reg2_i[23:0], 8'b0};
+                        end
+                        2'b11: begin
+                            mem_sel_o <= 4'b1111;
+                            mem_data_o <= reg2_i;
+                        end
+                    endcase
+                end
+                default: begin
+                    //wreg_o <= `Disable;
                 end
             endcase
         end

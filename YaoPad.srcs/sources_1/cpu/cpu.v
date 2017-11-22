@@ -35,9 +35,17 @@
 module cpu(
     input wire rst, 
     input wire clk,
+    
     input wire[`WordBus] rom_data_i,
     output wire[`WordBus] rom_addr_o,
-    output wire rom_ce_o
+    output wire rom_ce_o,
+
+    input wire[`WordBus] ram_data_i,
+    output wire[`WordBus] ram_data_o,
+    output wire[`WordBus] ram_addr_o,
+    output wire[3:0] ram_sel_o,
+    output wire ram_we_o,
+    output wire ram_ce_o
     );
     
     wire[`WordBus] pc ;
@@ -60,6 +68,7 @@ module cpu(
     
     wire ex_is_in_delayslot_i;
     wire[`WordBus] ex_link_addr_i;
+    wire[`WordBus] ex_inst_i;
     wire[`AluOpBus] ex_aluop_i ;
     wire[`AluSelBus] ex_alusel_i ;
     wire[`WordBus] ex_reg1_i ;
@@ -72,6 +81,10 @@ module cpu(
     wire[`WordBus] ex_wdata_o ;
     wire ex_whilo_o ;
 
+    wire[`AluOpBus] ex_aluop_o;
+    wire[`WordBus] ex_mem_addr_o;
+    wire[`WordBus] ex_reg2_o;
+
     wire [`WordBus] ex_hi_o ;
     wire [`WordBus] ex_lo_o ;
     wire[`WordBus] ex_inst_o ;
@@ -82,6 +95,9 @@ module cpu(
     wire mem_whilo_i ;
     wire [`WordBus] mem_hi_i ;
     wire [`WordBus] mem_lo_i ;
+    wire [`AluOpBus] mem_aluop_i;
+    wire [`WordBus] mem_mem_addr_i;
+    wire [`WordBus] mem_reg2_i;
 
     wire mem_wreg_o ;
     wire[`RegAddrBus] mem_wd_o ;
@@ -169,6 +185,7 @@ module cpu(
         .ex_wdata_i(ex_wdata_o), 
         .ex_wd_i(ex_wd_o), 
         .ex_wreg_i(ex_wreg_o),
+        .ex_aluop_i(ex_aluop_o),
 
         .is_in_delayslot_i(id_is_in_delayslot_i),
         .branch_flag_o(id_branch_flag_o),
@@ -177,7 +194,7 @@ module cpu(
         .link_addr_o(id_link_addr_o),
         .next_inst_in_delayslot_o(id_next_inst_in_delayslot_o),
 
-        .stallreq(reqstalleq_from_id)
+        .stallreq(stalleq_from_id)
     ) ;
     
     regfile regfile0(
@@ -215,8 +232,7 @@ module cpu(
         .ex_reg2(ex_reg2_i),
         .ex_wd(ex_wd_i),
         .ex_wreg(ex_wreg_i),
-
-        .ex_inst(ex_inst_o),
+        .ex_inst(ex_inst_i),
 
         .ex_is_in_delayslot(ex_is_in_delayslot_i),
         .ex_link_addr(ex_link_addr_i),
@@ -230,6 +246,7 @@ module cpu(
     ex ex0(
         .rst(rst),
 
+        .inst_i(ex_inst_i),
         .aluop_i(ex_aluop_i),
         .alusel_i(ex_alusel_i),
         .reg1_i(ex_reg1_i),
@@ -263,6 +280,10 @@ module cpu(
         .is_in_delayslot_i(ex_is_in_delayslot_i),
         .link_addr_i(ex_link_addr_i),
 
+        .aluop_o(ex_aluop_o),
+        .mem_addr_o(ex_mem_addr_o),
+        .reg2_o(ex_reg2_o),
+
         .stallreq(stalleq_from_ex)
     ) ;
     
@@ -275,6 +296,9 @@ module cpu(
         .ex_whilo(ex_whilo_o),
         .ex_hi(ex_hi_o),
         .ex_lo(ex_lo_o),
+        .ex_aluop(ex_aluop_o),
+        .ex_mem_addr(ex_mem_addr_o),
+        .ex_reg2(ex_reg2_o),
         
         .mem_wd(mem_wd_i),
         .mem_wreg(mem_wreg_i),
@@ -282,7 +306,9 @@ module cpu(
         .mem_whilo(mem_whilo_i),
         .mem_hi(mem_hi_i),
         .mem_lo(mem_lo_i),
-
+        .mem_aluop(mem_aluop_i),
+        .mem_mem_addr(mem_mem_addr_i),
+        .mem_reg2(mem_reg2_i),
         .stall(stall) 
     ) ;
     
@@ -295,13 +321,24 @@ module cpu(
         .whilo_i(mem_whilo_i),
         .hi_i(mem_hi_i),
         .lo_i(mem_lo_i),
+
+        .aluop_i(mem_aluop_i),
+        .mem_addr_i(mem_mem_addr_i),
+        .reg2_i(mem_reg2_i),
         
         .wd_o(mem_wd_o),
         .wreg_o(mem_wreg_o),
         .wdata_o(mem_wdata_o),
         .whilo_o(mem_whilo_o),
         .hi_o(mem_hi_o),
-        .lo_o(mem_lo_o)
+        .lo_o(mem_lo_o),
+
+        .mem_data_i(ram_data_i),
+        .mem_data_o(ram_data_o),
+        .mem_addr_o(ram_addr_o),
+        .mem_sel_o(ram_sel_o),
+        .mem_ce_o(ram_ce_o),
+        .mem_we_o(ram_we_o)
     ) ;
     
     mem_wb mem_wb0(

@@ -37,6 +37,7 @@ module id(
     input wire ex_wreg_i, 
 
     input wire is_in_delayslot_i,
+    input wire[`AluOpBus] ex_aluop_i,
     output reg[`WordBus] inst_o,
     output reg[`AluOpBus] aluop_o,
     output reg[`AluSelBus] alusel_o,
@@ -59,7 +60,7 @@ module id(
     output reg[`WordBus] link_addr_o,
     output reg next_inst_in_delayslot_o,
 
-    output reg stallreq
+    output wire stallreq
     );
     
     reg[`WordBus] immi ;
@@ -69,13 +70,22 @@ module id(
     wire[4:0] op4 = inst_i[20:16] ;
     wire[31:0] next_pc_i = pc_i+4 ;
 
+    wire pre_inst_is_load = ((ex_aluop_i == `MEM_LB)  ||
+                             (ex_aluop_i == `MEM_LBU) ||
+                             (ex_aluop_i == `MEM_LH)  ||
+                             (ex_aluop_i == `MEM_LHU) ||
+                             (ex_aluop_i == `MEM_LW)  ||
+                             (ex_aluop_i == `MEM_LWL) ||
+                             (ex_aluop_i == `MEM_LWR) 
+                            ) ? 1'b1 : 1'b0;
+
     always @ (*) begin // interprete instruction
         if(rst == `Enable) begin 
             aluop_o <= `ALU_NOP ; 
             alusel_o <= `ALUS_NOP ;
             reg1_addr_o <= `NopRegAddr ;
             reg2_addr_o <= `NopRegAddr ;
-            stallreq <= 0 ;
+            //stallreq <= 0 ;
             wd_o <= `Disable ;
             immi <= `Zero ;
             inst_o <= `Zero;
@@ -94,7 +104,7 @@ module id(
             wd_o <= inst_i[20:16]  ;
             wreg_o <= `Enable ;
             immi <= {16'h0, inst_i[15:0]} ;
-            stallreq <= 0 ;
+            //stallreq <= 0 ;
 
             branch_target_address_o <= `Zero ;
             branch_flag_o <= `Disable ;
@@ -149,12 +159,25 @@ module id(
                     reg2_addr_o <= `NopRegAddr ;
                     wreg_o <= `Disable ;            
                 end
-                `EXE_LW, `EXE_LB, `EXE_LBU, `EXE_LH, `EXE_LHU, `EXE_LWL, `EXE_LWR : begin
-                    aluop_o <= {2'b11, op3};
+                `EXE_LW, `EXE_LB, `EXE_LBU, `EXE_LH, `EXE_LHU: begin
+                    reg1_addr_o <= inst_i[25:21];
+                    reg2_addr_o <= inst_i[20:16]; 
+                    reg1_read_o <= `Enable;
+                    reg2_read_o <= `Disable;  
+                    aluop_o <= {2'b11, op1};
+                    alusel_o <= `ALUS_LOAD_STORE;
+                end
+                `EXE_LWL, `EXE_LWR : begin
+                    reg1_addr_o <= inst_i[25:21];
+                    reg2_addr_o <= inst_i[20:16]; 
+                    reg1_read_o <= `Enable;
+                    reg2_read_o <= `Enable;  
+                    aluop_o <= {2'b11, op1};
                     alusel_o <= `ALUS_LOAD_STORE;
                 end
                 `EXE_SB, `EXE_SH, `EXE_SW, `EXE_SWL, `EXE_SWR : begin
-                    aluop_o <= {2'b11, op3};
+                    wreg_o <= `Disable;
+                    aluop_o <= {2'b11, op1};
                     alusel_o <= `ALUS_LOAD_STORE;
                     reg1_addr_o <= inst_i[25:21];
                     reg2_addr_o <= inst_i[20:16];   
@@ -177,7 +200,7 @@ module id(
                     wreg_o <= `Disable ;
                     reg2_read_o <= `Enable ;
                     reg2_addr_o <= inst_i[20:16] ;
-                    if((reg1_data_i == reg2_data_i) ^ (op1 == `EXE_BNE)) begin
+                    if((reg1_o == reg2_o) ^ (op1 == `EXE_BNE)) begin
                         branch_target_address_o <= next_pc_i+{{14{inst_i[15]}}, inst_i[15:0], 2'b00} ;
                         next_inst_in_delayslot_o <= `Enable ;
                         branch_flag_o <= `Enable ;
@@ -187,7 +210,7 @@ module id(
                     aluop_o <= `ALU_JUMP ; 
                     alusel_o <= `ALUS_JUMP ;
                     wreg_o <= `Disable ;
-                    if((reg1_data_i <= 0) ^ (op1 == `EXE_BGTZ)) begin
+                    if((reg1_o <= 0) ^ (op1 == `EXE_BGTZ)) begin
                         branch_target_address_o <= next_pc_i+{{14{inst_i[15]}}, inst_i[15:0], 2'b00} ;
                         next_inst_in_delayslot_o <= `Enable ;
                         branch_flag_o <= `Enable ;
@@ -199,7 +222,7 @@ module id(
                     wreg_o <= `Disable ; 
                     wd_o <= 31 ;
                     wreg_o <= op4[4] ;
-                    if(reg1_data_i[31] ^ op4[0]) begin
+                    if(reg1_o[31] ^ op4[0]) begin
                         branch_target_address_o <= next_pc_i+{{14{inst_i[15]}}, inst_i[15:0], 2'b00} ;
                         next_inst_in_delayslot_o <= `Enable ;
                         branch_flag_o <= `Enable ;
@@ -320,14 +343,19 @@ module id(
             endcase
         end 
     end
-    
+    reg stallreq1, stallreq2;
+    assign stallreq = stallreq1 | stallreq2;
     always @ (*) begin // calculate register
+        stallreq1 <= `Disable;
+        stallreq2 <= `Disable;
         if(rst == `Enable) begin 
             reg1_o <= `Zero ;
             reg2_o <= `Zero ;
         end else begin
-
             if(reg1_read_o == `Enable) begin
+                if ((pre_inst_is_load == `Enable) && (ex_wd_i == reg1_addr_o)) begin
+                    stallreq1 <= `Enable;
+                end 
                 if((ex_wreg_i == `Enable) && (ex_wd_i == reg1_addr_o)) begin
                     reg1_o <= ex_wdata_i ;
                 end else if ((mem_wreg_i == `Enable) && (mem_wd_i == reg1_addr_o)) begin
@@ -338,6 +366,9 @@ module id(
             end else begin reg1_o <= immi ; end
 
             if(reg2_read_o == `Enable) begin
+                if ((pre_inst_is_load == `Enable) && (ex_wd_i == reg2_addr_o)) begin
+                    stallreq2 <= `Enable;
+                end 
                 if((ex_wreg_i == `Enable) && (ex_wd_i == reg2_addr_o)) begin
                     reg2_o <= ex_wdata_i ;
                 end else if ((mem_wreg_i == `Enable) && (mem_wd_i == reg2_addr_o)) begin
@@ -346,9 +377,9 @@ module id(
                     reg2_o <= reg2_data_i ;
                 end
             end else begin reg2_o <= immi ; end                         
-
         end 
     end    
+
         
 endmodule
 
