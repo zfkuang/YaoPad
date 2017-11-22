@@ -24,11 +24,11 @@ module hilo(
     input wire rst,
     input wire clk,
     input wire we,
-    input wire[`RegBus] hi_i,
-    input wire[`RegBus] lo_i,
+    input wire[`WordBus] hi_i,
+    input wire[`WordBus] lo_i,
     
-    output reg[`RegBus] hi_o,
-    output reg[`RegBus] lo_o
+    output reg[`WordBus] hi_o,
+    output reg[`WordBus] lo_o
     );
     
     always @ (posedge clk) begin

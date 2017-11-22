@@ -82,7 +82,7 @@ module openmips_min_sopc_tb;
             openmips_min_sopc0.cpu0.ex0.wreg_o,
         );
         */
-        $monitor("%d\nregs[0]\t=\t%h\nregs[1]\t=\t%h\nregs[2]\t=\t%h\nregs[3]\t=\t%h\nregs[4]\t=\t%h\nhi\t=\t%h\nlo\t=\t%h\n",
+        $monitor("%d\nregs[0]\t=\t%h\nregs[1]\t=\t%h\nregs[2]\t=\t%h\nregs[3]\t=\t%h\nregs[4]\t=\t%h\nhi\t=\t%h\nlo\t=\t%h\npc\t=\t%h\nregs[31]\t=\t%h\n",
             $stime, 
             openmips_min_sopc0.cpu0.regfile0.register[0],
             openmips_min_sopc0.cpu0.regfile0.register[1],
@@ -91,10 +91,12 @@ module openmips_min_sopc_tb;
             openmips_min_sopc0.cpu0.regfile0.register[4],
             openmips_min_sopc0.cpu0.hilo0.hi_o,
             openmips_min_sopc0.cpu0.hilo0.lo_o,
+            openmips_min_sopc0.cpu0.pc_rom0.pc,
+            openmips_min_sopc0.cpu0.regfile0.register[31],
         );
         $dumpfile("openmips_min_sopc_tb.vcd");
         $dumpvars(0, openmips_min_sopc0);
-        #4000;
+        #2000;
         $finish;
     end
 

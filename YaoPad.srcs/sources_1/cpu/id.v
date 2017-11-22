@@ -23,19 +23,20 @@
 module id(
     input wire rst,
     
-    input wire[`AddrBus] pc_i,
-    input wire[`InstBus] inst_i,
+    input wire[`WordBus] pc_i,
+    input wire[`WordBus] inst_i,
     
-    input wire[`RegBus] reg1_data_i,
-    input wire[`RegBus] reg2_data_i,
+    input wire[`WordBus] reg1_data_i,
+    input wire[`WordBus] reg2_data_i,
     
-    input wire[`RegBus] mem_wdata_i, 
+    input wire[`WordBus] mem_wdata_i, 
     input wire[`RegAddrBus] mem_wd_i, 
     input wire mem_wreg_i, 
-    input wire[`RegBus] ex_wdata_i, 
+    input wire[`WordBus] ex_wdata_i, 
     input wire[`RegAddrBus] ex_wd_i, 
     input wire ex_wreg_i, 
 
+    input wire is_in_delayslot_i,
 
     output reg[`AluOpBus] aluop_o,
     output reg[`AluSelBus] alusel_o,
@@ -49,18 +50,25 @@ module id(
     output reg[`RegAddrBus] reg1_addr_o,
     output reg reg1_read_o,
     
-    output reg[`RegBus] reg1_o,
-    output reg[`RegBus]  reg2_o,
+    output reg[`WordBus] reg1_o,
+    output reg[`WordBus]  reg2_o,
+
+    output reg branch_flag_o,
+    output reg[`WordBus] branch_target_address_o,
+    output reg is_in_delayslot_o,
+    output reg[`WordBus] link_addr_o,
+    output reg next_inst_in_delayslot_o,
 
     output reg stallreq
     );
     
-    reg[`RegBus] immi ;
+    reg[`WordBus] immi ;
     wire[5:0] op1 = inst_i[31:26] ;
     wire[4:0] op2 = inst_i[10:6] ;
     wire[5:0] op3 = inst_i[5:0] ;
     wire[4:0] op4 = inst_i[20:16] ;
-    
+    wire[31:0] next_pc_i = pc_i+4 ;
+
     always @ (*) begin // interprete instruction
         if(rst == `Enable) begin 
             aluop_o <= `ALU_NOP ; 
@@ -70,6 +78,13 @@ module id(
             stallreq <= 0 ;
             wd_o <= `Disable ;
             immi <= `Zero ;
+
+            branch_flag_o <= 0 ;
+            branch_target_address_o <= `Zero ;
+            is_in_delayslot_o <= 0;
+            link_addr_o <= 0;
+            next_inst_in_delayslot_o <= 0;
+
         end else begin 
         	// default settings for I-type
             reg1_read_o <= `Enable ;
@@ -79,6 +94,12 @@ module id(
             wreg_o <= `Enable ;
             immi <= {16'h0, inst_i[15:0]} ;
             stallreq <= 0 ;
+
+            branch_target_address_o <= `Zero ;
+            branch_flag_o <= `Disable ;
+            is_in_delayslot_o <= `Disable;
+            next_inst_in_delayslot_o <= `Disable;
+            link_addr_o <= pc_i+8 ;
 
             case(op1) 
             	//------------------------------------------------------------- I-type
@@ -127,7 +148,51 @@ module id(
                     reg2_addr_o <= `NopRegAddr ;
                     wreg_o <= `Disable ;            
                 end
-                
+            
+                `EXE_J, `EXE_JAL: begin
+                    aluop_o <= `ALU_JUMP ; 
+                    alusel_o <= `ALUS_JUMP ;
+                    wd_o <= 31 ;
+                    branch_target_address_o <= {next_pc_i[31:28], inst_i[25:0], 2'b00} ;
+                    next_inst_in_delayslot_o <= `Enable ;
+                    branch_flag_o <= `Enable ;
+                    wreg_o <= op1[0] ;        
+                end
+                `EXE_BEQ, `EXE_BNE: begin //branch instructions 
+                    aluop_o <= `ALU_JUMP ; 
+                    alusel_o <= `ALUS_JUMP ;
+                    wreg_o <= `Disable ;
+                    reg2_read_o <= `Enable ;
+                    reg2_addr_o <= inst_i[20:16] ;
+                    if((reg1_data_i == reg2_data_i) ^ (op1 == `EXE_BNE)) begin
+                        branch_target_address_o <= next_pc_i+{{14{inst_i[15]}}, inst_i[15:0], 2'b00} ;
+                        next_inst_in_delayslot_o <= `Enable ;
+                        branch_flag_o <= `Enable ;
+                    end
+                end
+                `EXE_BGTZ, `EXE_BLEZ: begin
+                    aluop_o <= `ALU_JUMP ; 
+                    alusel_o <= `ALUS_JUMP ;
+                    wreg_o <= `Disable ;
+                    if((reg1_data_i <= 0) ^ (op1 == `EXE_BGTZ)) begin
+                        branch_target_address_o <= next_pc_i+{{14{inst_i[15]}}, inst_i[15:0], 2'b00} ;
+                        next_inst_in_delayslot_o <= `Enable ;
+                        branch_flag_o <= `Enable ;
+                    end
+                end
+                `EXE_REGIMM: begin
+                    aluop_o <= `ALU_JUMP ; 
+                    alusel_o <= `ALUS_JUMP ;
+                    wreg_o <= `Disable ; 
+                    wd_o <= 31 ;
+                    wreg_o <= op4[4] ;
+                    if(reg1_data_i[31] ^ op4[0]) begin
+                        branch_target_address_o <= next_pc_i+{{14{inst_i[15]}}, inst_i[15:0], 2'b00} ;
+                        next_inst_in_delayslot_o <= `Enable ;
+                        branch_flag_o <= `Enable ;
+                    end
+                end
+
                 //------------------------------------------------------------- R-type
                 `EXE_SPECIAL: begin // special-instruction
 
@@ -198,6 +263,14 @@ module id(
 		                    alusel_o <= `ALUS_MOVE ;
 		                    wreg_o <= `Disable ;		                	
 		                end
+                        `ALU_JR, `ALU_JALR: begin
+                            aluop_o <= `ALU_JUMP ; 
+                            alusel_o <= `ALUS_JUMP ;
+                            branch_target_address_o <= reg1_data_i ;
+                            next_inst_in_delayslot_o <= `Enable ;
+                            branch_flag_o <= `Enable ;
+                            wreg_o <= op3[0] ;       
+                        end
             		endcase
                 end
                 `EXE_SPECIAL2: begin // special-instruction

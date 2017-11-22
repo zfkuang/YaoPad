@@ -24,8 +24,10 @@ module pc_rom(
     input wire rst,
     input wire clk,
     input wire[`StallBus] stall,
+    input wire branch_flag_i,
+    input wire[`WordBus] branch_target_address_i,
     
-    output reg[`AddrBus] pc,
+    output reg[`WordBus] pc,
     output reg ce
     );
     
@@ -36,7 +38,11 @@ module pc_rom(
             if (rst == `Enable) begin
                 pc <= 32'h00000000;
             end else if (stall[0] == `Disable) begin
-                pc <= pc+4;
+                if (branch_flag_i == `Enable) begin
+                    pc <= branch_target_address_i;
+                end else begin
+                    pc <= pc+4;
+                end
             end
         end 
     end 

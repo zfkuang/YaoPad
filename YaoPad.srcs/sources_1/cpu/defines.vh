@@ -20,13 +20,11 @@
 `define StallBus 5:0
 `define AluOpBus 7:0
 `define AluSelBus 2:0
-`define AddrBus 31:0
-`define InstBus 31:0
 `define MemNum 262144 // The actual memory size is 256KB 
 `define RegAddrBus 4:0
-`define RegBus 31:0
 `define RegIdBus 0:31
-`define DoubleRegBus 63:0
+`define WordBus 31:0
+`define DoubleWordBus 63:0
 
 
 // Instruction Number //
@@ -42,6 +40,20 @@
 `define EXE_ADDIU 6'b001001
 `define EXE_SLTI 6'b001010
 `define EXE_SLTIU 6'b001011
+`define EXE_J 6'b000010
+`define EXE_JAL 6'b000011
+
+`define EXE_BEQ 6'b000100
+`define EXE_BGTZ 6'b000111
+`define EXE_BLEZ 6'b000110
+`define EXE_BNE 6'b000101
+`define EXE_REGIMM 6'b000001
+
+`define EXE_BLTZ 5'b00000
+`define EXE_BLTZAL 5'b00000
+`define EXE_BGEZ 5'b00000
+`define EXE_BGEZAL 5'b00000
+
 
 
 // Alu Operation Number // 
@@ -84,7 +96,12 @@
 `define ALU_CLO 8'b10100001
 `define ALU_MUL 8'b10000010
 
+`define ALU_JUMP 8'b01001111
+`define ALU_JR 8'b00001000
+`define ALU_JALR 8'b00001001
+
 // Alu Suboperation Number // 
+`define ALUS_JUMP 3'b110
 `define ALUS_MUL 3'b101
 `define ALUS_ARITHMETIC 3'b100
 `define ALUS_MOVE 3'b011

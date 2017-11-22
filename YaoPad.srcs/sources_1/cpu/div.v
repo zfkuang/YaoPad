@@ -25,17 +25,17 @@ module div(
 
     input wire start_i,
     input wire annul_i,
-    input wire[`RegBus] opdata1_i,
-    input wire[`RegBus] opdata2_i,
+    input wire[`WordBus] opdata1_i,
+    input wire[`WordBus] opdata2_i,
     input wire signed_div_i,
 
-    output reg[`DoubleRegBus] result_o,
+    output reg[`DoubleWordBus] result_o,
     output reg ready_o
     );
     
 
     reg[1:0] state ;
-    reg[`RegBus] divider ;
+    reg[`WordBus] divider ;
     reg[64:0] result ;
     reg[5:0] cnt ;
 

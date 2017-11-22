@@ -26,49 +26,52 @@ module ex(
     input wire[`AluSelBus] alusel_i,
     input wire[`AluOpBus] aluop_i,
     
-    input wire[`RegBus] reg1_i,
-    input wire[`RegBus] reg2_i,
+    input wire[`WordBus] reg1_i,
+    input wire[`WordBus] reg2_i,
     
     input wire[`RegAddrBus] wd_i,
     input wire wreg_i,
     
-    input wire[`RegBus] lo_i,
-    input wire[`RegBus] hi_i,
+    input wire[`WordBus] lo_i,
+    input wire[`WordBus] hi_i,
 
     input wire wb_whilo_i,
-    input wire[`RegBus] wb_hi_i,
-    input wire[`RegBus] wb_lo_i,
+    input wire[`WordBus] wb_hi_i,
+    input wire[`WordBus] wb_lo_i,
 
     input wire mem_whilo_i,
-    input wire[`RegBus] mem_hi_i,
-    input wire[`RegBus] mem_lo_i,
+    input wire[`WordBus] mem_hi_i,
+    input wire[`WordBus] mem_lo_i,
 
     input wire div_ready_i,
-    input wire[`DoubleRegBus] div_result_i,
+    input wire[`DoubleWordBus] div_result_i,    
+
+    input wire is_in_delayslot_i,
+    input wire[`WordBus] link_addr_i,
 
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
-    output reg[`RegBus] wdata_o,
+    output reg[`WordBus] wdata_o,
 
     output reg whilo_o,
-    output reg[`RegBus] hi_o,
-    output reg[`RegBus] lo_o,
+    output reg[`WordBus] hi_o,
+    output reg[`WordBus] lo_o,
 
     output reg div_start_o, 
     output reg signed_div_o,
-    output reg[`RegBus] div_opdata1_o,
-    output reg[`RegBus] div_opdata2_o,
+    output reg[`WordBus] div_opdata1_o,
+    output reg[`WordBus] div_opdata2_o,
 
     output reg stallreq
     );
 
-    reg[`RegBus] logicres ;
-    reg[`RegBus] shiftres ;
-    reg[`RegBus] moveres ;
-    reg[`RegBus] arithres ;
-    reg[`DoubleRegBus] mulres ;
-    reg[`RegBus] hi ;
-    reg[`RegBus] lo ;
+    reg[`WordBus] logicres ;
+    reg[`WordBus] shiftres ;
+    reg[`WordBus] moveres ;
+    reg[`WordBus] arithres ;
+    reg[`DoubleWordBus] mulres ;
+    reg[`WordBus] hi ;
+    reg[`WordBus] lo ;
 
     always @ (*) begin // logic operations 
         if (rst == `Enable) begin 
@@ -142,9 +145,9 @@ module ex(
 
     // some pre-computed values used in arithmetic operations
     
-    wire[`RegBus] reg2_i_mux ;
-    wire[`RegBus] reg1_i_not ;
-    wire[`RegBus] add_sum ;
+    wire[`WordBus] reg2_i_mux ;
+    wire[`WordBus] reg1_i_not ;
+    wire[`WordBus] add_sum ;
     wire is_overflow ; // overflow 
     wire is_equal ; // zero 
     wire is_less ; // negative 
@@ -196,9 +199,9 @@ module ex(
 
     // some pre-computed values used in mul operations
 
-    wire[`RegBus] mul_op1 ;
-    wire[`RegBus] mul_op2 ;
-    wire[`DoubleRegBus] mul_ans ;
+    wire[`WordBus] mul_op1 ;
+    wire[`WordBus] mul_op2 ;
+    wire[`DoubleWordBus] mul_ans ;
     assign mul_op1 = ((aluop_i == `ALU_MUL || aluop_i == `ALU_MULT) && reg1_i[31]) ? (~reg1_i+1) : reg1_i ;
     assign mul_op2 = ((aluop_i == `ALU_MUL || aluop_i == `ALU_MULT) && reg2_i[31]) ? (~reg2_i+1) : reg2_i ;
     assign mul_ans = mul_op1 * mul_op2 ;
@@ -284,6 +287,9 @@ module ex(
                 end
                 `ALUS_MUL: begin
                     wdata_o = mulres[31:0] ;
+                end
+                `ALUS_JUMP: begin
+                    wdata_o <= link_addr_i ;
                 end
                 default: begin
                     wdata_o <= `Zero ;
