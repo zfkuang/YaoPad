@@ -36,7 +36,7 @@ module id(
     input wire[`RegAddrBus] ex_wd_i, 
     input wire ex_wreg_i, 
 
-
+    output reg[`InstBus] inst_o,
     output reg[`AluOpBus] aluop_o,
     output reg[`AluSelBus] alusel_o,
     
@@ -54,7 +54,6 @@ module id(
 
     output reg stallreq
     );
-    
     reg[`RegBus] immi ;
     wire[5:0] op1 = inst_i[31:26] ;
     wire[4:0] op2 = inst_i[10:6] ;
@@ -70,8 +69,10 @@ module id(
             stallreq <= 0 ;
             wd_o <= `Disable ;
             immi <= `Zero ;
+            inst_o <= `Zero;
         end else begin 
         	// default settings for I-type
+            inst_o <= inst_i;
             reg1_read_o <= `Enable ;
             reg2_read_o <= `Disable ;
             reg1_addr_o <= inst_i[25:21] ;
@@ -126,6 +127,18 @@ module id(
                     reg2_read_o <= `Enable ;
                     reg2_addr_o <= `NopRegAddr ;
                     wreg_o <= `Disable ;            
+                end
+                `EXE_LW, `EXE_LB, `EXE_LBU, `EXE_LH, `EXE_LHU, `EXE_LWL, `EXE_LWR : begin
+                    aluop_o <= {2'b11, op3};
+                    alusel_o <= `ALUS_LOAD_STORE;
+                end
+                `EXE_SB, `EXE_SH, `EXE_SW, `EXE_SWL, `EXE_SWR : begin
+                    aluop_o <= {2'b11, op3};
+                    alusel_o <= `ALUS_LOAD_STORE;
+                    reg1_addr_o <= inst_i[25:21];
+                    reg2_addr_o <= inst_i[20:16];   
+                    reg1_read_o <= `Enable;
+                    reg2_read_o <= `Enable;  
                 end
                 
                 //------------------------------------------------------------- R-type

@@ -45,6 +45,7 @@ module ex(
 
     input wire div_ready_i,
     input wire[`DoubleRegBus] div_result_i,
+    input wire[`RegBus] inst_i,
 
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
@@ -59,6 +60,10 @@ module ex(
     output reg[`RegBus] div_opdata1_o,
     output reg[`RegBus] div_opdata2_o,
 
+    output wire[`AluOpBus] aluop_o,
+    output wire[`RegBus] mem_addr_o,
+    output wire[`RegBus] reg2_o,
+
     output reg stallreq
     );
 
@@ -70,6 +75,9 @@ module ex(
     reg[`RegBus] hi ;
     reg[`RegBus] lo ;
 
+    assign reg2_o = reg2_i;
+    assign mem_addr_o = reg1_i + {{16{inst_i[15]}},inst_i[15:0]};
+    assign aluop_o = aluop_i;
     always @ (*) begin // logic operations 
         if (rst == `Enable) begin 
             logicres <= `Zero ;

@@ -50,6 +50,7 @@ module cpu(
     wire[`RegBus] id_reg2_o ;
     wire id_wreg_o ;
     wire[`RegAddrBus] id_wd_o ;
+    wire[`RegBus] id_inst_o ;
     
     wire[`AluOpBus] ex_aluop_i ;
     wire[`AluSelBus] ex_alusel_i ;
@@ -64,6 +65,7 @@ module cpu(
     wire ex_whilo_o ;
     wire [`RegBus] ex_hi_o ;
     wire [`RegBus] ex_lo_o ;
+    wire[`RegBus] ex_inst_o ;
 
     wire mem_wreg_i ;
     wire[`RegAddrBus] mem_wd_i ;
@@ -148,6 +150,7 @@ module cpu(
         .reg2_o(id_reg2_o),
         .wd_o(id_wd_o),
         .wreg_o(id_wreg_o),
+        .inst_o(id_inst_o),
 
         .mem_wdata_i(mem_wdata_o), 
         .mem_wd_i(mem_wd_o), 
@@ -180,6 +183,7 @@ module cpu(
         
         .id_aluop(id_aluop_o),
         .id_alusel(id_alusel_o),
+        .id_inst(id_inst_o),
         .id_reg1(id_reg1_o),
         .id_reg2(id_reg2_o),
         .id_wd(id_wd_o),
@@ -191,7 +195,7 @@ module cpu(
         .ex_reg2(ex_reg2_i),
         .ex_wd(ex_wd_i),
         .ex_wreg(ex_wreg_i),
-
+        .ex_inst(ex_inst_o),
         .stall(stall)
     ) ;
     
