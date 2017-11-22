@@ -25,10 +25,10 @@ module if_id(
     input wire clk,
     input wire[`StallBus] stall,
 
-    input wire[`AddrBus] if_pc,
-    input wire[`InstBus] if_inst,
-    output reg[`AddrBus] id_pc,
-    output reg[`InstBus] id_inst
+    input wire[`WordBus] if_pc,
+    input wire[`WordBus] if_inst,
+    output reg[`WordBus] id_pc,
+    output reg[`WordBus] id_inst
     );
     
     always @ (posedge clk) begin

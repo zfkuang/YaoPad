@@ -47,23 +47,23 @@ module ex_mem(
         
         input wire[`RegAddrBus] ex_wd,
         input wire ex_wreg,
-        input wire[`RegBus] ex_wdata,
+        input wire[`WordBus] ex_wdata,
         input wire ex_whilo,
-        input wire[`RegBus] ex_hi,
-        input wire[`RegBus] ex_lo,
+        input wire[`WordBus] ex_hi,
+        input wire[`WordBus] ex_lo,
         input wire[`AluOpBus] ex_aluop,
-        input wire[`RegBus] ex_mem_addr,
-        input wire[`RegBus] ex_reg2,
+        input wire[`WordBus] ex_mem_addr,
+        input wire[`WordBus] ex_reg2,
         
         output reg[`RegAddrBus] mem_wd,
         output reg mem_wreg,
-        output reg[`RegBus] mem_wdata,
+        output reg[`WordBus] mem_wdata,
         output reg mem_whilo,
-        output reg[`RegBus] mem_hi,
-        output reg[`RegBus] mem_lo,
+        output reg[`WordBus] mem_hi,
+        output reg[`WordBus] mem_lo,
         output reg[`AluOpBus] mem_aluop,
-        output reg[`RegBus] mem_mem_addr,
-        output reg[`RegBus] mem_reg2
+        output reg[`WordBus] mem_mem_addr,
+        output reg[`WordBus] mem_reg2
     );    
     
     always @ (posedge clk) begin 

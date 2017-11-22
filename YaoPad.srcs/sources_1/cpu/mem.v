@@ -25,31 +25,32 @@ module mem(
         
         input wire[`RegAddrBus] wd_i,
         input wire wreg_i,
-        input wire[`RegBus] wdata_i,
+        input wire[`WordBus] wdata_i,
 
         input wire[`AluOpBus] aluop_i,
-        input wire[`RegBus] mem_addr_i,
-        input wire[`RegBus] reg2_i,
+        input wire[`WordBus] mem_addr_i,
+        input wire[`WordBus] reg2_i,
 
-        input wire[`RegBus] mem_data_i,
+        input wire[`WordBus] mem_data_i,
         
-        output wire whilo_i,
-        output wire[`RegBus] hi_i,
-        output wire[`RegBus] lo_i,
+        input wire whilo_i,
+        input wire[`WordBus] hi_i,
+        input wire[`WordBus] lo_i,
 
         output reg[`RegAddrBus] wd_o,
         output reg wreg_o,
-        output reg[`RegBus] wdata_o,
+        output reg[`WordBus] wdata_o,
 
         output reg whilo_o,
-        output reg[`RegBus] hi_o,
-        output reg[`RegBus] lo_o,
+        output reg[`WordBus] hi_o,
+        output reg[`WordBus] lo_o,
 
-        output reg[`RegBus] mem_addr_o,
+        output reg[`WordBus] mem_addr_o,
         output reg mem_we_o,
         output reg mem_ce_o,
-        output reg[`RegBus] mem_data_o,
+        output reg[`WordBus] mem_data_o,
         output reg[3:0] mem_sel_o
+
     );
     wire [1:0] addr_mod4 = mem_addr_i[1:0];
 

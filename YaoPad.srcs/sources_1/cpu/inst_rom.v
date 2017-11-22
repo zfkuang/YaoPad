@@ -36,12 +36,12 @@ module inst_rom(
 
 //	input	wire										clk,
 	input wire                    ce,
-	input wire[`AddrBus]			addr,
-	output reg[`InstBus]					inst
+	input wire[`WordBus]			addr,
+	output reg[`WordBus]					inst
 	
 );
 
-	reg[`InstBus]  inst_mem[0:50];
+	reg[`WordBus]  inst_mem[0:100];
 
 	initial $readmemh ( "inst_rom.data", inst_mem );
 

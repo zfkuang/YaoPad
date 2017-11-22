@@ -25,19 +25,19 @@ module regfile(
     input wire clk,
     
     input wire[`RegAddrBus] waddr,
-    input wire[`AddrBus] wdata,
+    input wire[`WordBus] wdata,
     input wire we,
     
     input wire[`RegAddrBus] raddr1,
     input wire re1,
-    output reg[`RegBus] rdata1,
+    output reg[`WordBus] rdata1,
     
     input wire[`RegAddrBus] raddr2,
     input wire re2,
-    output reg[`RegBus] rdata2
+    output reg[`WordBus] rdata2
     );
     
-    reg[`RegBus] register[`RegIdBus] ; 
+    reg[`WordBus] register[`RegIdBus] ; 
     
     always @ (posedge clk) begin
         if (rst == `Disable) begin 

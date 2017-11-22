@@ -47,8 +47,8 @@ module openmips_min_sopc(
 );
 
   //Á¬½ÓÖ¸Áî´æ´¢Æ÷
-  wire[`AddrBus] inst_addr;
-  wire[`InstBus] inst;
+  wire[`WordBus] inst_addr;
+  wire[`WordBus] inst;
   wire rom_ce;
  
 
