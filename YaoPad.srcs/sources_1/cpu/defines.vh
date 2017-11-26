@@ -150,3 +150,9 @@
 `define DIV_ON 2'b01
 `define DIV_ZERO 2'b10
 `define DIV_END 2'b11
+
+
+// Wishbone states //
+`define WB_IDLE 2'b00
+`define WB_BUSY 2'b01
+`define WB_WAIT_FORSTALL 2'b11
