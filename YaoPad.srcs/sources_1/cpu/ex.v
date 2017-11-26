@@ -51,6 +51,14 @@ module ex(
     input wire is_in_delayslot_i,
     input wire[`WordBus] link_addr_i,
 
+    input wire[`WordBus] cp0_reg_data_i,
+    input wire mem_cp0_reg_we,
+    input wire[`RegAddrBus] mem_cp0_reg_write_addr,
+    input wire[`WordBus] mem_cp0_reg_data,
+
+    input wire wb_cp0_reg_we,
+    input wire[`RegAddrBus] wb_cp0_reg_write_addr,
+    input wire[`WordBus] wb_cp0_reg_data,
 
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
@@ -68,6 +76,11 @@ module ex(
     output wire[`AluOpBus] aluop_o,
     output wire[`WordBus] mem_addr_o,
     output wire[`WordBus] reg2_o,
+
+    output reg[`RegAddrBus] cp0_reg_read_addr_o,
+    output reg[`RegAddrBus] cp0_reg_write_addr_o,
+    output reg cp0_reg_we_o,
+    output reg[`WordBus] cp0_reg_data_o,
 
     output reg stallreq
     );
@@ -145,6 +158,16 @@ module ex(
                 end
                 `ALU_MFLO: begin
                     moveres <= lo ;
+                end
+                `ALU_MFC0: begin
+                    cp0_reg_read_addr_o <= inst_i[15:11] ;
+                    if ((mem_cp0_reg_we == `Enable) && (mem_cp0_reg_write_addr == cp0_reg_read_addr_o)) begin
+                        moveres <= mem_cp0_reg_data ;
+                    end else if ((wb_cp0_reg_we == `Enable) && (wb_cp0_reg_write_addr == cp0_reg_read_addr_o)) begin
+                        moveres <= wb_cp0_reg_data ;
+                    end else begin
+                        moveres <= cp0_reg_data_i ;
+                    end
                 end
                 default: begin
                     moveres <= `Zero ; 
@@ -271,7 +294,19 @@ module ex(
             endcase
         end
     end
-    
+  
+    always @ (*) begin // cp0_writting operation 
+        if((rst == `Enable) || (aluop_i != `ALU_MTC0)) begin
+            cp0_reg_data_o <= `Zero ;
+            cp0_reg_we_o <= `Disable ;
+            cp0_reg_write_addr_o <= `NopRegAddr ;
+        end else begin
+            cp0_reg_data_o <= reg1_i ;
+            cp0_reg_we_o <= `Enable ;
+            cp0_reg_write_addr_o <= inst[15:11] ;
+        end
+    end
+
     always @ (*) begin // choose answer
         if (rst == `Enable) begin 
             wdata_o <= `Zero ;
@@ -307,4 +342,5 @@ module ex(
             endcase 
         end
     end
+
 endmodule

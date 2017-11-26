@@ -54,7 +54,11 @@ module ex_mem(
         input wire[`AluOpBus] ex_aluop,
         input wire[`WordBus] ex_mem_addr,
         input wire[`WordBus] ex_reg2,
-        
+
+        input wire[`RegAddrBus] ex_cp0_reg_write_addr,
+        input wire ex_cp0_reg_we,
+        input wire[`WordBus] ex_cp0_reg_data,
+
         output reg[`RegAddrBus] mem_wd,
         output reg mem_wreg,
         output reg[`WordBus] mem_wdata,
@@ -63,7 +67,11 @@ module ex_mem(
         output reg[`WordBus] mem_lo,
         output reg[`AluOpBus] mem_aluop,
         output reg[`WordBus] mem_mem_addr,
-        output reg[`WordBus] mem_reg2
+        output reg[`WordBus] mem_reg2,        
+
+        output reg[`RegAddrBus] mem_cp0_reg_write_addr,
+        output reg mem_cp0_reg_we,
+        output reg[`WordBus] mem_cp0_reg_data
     );    
     
     always @ (posedge clk) begin 
@@ -73,8 +81,11 @@ module ex_mem(
             mem_wreg <= 0 ;
             mem_whilo <= 0 ;
             mem_reg2 <= 0;
-            mem_mem_addr <= 0;
+            mem_mem_addr <= 0 ;
             mem_aluop <= `ALU_NOP;
+            mem_cp0_reg_write_addr <= `NopRegAddr ;
+            mem_cp0_reg_we <= 0 ;
+            mem_cp0_reg_data <= `Zero ;
         end else if (stall[3] == `Disable) begin 
             mem_wdata <= ex_wdata ;
             mem_wd <= ex_wd ;
@@ -84,7 +95,10 @@ module ex_mem(
             mem_lo <= ex_lo ;
             mem_reg2 <= ex_reg2;
             mem_mem_addr <= ex_mem_addr;
-            mem_aluop <= ex_aluop;
+            mem_aluop <= ex_aluop;        
+            mem_cp0_reg_write_addr <= ex_cp0_reg_write_addr ;
+            mem_cp0_reg_we <= ex_cp0_reg_we ;
+            mem_cp0_reg_data <= ex_cp0_reg_data ;
         end
     end
         

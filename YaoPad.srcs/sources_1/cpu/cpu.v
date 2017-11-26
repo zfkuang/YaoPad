@@ -31,6 +31,7 @@
 `include"hilo.v"
 `include"ctrl.v"
 `include"div.v"
+`include"cp0.v"
 
 module cpu(
     input wire rst, 
@@ -87,7 +88,12 @@ module cpu(
 
     wire [`WordBus] ex_hi_o ;
     wire [`WordBus] ex_lo_o ;
-    wire[`WordBus] ex_inst_o ;
+    wire[`WordBus] ex_inst_o ;   
+    wire[`RegAddrBus] ex_cp0_reg_read_addr_o;
+    wire[`RegAddrBus] ex_cp0_reg_write_addr_o;
+    wire ex_cp0_reg_we_o;
+    wire[`WordBus] ex_cp0_reg_data_o;
+
 
     wire mem_wreg_i ;
     wire[`RegAddrBus] mem_wd_i ;
@@ -98,6 +104,9 @@ module cpu(
     wire [`AluOpBus] mem_aluop_i;
     wire [`WordBus] mem_mem_addr_i;
     wire [`WordBus] mem_reg2_i;
+    wire mem_cp0_reg_we_i;
+    wire[`RegAddrBus] mem_cp0_reg_write_addr_i;
+    wire[`WordBus] mem_cp0_reg_data_i;
 
     wire mem_wreg_o ;
     wire[`RegAddrBus] mem_wd_o ;
@@ -105,6 +114,9 @@ module cpu(
     wire mem_whilo_o ;
     wire [`WordBus] mem_hi_o ;
     wire [`WordBus] mem_lo_o ;
+    wire mem_cp0_reg_we_o;
+    wire[`RegAddrBus] mem_cp0_reg_write_addr_o;
+    wire[`WordBus] mem_cp0_reg_data_o;
     
     wire wb_wreg_i ;
     wire[`RegAddrBus] wb_wd_i ;
@@ -112,10 +124,9 @@ module cpu(
     wire wb_whilo_i ;
     wire [`WordBus] wb_hi_i ;
     wire [`WordBus] wb_lo_i ;
-
-    wire wb_whilo_o ;
-    wire [`WordBus] wb_hi_o ;
-    wire [`WordBus] wb_lo_o ;
+    wire wb_cp0_reg_we_i;
+    wire[`RegAddrBus] wb_cp0_reg_write_addr_i;
+    wire[`WordBus] wb_cp0_reg_data_i;
     
     wire reg1_read ;
     wire reg2_read ;
@@ -138,6 +149,8 @@ module cpu(
     wire div_signed ;
     wire[`DoubleWordBus] div_result ;
     wire div_ready ;
+
+    wire[`WordBus] cp0_data_o ;
 
     assign rom_addr_o = pc;
     pc_rom pc_rom0(
@@ -256,12 +269,19 @@ module cpu(
         
         .lo_i(lo_o),
         .hi_i(hi_o),
-        .wb_whilo_i(wb_whilo_o),
-        .wb_hi_i(wb_hi_o),
-        .wb_lo_i(wb_lo_o),
+        .wb_whilo_i(wb_whilo_i),
+        .wb_hi_i(wb_hi_i),
+        .wb_lo_i(wb_lo_i),
         .mem_whilo_i(mem_whilo_o),
         .mem_hi_i(mem_hi_o),
         .mem_lo_i(mem_lo_o),
+        .cp0_reg_data_i(ex_cp0_reg_data_i),
+        .mem_cp0_reg_we(mem_cp0_reg_we_o),
+        .mem_cp0_reg_write_addr(mem_cp0_reg_write_addr_o),
+        .mem_cp0_reg_data(mem_cp0_reg_data_o),
+        .wb_cp0_reg_we(wb_cp0_reg_we_o),
+        .wb_cp0_reg_write_addr(wb_cp0_reg_write_addr_o),
+        .wb_cp0_reg_data(wb_cp0_reg_data_o),
         
         .wd_o(ex_wd_o),
         .wreg_o(ex_wreg_o),
@@ -283,6 +303,11 @@ module cpu(
         .aluop_o(ex_aluop_o),
         .mem_addr_o(ex_mem_addr_o),
         .reg2_o(ex_reg2_o),
+        
+        .cp0_reg_read_addr_o(ex_cp0_reg_read_addr_o),
+        .cp0_reg_write_addr_o(ex_cp0_reg_write_addr_o),
+        .cp0_reg_we_o(ex_cp0_reg_we_o),
+        .cp0_reg_data_o(ex_cp0_reg_data_o),
 
         .stallreq(stalleq_from_ex)
     ) ;
@@ -299,7 +324,10 @@ module cpu(
         .ex_aluop(ex_aluop_o),
         .ex_mem_addr(ex_mem_addr_o),
         .ex_reg2(ex_reg2_o),
-        
+        .ex_cp0_reg_we(ex_cp0_reg_we_o),
+        .ex_cp0_reg_write_addr(ex_cp0_reg_write_addr_o),
+        .ex_cp0_reg_data(ex_cp0_reg_data_o),
+
         .mem_wd(mem_wd_i),
         .mem_wreg(mem_wreg_i),
         .mem_wdata(mem_wdata_i),
@@ -309,6 +337,9 @@ module cpu(
         .mem_aluop(mem_aluop_i),
         .mem_mem_addr(mem_mem_addr_i),
         .mem_reg2(mem_reg2_i),
+        .mem_cp0_reg_we(mem_cp0_reg_we_i),
+        .mem_cp0_reg_write_addr(mem_cp0_reg_write_addr_i),
+        .mem_cp0_reg_data(mem_cp0_reg_data_i),
         .stall(stall) 
     ) ;
     
@@ -326,6 +357,10 @@ module cpu(
         .mem_addr_i(mem_mem_addr_i),
         .reg2_i(mem_reg2_i),
         
+        .cp0_reg_we_i(mem_cp0_reg_we_i),
+        .cp0_reg_write_addr_i(mem_cp0_reg_write_addr_i),
+        .cp0_reg_data_i(mem_cp0_reg_data_i),
+
         .wd_o(mem_wd_o),
         .wreg_o(mem_wreg_o),
         .wdata_o(mem_wdata_o),
@@ -339,6 +374,10 @@ module cpu(
         .mem_sel_o(ram_sel_o),
         .mem_ce_o(ram_ce_o),
         .mem_we_o(ram_we_o)
+
+        .cp0_reg_we_o(mem_cp0_reg_we_o),
+        .cp0_reg_write_addr_o(mem_cp0_reg_write_addr_o),
+        .cp0_reg_data_o(mem_cp0_reg_data_o),
     ) ;
     
     mem_wb mem_wb0(
@@ -350,6 +389,9 @@ module cpu(
         .mem_whilo(mem_whilo_o),
         .mem_hi(mem_hi_o),
         .mem_lo(mem_lo_o),
+        .mem_cp0_reg_we(mem_cp0_reg_we_o),
+        .mem_cp0_reg_write_addr(mem_cp0_reg_write_addr_o),
+        .mem_cp0_reg_data(mem_cp0_reg_data_o),
         
         .wb_wd(wb_wd_i),
         .wb_wreg(wb_wreg_i),
@@ -357,6 +399,10 @@ module cpu(
         .wb_whilo(wb_whilo_i),
         .wb_hi(wb_hi_i),
         .wb_lo(wb_lo_i),
+        .wb_cp0_reg_we(wb_cp0_reg_we_i),
+        .wb_cp0_reg_write_addr(wb_cp0_reg_write_addr_i),
+        .wb_cp0_reg_data(wb_cp0_reg_data_i),
+
         .stall(stall) 
     ) ;
 
@@ -389,4 +435,27 @@ module cpu(
         .result_o(div_result),
         .ready_o(div_ready)
     ) ;
+
+    cp0 cp00(
+        .clk(clk), .rst(rst),
+
+        .we_i(wb_cp0_reg_we_i),
+        .waddr_i(wb_cp0_reg_write_addr_i),
+        .raddr_i(ex_cp0_reg_read_addr_o),
+        .data_i(wb_cp0_reg_data_i),
+
+        .data_o(cp0_data_o),
+
+    input wire[`RegAddrBus] int_i,
+
+    output reg[`WordBus] data_o,
+    output reg[`WordBus] count_o,
+    output reg[`WordBus] compare_o,
+    output reg[`WordBus] status_o,
+    output reg[`WordBus] cause_o,
+    output reg[`WordBus] epc_o,
+    output reg[`WordBus] config_o,
+    output reg[`WordBus] prid_o,
+
+    )
 endmodule

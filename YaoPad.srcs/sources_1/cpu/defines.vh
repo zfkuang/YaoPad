@@ -64,12 +64,14 @@
 `define EXE_SW 		6'b101011
 `define EXE_SWL 	6'b101010
 `define EXE_SWR 	6'b101110
+`define EXE_COP0 	6'b010000
 
 `define EXE_BLTZ 5'b00000
 `define EXE_BLTZAL 5'b00000
 `define EXE_BGEZ 5'b00000
 `define EXE_BGEZAL 5'b00000
-
+`define EXE_MT 5'b00100
+`define EXE_MF 5'b00000
 
 // Alu Operation Number // 
 
@@ -114,6 +116,9 @@
 `define ALU_JR 8'b00001000
 `define ALU_JALR 8'b00001001
 
+`define ALU_MFC0 8'b01011101
+`define ALU_MTC0 8'b01100000
+
 `define MEM_LB   8'b11100000
 `define MEM_LBU  8'b11100100
 `define MEM_LH   8'b11100001
@@ -150,3 +155,11 @@
 `define DIV_ON 2'b01
 `define DIV_ZERO 2'b10
 `define DIV_END 2'b11
+
+`define CP0_COUNT 5'b01001
+`define CP0_COMPARE 5'b01011
+`define CP0_STATUS 5'b01100
+`define CP0_CAUSE 5'b01101
+`define CP0_EPC 5'b01110
+`define CP0_PRId 5'b01111
+`define CP0_CONFIG 5'b1000

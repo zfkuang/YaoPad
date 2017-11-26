@@ -37,6 +37,10 @@ module mem(
         input wire[`WordBus] hi_i,
         input wire[`WordBus] lo_i,
 
+        input wire[`RegAddrBus] cp0_reg_write_addr_i,
+        input wire cp0_reg_we_i,
+        input wire[`WordBus] cp0_reg_data_i,
+
         output reg[`RegAddrBus] wd_o,
         output reg wreg_o,
         output reg[`WordBus] wdata_o,
@@ -49,8 +53,11 @@ module mem(
         output reg mem_we_o,
         output reg mem_ce_o,
         output reg[`WordBus] mem_data_o,
-        output reg[3:0] mem_sel_o
+        output reg[3:0] mem_sel_o,
 
+        output reg[`RegAddrBus] cp0_reg_write_addr_o,
+        output reg cp0_reg_we_o,
+        output reg[`WordBus] cp0_reg_data_o,
     );
     wire [1:0] addr_mod4 = mem_addr_i[1:0];
 
@@ -65,6 +72,9 @@ module mem(
             mem_ce_o <= `Disable;
             mem_data_o <= `Zero;
             mem_sel_o <= 4'b0;
+            cp0_reg_write_addr_o <= `NopRegAddr ;
+            cp0_reg_we_o <= `Disable ;
+            cp0_reg_data_o <= `Zero ;
         end else begin 
             wd_o <= wd_i ;
             wreg_o <= wreg_i;
@@ -72,6 +82,9 @@ module mem(
             whilo_o <= whilo_i ;
             hi_o <= hi_i ;
             lo_o <= lo_i ;
+            cp0_reg_write_addr_o <= cp0_reg_write_addr_i ;
+            cp0_reg_we_o <= cp0_reg_we_i ;
+            cp0_reg_data_o <= cp0_reg_data_i ;
             mem_addr_o <= mem_addr_i;
             mem_we_o <= `Disable;
             mem_ce_o <= `Disable;

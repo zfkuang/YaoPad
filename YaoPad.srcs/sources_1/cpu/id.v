@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+‘`timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -38,6 +38,9 @@ module id(
 
     input wire is_in_delayslot_i,
     input wire[`AluOpBus] ex_aluop_i,
+
+    input wire[5:0] int_i,
+ 
     output reg[`WordBus] inst_o,
     output reg[`AluOpBus] aluop_o,
     output reg[`AluSelBus] alusel_o,
@@ -60,7 +63,8 @@ module id(
     output reg[`WordBus] link_addr_o,
     output reg next_inst_in_delayslot_o,
 
-    output wire stallreq
+    output wire stallreq,
+    output wire timer_int_o
     );
     
     reg[`WordBus] immi ;
@@ -226,6 +230,18 @@ module id(
                         branch_target_address_o <= next_pc_i+{{14{inst_i[15]}}, inst_i[15:0], 2'b00} ;
                         next_inst_in_delayslot_o <= `Enable ;
                         branch_flag_o <= `Enable ;
+                    end
+                end
+
+                `EXE_COP0: begin
+                    if(inst_i[25:21] == EXE_MT) begin
+                        aluop_o <= `ALU_MTC0 ;
+                        alusel_o <= `ALUS_NOP ;
+                        wreg_o <= `Disable ;
+                        reg1_addr_o <= inst_i[20:16]  ; 
+                    end else begin
+                        aluop_o <= `ALU_MFC0 ;
+                        alusel_o <= `ALUS_MOVE ;
                     end
                 end
 
