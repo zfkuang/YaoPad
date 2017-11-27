@@ -29,7 +29,12 @@ module cp0(
     input wire[`RegAddrBus] raddr_i,
     input wire[`WordBus] data_i,
 
-    input wire[`RegAddrBus] int_i,
+    input wire[5:0] int_i,
+
+    input wire[`WordBus] excepttype_i,
+    input wire[`WordBus] current_inst_addr_i,
+    input wire is_in_delayslot_i,
+
 
     output reg[`WordBus] data_o,
     output reg[`WordBus] count_o,
@@ -56,13 +61,14 @@ module cp0(
             config_o <= `Zero ;
             config_o[16] <= 1'b1 ;
             prid_o <= 32'b00000000010011000000000100000010 ;
-            timer_int_o <= 0 ;
+            timer_int_o <= `Disable ;
         end
         else begin
             count_o <= count_o + 1 ;
-
-            cause_o[15:11] <= int_i ;
-
+            cause_o[15:10] <= int_i ;
+            if(count_o == compare_o && compare_o != `Zero) begin
+                timer_int_o <= `Enable ;
+            end
             if (we_i <= `Enable) begin
                 case(waddr_i)
                     `CP0_COUNT: begin
@@ -85,6 +91,70 @@ module cp0(
                     end
                 endcase
             end
+
+            case(excepttype_i)
+                32'h00000001:begin
+                    cause_o[31] <= is_in_delayslot_i ;
+                    if(is_in_delayslot_i == `Enable) begin
+                        epc_o <= current_inst_addr_i - 4 ;
+                    end else begin
+                        epc_o <= current_inst_addr_i ;
+                    end
+                    status_o[1] <= 1'b1 ;
+                    cause_o[6:2] <= 5'b00000 ;
+                end
+                32'h00000008:begin
+                    if(status_o[1] == 1'b0) begin
+                        cause_o[31] <= is_in_delayslot_i ;
+                        if(is_in_delayslot_i == `Enable) begin
+                            epc_o <= current_inst_addr_i - 4 ;
+                        end else begin
+                            epc_o <= current_inst_addr_i ;
+                        end
+                    end
+                    status_o[1] <= 1'b1 ;
+                    cause_o[6:2] <= 5'b01000 ;
+                end
+                32'h0000000a:begin
+                    if(status_o[1] == 1'b0) begin
+                        cause_o[31] <= is_in_delayslot_i ;
+                        if(is_in_delayslot_i == `Enable) begin
+                            epc_o <= current_inst_addr_i - 4 ;
+                        end else begin
+                            epc_o <= current_inst_addr_i ;
+                        end
+                    end
+                    status_o[1] <= 1'b1 ;
+                    cause_o[6:2] <= 5'b01010 ;
+                end
+                32'h0000000d:begin
+                    if(status_o[1] == 1'b0) begin
+                        cause_o[31] <= is_in_delayslot_i ;
+                        if(is_in_delayslot_i == `Enable) begin
+                            epc_o <= current_inst_addr_i - 4 ;
+                        end else begin
+                            epc_o <= current_inst_addr_i ;
+                        end
+                    end
+                    status_o[1] <= 1'b1 ;
+                    cause_o[6:2] <= 5'b01101 ;                    
+                end
+                32'h0000000c:begin
+                    if(status_o[1] == 1'b0) begin
+                        cause_o[31] <= is_in_delayslot_i ;
+                        if(is_in_delayslot_i == `Enable) begin
+                            epc_o <= current_inst_addr_i - 4 ;
+                        end else begin
+                            epc_o <= current_inst_addr_i ;
+                        end
+                    end
+                    status_o[1] <= 1'b1 ;
+                    cause_o[6:2] <= 5'b01100 ;                    
+                end
+                32'h0000000e:begin
+                    status_o[1] <= 1'b0 ;
+                end
+            endcase
         end
     end
     
@@ -117,5 +187,4 @@ module cp0(
             endcase
         end
     end
-
 endmodule

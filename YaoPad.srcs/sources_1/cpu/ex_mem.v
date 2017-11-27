@@ -44,6 +44,7 @@ module ex_mem(
         input wire rst,
         input wire clk,
         input wire[`StallBus] stall,
+        input wire flush,
         
         input wire[`RegAddrBus] ex_wd,
         input wire ex_wreg,
@@ -59,6 +60,10 @@ module ex_mem(
         input wire ex_cp0_reg_we,
         input wire[`WordBus] ex_cp0_reg_data,
 
+        input wire[`WordBus] ex_excepttype,
+        input wire[`WordBus] ex_current_inst_addr,
+        input wire ex_is_in_delayslot,
+
         output reg[`RegAddrBus] mem_wd,
         output reg mem_wreg,
         output reg[`WordBus] mem_wdata,
@@ -71,11 +76,15 @@ module ex_mem(
 
         output reg[`RegAddrBus] mem_cp0_reg_write_addr,
         output reg mem_cp0_reg_we,
-        output reg[`WordBus] mem_cp0_reg_data
+        output reg[`WordBus] mem_cp0_reg_data,
+
+        output reg[`WordBus] mem_excepttype,
+        output reg[`WordBus] mem_current_inst_addr,
+        output reg mem_is_in_delayslot
     );    
     
     always @ (posedge clk) begin 
-        if ((rst == `Enable) || ((stall[3] == `Enable) && (stall[4] == `Disable))) begin
+        if ((rst == `Enable) || ((stall[3] == `Enable) && (stall[4] == `Disable)) || (flush == `Enable)) begin
             mem_wdata <= `Zero ;
             mem_wd <= `NopRegAddr ;
             mem_wreg <= 0 ;
@@ -86,6 +95,9 @@ module ex_mem(
             mem_cp0_reg_write_addr <= `NopRegAddr ;
             mem_cp0_reg_we <= 0 ;
             mem_cp0_reg_data <= `Zero ;
+            mem_excepttype <= `Zero ;
+            mem_current_inst_addr <= `Zero ;
+            mem_is_in_delayslot <= `Disable ;
         end else if (stall[3] == `Disable) begin 
             mem_wdata <= ex_wdata ;
             mem_wd <= ex_wd ;
@@ -99,6 +111,9 @@ module ex_mem(
             mem_cp0_reg_write_addr <= ex_cp0_reg_write_addr ;
             mem_cp0_reg_we <= ex_cp0_reg_we ;
             mem_cp0_reg_data <= ex_cp0_reg_data ;
+            mem_excepttype <= ex_excepttype ;
+            mem_current_inst_addr <= ex_current_inst_addr ;
+            mem_is_in_delayslot <= ex_is_in_delayslot ;
         end
     end
         

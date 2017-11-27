@@ -35,6 +35,8 @@ module mem_wb(
         input wire mem_cp0_reg_we,
         input wire[`WordBus] mem_cp0_reg_data,
 
+        input wire flush,
+
         output reg[`RegAddrBus] wb_wd,
         output reg wb_wreg,
         output reg[`WordBus] wb_wdata,
@@ -47,7 +49,7 @@ module mem_wb(
     );    
     
     always @ (posedge clk) begin 
-        if ((rst == `Enable) || ((stall[4] == `Enable) && (stall[5] == `Disable))) begin
+        if ((rst == `Enable) || ((stall[4] == `Enable) && (stall[5] == `Disable)) || (flush == `Enable)) begin
             wb_wdata <= `Zero ;
             wb_wd <= `NopRegAddr ;
             wb_wreg <= 0 ;

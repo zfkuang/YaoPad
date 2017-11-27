@@ -32,7 +32,7 @@
 
 `include "defines.vh"
 `include "openmips_min_sopc.v"
-`timescale 1ns/1ps
+`timescale 1ns / 1ps
 
 module openmips_min_sopc_tb;
 
@@ -82,13 +82,16 @@ module openmips_min_sopc_tb;
             openmips_min_sopc0.cpu0.ex0.wreg_o,
         );
         */
-        $monitor("%d\nregs[0]\t=\t%h\nregs[1]\t=\t%h\nregs[2]\t=\t%h\nregs[3]\t=\t%h\nregs[4]\t=\t%h\nhi\t=\t%h\nlo\t=\t%h\npc\t=\t%h\nregs[31]\t=\t%h\n",
+        $monitor("%d\nregs[0]\t=\t%h\nregs[1]\t=\t%h\nregs[2]\t=\t%h\nregs[3]\t=\t%h\nregs[4]\t=\t%h\ncompare\t=\t%h\nstatus\t=\t%h\ncount\t=\t%h\nhi\t=\t%h\nlo\t=\t%h\npc\t=\t%h\nregs[31]\t=\t%h\n",
             $stime, 
             openmips_min_sopc0.cpu0.regfile0.register[0],
             openmips_min_sopc0.cpu0.regfile0.register[1],
             openmips_min_sopc0.cpu0.regfile0.register[2],
             openmips_min_sopc0.cpu0.regfile0.register[3],
             openmips_min_sopc0.cpu0.regfile0.register[4],
+            openmips_min_sopc0.cpu0.cp00.compare_o,
+            openmips_min_sopc0.cpu0.cp00.status_o,
+            openmips_min_sopc0.cpu0.cp00.count_o,
             openmips_min_sopc0.cpu0.hilo0.hi_o,
             openmips_min_sopc0.cpu0.hilo0.lo_o,
             openmips_min_sopc0.cpu0.pc_rom0.pc,
@@ -96,7 +99,7 @@ module openmips_min_sopc_tb;
         );
         $dumpfile("openmips_min_sopc_tb.vcd");
         $dumpvars(0, openmips_min_sopc0);
-        #2000;
+        #4000;
         $finish;
     end
 

@@ -58,7 +58,8 @@ module openmips_min_sopc(
   wire[`WordBus] mem_data_o;
   wire[3:0] mem_sel_i;  
   wire mem_ce_i;  
- 
+  wire timer_int;
+  wire[5:0] int = {5'b00000, timer_int};
 
  cpu cpu0(
 		.clk(clk),
@@ -73,7 +74,11 @@ module openmips_min_sopc(
     	.ram_addr_o(mem_addr_i),
     	.ram_sel_o(mem_sel_i),
     	.ram_we_o(mem_we_i),
-    	.ram_ce_o(mem_ce_i)
+    	.ram_ce_o(mem_ce_i),
+
+    	.timer_int_o(timer_int),
+    	.int_i(int) 
+
 	);
 	
 	inst_rom inst_rom0(

@@ -24,6 +24,7 @@ module if_id(
     input wire rst,
     input wire clk,
     input wire[`StallBus] stall,
+    input wire flush,
 
     input wire[`WordBus] if_pc,
     input wire[`WordBus] if_inst,
@@ -32,7 +33,7 @@ module if_id(
     );
     
     always @ (posedge clk) begin
-        if ((rst == `Enable) || ((stall[1] == `Enable) && (stall[2] == `Disable))) begin
+        if ((rst == `Enable) || ((stall[1] == `Enable) && (stall[2] == `Disable)) || (flush == `Enable)) begin
             id_pc <= `Zero ;
             id_inst <= `Zero ;
         end else if (stall[1] == `Disable) begin
