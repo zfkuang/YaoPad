@@ -179,7 +179,7 @@
 // Wishbone states //
 `define WB_IDLE 2'b00
 `define WB_BUSY 2'b01
-`define WB_WAIT_FORSTALL 2'b11
+`define WB_WAIT_FOR_STALL 2'b11
 
 `define CP0_COUNT 5'b01001
 `define CP0_COMPARE 5'b01011

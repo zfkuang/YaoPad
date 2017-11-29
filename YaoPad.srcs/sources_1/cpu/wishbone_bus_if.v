@@ -99,7 +99,7 @@ module wishbone_bus_if(
                         if(cpu_we_i == `Disable) begin
                             rd_buf <= wishbone_data_i;
                         end
-                        if(stall != 6b'000000) begin
+                        if(stall != 6'b000000) begin
                             wishbone_state <= `WB_WAIT_FOR_STALL;
                         end
                     end else if(flush == `Enable) begin

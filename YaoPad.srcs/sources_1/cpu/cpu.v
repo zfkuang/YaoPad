@@ -39,20 +39,20 @@ module cpu(
     input wire clk,
     
     // inst wishbone
-	input wire[`RegBus]            iwishbone_data_i,
+	input wire[`WordBus]            iwishbone_data_i,
 	input wire                     iwishbone_ack_i,
-	output wire[`RegBus]           iwishbone_addr_o,
-	output wire[`RegBus]           iwishbone_data_o,
+	output wire[`WordBus]           iwishbone_addr_o,
+	output wire[`WordBus]           iwishbone_data_o,
 	output wire                    iwishbone_we_o,
 	output wire[3:0]               iwishbone_sel_o,
 	output wire                    iwishbone_stb_o,
 	output wire                    iwishbone_cyc_o, 
 	
 	// data wishbone
-	input wire[`RegBus]            dwishbone_data_i,
+	input wire[`WordBus]            dwishbone_data_i,
 	input wire                     dwishbone_ack_i,
-	output wire[`RegBus]           dwishbone_addr_o,
-	output wire[`RegBus]           dwishbone_data_o,
+	output wire[`WordBus]           dwishbone_addr_o,
+	output wire[`WordBus]           dwishbone_data_o,
 	output wire                    dwishbone_we_o,
 	output wire[3:0]               dwishbone_sel_o,
 	output wire                    dwishbone_stb_o,
@@ -63,16 +63,16 @@ module cpu(
     );
     
 
-    wire[`WordBus] rom_data_i,
-    wire[`WordBus] rom_addr_o,
-    wire rom_ce_o,
+    wire[`WordBus] rom_data_i ;
+    wire[`WordBus] rom_addr_o ;
+    wire rom_ce_o ;
 
-    wire[`WordBus] ram_data_i,
-    wire[`WordBus] ram_data_o,
-    wire[`WordBus] ram_addr_o,
-    wire[3:0] ram_sel_o,
-    wire ram_we_o,
-    wire ram_ce_o,
+    wire[`WordBus] ram_data_i ;
+    wire[`WordBus] ram_data_o ;
+    wire[`WordBus] ram_addr_o ;
+    wire[3:0] ram_sel_o ;
+    wire ram_we_o ;
+    wire ram_ce_o ;
 
     wire[`WordBus] pc ;
     wire[`WordBus] id_pc_i ;
@@ -598,7 +598,7 @@ module cpu(
 		// CPU
         // Here is different from book, seems to be safer. Wait to be fixed in TLB exception.
 		// .cpu_ce_i(rom_ce_o & (~(|if_excepttype_i))),
-        .cpu_ce_i(rom_ce_o)
+        .cpu_ce_i(rom_ce_o),
 		.cpu_data_i(32'h00000000),
 		.cpu_addr_i(rom_addr_o),
 		.cpu_we_i(`Disable),

@@ -26,12 +26,12 @@
 // File:    openmips_min_sopc.v
 // Author:  Lei Silei
 // E-mail:  leishangwen@163.com
-// Description: »ùÓÚOpenMIPS´¦ÀíÆ÷µÄÒ»¸ö¼òµ¥SOPC£¬ÓÃÓÚÑéÖ¤¾ß±¸ÁË
-//              wishbone×ÜÏß½Ó¿ÚµÄopenmips£¬¸ÃSOPC°üº¬openmips¡¢
-//              wb_conmax¡¢GPIO controller¡¢flash controller£¬uart 
-//              controller£¬ÒÔ¼°ÓÃÀ´·ÂÕæflashµÄÄ£¿éflashmem£¬ÔÚÆäÖÐ
-//              ´æ´¢Ö¸Áî£¬ÓÃÀ´·ÂÕæÍâ²¿ramµÄÄ£¿édatamem£¬ÔÚÆäÖÐ´æ´¢
-//              Êý¾Ý£¬²¢ÇÒ¾ßÓÐwishbone×ÜÏß½Ó¿Ú    
+// Description: ï¿½ï¿½ï¿½ï¿½OpenMIPSï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½SOPCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ß±ï¿½ï¿½ï¿½
+//              wishboneï¿½ï¿½ï¿½ß½Ó¿Úµï¿½openmipsï¿½ï¿½ï¿½ï¿½SOPCï¿½ï¿½ï¿½ï¿½openmipsï¿½ï¿½
+//              wb_conmaxï¿½ï¿½GPIO controllerï¿½ï¿½flash controllerï¿½ï¿½uart 
+//              controllerï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½flashï¿½ï¿½Ä£ï¿½ï¿½flashmemï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//              ï¿½æ´¢Ö¸ï¿½î£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ramï¿½ï¿½Ä£ï¿½ï¿½datamemï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´æ´¢
+//              ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½Ò¾ï¿½ï¿½ï¿½wishboneï¿½ï¿½ï¿½ß½Ó¿ï¿½    
 // Revision: 1.0
 //////////////////////////////////////////////////////////////////////
 
@@ -47,7 +47,7 @@ module openmips_min_sopc(
 	
 );
 
-  //Á¬½ÓÖ¸Áî´æ´¢Æ÷
+  //ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½æ´¢ï¿½ï¿½
   wire[`WordBus] inst_addr;
   wire[`WordBus] inst;
   wire rom_ce;
@@ -65,16 +65,24 @@ module openmips_min_sopc(
 		.clk(clk),
 		.rst(rst),
 	
-		.rom_addr_o(inst_addr),
-		.rom_data_i(inst),
-		.rom_ce_o(rom_ce),
+		.iwishbone_addr_o(inst_addr),
+		.iwishbone_data_i(inst),
+		.iwishbone_data_o(inst),
+		//.rom_ce_o(rom_ce),
+		//.iwishbone_ack_i(`Enable),
+		//.iwishbone_stb_o(`Enable),
+		//.iwishbone_cyc_o(`Enable),
+		//.iwishbone_we_o(`Enable),
 
-		.ram_data_i(mem_data_o),
-    	.ram_data_o(mem_data_i),
-    	.ram_addr_o(mem_addr_i),
-    	.ram_sel_o(mem_sel_i),
-    	.ram_we_o(mem_we_i),
-    	.ram_ce_o(mem_ce_i),
+		.dwishbone_data_i(mem_data_o),
+    	.dwishbone_data_o(mem_data_i),
+    	.dwishbone_addr_o(mem_addr_i),
+    	.dwishbone_sel_o(mem_sel_i),
+    	.dwishbone_we_o(mem_we_i),
+    	//.ram_ce_o(mem_ce_i),
+		//.dwishbone_ack_i(`Enable),
+		//.dwishbone_stb_o(`Enable),
+		//.dwishbone_cyc_o(`Enable),
 
     	.timer_int_o(timer_int),
     	.int_i(int) 
