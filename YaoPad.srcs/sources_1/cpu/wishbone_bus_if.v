@@ -121,8 +121,51 @@ module wishbone_bus_if(
                 end
 
                 default: begin
-                end 
+                end
 
             endcase
         end
     end
+
+
+    /* Data Signal Change */
+    always @ (*) begin
+        if(rst == `Enable) begin
+            stallreq <= `Disable;
+            cpu_data_o <= `Zero;
+        end else begin
+            stallreq <= `Disable;
+            case (wishbone_state)
+                `WB_IDLE: begin
+                    if((cpu_ce_i == 1'b1) && (flush_i == `Disable)) begin
+                        stallreq <= `Enable;
+                        cpu_data_o <= `Zero;
+                    end
+                end
+
+                `WB_BUSY: begin
+                    if(wishbone_ack_i == 1'b1) begin
+                        stallreq <= `Disable;
+                        if(wishbone_we_o == `Disable) begin
+                            cpu_data_o <= wishbone_data_i;
+                        end else begin
+                            cpu_data_o <= `Zero;
+                        end
+                    end else begin
+                        stallreq <= `Enable;
+                        cpu_data_o <= `Zero;
+                    end
+                end
+
+                `WB_WAIT_FOR_STALL: begin
+                    stallreq <= `Disable;
+                    cpu_data_o <= rd_buf;
+                end
+
+                default: begin
+                end
+            endcase
+        end
+    end
+
+endmodule
