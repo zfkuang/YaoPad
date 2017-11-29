@@ -41,7 +41,7 @@ module inst_rom(
 	
 );
 
-	reg[`WordBus]  inst_mem[0:100];
+	reg[`WordBus]  inst_mem[0:1000];
 
 	initial $readmemh ( "inst_rom.data", inst_mem );
 

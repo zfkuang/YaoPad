@@ -51,6 +51,17 @@ module ex(
     input wire is_in_delayslot_i,
     input wire[`WordBus] link_addr_i,
 
+    input wire[`WordBus] cp0_reg_data_i,
+    input wire mem_cp0_reg_we,
+    input wire[`RegAddrBus] mem_cp0_reg_write_addr,
+    input wire[`WordBus] mem_cp0_reg_data,
+
+    input wire wb_cp0_reg_we,
+    input wire[`RegAddrBus] wb_cp0_reg_write_addr,
+    input wire[`WordBus] wb_cp0_reg_data,
+
+    input wire[`WordBus] excepttype_i,
+    input wire[`WordBus] current_inst_addr_i,
 
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
@@ -69,6 +80,16 @@ module ex(
     output wire[`WordBus] mem_addr_o,
     output wire[`WordBus] reg2_o,
 
+    output reg[`RegAddrBus] cp0_reg_read_addr_o,
+    output reg[`RegAddrBus] cp0_reg_write_addr_o,
+    output reg cp0_reg_we_o,
+    output reg[`WordBus] cp0_reg_data_o,
+
+    output wire[`WordBus] excepttype_o,
+    output wire[`WordBus] current_inst_addr_o,
+    output wire is_in_delayslot_o,
+
+
     output reg stallreq
     );
 
@@ -79,6 +100,8 @@ module ex(
     reg[`DoubleWordBus] mulres ;
     reg[`WordBus] hi ;
     reg[`WordBus] lo ;
+    reg ovassert ;
+    reg trapassert ;
 
     assign reg2_o = reg2_i;
     assign mem_addr_o = reg1_i + {{16{inst_i[15]}},inst_i[15:0]};
@@ -146,6 +169,16 @@ module ex(
                 `ALU_MFLO: begin
                     moveres <= lo ;
                 end
+                `ALU_MFC0: begin
+                    cp0_reg_read_addr_o <= inst_i[15:11] ;
+                    if ((mem_cp0_reg_we == `Enable) && (mem_cp0_reg_write_addr == cp0_reg_read_addr_o)) begin
+                        moveres <= mem_cp0_reg_data ;
+                    end else if ((wb_cp0_reg_we == `Enable) && (wb_cp0_reg_write_addr == cp0_reg_read_addr_o)) begin
+                        moveres <= wb_cp0_reg_data ;
+                    end else begin
+                        moveres <= cp0_reg_data_i ;
+                    end
+                end
                 default: begin
                     moveres <= `Zero ; 
                 end
@@ -162,11 +195,14 @@ module ex(
     wire is_equal ; // zero 
     wire is_less ; // negative 
     assign reg1_i_not = (aluop_i == `ALU_CLO) ? (~reg1_i) : (reg1_i) ;
-    assign reg2_i_mux = ((aluop_i == `ALU_SUB) ||  (aluop_i == `ALU_SUBU) || (aluop_i == `ALU_SLT)) ? (~reg2_i+1) : reg2_i ;
+    assign reg2_i_mux = ((aluop_i == `ALU_SUB) ||  (aluop_i == `ALU_SUBU) 
+                        || (aluop_i == `ALU_SLT) 
+                        || (aluop_i == `ALU_TLT) || (aluop_i == `ALU_TGE)) ? (~reg2_i+1) : reg2_i ;
     assign add_sum = reg1_i + reg2_i_mux ;
     assign is_equal = (reg1_i == reg2_i) ;
     assign is_overflow = ((!reg1_i[31] && !reg2_i_mux[31]) && add_sum[31]) || ((reg1_i[31] && reg2_i_mux[31]) && (!add_sum[31])) ;
-    assign is_less = (aluop_i == `ALU_SLT) ? ((reg1_i[31] && !reg2_i[31]) || ((reg1_i[31] == reg2_i[31]) && add_sum[31])) : (reg1_i < reg2_i) ;
+    assign is_less = (aluop_i == `ALU_SLT || aluop_i == `ALU_TLT || aluop_i == `ALU_TGE) ? 
+                        ((reg1_i[31] && !reg2_i[31]) || ((reg1_i[31] == reg2_i[31]) && add_sum[31])) : (reg1_i < reg2_i) ;
 
     always @ (*) begin // arithmetic operations
         if (rst == `Enable) begin 
@@ -206,7 +242,15 @@ module ex(
             endcase
         end
     end
-
+    always @ (*) begin // arithmetic operations
+        if(((aluop_i==`ALU_ADD) || (aluop_i==`ALU_SUB)) && is_overflow) begin
+            wreg_o <= `Disable ;
+            ovassert <= `Enable ;
+        end else begin
+            wreg_o <= wreg_i ;
+            ovassert <= `Disable ;
+        end
+    end
     // some pre-computed values used in mul operations
 
     wire[`WordBus] mul_op1 ;
@@ -271,7 +315,37 @@ module ex(
             endcase
         end
     end
-    
+  
+    always @ (*) begin // cp0_writting operation 
+        if((rst == `Enable) || (aluop_i != `ALU_MTC0)) begin
+            cp0_reg_data_o <= `Zero ;
+            cp0_reg_we_o <= `Disable ;
+            cp0_reg_write_addr_o <= `NopRegAddr ;
+        end else begin
+            cp0_reg_data_o <= reg1_i ;
+            cp0_reg_we_o <= `Enable ;
+            cp0_reg_write_addr_o <= inst_i[15:11] ;
+        end
+    end
+
+    assign excepttype_o = {excepttype_i[31:12], ovassert, trapassert, excepttype_i[9:8], 8'h00} ;
+    assign is_in_delayslot_o = is_in_delayslot_i ;
+    assign current_inst_addr_o = current_inst_addr_i ; 
+    always @ (*) begin
+        trapassert <= `Disable ;
+        case(aluop_i)
+            `ALU_TEQ, `ALU_TNE: begin
+                trapassert <= (is_equal ^ (aluop_i == `ALU_TNE))  ;
+            end
+            `ALU_TLT, `ALU_TLTU: begin
+                trapassert <= is_less ;
+            end
+            `ALU_TGE, `ALU_TGEU: begin
+                trapassert <= (~is_less) ;                
+            end
+        endcase
+    end
+
     always @ (*) begin // choose answer
         if (rst == `Enable) begin 
             wdata_o <= `Zero ;
@@ -307,4 +381,5 @@ module ex(
             endcase 
         end
     end
+
 endmodule

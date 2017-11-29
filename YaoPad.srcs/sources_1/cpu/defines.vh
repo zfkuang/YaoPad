@@ -36,7 +36,6 @@
 `define EXE_SPECIAL2 6'b011100
 
 
-
 `define EXE_PREF 6'b110011
 `define EXE_NOP 6'b000000
 `define EXE_ADDI 6'b001000
@@ -51,6 +50,10 @@
 `define EXE_BLEZ 6'b000110
 `define EXE_BNE 6'b000101
 `define EXE_REGIMM 6'b000001
+`define EXE_BLTZ 5'b00000
+`define EXE_BLTZAL 5'b10000
+`define EXE_BGEZ 5'b00001
+`define EXE_BGEZAL 5'b10001
 
 `define EXE_LB 		6'b100000
 `define EXE_LBU 	6'b100100
@@ -65,10 +68,18 @@
 `define EXE_SWL 	6'b101010
 `define EXE_SWR 	6'b101110
 
-`define EXE_BLTZ 5'b00000
-`define EXE_BLTZAL 5'b00000
-`define EXE_BGEZ 5'b00000
-`define EXE_BGEZAL 5'b00000
+`define EXE_COP0 	6'b010000
+`define EXE_MT 5'b00100
+`define EXE_MF 5'b00000
+
+`define EXE_ERET 6'b011000
+`define EXE_TEQI	5'b01100
+`define EXE_TNEI	5'b01110
+`define EXE_TGEI	5'b01000
+`define EXE_TGEIU	5'b01001
+`define EXE_TLTI	5'b01010
+`define EXE_TLTIU	5'b01011
+
 
 
 // Alu Operation Number // 
@@ -114,6 +125,18 @@
 `define ALU_JR 8'b00001000
 `define ALU_JALR 8'b00001001
 
+`define ALU_MFC0 8'b01011101
+`define ALU_MTC0 8'b01100000
+
+`define ALU_SYSCALL 8'b00001100
+`define ALU_TEQ 8'b00110100
+`define ALU_TGE 8'b00110000
+`define ALU_TGEU 8'b00110001
+`define ALU_TLT 8'b00110010
+`define ALU_TLTU 8'b00110011
+`define ALU_TNE 8'b00110110
+`define ALU_ERET 8'b01101011
+
 `define MEM_LB   8'b11100000
 `define MEM_LBU  8'b11100100
 `define MEM_LH   8'b11100001
@@ -152,7 +175,17 @@
 `define DIV_END 2'b11
 
 
+
 // Wishbone states //
 `define WB_IDLE 2'b00
 `define WB_BUSY 2'b01
 `define WB_WAIT_FORSTALL 2'b11
+
+`define CP0_COUNT 5'b01001
+`define CP0_COMPARE 5'b01011
+`define CP0_STATUS 5'b01100
+`define CP0_CAUSE 5'b01101
+`define CP0_EPC 5'b01110
+`define CP0_PRId 5'b01111
+`define CP0_CONFIG 5'b1000
+
