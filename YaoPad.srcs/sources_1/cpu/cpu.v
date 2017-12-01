@@ -49,10 +49,10 @@ module cpu(
     output wire ram_ce_o,
 
     input wire[5:0] int_i,
-    output wire timer_int_o,
+    output wire timer_int_o
     
-    input wire[`RegAddrBus] debug,
-    output wire[`WordBus] debugdata
+   // input wire[`RegAddrBus] debug,
+   // output wire[`WordBus] debugdata
     );
     
     wire[`WordBus] pc ;
@@ -180,7 +180,8 @@ module cpu(
     wire[5:0] stall ;
     wire[`WordBus] new_pc ;
     wire flush ;
-
+    //assign debugdata[15:0] = pc[15:0];
+    //assign debugdata[31:16] = rom_data_i[15:0];
     assign rom_addr_o = pc;
     pc_rom pc_rom0(
         .clk(clk), .rst(rst), 
@@ -258,9 +259,9 @@ module cpu(
         
         .re2(reg2_read),
         .raddr2(reg2_addr),
-        .rdata2(reg2_data),
-        .debug(debug), 
-        .debugdata(debugdata)
+        .rdata2(reg2_data)
+        //.debug(debug)
+        //.debugdata(debugdata)
     ) ;
     
     id_ex id_ex0(

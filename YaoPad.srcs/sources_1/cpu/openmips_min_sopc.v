@@ -42,8 +42,25 @@
 
 module openmips_min_sopc(
 
-	input	wire										clk,
-	input wire										rst,
+	input wire clk,
+	input wire	rst,
+	input wire	click,
+	
+	inout wire[31:0] base_ram_data, // [7:0] also connected to CPLD
+    output wire[19:0] base_ram_addr,
+    output wire[3:0] base_ram_be_n,
+    output wire base_ram_ce_n,
+    output wire base_ram_oe_n,
+    output wire base_ram_we_n,
+    
+    inout wire[31:0] ext_ram_data,
+    output wire[19:0] ext_ram_addr,
+    output wire[3:0] ext_ram_be_n,
+    output wire ext_ram_ce_n,
+    output wire ext_ram_oe_n,
+    output wire ext_ram_we_n,
+    
+    
 	input wire[`RegAddrBus] debug,
 	output wire[`WordBus] led
 	
@@ -63,12 +80,28 @@ module openmips_min_sopc(
   wire timer_int;
   wire[5:0] int = {5'b00000, timer_int};
   
+ assign  base_ram_addr = inst_addr[21:2];
+ assign base_ram_ce_n =  1'b0;
+ assign base_ram_oe_n =  1'b0;
+ assign base_ram_we_n = 1'b1;
+ assign base_ram_be_n = 4'b0000;
+  assign base_ram_data = (base_ram_oe_n==1'b0) ? 32'bz : 32'b0;
+ 
+ reg[31:0] inst_get;
+ 
+always @(posedge click)
+    if (rom_ce)
+        inst_get <= base_ram_data;
+ 
+assign led[31:16] = base_ram_addr[15:0];
+assign led[15:0] = inst_get[15:0];
+
  cpu cpu0(
-		.clk(clk),
+		.clk(click),
 		.rst(rst),
 	
 		.rom_addr_o(inst_addr),
-		.rom_data_i(inst),
+		.rom_data_i(inst_get),
 		.rom_ce_o(rom_ce),
 
 		.ram_data_i(mem_data_o),
@@ -79,17 +112,18 @@ module openmips_min_sopc(
     	.ram_ce_o(mem_ce_i),
 
     	.timer_int_o(timer_int),
-    	.int_i(int),
-        .debugdata(led),
-        .debug(debug)
+    	.int_i(int)
+        //.debugdata(led),
+        //.debug(debug)
 	);
+	/*
 	
 	inst_rom inst_rom0(
 		.addr(inst_addr),
 		.inst(inst),
 		.ce(rom_ce)	
 	);
-
+    */
 	data_ram data_ram0(
 		.clk(clk),
 		.we(mem_we_i),

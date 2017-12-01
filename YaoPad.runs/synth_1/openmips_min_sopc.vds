@@ -2,12 +2,12 @@
 # Vivado v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Thu Nov 30 14:27:32 2017
-# Process ID: 24200
-# Current directory: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1
+# Start of session at: Fri Dec  1 19:29:11 2017
+# Process ID: 11928
+# Current directory: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1
 # Command line: vivado.exe -log openmips_min_sopc.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source openmips_min_sopc.tcl
-# Log file: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/openmips_min_sopc.vds
-# Journal file: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1\vivado.jou
+# Log file: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1/openmips_min_sopc.vds
+# Journal file: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source openmips_min_sopc.tcl -notrace
 Command: synth_design -top openmips_min_sopc -part xc7a100tfgg676-2L
@@ -15,87 +15,98 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 23472 
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module pc_rom [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module if_id [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module id [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module regfile [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module id_ex [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module ex [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module ex_mem [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v:43]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module mem [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module mem_wb [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module hilo [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module ctrl [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module div [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/div.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module cp0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module pc_rom [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module if_id [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module id [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module regfile [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module id_ex [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module ex [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module ex_mem [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v:43]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module mem [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module mem_wb [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module hilo [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module ctrl [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module div [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/div.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module cp0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:23]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module cpu [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:36]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module inst_rom [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/inst_rom.v:35]
-CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module data_ram [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v:4]
+INFO: Helper process launched with PID 1216 
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module pc_rom [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module if_id [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module id [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module regfile [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module id_ex [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module ex [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module ex_mem [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v:43]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module mem [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module mem_wb [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module hilo [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module ctrl [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module div [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/div.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module cp0 [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module pc_rom [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module if_id [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module id [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module regfile [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module id_ex [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module ex [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module ex_mem [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v:43]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module mem [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module mem_wb [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module hilo [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module ctrl [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module div [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/div.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module cp0 [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:23]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module cpu [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:36]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module inst_rom [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/inst_rom.v:35]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module data_ram [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v:4]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 352.969 ; gain = 103.645
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 354.004 ; gain = 104.305
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'openmips_min_sopc' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/openmips_min_sopc.v:43]
-INFO: [Synth 8-638] synthesizing module 'cpu' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:36]
-INFO: [Synth 8-638] synthesizing module 'pc_rom' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
-WARNING: [Synth 8-3848] Net debugdata in module/entity pc_rom does not have driver. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:35]
-INFO: [Synth 8-256] done synthesizing module 'pc_rom' (1#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
-WARNING: [Synth 8-350] instance 'pc_rom0' of module 'pc_rom' requires 10 connections, but only 9 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:185]
-INFO: [Synth 8-638] synthesizing module 'if_id' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
-INFO: [Synth 8-256] done synthesizing module 'if_id' (2#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
-INFO: [Synth 8-638] synthesizing module 'id' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:240]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:290]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:379]
-WARNING: [Synth 8-3848] Net timer_int_o in module/entity id does not have driver. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:70]
-INFO: [Synth 8-256] done synthesizing module 'id' (3#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
-WARNING: [Synth 8-350] instance 'id0' of module 'id' requires 34 connections, but only 32 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:206]
-INFO: [Synth 8-638] synthesizing module 'regfile' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v:23]
-INFO: [Synth 8-256] done synthesizing module 'regfile' (4#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v:23]
-INFO: [Synth 8-638] synthesizing module 'id_ex' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:23]
-INFO: [Synth 8-256] done synthesizing module 'id_ex' (5#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:23]
-INFO: [Synth 8-638] synthesizing module 'ex' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:327]
-INFO: [Synth 8-256] done synthesizing module 'ex' (6#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:23]
-INFO: [Synth 8-638] synthesizing module 'ex_mem' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v:43]
-INFO: [Synth 8-256] done synthesizing module 'ex_mem' (7#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v:43]
-INFO: [Synth 8-638] synthesizing module 'mem' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:23]
-WARNING: [Synth 8-151] case item 8'b11100010 is unreachable [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:110]
-INFO: [Synth 8-256] done synthesizing module 'mem' (8#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:23]
-INFO: [Synth 8-638] synthesizing module 'mem_wb' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:23]
-INFO: [Synth 8-256] done synthesizing module 'mem_wb' (9#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:23]
-INFO: [Synth 8-638] synthesizing module 'hilo' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v:23]
-INFO: [Synth 8-256] done synthesizing module 'hilo' (10#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v:23]
-INFO: [Synth 8-638] synthesizing module 'ctrl' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v:45]
-INFO: [Synth 8-256] done synthesizing module 'ctrl' (11#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v:23]
-INFO: [Synth 8-638] synthesizing module 'div' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/div.v:23]
-INFO: [Synth 8-256] done synthesizing module 'div' (12#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/div.v:23]
-INFO: [Synth 8-638] synthesizing module 'cp0' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:73]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:95]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:165]
-INFO: [Synth 8-256] done synthesizing module 'cp0' (13#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:23]
-WARNING: [Synth 8-350] instance 'cp00' of module 'cp0' requires 19 connections, but only 15 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:517]
-INFO: [Synth 8-256] done synthesizing module 'cpu' (14#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:36]
-INFO: [Synth 8-638] synthesizing module 'inst_rom' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/inst_rom.v:35]
-INFO: [Synth 8-256] done synthesizing module 'inst_rom' (15#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/inst_rom.v:35]
-INFO: [Synth 8-638] synthesizing module 'data_ram' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v:4]
-INFO: [Synth 8-256] done synthesizing module 'data_ram' (16#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v:4]
-INFO: [Synth 8-256] done synthesizing module 'openmips_min_sopc' (17#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/openmips_min_sopc.v:43]
+INFO: [Synth 8-638] synthesizing module 'openmips_min_sopc' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/openmips_min_sopc.v:43]
+INFO: [Synth 8-638] synthesizing module 'cpu' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:36]
+INFO: [Synth 8-638] synthesizing module 'pc_rom' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
+WARNING: [Synth 8-3848] Net debugdata in module/entity pc_rom does not have driver. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:35]
+INFO: [Synth 8-256] done synthesizing module 'pc_rom' (1#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
+WARNING: [Synth 8-350] instance 'pc_rom0' of module 'pc_rom' requires 10 connections, but only 9 given [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:186]
+INFO: [Synth 8-638] synthesizing module 'if_id' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
+INFO: [Synth 8-256] done synthesizing module 'if_id' (2#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
+INFO: [Synth 8-638] synthesizing module 'id' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:240]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:290]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:379]
+WARNING: [Synth 8-3848] Net timer_int_o in module/entity id does not have driver. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:70]
+INFO: [Synth 8-256] done synthesizing module 'id' (3#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
+WARNING: [Synth 8-350] instance 'id0' of module 'id' requires 34 connections, but only 32 given [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:207]
+INFO: [Synth 8-638] synthesizing module 'regfile' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v:23]
+INFO: [Synth 8-256] done synthesizing module 'regfile' (4#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v:23]
+WARNING: [Synth 8-350] instance 'regfile0' of module 'regfile' requires 13 connections, but only 11 given [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:249]
+INFO: [Synth 8-638] synthesizing module 'id_ex' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:23]
+INFO: [Synth 8-256] done synthesizing module 'id_ex' (5#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:23]
+INFO: [Synth 8-638] synthesizing module 'ex' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:327]
+INFO: [Synth 8-256] done synthesizing module 'ex' (6#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:23]
+INFO: [Synth 8-638] synthesizing module 'ex_mem' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v:43]
+INFO: [Synth 8-256] done synthesizing module 'ex_mem' (7#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v:43]
+INFO: [Synth 8-638] synthesizing module 'mem' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:23]
+WARNING: [Synth 8-151] case item 8'b11100010 is unreachable [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:110]
+INFO: [Synth 8-256] done synthesizing module 'mem' (8#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:23]
+INFO: [Synth 8-638] synthesizing module 'mem_wb' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:23]
+INFO: [Synth 8-256] done synthesizing module 'mem_wb' (9#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:23]
+INFO: [Synth 8-638] synthesizing module 'hilo' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v:23]
+INFO: [Synth 8-256] done synthesizing module 'hilo' (10#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v:23]
+INFO: [Synth 8-638] synthesizing module 'ctrl' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v:45]
+INFO: [Synth 8-256] done synthesizing module 'ctrl' (11#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v:23]
+INFO: [Synth 8-638] synthesizing module 'div' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/div.v:23]
+INFO: [Synth 8-256] done synthesizing module 'div' (12#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/div.v:23]
+INFO: [Synth 8-638] synthesizing module 'cp0' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:73]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:95]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:165]
+INFO: [Synth 8-256] done synthesizing module 'cp0' (13#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:23]
+WARNING: [Synth 8-350] instance 'cp00' of module 'cp0' requires 19 connections, but only 15 given [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:518]
+INFO: [Synth 8-256] done synthesizing module 'cpu' (14#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:36]
+INFO: [Synth 8-638] synthesizing module 'data_ram' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v:4]
+INFO: [Synth 8-256] done synthesizing module 'data_ram' (15#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v:4]
+WARNING: [Synth 8-3848] Net ext_ram_addr in module/entity openmips_min_sopc does not have driver. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/openmips_min_sopc.v:57]
+WARNING: [Synth 8-3848] Net ext_ram_be_n in module/entity openmips_min_sopc does not have driver. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/openmips_min_sopc.v:58]
+WARNING: [Synth 8-3848] Net ext_ram_ce_n in module/entity openmips_min_sopc does not have driver. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/openmips_min_sopc.v:59]
+WARNING: [Synth 8-3848] Net ext_ram_oe_n in module/entity openmips_min_sopc does not have driver. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/openmips_min_sopc.v:60]
+WARNING: [Synth 8-3848] Net ext_ram_we_n in module/entity openmips_min_sopc does not have driver. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/openmips_min_sopc.v:61]
+INFO: [Synth 8-256] done synthesizing module 'openmips_min_sopc' (16#1) [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/openmips_min_sopc.v:43]
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_be_n[3] driven by constant 0
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_be_n[2] driven by constant 0
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_be_n[1] driven by constant 0
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_be_n[0] driven by constant 0
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_ce_n driven by constant 0
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_oe_n driven by constant 0
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_we_n driven by constant 1
 WARNING: [Synth 8-3331] design data_ram has unconnected port addr[31]
 WARNING: [Synth 8-3331] design data_ram has unconnected port addr[30]
 WARNING: [Synth 8-3331] design data_ram has unconnected port addr[29]
@@ -116,34 +127,6 @@ WARNING: [Synth 8-3331] design data_ram has unconnected port addr[15]
 WARNING: [Synth 8-3331] design data_ram has unconnected port addr[14]
 WARNING: [Synth 8-3331] design data_ram has unconnected port addr[1]
 WARNING: [Synth 8-3331] design data_ram has unconnected port addr[0]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[31]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[30]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[29]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[28]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[27]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[26]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[25]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[24]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[23]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[22]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[21]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[20]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[19]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[18]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[17]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[16]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[15]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[14]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[13]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[12]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[11]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[10]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[9]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[8]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[7]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[6]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[1]
-WARNING: [Synth 8-3331] design inst_rom has unconnected port addr[0]
 WARNING: [Synth 8-3331] design cp0 has unconnected port we_i
 WARNING: [Synth 8-3331] design mem_wb has unconnected port stall[3]
 WARNING: [Synth 8-3331] design mem_wb has unconnected port stall[2]
@@ -196,9 +179,37 @@ WARNING: [Synth 8-3331] design ex has unconnected port inst_i[19]
 WARNING: [Synth 8-3331] design ex has unconnected port inst_i[18]
 WARNING: [Synth 8-3331] design ex has unconnected port inst_i[17]
 WARNING: [Synth 8-3331] design ex has unconnected port inst_i[16]
+WARNING: [Synth 8-3331] design ex has unconnected port excepttype_i[11]
+WARNING: [Synth 8-3331] design ex has unconnected port excepttype_i[10]
+WARNING: [Synth 8-3331] design ex has unconnected port excepttype_i[7]
+WARNING: [Synth 8-3331] design ex has unconnected port excepttype_i[6]
+WARNING: [Synth 8-3331] design ex has unconnected port excepttype_i[5]
+WARNING: [Synth 8-3331] design ex has unconnected port excepttype_i[4]
+WARNING: [Synth 8-3331] design ex has unconnected port excepttype_i[3]
+WARNING: [Synth 8-3331] design ex has unconnected port excepttype_i[2]
+WARNING: [Synth 8-3331] design ex has unconnected port excepttype_i[1]
+WARNING: [Synth 8-3331] design ex has unconnected port excepttype_i[0]
+WARNING: [Synth 8-3331] design id_ex has unconnected port stall[5]
+WARNING: [Synth 8-3331] design id_ex has unconnected port stall[4]
+WARNING: [Synth 8-3331] design id_ex has unconnected port stall[1]
+WARNING: [Synth 8-3331] design id_ex has unconnected port stall[0]
+WARNING: [Synth 8-3331] design id has unconnected port timer_int_o
+WARNING: [Synth 8-3331] design id has unconnected port is_in_delayslot_i
+WARNING: [Synth 8-3331] design id has unconnected port int_i[5]
+WARNING: [Synth 8-3331] design id has unconnected port int_i[4]
+WARNING: [Synth 8-3331] design id has unconnected port int_i[3]
+WARNING: [Synth 8-3331] design id has unconnected port int_i[2]
+WARNING: [Synth 8-3331] design id has unconnected port int_i[1]
+WARNING: [Synth 8-3331] design id has unconnected port int_i[0]
+WARNING: [Synth 8-3331] design if_id has unconnected port stall[5]
+WARNING: [Synth 8-3331] design if_id has unconnected port stall[4]
+WARNING: [Synth 8-3331] design if_id has unconnected port stall[3]
+WARNING: [Synth 8-3331] design if_id has unconnected port stall[0]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[31]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[30]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 392.668 ; gain = 143.344
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 392.703 ; gain = 143.004
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -207,42 +218,80 @@ Report Check Netlist:
 +------+------------------+-------+---------+-------+------------------+
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
+WARNING: [Synth 8-3295] tying undriven pin regfile0:debug[4] to constant 0 [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:249]
+WARNING: [Synth 8-3295] tying undriven pin regfile0:debug[3] to constant 0 [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:249]
+WARNING: [Synth 8-3295] tying undriven pin regfile0:debug[2] to constant 0 [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:249]
+WARNING: [Synth 8-3295] tying undriven pin regfile0:debug[1] to constant 0 [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:249]
+WARNING: [Synth 8-3295] tying undriven pin regfile0:debug[0] to constant 0 [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:249]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 392.668 ; gain = 143.344
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 392.703 ; gain = 143.004
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a100tfgg676-2L
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc]
-WARNING: [Vivado 12-507] No nets matched 'rst_IBUF'. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:8]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:8]
+Parsing XDC File [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc]
+WARNING: [Vivado 12-584] No ports matched 'clk_uart_in'. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:5]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:5]
 Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-Finished Parsing XDC File [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/openmips_min_sopc_propImpl.xdc].
+WARNING: [Vivado 12-507] No nets matched 'clk_uart_in_IBUF'. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:6]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:6]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'clk_uart_in'. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:7]
+CRITICAL WARNING: [Vivado 12-4739] create_clock:No valid object(s) found for '-objects [get_ports clk_uart_in]'. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:7]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-507] No nets matched 'rst_IBUF'. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:12]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:12]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-507] No nets matched 'click_IBUF'. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:17]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:17]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'uart_wrn'. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:66]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:66]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'uart_rdn'. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:67]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:67]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'uart_tbre'. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:68]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:68]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'uart_tsre'. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:69]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:69]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'uart_dataready'. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:70]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:70]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'txd'. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:73]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:73]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'rxd'. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:74]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:74]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/openmips_min_sopc_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/openmips_min_sopc_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 733.961 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 736.000 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 733.961 ; gain = 484.637
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 736.000 ; gain = 486.301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tfgg676-2L
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 733.961 ; gain = 484.637
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 736.000 ; gain = 486.301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 733.961 ; gain = 484.637
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 736.000 ; gain = 486.301
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "next_inst_in_delayslot_o" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "aluop_o" won't be mapped to RAM because it is too sparse
@@ -264,7 +313,7 @@ INFO: [Synth 8-5546] ROM "hi_o" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "lo_o" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "stallreq" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "whilo_o" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:252]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:252]
 INFO: [Synth 8-5546] ROM "mem_we" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "mem_ce_o" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5544] ROM "mem_sel_o" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
@@ -287,34 +336,34 @@ INFO: [Synth 8-5546] ROM "status_o" won't be mapped to RAM because it is too spa
 INFO: [Synth 8-5546] ROM "cause_o" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "epc_o" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "data_o" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-327] inferring latch for variable 'aluop_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:97]
-WARNING: [Synth 8-327] inferring latch for variable 'alusel_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:98]
-WARNING: [Synth 8-327] inferring latch for variable 'wreg_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:118]
-WARNING: [Synth 8-327] inferring latch for variable 'reg2_addr_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:100]
-WARNING: [Synth 8-327] inferring latch for variable 'reg2_read_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:115]
-WARNING: [Synth 8-327] inferring latch for variable 'reg1_read_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:114]
-WARNING: [Synth 8-327] inferring latch for variable 'instvalid_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:92]
-WARNING: [Synth 8-327] inferring latch for variable 'except_syscall_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:92]
-WARNING: [Synth 8-327] inferring latch for variable 'except_eret_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:92]
-WARNING: [Synth 8-327] inferring latch for variable 'wdata_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:342]
-WARNING: [Synth 8-327] inferring latch for variable 'whilo_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:280]
-WARNING: [Synth 8-327] inferring latch for variable 'hi_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:274]
-WARNING: [Synth 8-327] inferring latch for variable 'lo_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:274]
-WARNING: [Synth 8-327] inferring latch for variable 'div_start_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:277]
-WARNING: [Synth 8-327] inferring latch for variable 'signed_div_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:296]
-WARNING: [Synth 8-327] inferring latch for variable 'div_opdata1_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:294]
-WARNING: [Synth 8-327] inferring latch for variable 'div_opdata2_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:295]
-WARNING: [Synth 8-327] inferring latch for variable 'cp0_reg_read_addr_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:173]
-WARNING: [Synth 8-327] inferring latch for variable 'ovassert_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:322]
-WARNING: [Synth 8-327] inferring latch for variable 'stallreq_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:275]
-WARNING: [Synth 8-327] inferring latch for variable 'mulres_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:256]
-WARNING: [Synth 8-327] inferring latch for variable 'hi_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:100]
-WARNING: [Synth 8-327] inferring latch for variable 'lo_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:101]
-WARNING: [Synth 8-327] inferring latch for variable 'cp0_cause_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:380]
-WARNING: [Synth 8-327] inferring latch for variable 'new_pc_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v:41]
-WARNING: [Synth 8-327] inferring latch for variable 'data_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:163]
+WARNING: [Synth 8-327] inferring latch for variable 'aluop_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:97]
+WARNING: [Synth 8-327] inferring latch for variable 'alusel_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:98]
+WARNING: [Synth 8-327] inferring latch for variable 'wreg_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:118]
+WARNING: [Synth 8-327] inferring latch for variable 'reg2_addr_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:100]
+WARNING: [Synth 8-327] inferring latch for variable 'reg2_read_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:115]
+WARNING: [Synth 8-327] inferring latch for variable 'reg1_read_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:114]
+WARNING: [Synth 8-327] inferring latch for variable 'instvalid_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:92]
+WARNING: [Synth 8-327] inferring latch for variable 'except_syscall_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:92]
+WARNING: [Synth 8-327] inferring latch for variable 'except_eret_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:92]
+WARNING: [Synth 8-327] inferring latch for variable 'wdata_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:342]
+WARNING: [Synth 8-327] inferring latch for variable 'whilo_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:280]
+WARNING: [Synth 8-327] inferring latch for variable 'hi_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:274]
+WARNING: [Synth 8-327] inferring latch for variable 'lo_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:274]
+WARNING: [Synth 8-327] inferring latch for variable 'div_start_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:277]
+WARNING: [Synth 8-327] inferring latch for variable 'signed_div_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:296]
+WARNING: [Synth 8-327] inferring latch for variable 'div_opdata1_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:294]
+WARNING: [Synth 8-327] inferring latch for variable 'div_opdata2_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:295]
+WARNING: [Synth 8-327] inferring latch for variable 'cp0_reg_read_addr_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:173]
+WARNING: [Synth 8-327] inferring latch for variable 'ovassert_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:322]
+WARNING: [Synth 8-327] inferring latch for variable 'stallreq_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:275]
+WARNING: [Synth 8-327] inferring latch for variable 'mulres_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:256]
+WARNING: [Synth 8-327] inferring latch for variable 'hi_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:100]
+WARNING: [Synth 8-327] inferring latch for variable 'lo_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:101]
+WARNING: [Synth 8-327] inferring latch for variable 'cp0_cause_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:380]
+WARNING: [Synth 8-327] inferring latch for variable 'new_pc_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v:41]
+WARNING: [Synth 8-327] inferring latch for variable 'data_o_reg' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:163]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 733.961 ; gain = 484.637
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 736.000 ; gain = 486.301
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -337,7 +386,7 @@ Detailed RTL Component Info :
 +---Registers : 
 	               65 Bit    Registers := 1     
 	               64 Bit    Registers := 1     
-	               32 Bit    Registers := 31    
+	               32 Bit    Registers := 32    
 	                8 Bit    Registers := 2     
 	                6 Bit    Registers := 1     
 	                5 Bit    Registers := 5     
@@ -361,7 +410,6 @@ Detailed RTL Component Info :
 	  13 Input     32 Bit        Muxes := 1     
 	   7 Input     32 Bit        Muxes := 2     
 	   6 Input     32 Bit        Muxes := 3     
-	  13 Input     30 Bit        Muxes := 1     
 	   2 Input     24 Bit        Muxes := 1     
 	   6 Input     24 Bit        Muxes := 1     
 	   3 Input     16 Bit        Muxes := 1     
@@ -410,6 +458,10 @@ Finished RTL Component Statistics
 Start RTL Hierarchical Component Statistics 
 ---------------------------------------------------------------------------------
 Hierarchical RTL Component report 
+Module openmips_min_sopc 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
 Module pc_rom 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -580,10 +632,6 @@ Detailed RTL Component Info :
 	   6 Input      1 Bit        Muxes := 4     
 	   7 Input      1 Bit        Muxes := 3     
 	   8 Input      1 Bit        Muxes := 1     
-Module inst_rom 
-Detailed RTL Component Info : 
-+---Muxes : 
-	  13 Input     30 Bit        Muxes := 1     
 Module data_ram 
 Detailed RTL Component Info : 
 +---RAMs : 
@@ -621,124 +669,107 @@ DSP Report: operator mul_ans is absorbed into DSP mul_ans.
 DSP Report: operator mul_ans is absorbed into DSP mul_ans.
 INFO: [Synth 8-5545] ROM "divider" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "result" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_be_n[3] driven by constant 0
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_be_n[2] driven by constant 0
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_be_n[1] driven by constant 0
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_be_n[0] driven by constant 0
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_ce_n driven by constant 0
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_oe_n driven by constant 0
+WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_we_n driven by constant 1
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/\id_ex0/ex_is_in_delayslot_reg )
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[30]' (FDRE) to 'cpu0/cp00/prid_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[30]' (FDRE) to 'cpu0/cp00/prid_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[30]' (FDRE) to 'cpu0/cp00/prid_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[31]' (FDRE) to 'cpu0/cp00/prid_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[31]' (FDRE) to 'cpu0/cp00/prid_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[4]' (FDRE) to 'cpu0/cp00/prid_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[4]' (FDRE) to 'cpu0/cp00/prid_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[5]' (FDRE) to 'cpu0/cp00/prid_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[5]' (FDRE) to 'cpu0/cp00/prid_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[2]' (FDRE) to 'cpu0/cp00/prid_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[2]' (FDRE) to 'cpu0/cp00/prid_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[3]' (FDRE) to 'cpu0/cp00/prid_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[3]' (FDRE) to 'cpu0/cp00/prid_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[0]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[0]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[0]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[0]' (FDRE) to 'cpu0/cp00/prid_o_reg[2]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[0]' (FDRE) to 'cpu0/cp00/prid_o_reg[2]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[0]' (FDRE) to 'cpu0/cp00/prid_o_reg[2]'
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[1]' (FDSE) to 'cpu0/cp00/prid_o_reg[8]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[1]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[1]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[10]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[10]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[11]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[11]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[8]' (FDSE) to 'cpu0/cp00/prid_o_reg[18]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[8]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[9]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[9]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[1]' (FDRE) to 'cpu0/cp00/prid_o_reg[2]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[1]' (FDRE) to 'cpu0/cp00/prid_o_reg[2]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[2]' (FDRE) to 'cpu0/cp00/prid_o_reg[3]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[2]' (FDRE) to 'cpu0/cp00/prid_o_reg[3]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[3]' (FDRE) to 'cpu0/cp00/prid_o_reg[4]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[3]' (FDRE) to 'cpu0/cp00/prid_o_reg[4]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[4]' (FDRE) to 'cpu0/cp00/prid_o_reg[5]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[4]' (FDRE) to 'cpu0/cp00/prid_o_reg[5]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[5]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[5]' (FDRE) to 'cpu0/cp00/prid_o_reg[6]'
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[6]' (FDRE) to 'cpu0/cp00/prid_o_reg[7]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/cp00/\cause_o_reg[6] )
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[6]' (FDRE) to 'cpu0/cp00/prid_o_reg[7]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[7]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[7]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[7]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[16]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[16]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[16]' (FDSE) to 'cpu0/cp00/prid_o_reg[18]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[17]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[17]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[17]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[14]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[14]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[15]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[15]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[7]' (FDRE) to 'cpu0/cp00/prid_o_reg[9]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[7]' (FDRE) to 'cpu0/cp00/prid_o_reg[9]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[7]' (FDRE) to 'cpu0/cp00/prid_o_reg[9]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[8]' (FDSE) to 'cpu0/cp00/prid_o_reg[18]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[8]' (FDRE) to 'cpu0/cp00/prid_o_reg[9]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[9]' (FDRE) to 'cpu0/cp00/prid_o_reg[10]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[9]' (FDRE) to 'cpu0/cp00/prid_o_reg[10]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[10]' (FDRE) to 'cpu0/cp00/prid_o_reg[11]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[10]' (FDRE) to 'cpu0/cp00/prid_o_reg[11]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[11]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[11]' (FDRE) to 'cpu0/cp00/prid_o_reg[12]'
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[12]' (FDRE) to 'cpu0/cp00/prid_o_reg[13]'
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[12]' (FDRE) to 'cpu0/cp00/prid_o_reg[13]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[13]' (FDRE) to 'cpu0/cp00/prid_o_reg[20]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[13]' (FDRE) to 'cpu0/cp00/prid_o_reg[20]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[22]' (FDSE) to 'cpu0/cp00/prid_o_reg[18]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[22]' (FDRE) to 'cpu0/cp00/prid_o_reg[20]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[23]' (FDRE) to 'cpu0/cp00/prid_o_reg[20]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[23]' (FDRE) to 'cpu0/cp00/prid_o_reg[20]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[13]' (FDRE) to 'cpu0/cp00/prid_o_reg[14]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[13]' (FDRE) to 'cpu0/cp00/prid_o_reg[14]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[14]' (FDRE) to 'cpu0/cp00/prid_o_reg[15]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[14]' (FDRE) to 'cpu0/cp00/prid_o_reg[15]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[15]' (FDRE) to 'cpu0/cp00/prid_o_reg[16]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[15]' (FDRE) to 'cpu0/cp00/prid_o_reg[16]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[16]' (FDRE) to 'cpu0/cp00/prid_o_reg[17]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[16]' (FDRE) to 'cpu0/cp00/prid_o_reg[17]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[16]' (FDSE) to 'cpu0/cp00/prid_o_reg[18]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[17]' (FDRE) to 'cpu0/cp00/prid_o_reg[20]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[17]' (FDRE) to 'cpu0/cp00/prid_o_reg[20]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[17]' (FDRE) to 'cpu0/cp00/prid_o_reg[20]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[18]' (FDSE) to 'cpu0/cp00/prid_o_reg[19]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[18]' (FDRE) to 'cpu0/cp00/prid_o_reg[20]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[18]' (FDRE) to 'cpu0/cp00/prid_o_reg[20]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[19]' (FDSE) to 'cpu0/cp00/prid_o_reg[22]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[19]' (FDRE) to 'cpu0/cp00/prid_o_reg[20]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[19]' (FDRE) to 'cpu0/cp00/prid_o_reg[20]'
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[20]' (FDRE) to 'cpu0/cp00/prid_o_reg[21]'
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[20]' (FDRE) to 'cpu0/cp00/prid_o_reg[21]'
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[20]' (FDRE) to 'cpu0/cp00/prid_o_reg[21]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[21]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[21]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[21]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[18]' (FDSE) to 'cpu0/cp00/prid_o_reg[19]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[18]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[18]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (cpu0/cp00/\prid_o_reg[19] )
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[19]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[19]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[28]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[28]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[28]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[29]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[29]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[29]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[26]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[26]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[26]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[27]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[27]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[27]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[21]' (FDRE) to 'cpu0/cp00/prid_o_reg[23]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[21]' (FDRE) to 'cpu0/cp00/prid_o_reg[23]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[21]' (FDRE) to 'cpu0/cp00/prid_o_reg[23]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (cpu0/cp00/\prid_o_reg[22] )
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[22]' (FDRE) to 'cpu0/cp00/prid_o_reg[23]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[23]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[23]' (FDRE) to 'cpu0/cp00/prid_o_reg[24]'
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[24]' (FDRE) to 'cpu0/cp00/prid_o_reg[25]'
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[24]' (FDRE) to 'cpu0/cp00/prid_o_reg[25]'
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[24]' (FDRE) to 'cpu0/cp00/prid_o_reg[25]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[25]' (FDRE) to 'cpu0/cp00/cause_o_reg[25]'
-INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[25]' (FDRE) to 'cpu0/cp00/config_o_reg[25]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/cp00/\config_o_reg[25] )
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[25]' (FDRE) to 'cpu0/cp00/prid_o_reg[26]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[25]' (FDRE) to 'cpu0/cp00/prid_o_reg[26]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[25]' (FDRE) to 'cpu0/cp00/prid_o_reg[26]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[26]' (FDRE) to 'cpu0/cp00/prid_o_reg[27]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[26]' (FDRE) to 'cpu0/cp00/prid_o_reg[27]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[26]' (FDRE) to 'cpu0/cp00/prid_o_reg[27]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[27]' (FDRE) to 'cpu0/cp00/prid_o_reg[28]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[27]' (FDRE) to 'cpu0/cp00/prid_o_reg[28]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[27]' (FDRE) to 'cpu0/cp00/prid_o_reg[28]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[28]' (FDRE) to 'cpu0/cp00/prid_o_reg[29]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[28]' (FDRE) to 'cpu0/cp00/prid_o_reg[29]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[28]' (FDRE) to 'cpu0/cp00/prid_o_reg[29]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[29]' (FDRE) to 'cpu0/cp00/prid_o_reg[30]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[29]' (FDRE) to 'cpu0/cp00/prid_o_reg[30]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[29]' (FDRE) to 'cpu0/cp00/prid_o_reg[30]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[30]' (FDRE) to 'cpu0/cp00/prid_o_reg[31]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[30]' (FDRE) to 'cpu0/cp00/prid_o_reg[31]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/config_o_reg[30]' (FDRE) to 'cpu0/cp00/prid_o_reg[31]'
+INFO: [Synth 8-3886] merging instance 'cpu0/cp00/prid_o_reg[31]' (FDRE) to 'cpu0/cp00/config_o_reg[31]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/cp00/\config_o_reg[31] )
 INFO: [Synth 8-3333] propagating constant 1 across sequential element (cpu0/id0/instvalid_reg)
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[6]' (FDRE) to 'cpu0/if_id0/id_inst_reg[7]'
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[7]' (FDRE) to 'cpu0/if_id0/id_inst_reg[4]'
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[9]' (FDRE) to 'cpu0/if_id0/id_inst_reg[18]'
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[10]' (FDRE) to 'cpu0/if_id0/id_inst_reg[18]'
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[13]' (FDRE) to 'cpu0/if_id0/id_inst_reg[18]'
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[14]' (FDRE) to 'cpu0/if_id0/id_inst_reg[18]'
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[15]' (FDRE) to 'cpu0/if_id0/id_inst_reg[18]'
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[19]' (FDRE) to 'cpu0/if_id0/id_inst_reg[31]'
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[20]' (FDRE) to 'cpu0/if_id0/id_inst_reg[31]'
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[25]' (FDRE) to 'cpu0/if_id0/id_inst_reg[31]'
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[24]' (FDRE) to 'cpu0/if_id0/id_inst_reg[31]'
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[2]' (FDRE) to 'cpu0/if_id0/id_inst_reg[5]'
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[29]' (FDRE) to 'cpu0/if_id0/id_inst_reg[28]'
-INFO: [Synth 8-3886] merging instance 'cpu0/if_id0/id_inst_reg[30]' (FDRE) to 'cpu0/if_id0/id_inst_reg[31]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/\if_id0/id_inst_reg[31] )
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[14]' (FDR) to 'cpu0/cp00/cause_o_reg[15]'
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[15]' (FDR) to 'cpu0/cp00/cause_o_reg[13]'
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[13]' (FDR) to 'cpu0/cp00/cause_o_reg[12]'
 INFO: [Synth 8-3886] merging instance 'cpu0/cp00/cause_o_reg[12]' (FDR) to 'cpu0/cp00/cause_o_reg[11]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/cp00/\cause_o_reg[11] )
-INFO: [Synth 8-3886] merging instance 'cpu0/id_ex0/ex_inst_reg[15]' (FDRE) to 'cpu0/id_ex0/ex_inst_reg[9]'
-INFO: [Synth 8-3886] merging instance 'cpu0/id_ex0/ex_inst_reg[14]' (FDRE) to 'cpu0/id_ex0/ex_inst_reg[9]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/id0/except_eret_reg)
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/id0/\aluop_o_reg[7] )
-INFO: [Synth 8-3886] merging instance 'cpu0/id0/reg2_addr_o_reg[3]' (LDC) to 'cpu0/id0/reg2_addr_o_reg[4]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/id0/\reg2_addr_o_reg[4] )
-INFO: [Synth 8-3886] merging instance 'cpu0/id_ex0/ex_inst_reg[2]' (FDRE) to 'cpu0/id_ex0/ex_inst_reg[5]'
-INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3886] merging instance 'cpu0/mem0/cp0_cause_reg[14]' (LDC) to 'cpu0/mem0/cp0_cause_reg[11]'
+INFO: [Synth 8-3886] merging instance 'cpu0/mem0/cp0_cause_reg[15]' (LDC) to 'cpu0/mem0/cp0_cause_reg[11]'
+INFO: [Synth 8-3886] merging instance 'cpu0/mem0/cp0_cause_reg[13]' (LDC) to 'cpu0/mem0/cp0_cause_reg[11]'
+INFO: [Synth 8-3886] merging instance 'cpu0/mem0/cp0_cause_reg[12]' (LDC) to 'cpu0/mem0/cp0_cause_reg[11]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/mem0/\cp0_cause_reg[11] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/ctrl0/\new_pc_reg[2] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/mem0/\cp0_cause_reg[10] )
-WARNING: [Synth 8-3332] Sequential element (aluop_o_reg[7]) is unused and will be removed from module id.
-WARNING: [Synth 8-3332] Sequential element (reg2_addr_o_reg[4]) is unused and will be removed from module id.
 WARNING: [Synth 8-3332] Sequential element (instvalid_reg) is unused and will be removed from module id.
-WARNING: [Synth 8-3332] Sequential element (except_eret_reg) is unused and will be removed from module id.
 WARNING: [Synth 8-3332] Sequential element (mulres_reg[63]) is unused and will be removed from module ex.
 WARNING: [Synth 8-3332] Sequential element (mulres_reg[62]) is unused and will be removed from module ex.
 WARNING: [Synth 8-3332] Sequential element (mulres_reg[61]) is unused and will be removed from module ex.
@@ -819,7 +850,7 @@ WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[19]) is unused and wil
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[18]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[17]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[16]) is unused and will be removed from module mem.
-WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[10]) is unused and will be removed from module mem.
+WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[11]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[7]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[6]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[5]) is unused and will be removed from module mem.
@@ -828,123 +859,130 @@ WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[3]) is unused and will
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[2]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[1]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[0]) is unused and will be removed from module mem.
-WARNING: [Synth 8-3332] Sequential element (new_pc_reg[2]) is unused and will be removed from module ctrl.
 WARNING: [Synth 8-3332] Sequential element (data_o_reg[31]) is unused and will be removed from module cp0.
 WARNING: [Synth 8-3332] Sequential element (data_o_reg[30]) is unused and will be removed from module cp0.
 WARNING: [Synth 8-3332] Sequential element (data_o_reg[29]) is unused and will be removed from module cp0.
 WARNING: [Synth 8-3332] Sequential element (data_o_reg[28]) is unused and will be removed from module cp0.
 WARNING: [Synth 8-3332] Sequential element (data_o_reg[27]) is unused and will be removed from module cp0.
 WARNING: [Synth 8-3332] Sequential element (data_o_reg[26]) is unused and will be removed from module cp0.
+WARNING: [Synth 8-3332] Sequential element (data_o_reg[25]) is unused and will be removed from module cp0.
+WARNING: [Synth 8-3332] Sequential element (data_o_reg[24]) is unused and will be removed from module cp0.
+WARNING: [Synth 8-3332] Sequential element (data_o_reg[23]) is unused and will be removed from module cp0.
+WARNING: [Synth 8-3332] Sequential element (data_o_reg[22]) is unused and will be removed from module cp0.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[31]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[30]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[29]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[28]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[27]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[26]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[25]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[24]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[23]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[22]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[21]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[20]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[19]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[18]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[17]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[16]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[15]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[14]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[13]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[12]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[11]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[10]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[9]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[8]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[7]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[6]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[5]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[4]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[3]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[2]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[1]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[0]__0/Q' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
-CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[31]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[30]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[29]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[28]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[27]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[26]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[25]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[24]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[23]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[22]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[21]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[20]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[19]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[18]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[17]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[16]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[15]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[14]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[13]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[12]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[11]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[10]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[9]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[8]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[7]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[6]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[5]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[4]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[3]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[2]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[1]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'cpu0/cp00/data_o_reg[0]__0/Q' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:54]
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 733.961 ; gain = 484.637
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:54 ; elapsed = 00:00:54 . Memory (MB): peak = 755.797 ; gain = 506.098
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
 Distributed RAM: Preliminary Mapping  Report (see note below)
-+--------------+--------------+-----------+----------------------+---------------+
-|Module Name   | RTL Object   | Inference | Size (Depth x Width) | Primitives    | 
-+--------------+--------------+-----------+----------------------+---------------+
-|cpu0/regfile0 | register_reg | Implied   | 32 x 32              | RAM32M x 18   | 
-+--------------+--------------+-----------+----------------------+---------------+
++------------------+-------------------------+-----------+----------------------+-------------------+
+|Module Name       | RTL Object              | Inference | Size (Depth x Width) | Primitives        | 
++------------------+-------------------------+-----------+----------------------+-------------------+
+|cpu0/regfile0     | register_reg            | Implied   | 32 x 32              | RAM32M x 18       | 
+|openmips_min_sopc | data_ram0/data_mem0_reg | Implied   | 4 K x 8              | RAM256X1S x 128   | 
+|openmips_min_sopc | data_ram0/data_mem1_reg | Implied   | 4 K x 8              | RAM256X1S x 128   | 
+|openmips_min_sopc | data_ram0/data_mem2_reg | Implied   | 4 K x 8              | RAM256X1S x 128   | 
+|openmips_min_sopc | data_ram0/data_mem3_reg | Implied   | 4 K x 8              | RAM256X1S x 128   | 
++------------------+-------------------------+-----------+----------------------+-------------------+
 
 Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
 
@@ -972,25 +1010,28 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 778.617 ; gain = 529.293
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 844.684 ; gain = 594.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (cpu0/id0/except_syscall_reg)
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:59 ; elapsed = 00:01:00 . Memory (MB): peak = 937.645 ; gain = 688.320
+Finished Timing Optimization : Time (s): cpu = 00:01:08 ; elapsed = 00:01:08 . Memory (MB): peak = 852.699 ; gain = 603.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
 Distributed RAM: Final Mapping  Report
-+--------------+--------------+-----------+----------------------+---------------+
-|Module Name   | RTL Object   | Inference | Size (Depth x Width) | Primitives    | 
-+--------------+--------------+-----------+----------------------+---------------+
-|cpu0/regfile0 | register_reg | Implied   | 32 x 32              | RAM32M x 18   | 
-+--------------+--------------+-----------+----------------------+---------------+
++------------------+-------------------------+-----------+----------------------+-------------------+
+|Module Name       | RTL Object              | Inference | Size (Depth x Width) | Primitives        | 
++------------------+-------------------------+-----------+----------------------+-------------------+
+|cpu0/regfile0     | register_reg            | Implied   | 32 x 32              | RAM32M x 18       | 
+|openmips_min_sopc | data_ram0/data_mem0_reg | Implied   | 4 K x 8              | RAM256X1S x 128   | 
+|openmips_min_sopc | data_ram0/data_mem1_reg | Implied   | 4 K x 8              | RAM256X1S x 128   | 
+|openmips_min_sopc | data_ram0/data_mem2_reg | Implied   | 4 K x 8              | RAM256X1S x 128   | 
+|openmips_min_sopc | data_ram0/data_mem3_reg | Implied   | 4 K x 8              | RAM256X1S x 128   | 
++------------------+-------------------------+-----------+----------------------+-------------------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP and Shift Register Reporting
@@ -1004,8 +1045,10 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-3886] merging instance 'cpu0/id_ex0/ex_current_inst_addr_reg[1]' (FDRE) to 'cpu0/id_ex0/ex_link_addr_reg[1]'
+INFO: [Synth 8-3886] merging instance 'cpu0/id_ex0/ex_current_inst_addr_reg[0]' (FDRE) to 'cpu0/id_ex0/ex_link_addr_reg[0]'
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:01 ; elapsed = 00:01:01 . Memory (MB): peak = 937.645 ; gain = 688.320
+Finished Technology Mapping : Time (s): cpu = 00:01:10 ; elapsed = 00:01:11 . Memory (MB): peak = 933.859 ; gain = 684.160
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1029,7 +1072,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:02 ; elapsed = 00:01:02 . Memory (MB): peak = 937.645 ; gain = 688.320
+Finished IO Insertion : Time (s): cpu = 00:01:12 ; elapsed = 00:01:12 . Memory (MB): peak = 933.859 ; gain = 684.160
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1042,7 +1085,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:02 ; elapsed = 00:01:02 . Memory (MB): peak = 937.645 ; gain = 688.320
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:12 ; elapsed = 00:01:12 . Memory (MB): peak = 933.859 ; gain = 684.160
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1054,25 +1097,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:02 ; elapsed = 00:01:03 . Memory (MB): peak = 937.645 ; gain = 688.320
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:12 ; elapsed = 00:01:13 . Memory (MB): peak = 933.859 ; gain = 684.160
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:02 ; elapsed = 00:01:03 . Memory (MB): peak = 937.645 ; gain = 688.320
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:12 ; elapsed = 00:01:13 . Memory (MB): peak = 933.859 ; gain = 684.160
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:02 ; elapsed = 00:01:03 . Memory (MB): peak = 937.645 ; gain = 688.320
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:12 ; elapsed = 00:01:13 . Memory (MB): peak = 933.859 ; gain = 684.160
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:02 ; elapsed = 00:01:03 . Memory (MB): peak = 937.645 ; gain = 688.320
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:12 ; elapsed = 00:01:13 . Memory (MB): peak = 933.859 ; gain = 684.160
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1085,69 +1128,75 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+--------+------+
-|      |Cell    |Count |
-+------+--------+------+
-|1     |BUFG    |     6|
-|2     |CARRY4  |   132|
-|3     |DSP48E1 |     4|
-|4     |LUT1    |   276|
-|5     |LUT2    |   174|
-|6     |LUT3    |   130|
-|7     |LUT4    |   258|
-|8     |LUT5    |   360|
-|9     |LUT6    |   667|
-|10    |MUXF7   |    14|
-|11    |RAM32M  |    17|
-|12    |FDRE    |   769|
-|13    |LD      |   202|
-|14    |LDC     |    48|
-|15    |IBUF    |     7|
-|16    |OBUF    |    32|
-+------+--------+------+
++------+----------+------+
+|      |Cell      |Count |
++------+----------+------+
+|1     |BUFG      |     8|
+|2     |CARRY4    |   158|
+|3     |DSP48E1   |     4|
+|4     |LUT1      |   261|
+|5     |LUT2      |   500|
+|6     |LUT3      |   227|
+|7     |LUT4      |   384|
+|8     |LUT5      |   363|
+|9     |LUT6      |  1520|
+|10    |MUXF7     |    72|
+|11    |MUXF8     |    32|
+|12    |RAM256X1S |   512|
+|13    |RAM32M    |    12|
+|14    |FDRE      |  1000|
+|15    |LD        |   206|
+|16    |LDC       |    84|
+|17    |IBUF      |    35|
+|18    |OBUF      |    59|
+|19    |OBUFT     |    27|
++------+----------+------+
 
 Report Instance Areas: 
-+------+-------------+--------+------+
-|      |Instance     |Module  |Cells |
-+------+-------------+--------+------+
-|1     |top          |        |  3096|
-|2     |  cpu0       |cpu     |  3051|
-|3     |    ctrl0    |ctrl    |     2|
-|4     |    div0     |div     |   439|
-|5     |    ex0      |ex      |   536|
-|6     |    ex_mem0  |ex_mem  |   241|
-|7     |    hilo0    |hilo    |    64|
-|8     |    id0      |id      |    92|
-|9     |    id_ex0   |id_ex   |   998|
-|10    |    if_id0   |if_id   |   290|
-|11    |    mem0     |mem     |    65|
-|12    |    mem_wb0  |mem_wb  |   216|
-|13    |    pc_rom0  |pc_rom  |    71|
-|14    |    regfile0 |regfile |    37|
-+------+-------------+--------+------+
++------+-------------+---------+------+
+|      |Instance     |Module   |Cells |
++------+-------------+---------+------+
+|1     |top          |         |  5464|
+|2     |  cpu0       |cpu      |  4535|
+|3     |    ctrl0    |ctrl     |    32|
+|4     |    cp00     |cp0      |   137|
+|5     |    div0     |div      |   439|
+|6     |    ex0      |ex       |   540|
+|7     |    ex_mem0  |ex_mem   |  1077|
+|8     |    hilo0    |hilo     |    64|
+|9     |    id0      |id       |    90|
+|10    |    id_ex0   |id_ex    |  1052|
+|11    |    if_id0   |if_id    |   548|
+|12    |    mem0     |mem      |    68|
+|13    |    mem_wb0  |mem_wb   |   402|
+|14    |    pc_rom0  |pc_rom   |    54|
+|15    |    regfile0 |regfile  |    32|
+|16    |  data_ram0  |data_ram |   768|
++------+-------------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:02 ; elapsed = 00:01:03 . Memory (MB): peak = 937.645 ; gain = 688.320
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:12 ; elapsed = 00:01:13 . Memory (MB): peak = 933.859 ; gain = 684.160
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 96 critical warnings and 588 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:49 ; elapsed = 00:00:57 . Memory (MB): peak = 937.645 ; gain = 347.027
-Synthesis Optimization Complete : Time (s): cpu = 00:01:02 ; elapsed = 00:01:03 . Memory (MB): peak = 937.645 ; gain = 688.320
+Synthesis finished with 0 errors, 96 critical warnings and 481 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:59 ; elapsed = 00:01:07 . Memory (MB): peak = 933.859 ; gain = 340.863
+Synthesis Optimization Complete : Time (s): cpu = 00:01:12 ; elapsed = 00:01:13 . Memory (MB): peak = 933.859 ; gain = 684.160
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 424 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 1115 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 1 inverter(s) to 70 load pin(s).
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 72 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 267 instances were transformed.
-  LD => LDCE: 132 instances
-  LD => LDCE (inverted pins: G): 70 instances
-  LDC => LDCE: 48 instances
-  RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 17 instances
+  A total of 814 instances were transformed.
+  LD => LDCE: 134 instances
+  LD => LDCE (inverted pins: G): 72 instances
+  LDC => LDCE: 84 instances
+  RAM256X1S => RAM256X1S (MUXF7, MUXF7, MUXF8, RAMS64E, RAMS64E, RAMS64E, RAMS64E): 512 instances
+  RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 12 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-218 Infos, 233 Warnings, 126 Critical Warnings and 0 Errors encountered.
+196 Infos, 269 Warnings, 137 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:05 ; elapsed = 00:01:05 . Memory (MB): peak = 937.645 ; gain = 700.238
-INFO: [Common 17-1381] The checkpoint 'E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/openmips_min_sopc.dcp' has been generated.
+synth_design: Time (s): cpu = 00:01:16 ; elapsed = 00:01:17 . Memory (MB): peak = 933.859 ; gain = 695.684
+INFO: [Common 17-1381] The checkpoint 'E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1/openmips_min_sopc.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file openmips_min_sopc_utilization_synth.rpt -pb openmips_min_sopc_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.064 . Memory (MB): peak = 937.645 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Thu Nov 30 14:28:41 2017...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.094 . Memory (MB): peak = 933.859 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Fri Dec  1 19:30:33 2017...

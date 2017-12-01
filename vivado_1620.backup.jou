@@ -1,0 +1,83 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Thu Nov 30 13:11:26 2017
+# Process ID: 1620
+# Current directory: E:/XilinxProjects/YaoPad/YaoPad
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent19000 E:\XilinxProjects\YaoPad\YaoPad\YaoPad.xpr
+# Log file: E:/XilinxProjects/YaoPad/YaoPad/vivado.log
+# Journal file: E:/XilinxProjects/YaoPad/YaoPad\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/XilinxProjects/YaoPad/YaoPad/YaoPad.xpr
+update_compile_order -fileset sources_1
+launch_simulation -mode post-synthesis -type timing
+open_wave_config E:/XilinxProjects/YaoPad/YaoPad/openmips_min_sopc_tb_behav.wcfg
+source openmips_min_sopc_tb.tcl
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+open_run impl_1
+reorder_files -fileset constrs_1 -after E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc
+reset_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+reset_run impl_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+set_property STEPS.OPT_DESIGN.IS_ENABLED true [get_runs impl_1]
+reset_run impl_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+reset_run impl_1
+close_design
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+open_run impl_1
+close_sim
+current_design synth_1
+close_design
+launch_simulation -mode post-synthesis -type timing
+open_wave_config E:/XilinxProjects/YaoPad/YaoPad/openmips_min_sopc_tb_behav.wcfg
+source openmips_min_sopc_tb.tcl
+close_sim
