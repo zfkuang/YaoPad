@@ -1,0 +1,28 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Thu Nov 30 10:28:19 2017
+# Process ID: 24592
+# Current directory: E:/XilinxProjects/YaoPad/YaoPad
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent22396 E:\XilinxProjects\YaoPad\YaoPad\top_timesim.wdb
+# Log file: E:/XilinxProjects/YaoPad/YaoPad/vivado.log
+# Journal file: E:/XilinxProjects/YaoPad/YaoPad\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_wave_database {E:\XilinxProjects\YaoPad\YaoPad\top_timesim.wdb}
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2017.3/data/ip'.
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_project
+open_project E:/XilinxProjects/YaoPad/YaoPad/YaoPad.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2017.3/data/ip'.
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 30 10:31:42 2017...

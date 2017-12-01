@@ -31,8 +31,13 @@ module pc_rom(
     input wire[`WordBus] new_pc,   
 
     output reg[`WordBus] pc,
-    output reg ce
+    output reg ce, 
+    output wire[`WordBus] debugdata
     );
+    
+    always @ (*) begin
+        ce <= ~rst ;
+    end
     
     always @ (posedge clk) begin
         if (ce == `Disable) begin

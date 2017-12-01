@@ -1,0 +1,7 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../YaoPad.srcs/sources_1/new" \
+"openmips_min_sopc_tb_time_synth.v" \
+"../../../../../YaoPad.srcs/sources_1/cpu/openmips_min_sopc_tb.v" \
+
+# Do not sort compile order
+nosort

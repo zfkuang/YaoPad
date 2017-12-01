@@ -242,15 +242,6 @@ module ex(
             endcase
         end
     end
-    always @ (*) begin // arithmetic operations
-        if(((aluop_i==`ALU_ADD) || (aluop_i==`ALU_SUB)) && is_overflow) begin
-            wreg_o <= `Disable ;
-            ovassert <= `Enable ;
-        end else begin
-            wreg_o <= wreg_i ;
-            ovassert <= `Disable ;
-        end
-    end
     // some pre-computed values used in mul operations
 
     wire[`WordBus] mul_op1 ;
@@ -352,10 +343,14 @@ module ex(
             wd_o <= `NopRegAddr ;
             wreg_o <= 0 ;
         end else begin 
-            wd_o <= wd_i ;
+            wd_o <= wd_i ;        
             if(((aluop_i == `ALU_ADD) || (aluop_i == `ALU_SUB)) && is_overflow) begin
                 wreg_o <= 0 ;
-            end else begin wreg_o <= wreg_i ; end 
+                ovassert <= `Enable ;
+            end else begin 
+                wreg_o <= wreg_i ;
+                ovassert <= `Disable ; 
+            end 
             case(alusel_i) 
                 `ALUS_LOGIC: begin
                     wdata_o <= logicres ;

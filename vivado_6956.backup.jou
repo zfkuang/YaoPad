@@ -1,0 +1,46 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Thu Nov 30 12:13:18 2017
+# Process ID: 6956
+# Current directory: E:/XilinxProjects/YaoPad/YaoPad
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1424 E:\XilinxProjects\YaoPad\YaoPad\YaoPad.xpr
+# Log file: E:/XilinxProjects/YaoPad/YaoPad/vivado.log
+# Journal file: E:/XilinxProjects/YaoPad/YaoPad\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/XilinxProjects/YaoPad/YaoPad/YaoPad.xpr
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_simulation
+open_wave_config E:/XilinxProjects/YaoPad/YaoPad/openmips_min_sopc_tb_behav.wcfg
+source openmips_min_sopc_tb.tcl
+restart
+run all
+launch_simulation -mode post-synthesis -type timing
+launch_simulation -mode post-implementation -type timing
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+restart
+run all
+run 1000 ns
+restart
+run all
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+save_wave_config {E:/XilinxProjects/YaoPad/YaoPad/openmips_min_sopc_tb_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config E:/XilinxProjects/YaoPad/YaoPad/openmips_min_sopc_tb_behav.wcfg
+source openmips_min_sopc_tb.tcl
+reset_simulation -simset sim_1 -mode post-synthesis -type timing
+current_design synth_1
+close_design
+launch_simulation -mode post-synthesis -type timing
+close_sim

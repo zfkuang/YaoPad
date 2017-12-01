@@ -49,7 +49,10 @@ module cpu(
     output wire ram_ce_o,
 
     input wire[5:0] int_i,
-    output wire timer_int_o 
+    output wire timer_int_o,
+    
+    input wire[`RegAddrBus] debug,
+    output wire[`WordBus] debugdata
     );
     
     wire[`WordBus] pc ;
@@ -255,7 +258,9 @@ module cpu(
         
         .re2(reg2_read),
         .raddr2(reg2_addr),
-        .rdata2(reg2_data)               
+        .rdata2(reg2_data),
+        .debug(debug), 
+        .debugdata(debugdata)
     ) ;
     
     id_ex id_ex0(

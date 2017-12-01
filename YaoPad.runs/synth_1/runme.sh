@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log cpu.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source cpu.tcl
+EAStep vivado -log openmips_min_sopc.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source openmips_min_sopc.tcl

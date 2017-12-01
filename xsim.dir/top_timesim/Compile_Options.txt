@@ -1,0 +1,1 @@
+-debug "typical" -maxdelay -L "secureip" -L "simprims_ver" -transport_int_delays -pulse_r "0" -pulse_int_r "0" "openmips_min_sopc_tb" "glbl" -s "top_timesim" 

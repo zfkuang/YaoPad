@@ -36,13 +36,13 @@
 
 module openmips_min_sopc_tb;
 
-    reg     CLOCK_50;
+    reg     clk;
     reg     rst;
 
 
     initial begin
-        CLOCK_50 = 1'b0;
-        forever #10 CLOCK_50 = ~CLOCK_50;
+        clk = 1'b0;
+        forever #10 clk = ~clk;
     end
 
     initial begin
@@ -52,8 +52,9 @@ module openmips_min_sopc_tb;
     end
 
     openmips_min_sopc openmips_min_sopc0(
-        .clk(CLOCK_50),
-        .rst(rst)	
+        .clk(clk),
+        .rst(rst),
+        .debug(5'b00001)
     );
 
     initial begin
@@ -82,7 +83,7 @@ module openmips_min_sopc_tb;
             openmips_min_sopc0.cpu0.ex0.wreg_o,
         );
         */
-        $monitor("%d\nregs[0]\t=\t%h\nregs[1]\t=\t%h\nregs[2]\t=\t%h\nregs[3]\t=\t%h\nregs[4]\t=\t%h\ncompare\t=\t%h\nstatus\t=\t%h\ncount\t=\t%h\nhi\t=\t%h\nlo\t=\t%h\npc\t=\t%h\nregs[31]\t=\t%h\n",
+        /*$monitor("%d\nregs[0]\t=\t%h\nregs[1]\t=\t%h\nregs[2]\t=\t%h\nregs[3]\t=\t%h\nregs[4]\t=\t%h\ncompare\t=\t%h\nstatus\t=\t%h\ncount\t=\t%h\nhi\t=\t%h\nlo\t=\t%h\npc\t=\t%h\nregs[31]\t=\t%h\n",
             $stime, 
             openmips_min_sopc0.cpu0.regfile0.register[0],
             openmips_min_sopc0.cpu0.regfile0.register[1],
@@ -97,7 +98,7 @@ module openmips_min_sopc_tb;
             openmips_min_sopc0.cpu0.pc_rom0.pc,
             openmips_min_sopc0.cpu0.regfile0.register[31],
         );
-        $dumpfile("openmips_min_sopc_tb.vcd");
+        $dumpfile("openmips_min_sopc_tb.vcd");*/
         $dumpvars(0, openmips_min_sopc0);
         #4000;
         $finish;

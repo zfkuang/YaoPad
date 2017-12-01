@@ -43,7 +43,9 @@
 module openmips_min_sopc(
 
 	input	wire										clk,
-	input wire										rst
+	input wire										rst,
+	input wire[`RegAddrBus] debug,
+	output wire[`WordBus] led
 	
 );
 
@@ -60,7 +62,7 @@ module openmips_min_sopc(
   wire mem_ce_i;  
   wire timer_int;
   wire[5:0] int = {5'b00000, timer_int};
-
+  
  cpu cpu0(
 		.clk(clk),
 		.rst(rst),
@@ -77,8 +79,9 @@ module openmips_min_sopc(
     	.ram_ce_o(mem_ce_i),
 
     	.timer_int_o(timer_int),
-    	.int_i(int) 
-
+    	.int_i(int),
+        .debugdata(led),
+        .debug(debug)
 	);
 	
 	inst_rom inst_rom0(
