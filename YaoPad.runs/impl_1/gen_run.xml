@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a100tfgg676-2L" LaunchTime="1512127750">
+<GenRun Id="impl_1" LaunchPart="xc7a100tfgg676-2L" LaunchTime="1512201983">
   <File Type="PWROPT-DCP" Name="openmips_min_sopc_pwropt.dcp"/>
   <File Type="ROUTE-PWR" Name="openmips_min_sopc_power_routed.rpt"/>
   <File Type="PA-TCL" Name="openmips_min_sopc.tcl"/>
@@ -164,14 +164,14 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/cpu/data_ram.v">
+    <File Path="$PSRCDIR/sources_1/cpu/inst_rom.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/cpu/inst_rom.v">
+    <File Path="$PSRCDIR/sources_1/cpu/data_ram.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>

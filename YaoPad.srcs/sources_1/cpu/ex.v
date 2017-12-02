@@ -275,6 +275,7 @@ module ex(
             stallreq = `Zero ;
         end else begin 
             div_start_o <= 0 ;
+            stallreq <= 0;
             case(aluop_i)
                 `ALU_MTHI: begin
                     whilo_o <= 1 ;
@@ -294,7 +295,7 @@ module ex(
                     div_opdata1_o <= reg1_i ;
                     div_opdata2_o <= reg2_i ;
                     signed_div_o <= (aluop_i == `ALU_DIV) ;
-                    stallreq = (~div_ready_i) ;
+                    stallreq <= (~div_ready_i) ;
                     hi_o <= div_result_i[63:32] ;
                     lo_o <= div_result_i[31:0] ;
                     whilo_o <= 1 ;

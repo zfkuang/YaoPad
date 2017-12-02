@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date         : Fri Dec  1 19:32:03 2017
+| Date         : Sat Dec  2 16:09:16 2017
 | Host         : PC201407301139 running 64-bit major release  (build 9200)
 | Command      : report_drc -file openmips_min_sopc_drc_routed.rpt -pb openmips_min_sopc_drc_routed.pb -rpx openmips_min_sopc_drc_routed.rpx
 | Design       : openmips_min_sopc
@@ -24,14 +24,14 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 56
+             Violations found: 55
 +----------+----------+---------------------------------+------------+
 | Rule     | Severity | Description                     | Violations |
 +----------+----------+---------------------------------+------------+
 | DPIP-1   | Warning  | Input pipelining                | 8          |
 | DPOP-1   | Warning  | PREG Output pipelining          | 4          |
 | DPOP-2   | Warning  | MREG Output pipelining          | 4          |
-| PDRC-153 | Warning  | Gated clock check               | 6          |
+| PDRC-153 | Warning  | Gated clock check               | 5          |
 | PLCK-12  | Warning  | Clock Placer Checks             | 2          |
 | RPBF-3   | Warning  | IO port buffering is incomplete | 32         |
 +----------+----------+---------------------------------+------------+
@@ -125,27 +125,22 @@ Related violations: <none>
 
 PDRC-153#2 Warning
 Gated clock check  
-Net cpu0/id_ex0/ex_excepttype_reg[8]_0 is a gated clock net sourced by a combinational pin cpu0/id_ex0/stallreq_reg_i_2/O, cell cpu0/id_ex0/stallreq_reg_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net cpu0/id_ex0/mem_wdata_reg[26][0] is a gated clock net sourced by a combinational pin cpu0/id_ex0/cp0_reg_read_addr_o_reg[4]_i_1/O, cell cpu0/id_ex0/cp0_reg_read_addr_o_reg[4]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#3 Warning
 Gated clock check  
-Net cpu0/id_ex0/mem_wdata_reg[23][0] is a gated clock net sourced by a combinational pin cpu0/id_ex0/cp0_reg_read_addr_o_reg[4]_i_1/O, cell cpu0/id_ex0/cp0_reg_read_addr_o_reg[4]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net cpu0/if_id0/ex_aluop_reg[0][0] is a gated clock net sourced by a combinational pin cpu0/if_id0/aluop_o_reg[7]_i_2/O, cell cpu0/if_id0/aluop_o_reg[7]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#4 Warning
 Gated clock check  
-Net cpu0/if_id0/ex_aluop_reg[0][0] is a gated clock net sourced by a combinational pin cpu0/if_id0/aluop_o_reg[7]_i_2/O, cell cpu0/if_id0/aluop_o_reg[7]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net cpu0/if_id0/id_inst_reg[0]_3[0] is a gated clock net sourced by a combinational pin cpu0/if_id0/reg2_addr_o_reg[4]_i_2/O, cell cpu0/if_id0/reg2_addr_o_reg[4]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#5 Warning
 Gated clock check  
-Net cpu0/if_id0/id_inst_reg[0]_0[0] is a gated clock net sourced by a combinational pin cpu0/if_id0/reg2_addr_o_reg[4]_i_2/O, cell cpu0/if_id0/reg2_addr_o_reg[4]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#6 Warning
-Gated clock check  
-Net cpu0/mem_wb0/mem_excepttype_reg[8][0] is a gated clock net sourced by a combinational pin cpu0/mem_wb0/cp0_cause_reg[10]_i_1/O, cell cpu0/mem_wb0/cp0_cause_reg[10]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net cpu0/mem_wb0/mem_excepttype_reg[8]_0[0] is a gated clock net sourced by a combinational pin cpu0/mem_wb0/cp0_cause_reg[10]_i_1/O, cell cpu0/mem_wb0/cp0_cause_reg[10]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PLCK-12#1 Warning
@@ -155,7 +150,7 @@ Resolution: Poor placement of an IO pin and a BUFG has resulted in the router us
  This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
 
 	click_IBUF_inst (IBUF.O) is locked to H19
-	click_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y0
+	click_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y1
 
 Related violations: <none>
 
@@ -166,7 +161,7 @@ Resolution: Poor placement of an IO pin and a BUFG has resulted in the router us
  This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
 
 	rst_IBUF_inst (IBUF.O) is locked to F22
-	rst_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y1
+	rst_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y2
 
 Related violations: <none>
 

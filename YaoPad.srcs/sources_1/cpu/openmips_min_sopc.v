@@ -85,17 +85,19 @@ module openmips_min_sopc(
  assign base_ram_oe_n =  1'b0;
  assign base_ram_we_n = 1'b1;
  assign base_ram_be_n = 4'b0000;
-  assign base_ram_data = (base_ram_oe_n==1'b0) ? 32'bz : 32'b0;
+ assign base_ram_data = (base_ram_oe_n==1'b0) ? 32'bz : 32'b0;
  
  reg[31:0] inst_get;
  
-always @(posedge click)
+always @(*)
     if (rom_ce)
         inst_get <= base_ram_data;
  
-assign led[31:16] = base_ram_addr[15:0];
-assign led[15:0] = inst_get[15:0];
-
+//assign led[31:16] = base_ram_addr[15:0];
+//assign led[15:8] = inst_get[7:0];
+ wire[31:0] debugdata;
+ assign led[31:0] = debugdata[31:0];
+ //assign led[31:24] = inst_get[7:0];
  cpu cpu0(
 		.clk(click),
 		.rst(rst),
@@ -112,9 +114,9 @@ assign led[15:0] = inst_get[15:0];
     	.ram_ce_o(mem_ce_i),
 
     	.timer_int_o(timer_int),
-    	.int_i(int)
-        //.debugdata(led),
-        //.debug(debug)
+    	.int_i(int),
+        .debugdata(debugdata),
+        .debug(debug)
 	);
 	/*
 	
@@ -124,6 +126,22 @@ assign led[15:0] = inst_get[15:0];
 		.ce(rom_ce)	
 	);
     */
+    //real mem
+    reg[31:0] data_get;
+    
+   always @(*)
+       if (ext_ram_we_n)
+           data_get <= ext_ram_data;
+    assign ext_ram_data = (mem_we_i == 1'b1) ? mem_data_i : 32'bz;
+    assign ext_ram_addr = mem_addr_i[21:2];
+    assign ext_ram_be_n = (~mem_sel_i);
+    assign ext_ram_ce_n = 1'b0;
+    assign ext_ram_oe_n = mem_we_i;
+    assign ext_ram_we_n = (~mem_we_i);
+    assign mem_data_o = data_get;
+    
+   /*
+   // fake mem
 	data_ram data_ram0(
 		.clk(clk),
 		.we(mem_we_i),
@@ -133,4 +151,5 @@ assign led[15:0] = inst_get[15:0];
 		.data_o(mem_data_o),
 		.ce(mem_ce_i)		
 	);
+	*/
 endmodule

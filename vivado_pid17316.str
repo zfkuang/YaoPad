@@ -1,0 +1,270 @@
+/*
+
+Xilinx Vivado v2017.3 (64-bit) [Major: 2017, Minor: 3]
+SW Build: 2018833 on Wed Oct  4 19:58:22 MDT 2017
+IP Build: 2016188 on Wed Oct  4 21:52:56 MDT 2017
+
+Process ID: 17316
+License: Customer
+
+Current time: 	Sun Dec 03 01:06:27 CST 2017
+Time zone: 	China Standard Time (Asia/Shanghai)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 8
+
+Screen size: 1920x1080
+Screen resolution (DPI): 96
+Available screens: 1
+Available disk space: 2 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_112 64-bit
+Java home: 	D:/vivadodo/Vivado/2017.3/tps/win64/jre
+JVM executable location: 	D:/vivadodo/Vivado/2017.3/tps/win64/jre/bin/java.exe
+
+User name: 	Administrator
+User home directory: C:/Users/Administrator
+User working directory: E:/LLX/5/jy/pro/test/YaoPad
+User country: 	CN
+User language: 	zh
+User locale: 	zh_CN
+
+RDI_BASEROOT: D:/vivadodo/Vivado
+HDI_APPROOT: D:/vivadodo/Vivado/2017.3
+RDI_DATADIR: D:/vivadodo/Vivado/2017.3/data
+RDI_BINDIR: D:/vivadodo/Vivado/2017.3/bin
+
+User preferences location: C:/Users/Administrator/AppData/Roaming/Xilinx/Vivado
+Vivado preferences directory: C:/Users/Administrator/AppData/Roaming/Xilinx/Vivado/2017.3/vivado.xml
+Vivado layouts directory: C:/Users/Administrator/AppData/Roaming/Xilinx/Vivado/2017.3/layouts
+PlanAhead jar file location: 	D:/vivadodo/Vivado/2017.3/lib/classes/planAhead.jar
+Vivado log file location: 	E:/LLX/5/jy/pro/test/YaoPad/vivado.log
+Vivado journal file location: 	E:/LLX/5/jy/pro/test/YaoPad/vivado.jou
+Engine tmp dir: 	E:/LLX/5/jy/pro/test/YaoPad/.Xil/Vivado-17316-PC201407301139
+
+GUI allocated memory:	106 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 503 MB
+
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// [GUI Memory]: 43 MB (+42471kb) [00:00:22]
+// [Engine Memory]: 466 MB (+336964kb) [00:00:22]
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// Opening Vivado Project: E:\LLX\5\jy\pro\test\YaoPad\YaoPad.xpr. Version: Vivado v2017.3 
+// bs (cl):  Open Project : addNotify
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_project E:/LLX/5/jy/pro/test/YaoPad/YaoPad.xpr 
+// [GUI Memory]: 48 MB (+3389kb) [00:00:25]
+// [Engine Memory]: 503 MB (+14025kb) [00:00:25]
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project E:/LLX/5/jy/pro/test/YaoPad/YaoPad.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// HMemoryUtils.trashcanNow. Engine heap size: 503 MB. GUI used memory: 35 MB. Current time: 12/3/17 1:06:30 AM CST
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 59 MB (+8653kb) [00:00:41]
+// [Engine Memory]: 533 MB (+5527kb) [00:00:41]
+// [Engine Memory]: 570 MB (+10760kb) [00:00:44]
+// [GUI Memory]: 62 MB (+75kb) [00:00:45]
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/vivadodo/Vivado/2017.3/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 577 MB. GUI used memory: 43 MB. Current time: 12/3/17 1:06:48 AM CST
+// Project name: YaoPad; location: E:/LLX/5/jy/pro/test/YaoPad; part: xc7a100tfgg676-2L
+// [GUI Memory]: 69 MB (+3944kb) [00:00:47]
+// Tcl Message: open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:22 . Memory (MB): peak = 735.293 ; gain = 55.688 
+// [Engine Memory]: 598 MB (+18kb) [00:00:47]
+dismissDialog("Open Project"); // bs (cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Tcl Message: update_compile_order -fileset sources_1 
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog]", 1); // B (D, cl)
+// PAPropertyPanels.initPanels (mem.v) elapsed time: 0.2s
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, mem.v]", 10, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, mem.v]", 10, false, false, false, false, false, true); // B (D, cl) - Double Click
+// [GUI Memory]: 75 MB (+2498kb) [00:00:58]
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, mem.v]", 10, false); // B (D, cl)
+selectCodeEditor("mem.v", 492, 129); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 626 MB. GUI used memory: 45 MB. Current time: 12/3/17 1:07:05 AM CST
+// Elapsed time: 17 seconds
+selectCodeEditor("mem.v", 17, 138); // cd (w, cl)
+selectCodeEditor("mem.v", 131, 314); // cd (w, cl)
+selectCodeEditor("mem.v", 100, 311); // cd (w, cl)
+selectCodeEditor("mem.v", 100, 311, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 87, 313); // cd (w, cl)
+selectCodeEditor("mem.v", 87, 313, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 85, 335); // cd (w, cl)
+selectCodeEditor("mem.v", 85, 335, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 98, 344); // cd (w, cl)
+selectCodeEditor("mem.v", 98, 343, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 94, 370); // cd (w, cl)
+selectCodeEditor("mem.v", 94, 370, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 94, 251); // cd (w, cl)
+selectCodeEditor("mem.v", 94, 251, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 106, 282); // cd (w, cl)
+selectCodeEditor("mem.v", 106, 282, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 109, 301); // cd (w, cl)
+selectCodeEditor("mem.v", 109, 301, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 109, 332); // cd (w, cl)
+selectCodeEditor("mem.v", 109, 332, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 104, 310); // cd (w, cl)
+selectCodeEditor("mem.v", 104, 310, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 95, 342); // cd (w, cl)
+selectCodeEditor("mem.v", 95, 342, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 90, 329); // cd (w, cl)
+selectCodeEditor("mem.v", 90, 329, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 110, 371); // cd (w, cl)
+selectCodeEditor("mem.v", 110, 371, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 113, 386); // cd (w, cl)
+selectCodeEditor("mem.v", 113, 386, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 120, 366); // cd (w, cl)
+// [GUI Memory]: 82 MB (+3936kb) [00:01:38]
+// Elapsed time: 11 seconds
+selectCodeEditor("mem.v", 118, 248); // cd (w, cl)
+selectCodeEditor("mem.v", 150, 207); // cd (w, cl)
+selectCodeEditor("mem.v", 147, 224); // cd (w, cl)
+selectCodeEditor("mem.v", 147, 224, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 147, 240); // cd (w, cl)
+selectCodeEditor("mem.v", 143, 206); // cd (w, cl)
+selectCodeEditor("mem.v", 143, 206, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 149, 219); // cd (w, cl)
+selectCodeEditor("mem.v", 149, 219, false, false, false, false, true); // cd (w, cl) - Double Click
+// Elapsed time: 12 seconds
+selectCodeEditor("mem.v", 232, 221); // cd (w, cl)
+selectCodeEditor("mem.v", 232, 221, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 242, 224); // cd (w, cl)
+selectCodeEditor("mem.v", 235, 224); // cd (w, cl)
+selectCodeEditor("mem.v", 235, 224, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 219, 224); // cd (w, cl)
+selectCodeEditor("mem.v", 237, 222); // cd (w, cl)
+selectCodeEditor("mem.v", 237, 222, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 228, 224); // cd (w, cl)
+selectCodeEditor("mem.v", 228, 224, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 205, 224); // cd (w, cl)
+selectCodeEditor("mem.v", 205, 224, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 211, 223); // cd (w, cl)
+selectCodeEditor("mem.v", 211, 223, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 220, 233); // cd (w, cl)
+selectCodeEditor("mem.v", 217, 217); // cd (w, cl)
+selectCodeEditor("mem.v", 209, 218); // cd (w, cl)
+selectCodeEditor("mem.v", 231, 229); // cd (w, cl)
+selectCodeEditor("mem.v", 214, 217); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("mem.v", 127, 241); // cd (w, cl)
+selectCodeEditor("mem.v", 127, 241, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 222, 220); // cd (w, cl)
+selectCodeEditor("mem.v", 222, 220, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 236, 224); // cd (w, cl)
+selectCodeEditor("mem.v", 236, 224, false, false, false, false, true); // cd (w, cl) - Double Click
+// Elapsed time: 28 seconds
+selectCodeEditor("mem.v", 139, 256); // cd (w, cl)
+selectCodeEditor("mem.v", 293, 302); // cd (w, cl)
+selectCodeEditor("mem.v", 264, 279); // cd (w, cl)
+selectCodeEditor("mem.v", 190, 257); // cd (w, cl)
+selectCodeEditor("mem.v", 161, 256); // cd (w, cl)
+selectCodeEditor("mem.v", 161, 256, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 151, 325); // cd (w, cl)
+selectCodeEditor("mem.v", 162, 312); // cd (w, cl)
+// [GUI Memory]: 87 MB (+377kb) [00:03:24]
+selectCodeEditor("mem.v", 264, 330); // cd (w, cl)
+selectCodeEditor("mem.v", 291, 328); // cd (w, cl)
+selectCodeEditor("mem.v", 235, 239); // cd (w, cl)
+selectCodeEditor("mem.v", 269, 202); // cd (w, cl)
+selectCodeEditor("mem.v", 269, 201, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 223, 209); // cd (w, cl)
+selectCodeEditor("mem.v", 223, 209, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 177, 196); // cd (w, cl)
+selectCodeEditor("mem.v", 177, 196, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 219, 203); // cd (w, cl)
+selectCodeEditor("mem.v", 219, 203, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 242, 203); // cd (w, cl)
+selectCodeEditor("mem.v", 265, 230); // cd (w, cl)
+selectCodeEditor("mem.v", 205, 332); // cd (w, cl)
+selectCodeEditor("mem.v", 156, 329); // cd (w, cl)
+selectCodeEditor("mem.v", 156, 329, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 119, 348); // cd (w, cl)
+selectCodeEditor("mem.v", 119, 348, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 104, 182); // cd (w, cl)
+selectCodeEditor("mem.v", 104, 182, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 190, 141); // cd (w, cl)
+selectCodeEditor("mem.v", 190, 141, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 241, 145); // cd (w, cl)
+selectCodeEditor("mem.v", 241, 145, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("mem.v", 224, 188); // cd (w, cl)
+// Elapsed time: 21 seconds
+selectCodeEditor("mem.v", 137, 258); // cd (w, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, ex.v]", 7, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, ex.v]", 7, false, false, false, false, false, true); // B (D, cl) - Double Click
+// Elapsed time: 60 seconds
+selectCodeEditor("ex.v", 96, 254); // cd (w, cl)
+selectCodeEditor("ex.v", 96, 254, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("ex.v", 178, 276); // cd (w, cl)
+selectCodeEditor("ex.v", 178, 276, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("ex.v", 143, 258); // cd (w, cl)
+selectCodeEditor("ex.v", 143, 258, false, false, false, false, true); // cd (w, cl) - Double Click
+// [GUI Memory]: 93 MB (+1597kb) [00:05:48]
+// Elapsed time: 19 seconds
+selectCodeEditor("ex.v", 195, 379); // cd (w, cl)
+selectCodeEditor("ex.v", 195, 379, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("ex.v", 186, 400); // cd (w, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, id.v]", 6, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, id.v]", 6, false, false, false, false, false, true); // B (D, cl) - Double Click
+// [GUI Memory]: 97 MB (+0kb) [00:05:52]
+// [Engine Memory]: 633 MB (+4403kb) [00:05:52]
+// [Engine Memory]: 682 MB (+18379kb) [00:05:57]
+// HMemoryUtils.trashcanNow. Engine heap size: 682 MB. GUI used memory: 73 MB. Current time: 12/3/17 1:11:59 AM CST
+// Elapsed time: 17 seconds
+selectCodeEditor("id.v", 143, 303); // cd (w, cl)
+selectCodeEditor("id.v", 143, 303, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 143, 315); // cd (w, cl)
+selectCodeEditor("id.v", 143, 315, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 123, 336); // cd (w, cl)
+selectCodeEditor("id.v", 306, 340); // cd (w, cl)
+selectCodeEditor("id.v", 187, 315); // cd (w, cl)
+selectCodeEditor("id.v", 205, 336); // cd (w, cl)
+selectCodeEditor("id.v", 240, 338); // cd (w, cl)
+selectCodeEditor("id.v", 240, 338, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 265, 331); // cd (w, cl)
+selectCodeEditor("id.v", 265, 331, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 235, 353); // cd (w, cl)
+selectCodeEditor("id.v", 235, 353, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 226, 366); // cd (w, cl)
+selectCodeEditor("id.v", 226, 366, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 232, 343); // cd (w, cl)
+selectCodeEditor("id.v", 232, 343, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 254, 349); // cd (w, cl)
+selectCodeEditor("id.v", 287, 374); // cd (w, cl)
+selectCodeEditor("id.v", 214, 386); // cd (w, cl)
+selectCodeEditor("id.v", 214, 386, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 269, 391); // cd (w, cl)
+selectCodeEditor("id.v", 269, 391, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 243, 396); // cd (w, cl)
+selectCodeEditor("id.v", 243, 396, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 247, 415); // cd (w, cl)
+selectCodeEditor("id.v", 247, 415, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 224, 383); // cd (w, cl)
+selectCodeEditor("id.v", 224, 383, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 222, 364); // cd (w, cl)
+selectCodeEditor("id.v", 222, 364, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 231, 341); // cd (w, cl)
+selectCodeEditor("id.v", 231, 341, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 233, 353); // cd (w, cl)
+selectCodeEditor("id.v", 233, 353, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 281, 357); // cd (w, cl)
+selectCodeEditor("id.v", 281, 357, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("id.v", 122, 290); // cd (w, cl)
+selectCodeEditor("id.v", 203, 346); // cd (w, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, ex.v]", 7, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, ex.v]", 7, false, false, false, false, false, true); // B (D, cl) - Double Click
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, id_ex.v]", 8, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, id_ex.v]", 8, false, false, false, false, false, true); // B (D, cl) - Double Click

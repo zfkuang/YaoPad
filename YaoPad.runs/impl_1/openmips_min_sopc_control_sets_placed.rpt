@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date         : Fri Dec  1 19:31:24 2017
+| Date         : Sat Dec  2 16:08:41 2017
 | Host         : PC201407301139 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -file openmips_min_sopc_control_sets_placed.rpt
 | Design       : openmips_min_sopc
@@ -21,7 +21,7 @@ Table of Contents
 +-------------------------------+-------+
 |             Status            | Count |
 +-------------------------------+-------+
-| Number of unique control sets |    95 |
+| Number of unique control sets |    30 |
 +-------------------------------+-------+
 
 
@@ -31,12 +31,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             206 |           89 |
+| No           | No                    | No                     |             270 |          144 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             433 |          221 |
-| Yes          | No                    | No                     |             182 |           58 |
+| No           | Yes                   | No                     |             265 |          139 |
+| Yes          | No                    | No                     |             134 |           57 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             485 |          203 |
+| Yes          | Yes                   | No                     |             660 |          262 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 

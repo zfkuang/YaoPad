@@ -3168,3 +3168,1276 @@ selectCodeEditor("thinpad_top.xdc", 438, 364); // cd (w, cl)
 selectCodeEditor("thinpad_top.xdc", 323, 333); // cd (w, cl)
 selectCodeEditor("thinpad_top.xdc", 396, 350); // cd (w, cl)
 // HMemoryUtils.trashcanNow. Engine heap size: 1,560 MB. GUI used memory: 138 MB. Current time: 12/1/17 7:42:19 PM CST
+// Elapsed time: 1098 seconds
+selectCodeEditor("thinpad_top.xdc", 272, 279); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "openmips_min_sopc.v", 2); // k (j, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,560 MB. GUI used memory: 135 MB. Current time: 12/1/17 7:52:38 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,560 MB. GUI used memory: 132 MB. Current time: 12/1/17 7:52:43 PM CST
+// Elapsed time: 23 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation]", 5); // u (O, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,560 MB. GUI used memory: 143 MB. Current time: 12/1/17 7:53:02 PM CST
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// am (cl): Save Project: addNotify
+// Elapsed time: 16 seconds
+selectButton(PAResourceQtoS.SaveProjectUtils_SAVE, "Save"); // a (am)
+// bs (cl):  Save Constraints : addNotify
+// TclEventType: DG_GRAPH_STALE
+dismissDialog("Save Project"); // am (cl)
+// TclEventType: FILE_SET_CHANGE
+// f (cl): Launch Runs: addNotify
+selectButton("PAResourceQtoS.RunBitgen_BITSTREAM_GENERATION_HAS_ALREADY_COMPLETED_OK", "OK"); // JButton (A, G)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// 'ct' command handler elapsed time: 8 seconds
+// TclEventType: RUN_MODIFY
+dismissDialog("Launch Runs"); // f (cl)
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: reset_run impl_1 -prev_step  
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 5 
+// Tcl Message: [Fri Dec  1 19:53:13 2017] Launched impl_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: RUN_COMPLETED
+// Elapsed time: 76 seconds
+selectCodeEditor("openmips_min_sopc.v", 183, 350); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,560 MB. GUI used memory: 146 MB. Current time: 12/1/17 7:54:39 PM CST
+// Elapsed time: 10 seconds
+selectCodeEditor("openmips_min_sopc.v", 183, 349, false, false, false, false, true); // cd (w, cl) - Double Click
+selectButton(PAResourceOtoP.ProjectTab_RELOAD, "Reload"); // h (cZ, cl)
+// bs (cl):  Reloading : addNotify
+// Tcl Message: refresh_design 
+// TclEventType: DESIGN_REFRESH
+// HMemoryUtils.trashcanNow. Engine heap size: 1,560 MB. GUI used memory: 107 MB. Current time: 12/1/17 7:54:55 PM CST
+// TclEventType: TIMING_RESULTS_UNLOAD
+// Engine heap size: 1,560 MB. GUI used memory: 109 MB. Current time: 12/1/17 7:54:55 PM CST
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: POWER_CNS_STALE
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// [Engine Memory]: 1,587 MB (+20075kb) [07:15:47]
+// HMemoryUtils.trashcanNow. Engine heap size: 1,595 MB. GUI used memory: 62 MB. Current time: 12/1/17 7:55:19 PM CST
+// TclEventType: DESIGN_REFRESH
+// HMemoryUtils.trashcanNow. Engine heap size: 1,605 MB. GUI used memory: 62 MB. Current time: 12/1/17 7:55:24 PM CST
+// TclEventType: HFED_INIT_ROUTE_STORAGE_COMPLETED
+// RouteApi::loadEngineXgd elapsed time: 2.9s
+// Device: addNotify
+// DeviceView Instantiated
+// Tcl Message: INFO: [Netlist 29-17] Analyzing 825 Unisim elements for replacement INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds INFO: [Project 1-479] Netlist was created with Vivado 2017.3 INFO: [Project 1-570] Preparing netlist for logic optimization 
+// Tcl Message: Parsing XDC File [E:/LLX/5/jy/pro/test/YaoPad/.Xil/Vivado-8688-PC201407301139/dcp3/openmips_min_sopc.xdc] Finished Parsing XDC File [E:/LLX/5/jy/pro/test/YaoPad/.Xil/Vivado-8688-PC201407301139/dcp3/openmips_min_sopc.xdc] Reading XDEF placement. Reading placer database... Reading XDEF routing. 
+// Tcl Message: Read XDEF File: Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 2197.816 ; gain = 0.000 
+// Tcl Message: Restored from archive | CPU: 2.000000 secs | Memory: 0.000000 MB | 
+// Tcl Message: Finished XDEF File Restore: Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 2197.816 ; gain = 0.000 
+// Tcl Message: refresh_design: Time (s): cpu = 00:00:18 ; elapsed = 00:00:43 . Memory (MB): peak = 2197.816 ; gain = 13.066 
+// TclEventType: DRC_ADDED
+// TclEventType: METHODOLOGY_ADDED
+// [Engine Memory]: 1,671 MB (+5042kb) [07:15:59]
+// RouteApi: Init Delay Mediator Swing Worker Finished
+// TclEventType: POWER_UPDATED
+// TclEventType: TIMING_SUMMARY_UPDATED
+// Elapsed time: 51 seconds
+selectButton(PAResourceOtoP.ProjectTab_RELOAD, "Reload"); // h
+dismissDialog("Reloading"); // bs (cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// x (cl): Synthesis is Out-of-date: addNotify
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (x)
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("Synthesis is Out-of-date"); // x (cl)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cl): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+dismissDialog("Launch Runs"); // f (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 5 
+// Tcl Message: [Fri Dec  1 19:55:45 2017] Launched synth_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1/runme.log [Fri Dec  1 19:55:45 2017] Launched impl_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/impl_1/runme.log 
+// bs (cl):  Generate Bitstream : addNotify
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 114 MB. Current time: 12/1/17 8:25:25 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/1/17 8:55:25 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/1/17 9:25:25 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 110 MB. Current time: 12/1/17 9:55:25 PM CST
+// Elapsed time: 7672 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, ex.v]", 7, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, ex.v]", 7, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, ex.v]", 7, false, false, false, false, false, true); // B (D, cl) - Double Click
+selectCodeEditor("ex.v", 398, 182); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("ex.v", 175, 369); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 10 seconds
+selectCodeEditor("ex.v", 111, 432); // cd (w, cl)
+selectCodeEditor("ex.v", 144, 439); // cd (w, cl)
+selectCodeEditor("ex.v", 141, 431); // cd (w, cl)
+selectCodeEditor("ex.v", 141, 431, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "ex.v", 'c'); // cd (w, cl)
+typeControlKey((HResource) null, "ex.v", 'c'); // cd (w, cl)
+selectCodeEditor("ex.v", 220, 124); // cd (w, cl)
+selectCodeEditor("ex.v", 194, 78); // cd (w, cl)
+typeControlKey((HResource) null, "ex.v", 'v'); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 10 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager]", 0); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// x (cl): Synthesis is Out-of-date: addNotify
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (x)
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("Synthesis is Out-of-date"); // x (cl)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cl): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// 'ct' command handler elapsed time: 4 seconds
+dismissDialog("Launch Runs"); // f (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 5 
+// Tcl Message: [Fri Dec  1 22:04:33 2017] Launched synth_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1/runme.log [Fri Dec  1 22:04:33 2017] Launched impl_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// Elapsed time: 459 seconds
+selectCodeEditor("ex.v", 293, 175); // cd (w, cl)
+selectCodeEditor("ex.v", 293, 175, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("ex.v", 279, 226); // cd (w, cl)
+selectCodeEditor("ex.v", 247, 249); // cd (w, cl)
+selectCodeEditor("ex.v", 243, 301); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "openmips_min_sopc.v", 2); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "thinpad_top.xdc", 3); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "openmips_min_sopc.v", 2); // k (j, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("openmips_min_sopc.v", 415, 310); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 136 MB. Current time: 12/1/17 10:12:44 PM CST
+// Elapsed time: 11 seconds
+selectCodeEditor("openmips_min_sopc.v", 12, 293); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 12, 293); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 133 MB. Current time: 12/1/17 10:25:26 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 110 MB. Current time: 12/1/17 10:55:26 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 110 MB. Current time: 12/1/17 11:25:26 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 110 MB. Current time: 12/1/17 11:55:27 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 12:25:27 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 12:55:27 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 1:25:27 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 1:55:28 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 110 MB. Current time: 12/2/17 2:25:28 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 110 MB. Current time: 12/2/17 2:55:28 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 3:25:29 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 3:55:29 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 4:25:29 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 4:55:29 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 5:25:30 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 5:55:30 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 6:25:30 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 6:55:31 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 7:25:31 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 7:55:31 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 8:25:31 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 110 MB. Current time: 12/2/17 8:55:32 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 9:25:32 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 9:55:32 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 10:25:33 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 10:55:33 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 11:25:33 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 11:55:34 AM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 109 MB. Current time: 12/2/17 12:25:34 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 110 MB. Current time: 12/2/17 12:55:34 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 133 MB. Current time: 12/2/17 1:02:39 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 141 MB. Current time: 12/2/17 1:02:45 PM CST
+// Elapsed time: 53401 seconds
+selectCodeEditor("openmips_min_sopc.v", 216, 256); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 153 MB. Current time: 12/2/17 1:02:56 PM CST
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 34 seconds
+selectCodeEditor("openmips_min_sopc.v", 103, 243); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 21, 256); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 142, 399); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 71, 215); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 80, 237); // cd (w, cl)
+// Elapsed time: 270 seconds
+selectCodeEditor("openmips_min_sopc.v", 133, 364); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 133, 364, false, false, false, false, true); // cd (w, cl) - Double Click
+// Elapsed time: 76 seconds
+selectCodeEditor("openmips_min_sopc.v", 1081, 330, false, false, false, true, false); // cd (w, cl) - Popup Trigger
+// Elapsed time: 137 seconds
+selectCodeEditor("openmips_min_sopc.v", 159, 227); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 169 MB. Current time: 12/2/17 1:11:42 PM CST
+// Elapsed time: 12 seconds
+selectCodeEditor("openmips_min_sopc.v", 134, 251); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 122, 244); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 104, 240); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 22 seconds
+selectCodeEditor("openmips_min_sopc.v", 178, 360); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 67, 228); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 195, 339); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 100, 335); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 101, 317); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 18, 296); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 109, 297); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 221, 277); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 20, 314); // cd (w, cl)
+// Elapsed time: 19 seconds
+selectCodeEditor("openmips_min_sopc.v", 25, 311); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 37, 336); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 39, 316); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 39, 316, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 23, 353); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 23, 364); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 165, 352); // cd (w, cl)
+// Elapsed time: 15 seconds
+selectCodeEditor("openmips_min_sopc.v", 91, 389); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 91, 389, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 165, 293); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 181, 315); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 240, 250); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 235, 235); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 154, 259); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 158, 259, false, false, false, false, true); // cd (w, cl) - Double Click
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 103, 258); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 103, 258, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 118, 258); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 118, 258, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 201, 276); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 95, 253); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 72, 425); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectCodeEditor("openmips_min_sopc.v", 202, 172); // cd (w, cl)
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+selectCodeEditor("openmips_min_sopc.v", 211, 147); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 126, 139); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 103, 352); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 103, 352, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 199, 140); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+// Elapsed time: 24 seconds
+selectCodeEditor("openmips_min_sopc.v", 124, 305); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 124, 305, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 202, 118); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 21 seconds
+selectCodeEditor("openmips_min_sopc.v", 155, 103); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 138, 110); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 108, 173); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 108, 173, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 173, 178); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 173, 178, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 158, 103); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 23 seconds
+selectCodeEditor("openmips_min_sopc.v", 137, 334); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 137, 334, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 281, 99); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 22 seconds
+selectCodeEditor("openmips_min_sopc.v", 83, 75); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 94, 83); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 235, 192); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 48, 82); // cd (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("openmips_min_sopc.v", 139, 179); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 139, 179, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 136, 240); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 136, 240, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("openmips_min_sopc.v", 36, 128); // cd (w, cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 212, 183); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 27, 134); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 27, 106); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 33, 123); // cd (w, cl)
+// Elapsed time: 15 seconds
+selectCodeEditor("openmips_min_sopc.v", 219, 182); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 57, 176); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 57, 176, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 137, 234); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 136, 234, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 227, 185); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("openmips_min_sopc.v", 264, 178); // cd (w, cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 195, 152); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 219, 185); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 153, 77); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 26, 105); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 113, 92); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 107, 107); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 105, 107, false, false, false, false, true); // cd (w, cl) - Double Click
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("openmips_min_sopc.v", 110, 107); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 110, 107, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectCodeEditor("openmips_min_sopc.v", 94, 183); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 94, 183, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 109, 197); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 109, 197, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 165, 180); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 165, 180, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 165, 150); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("openmips_min_sopc.v", 226, 180); // cd (w, cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 81, 429); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 81, 429, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 125, 429); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 125, 429, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 40, 271); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 40, 271, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 122, 428); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 122, 428, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 238, 266); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 43, 277); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 43, 277, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 20, 295); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 18, 292); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 25, 293); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 128, 294); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 89, 160); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 89, 160, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 163, 300); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 103, 275); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 103, 275, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 76, 144); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 76, 144, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 117, 143); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 117, 143, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 243, 279); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 150, 250); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 176, 258); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 176, 258, false, false, false, false, true); // cd (w, cl) - Double Click
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 156 MB. Current time: 12/2/17 1:18:51 PM CST
+// Elapsed time: 38 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, data_ram.v]", 16, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, data_ram.v]", 16, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, data_ram.v]", 16, false, false, false, false, false, true); // B (D, cl) - Double Click
+selectCodeEditor("data_ram.v", 238, 216); // cd (w, cl)
+selectCodeEditor("data_ram.v", 182, 292); // cd (w, cl)
+selectCodeEditor("data_ram.v", 182, 292, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("data_ram.v", 182, 292); // cd (w, cl)
+selectCodeEditor("data_ram.v", 194, 294); // cd (w, cl)
+selectCodeEditor("data_ram.v", 184, 251); // cd (w, cl)
+selectCodeEditor("data_ram.v", 184, 252, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("data_ram.v", 184, 252); // cd (w, cl)
+selectCodeEditor("data_ram.v", 183, 252); // cd (w, cl)
+selectCodeEditor("data_ram.v", 183, 252); // cd (w, cl)
+selectCodeEditor("data_ram.v", 238, 228); // cd (w, cl)
+selectCodeEditor("data_ram.v", 170, 259); // cd (w, cl)
+selectCodeEditor("data_ram.v", 170, 259, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("data_ram.v", 145, 63); // cd (w, cl)
+selectCodeEditor("data_ram.v", 145, 63, false, false, false, false, true); // cd (w, cl) - Double Click
+// Elapsed time: 27 seconds
+selectCodeEditor("data_ram.v", 43, 65); // cd (w, cl)
+selectCodeEditor("data_ram.v", 183, 66); // cd (w, cl)
+selectCodeEditor("data_ram.v", 183, 66, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("data_ram.v", 182, 66); // cd (w, cl)
+selectCodeEditor("data_ram.v", 182, 66, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("data_ram.v", 93, 94, false, false, false, true, false); // cd (w, cl) - Popup Trigger
+selectCodeEditor("data_ram.v", 66, 102); // cd (w, cl)
+selectCodeEditor("data_ram.v", 45, 105); // cd (w, cl)
+// Elapsed time: 23 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "openmips_min_sopc.v", 2); // k (j, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 162 MB. Current time: 12/2/17 1:20:30 PM CST
+// Elapsed time: 14 seconds
+selectCodeEditor("openmips_min_sopc.v", 93, 256); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 93, 256, false, false, false, false, true); // cd (w, cl) - Double Click
+// Elapsed time: 21 seconds
+selectCodeEditor("openmips_min_sopc.v", 106, 293); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 106, 293, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 166, 291); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 166, 291, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 247, 180); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 257, 178); // cd (w, cl)
+// Elapsed time: 21 seconds
+selectCodeEditor("openmips_min_sopc.v", 276, 287); // cd (w, cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis]", 4); // u (O, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 162 MB. Current time: 12/2/17 1:21:36 PM CST
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// am (cl): Save Project: addNotify
+// Elapsed time: 24 seconds
+selectButton(PAResourceQtoS.SaveProjectUtils_SAVE, "Save"); // a (am)
+// bs (cl):  Save Constraints : addNotify
+// TclEventType: DG_GRAPH_STALE
+// x (cl): Synthesis is Out-of-date: addNotify
+dismissDialog("Save Project"); // am (cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (x)
+// bs (cl):  Resetting Runs : addNotify
+dismissDialog("Synthesis is Out-of-date"); // x (cl)
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cl): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// 'ct' command handler elapsed time: 14 seconds
+dismissDialog("Launch Runs"); // f (cl)
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 5 
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: RUN_LAUNCH
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Sat Dec  2 13:21:56 2017] Launched synth_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1/runme.log [Sat Dec  2 13:21:56 2017] Launched impl_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 138 MB. Current time: 12/2/17 1:25:35 PM CST
+// TclEventType: RUN_COMPLETED
+// Elapsed time: 660 seconds
+selectCodeEditor("openmips_min_sopc.v", 89, 166); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 143 MB. Current time: 12/2/17 1:33:06 PM CST
+// Elapsed time: 14 seconds
+selectCodeEditor("openmips_min_sopc.v", 137, 182); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 178, 313); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 148, 316); // cd (w, cl)
+// Elapsed time: 22 seconds
+selectCodeEditor("openmips_min_sopc.v", 1, 144); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 144, 167); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 146, 167, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 164, 147); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 164, 147, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+typeControlKey(null, null, 'z');
+selectCodeEditor("openmips_min_sopc.v", 81, 159); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 177, 153); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 179, 154); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("openmips_min_sopc.v", 250, 162); // cd (w, cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 49, 181); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 8, 197); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 68, 200); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 222, 182); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 69, 184); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 201, 183); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 125, 182); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 195, 184); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 11 seconds
+selectCodeEditor("openmips_min_sopc.v", 56, 387); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 60, 388, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 58, 388); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 131, 387); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 153, 376); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 159, 389); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 202, 85); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("openmips_min_sopc.v", 131, 427); // cd (w, cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 10 seconds
+selectCodeEditor("openmips_min_sopc.v", 346, 406); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 160, 423); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 203, 432); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 2, 46); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 62, 445); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 160, 401); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 263, 272); // cd (w, cl)
+// Elapsed time: 19 seconds
+selectCodeEditor("openmips_min_sopc.v", 191, 204); // cd (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("openmips_min_sopc.v", 188, 167); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 175, 185); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 47, 195); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "cpu.v", 4); // k (j, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 161 MB. Current time: 12/2/17 1:36:16 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 143 MB. Current time: 12/2/17 1:36:21 PM CST
+// Elapsed time: 15 seconds
+selectCodeEditor("cpu.v", 80, 373); // cd (w, cl)
+// Elapsed time: 123 seconds
+selectCodeEditor("cpu.v", 29, 365); // cd (w, cl)
+selectCodeEditor("cpu.v", 32, 391); // cd (w, cl)
+selectCodeEditor("cpu.v", 27, 390); // cd (w, cl)
+selectCodeEditor("cpu.v", 35, 384); // cd (w, cl)
+selectCodeEditor("cpu.v", 31, 384, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("cpu.v", 29, 388); // cd (w, cl)
+selectCodeEditor("cpu.v", 206, 326); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("cpu.v", 200, 395); // cd (w, cl)
+selectCodeEditor("cpu.v", 200, 395, false, false, false, false, true); // cd (w, cl) - Double Click
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 11 seconds
+selectCodeEditor("cpu.v", 167, 363); // cd (w, cl)
+selectCodeEditor("cpu.v", 166, 368); // cd (w, cl)
+selectCodeEditor("cpu.v", 55, 407); // cd (w, cl)
+selectCodeEditor("cpu.v", 60, 407); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("cpu.v", 226, 404); // cd (w, cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 12 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "regfile.v", 5); // k (j, cl)
+selectCodeEditor("regfile.v", 346, 161); // cd (w, cl)
+selectCodeEditor("regfile.v", 255, 221); // cd (w, cl)
+selectCodeEditor("regfile.v", 24, 195); // cd (w, cl)
+selectCodeEditor("regfile.v", 236, 217); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("regfile.v", 209, 270); // cd (w, cl)
+selectCodeEditor("regfile.v", 209, 270, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("regfile.v", 97, 269); // cd (w, cl)
+selectCodeEditor("regfile.v", 97, 269, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("regfile.v", 183, 272); // cd (w, cl)
+selectCodeEditor("regfile.v", 273, 267); // cd (w, cl)
+selectCodeEditor("regfile.v", 208, 272); // cd (w, cl)
+selectCodeEditor("regfile.v", 208, 272, false, false, false, false, true); // cd (w, cl) - Double Click
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 64 seconds
+selectCodeEditor("regfile.v", 254, 275); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 12 seconds
+selectCodeEditor("regfile.v", 352, 258); // cd (w, cl)
+// Elapsed time: 18 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis]", 3); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// x (cl): Synthesis is Out-of-date: addNotify
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (x)
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("Synthesis is Out-of-date"); // x (cl)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cl): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+dismissDialog("Launch Runs"); // f (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 5 
+// Tcl Message: [Sat Dec  2 13:41:19 2017] Launched synth_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1/runme.log [Sat Dec  2 13:41:19 2017] Launched impl_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// Elapsed time: 325 seconds
+selectCodeEditor("regfile.v", 132, 410); // cd (w, cl)
+// Elapsed time: 163 seconds
+selectCodeEditor("regfile.v", 217, 140); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "cpu.v", 4); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "regfile.v", 5); // k (j, cl)
+// Elapsed time: 38 seconds
+selectCodeEditor("regfile.v", 133, 257); // cd (w, cl)
+selectCodeEditor("regfile.v", 133, 257, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("regfile.v", 182, 255); // cd (w, cl)
+selectCodeEditor("regfile.v", 182, 255, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("regfile.v", 122, 315); // cd (w, cl)
+// Elapsed time: 51 seconds
+selectCodeEditor("regfile.v", 257, 191); // cd (w, cl)
+selectCodeEditor("regfile.v", 274, 195); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "cpu.v", 4); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "thinpad_top.xdc", 3); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "regfile.v", 5); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "openmips_min_sopc.v", 2); // k (j, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 211 MB. Current time: 12/2/17 1:51:37 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 158 MB. Current time: 12/2/17 1:51:42 PM CST
+// Elapsed time: 17 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Device", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Project Summary", 0); // k (j, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 171 MB. Current time: 12/2/17 1:51:53 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 158 MB. Current time: 12/2/17 1:51:58 PM CST
+// Elapsed time: 15 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "openmips_min_sopc.v", 2); // k (j, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 170 MB. Current time: 12/2/17 1:52:10 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 158 MB. Current time: 12/2/17 1:52:15 PM CST
+// Elapsed time: 16 seconds
+selectCodeEditor("openmips_min_sopc.v", 251, 202); // cd (w, cl)
+// Elapsed time: 131 seconds
+selectCodeEditor("openmips_min_sopc.v", 161, 209); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 188 MB. Current time: 12/2/17 1:54:44 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 158 MB. Current time: 12/2/17 1:54:49 PM CST
+// Elapsed time: 22 seconds
+selectCodeEditor("openmips_min_sopc.v", 142, 197); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 142, 197, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 152, 197); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 152, 197, false, false, false, false, true); // cd (w, cl) - Double Click
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 146 MB. Current time: 12/2/17 1:55:35 PM CST
+// Elapsed time: 195 seconds
+selectCodeEditor("openmips_min_sopc.v", 97, 182); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 97, 182, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 118, 178); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 118, 178, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 212, 205, false, false, false, true, false); // cd (w, cl) - Popup Trigger
+selectCodeEditor("openmips_min_sopc.v", 63, 64); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 171 MB. Current time: 12/2/17 1:58:26 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 157 MB. Current time: 12/2/17 1:58:32 PM CST
+// Elapsed time: 16 seconds
+selectCodeEditor("openmips_min_sopc.v", 68, 85); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("openmips_min_sopc.v", 92, 81); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 92, 81, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 125, 425); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 125, 425, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 135, 79); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 9, 65); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 76, 100); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 7, 101); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 13, 101); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 84, 108); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 93, 106); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 181, 106); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 222, 99); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 237, 105); // cd (w, cl)
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+// Elapsed time: 17 seconds
+selectCodeEditor("openmips_min_sopc.v", 138, 103); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 138, 103, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 101, 90); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 101, 90, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'c'); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 146, 106); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 146, 106, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "openmips_min_sopc.v", 'v'); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("openmips_min_sopc.v", 178, 119); // cd (w, cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 230, 120); // cd (w, cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation]", 5); // u (O, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 172 MB. Current time: 12/2/17 1:59:47 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 157 MB. Current time: 12/2/17 1:59:52 PM CST
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// x (cl): Synthesis is Out-of-date: addNotify
+// Elapsed time: 18 seconds
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (x)
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("Synthesis is Out-of-date"); // x (cl)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cl): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// 'ct' command handler elapsed time: 4 seconds
+// TclEventType: RUN_LAUNCH
+dismissDialog("Launch Runs"); // f (cl)
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 5 
+// Tcl Message: [Sat Dec  2 13:59:58 2017] Launched synth_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1/runme.log [Sat Dec  2 13:59:58 2017] Launched impl_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// Elapsed time: 391 seconds
+selectCodeEditor("openmips_min_sopc.v", 331, 291); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 170 MB. Current time: 12/2/17 2:06:40 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 157 MB. Current time: 12/2/17 2:06:45 PM CST
+// Elapsed time: 16 seconds
+selectCodeEditor("openmips_min_sopc.v", 302, 335); // cd (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("openmips_min_sopc.v", 357, 332); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 357, 332, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 357, 332); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 202, 349); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 202, 349, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 202, 349); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 228, 368); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 228, 368, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 228, 368); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 224, 352); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 224, 352, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 224, 352); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 233, 381); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 233, 374); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 233, 374, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 233, 374); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 242, 386); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 242, 386, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 242, 386); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 185 MB. Current time: 12/2/17 2:16:54 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 157 MB. Current time: 12/2/17 2:16:59 PM CST
+// Elapsed time: 592 seconds
+selectCodeEditor("openmips_min_sopc.v", 175, 242); // cd (w, cl)
+// Elapsed time: 21 seconds
+selectCodeEditor("openmips_min_sopc.v", 59, 369); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 176, 353); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// WARNING: HTimer (FileMgr Design Graph Update Timer) is taking too long to process. Increasing delay to 3000 ms.
+// Elapsed time: 12 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "thinpad_top.xdc", 3); // k (j, cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// Elapsed time: 12 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Device", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "cpu.v", 4); // k (j, cl)
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("cpu.v", 136, 160); // cd (w, cl)
+selectCodeEditor("cpu.v", 61, 161); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectCodeEditor("cpu.v", 32, 257); // cd (w, cl)
+selectCodeEditor("cpu.v", 213, 257); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "regfile.v", 5); // k (j, cl)
+selectCodeEditor("regfile.v", 358, 128); // cd (w, cl)
+selectCodeEditor("regfile.v", 33, 102); // cd (w, cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 12 seconds
+selectCodeEditor("regfile.v", 215, 199); // cd (w, cl)
+selectCodeEditor("regfile.v", 190, 102); // cd (w, cl)
+selectCodeEditor("regfile.v", 190, 102, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey((HResource) null, "regfile.v", 'c'); // cd (w, cl)
+typeControlKey((HResource) null, "regfile.v", 'c'); // cd (w, cl)
+selectCodeEditor("regfile.v", 214, 199); // cd (w, cl)
+typeControlKey((HResource) null, "regfile.v", 'v'); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("regfile.v", 138, 201); // cd (w, cl)
+selectCodeEditor("regfile.v", 255, 191); // cd (w, cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("regfile.v", 73, 204); // cd (w, cl)
+selectCodeEditor("regfile.v", 73, 204, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("regfile.v", 197, 204); // cd (w, cl)
+selectCodeEditor("regfile.v", 197, 204, false, false, false, false, true); // cd (w, cl) - Double Click
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation]", 5); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// x (cl): Synthesis is Out-of-date: addNotify
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (x)
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("Synthesis is Out-of-date"); // x (cl)
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// f (cl): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// 'ct' command handler elapsed time: 3 seconds
+// TclEventType: RUN_LAUNCH
+dismissDialog("Launch Runs"); // f (cl)
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 5 
+// Tcl Message: [Sat Dec  2 14:18:49 2017] Launched synth_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1/runme.log [Sat Dec  2 14:18:49 2017] Launched impl_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 172 MB. Current time: 12/2/17 2:25:36 PM CST
+// Elapsed time: 480 seconds
+selectCodeEditor("regfile.v", 179, 271); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "openmips_min_sopc.v", 2); // k (j, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 158 MB. Current time: 12/2/17 2:27:00 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 158 MB. Current time: 12/2/17 2:27:05 PM CST
+// Elapsed time: 27 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "data_ram.v", 8); // k (j, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 173 MB. Current time: 12/2/17 2:27:27 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 158 MB. Current time: 12/2/17 2:27:32 PM CST
+// Elapsed time: 90 seconds
+selectCodeEditor("data_ram.v", 424, 342, false, false, false, true, false); // cd (w, cl) - Popup Trigger
+// Elapsed time: 113 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, mem.v]", 10, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, mem.v]", 10, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Verilog, mem.v]", 10, false, false, false, false, false, true); // B (D, cl) - Double Click
+// Elapsed time: 110 seconds
+selectCodeEditor("mem.v", 260, 223); // cd (w, cl)
+selectCodeEditor("mem.v", 337, 324); // cd (w, cl)
+// Elapsed time: 24 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "openmips_min_sopc.v", 2); // k (j, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 172 MB. Current time: 12/2/17 2:33:13 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 158 MB. Current time: 12/2/17 2:33:18 PM CST
+// Elapsed time: 17 seconds
+selectCodeEditor("openmips_min_sopc.v", 402, 276); // cd (w, cl)
+// Elapsed time: 168 seconds
+selectCodeEditor("openmips_min_sopc.v", 257, 259); // cd (w, cl)
+// Elapsed time: 21 seconds
+selectCodeEditor("openmips_min_sopc.v", 319, 315); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 319, 315, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 364, 310); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 364, 310, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 317, 311); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 317, 311, false, false, false, false, true); // cd (w, cl) - Double Click
+// Elapsed time: 16 seconds
+selectCodeEditor("openmips_min_sopc.v", 184, 310); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 184, 310, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 255, 307); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("openmips_min_sopc.v", 129, 318); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 129, 318, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 218, 314); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 218, 314, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 189, 310); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 189, 310, false, false, false, false, true); // cd (w, cl) - Double Click
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 200, 408); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 200, 408, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 303, 405); // cd (w, cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis]", 4); // u (O, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 171 MB. Current time: 12/2/17 2:37:21 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 158 MB. Current time: 12/2/17 2:37:26 PM CST
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// x (cl): Synthesis is Out-of-date: addNotify
+// Elapsed time: 17 seconds
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (x)
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("Synthesis is Out-of-date"); // x (cl)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cl): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+dismissDialog("Launch Runs"); // f (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 5 
+// Tcl Message: [Sat Dec  2 14:37:31 2017] Launched synth_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1/runme.log [Sat Dec  2 14:37:31 2017] Launched impl_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 149 MB. Current time: 12/2/17 2:55:36 PM CST
+// Elapsed time: 1903 seconds
+selectCodeEditor("openmips_min_sopc.v", 142, 249); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 158 MB. Current time: 12/2/17 3:09:25 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 158 MB. Current time: 12/2/17 3:09:30 PM CST
+// Elapsed time: 83 seconds
+selectCodeEditor("openmips_min_sopc.v", 65, 32); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 233, 280); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 122, 318); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 46, 426); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed time: 11 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation]", 5); // u (O, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 172 MB. Current time: 12/2/17 3:11:09 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 158 MB. Current time: 12/2/17 3:11:14 PM CST
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// x (cl): Synthesis is Out-of-date: addNotify
+// Elapsed time: 25 seconds
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (x)
+// bs (cl):  Resetting Runs : addNotify
+dismissDialog("Synthesis is Out-of-date"); // x (cl)
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_MODIFY
+// f (cl): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// 'ct' command handler elapsed time: 9 seconds
+// TclEventType: RUN_LAUNCH
+dismissDialog("Launch Runs"); // f (cl)
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 5 
+// Tcl Message: [Sat Dec  2 15:11:26 2017] Launched synth_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1/runme.log [Sat Dec  2 15:11:26 2017] Launched impl_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// Elapsed time: 621 seconds
+selectCodeEditor("openmips_min_sopc.v", 153, 281); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 173 MB. Current time: 12/2/17 3:21:59 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 159 MB. Current time: 12/2/17 3:22:04 PM CST
+// Elapsed time: 17 seconds
+selectCodeEditor("openmips_min_sopc.v", 151, 252); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 139, 244); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 139, 244, false, false, false, false, true); // cd (w, cl) - Double Click
+// Elapsed time: 39 seconds
+selectCodeEditor("openmips_min_sopc.v", 80, 278); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 190, 278); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 6, 290); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis]", 3); // u (O, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 173 MB. Current time: 12/2/17 3:23:05 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 159 MB. Current time: 12/2/17 3:23:10 PM CST
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// x (cl): Synthesis is Out-of-date: addNotify
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 20 seconds
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (x)
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("Synthesis is Out-of-date"); // x (cl)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cl): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// 'ct' command handler elapsed time: 6 seconds
+dismissDialog("Launch Runs"); // f (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 5 
+// Tcl Message: [Sat Dec  2 15:23:18 2017] Launched synth_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1/runme.log [Sat Dec  2 15:23:18 2017] Launched impl_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 173 MB. Current time: 12/2/17 3:23:29 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 158 MB. Current time: 12/2/17 3:23:34 PM CST
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 149 MB. Current time: 12/2/17 3:25:37 PM CST
+// TclEventType: RUN_COMPLETED
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 176 MB. Current time: 12/2/17 3:34:40 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 159 MB. Current time: 12/2/17 3:34:45 PM CST
+// Elapsed time: 688 seconds
+selectCodeEditor("openmips_min_sopc.v", 83, 294); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 97, 324); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 415, 322); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectCodeEditor("openmips_min_sopc.v", 106, 273); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 106, 273, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 111, 274); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 112, 274, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 102, 405); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 104, 394); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 104, 394, false, false, false, false, true); // cd (w, cl) - Double Click
+// Elapsed time: 20 seconds
+selectCodeEditor("openmips_min_sopc.v", 125, 236); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 125, 236, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 79, 274); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 79, 274, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 93, 296); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 93, 296, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 84, 262); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 84, 262, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 96, 286); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 96, 286, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 81, 273); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 81, 273, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 102, 298); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 102, 298, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 85, 286); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 85, 285, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 86, 272); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 86, 272, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 98, 295); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 98, 295, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 98, 308); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 98, 309, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 125, 335); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 125, 335, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 124, 356); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 124, 356, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 117, 330); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 117, 330, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 120, 351); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 120, 351, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 117, 334); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 117, 334, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 116, 348); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 116, 348, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 103, 372); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 103, 372, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 126, 359); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 126, 359, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("openmips_min_sopc.v", 127, 371); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 127, 371, false, false, false, false, true); // cd (w, cl) - Double Click
+// Elapsed time: 351 seconds
+selectCodeEditor("openmips_min_sopc.v", 186, 334); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 186, 334, false, false, false, false, true); // cd (w, cl) - Double Click
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 188 MB. Current time: 12/2/17 3:42:01 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 159 MB. Current time: 12/2/17 3:42:06 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 167 MB. Current time: 12/2/17 3:55:37 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 159 MB. Current time: 12/2/17 4:04:18 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 159 MB. Current time: 12/2/17 4:04:22 PM CST
+// Elapsed time: 1361 seconds
+selectCodeEditor("openmips_min_sopc.v", 75, 228); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 42, 255); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 16, 258); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 188 MB. Current time: 12/2/17 4:04:42 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 159 MB. Current time: 12/2/17 4:04:47 PM CST
+// Elapsed time: 52 seconds
+selectCodeEditor("openmips_min_sopc.v", 67, 396); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 77, 408); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 50, 195); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 47, 63); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 56, 326); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 79, 65); // cd (w, cl)
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("openmips_min_sopc.v", 73, 67); // cd (w, cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectCodeEditor("openmips_min_sopc.v", 129, 81); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 106, 67); // cd (w, cl)
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("openmips_min_sopc.v", 97, 67); // cd (w, cl)
+selectCodeEditor("openmips_min_sopc.v", 33, 297); // cd (w, cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis]", 4); // u (O, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 177 MB. Current time: 12/2/17 4:06:07 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 159 MB. Current time: 12/2/17 4:06:12 PM CST
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// am (cl): Save Project: addNotify
+// Elapsed time: 20 seconds
+selectButton(PAResourceQtoS.SaveProjectUtils_SAVE, "Save"); // a (am)
+// bs (cl):  Save Constraints : addNotify
+// TclEventType: DG_GRAPH_STALE
+// x (cl): Synthesis is Out-of-date: addNotify
+dismissDialog("Save Project"); // am (cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (x)
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("Synthesis is Out-of-date"); // x (cl)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// TclEventType: DG_GRAPH_GENERATED
+// Tcl Message: reset_run synth_1 
+// f (cl): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// 'ct' command handler elapsed time: 7 seconds
+dismissDialog("Launch Runs"); // f (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 5 
+// Tcl Message: [Sat Dec  2 16:06:23 2017] Launched synth_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1/runme.log [Sat Dec  2 16:06:23 2017] Launched impl_1... Run output will be captured here: E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/impl_1/runme.log 
+// bs (cl):  Generate Bitstream : addNotify
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 183 seconds
+selectCodeEditor("openmips_min_sopc.v", 497, 384); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 175 MB. Current time: 12/2/17 4:09:38 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 159 MB. Current time: 12/2/17 4:09:43 PM CST
+// WARNING: HSwingWorker (Update Runs Swing Worker) is taking too long to process. Increasing delay to 3000 ms.
+// WARNING: HTimer (ExpRunMonitor Update Timer) is taking too long to process. Increasing delay to 3000 ms.
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking too long to process. Increasing delay to 3000 ms.
+// TclEventType: RUN_COMPLETED
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 169 MB. Current time: 12/2/17 4:25:37 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,719 MB. GUI used memory: 135 MB. Current time: 12/2/17 4:55:37 PM CST

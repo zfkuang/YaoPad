@@ -42,8 +42,8 @@ read_verilog -library xil_defaultlib {
   E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v
   E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v
   E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v
   E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/inst_rom.v
+  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v
   E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/openmips_min_sopc.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being

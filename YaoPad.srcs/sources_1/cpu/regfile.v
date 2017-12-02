@@ -41,7 +41,7 @@ module regfile(
     );
     
     reg[`WordBus] register[`RegIdBus] ; 
-    assign debugdata = {debug, register[debug][26:0]} ;
+    assign debugdata = register[debug];
     
     always @ (posedge clk) begin
         if (rst == `Disable) begin 
