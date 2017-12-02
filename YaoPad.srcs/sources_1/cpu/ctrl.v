@@ -25,6 +25,7 @@ module ctrl(
 
     input wire stalleq_from_id,
     input wire stalleq_from_ex,
+    input wire stalleq_from_mem,
     
     input wire[`WordBus] cp0_epc_i,
     input wire[`WordBus] excepttype_i,
@@ -62,12 +63,12 @@ module ctrl(
                     new_pc <= cp0_epc_i ;
                 end
             endcase
-        end else if (stalleq_from_ex == `Enable) begin
+        end else if ((stalleq_from_ex == `Enable) || (stalleq_from_mem == `Enable)) begin
             stall <= 6'b001111 ;
             flush <= `Disable ;
         end else if (stalleq_from_id == `Enable) begin
             stall <= 6'b000111 ;
-            flush <= `Disable ;
+            flush <= `Disable ;        
         end else begin
             stall <= 6'b000000 ;
             flush <= `Disable ;

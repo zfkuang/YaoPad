@@ -89,7 +89,6 @@ module ex_mem(
             mem_wd <= `NopRegAddr ;
             mem_wreg <= 0 ;
             mem_whilo <= 0 ;
-            mem_reg2 <= 0;
             mem_mem_addr <= 0 ;
             mem_aluop <= `ALU_NOP;
             mem_cp0_reg_write_addr <= `NopRegAddr ;

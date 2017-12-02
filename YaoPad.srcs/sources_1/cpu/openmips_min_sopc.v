@@ -135,7 +135,7 @@ always @(*)
     assign ext_ram_data = (mem_we_i == 1'b1) ? mem_data_i : 32'bz;
     assign ext_ram_addr = mem_addr_i[21:2];
     assign ext_ram_be_n = (~mem_sel_i);
-    assign ext_ram_ce_n = 1'b0;
+    assign ext_ram_ce_n = (~mem_ce_i);
     assign ext_ram_oe_n = mem_we_i;
     assign ext_ram_we_n = (~mem_we_i);
     assign mem_data_o = data_get;

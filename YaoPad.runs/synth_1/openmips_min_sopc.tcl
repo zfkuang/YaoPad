@@ -21,30 +21,30 @@ create_project -in_memory -part xc7a100tfgg676-2L
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir E:/LLX/5/jy/pro/test/YaoPad/YaoPad.cache/wt [current_project]
-set_property parent.project_path E:/LLX/5/jy/pro/test/YaoPad/YaoPad.xpr [current_project]
+set_property webtalk.parent_dir E:/XilinxProjects/YaoPad/YaoPad/YaoPad.cache/wt [current_project]
+set_property parent.project_path E:/XilinxProjects/YaoPad/YaoPad/YaoPad.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo e:/LLX/5/jy/pro/test/YaoPad/YaoPad.cache/ip [current_project]
+set_property ip_output_repo e:/XilinxProjects/YaoPad/YaoPad/YaoPad.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib {
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/div.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/inst_rom.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v
-  E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/sources_1/cpu/openmips_min_sopc.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/div.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/inst_rom.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/openmips_min_sopc.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -54,8 +54,8 @@ read_verilog -library xil_defaultlib {
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc
-set_property used_in_implementation false [get_files E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc]
+read_xdc E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc
+set_property used_in_implementation false [get_files E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc]
 
 
 synth_design -top openmips_min_sopc -part xc7a100tfgg676-2L

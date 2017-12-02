@@ -68,12 +68,12 @@ set rc [catch {
   create_project -in_memory -part xc7a100tfgg676-2L
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir E:/LLX/5/jy/pro/test/YaoPad/YaoPad.cache/wt [current_project]
-  set_property parent.project_path E:/LLX/5/jy/pro/test/YaoPad/YaoPad.xpr [current_project]
-  set_property ip_output_repo E:/LLX/5/jy/pro/test/YaoPad/YaoPad.cache/ip [current_project]
+  set_property webtalk.parent_dir E:/XilinxProjects/YaoPad/YaoPad/YaoPad.cache/wt [current_project]
+  set_property parent.project_path E:/XilinxProjects/YaoPad/YaoPad/YaoPad.xpr [current_project]
+  set_property ip_output_repo E:/XilinxProjects/YaoPad/YaoPad/YaoPad.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  add_files -quiet E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1/openmips_min_sopc.dcp
-  read_xdc E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc
+  add_files -quiet E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/openmips_min_sopc.dcp
+  read_xdc E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc
   link_design -top openmips_min_sopc -part xc7a100tfgg676-2L
   close_msg_db -file init_design.pb
 } RESULT]

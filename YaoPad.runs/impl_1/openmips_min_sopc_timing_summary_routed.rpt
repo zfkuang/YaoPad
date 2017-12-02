@@ -1,8 +1,8 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date         : Sat Dec  2 16:09:20 2017
-| Host         : PC201407301139 running 64-bit major release  (build 9200)
+| Date         : Sun Dec  3 03:20:31 2017
+| Host         : DESKTOP-N2UMQR8 running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -file openmips_min_sopc_timing_summary_routed.rpt -warn_on_violation -rpx openmips_min_sopc_timing_summary_routed.rpx
 | Design       : openmips_min_sopc
 | Device       : 7a100t-fgg676
@@ -68,21 +68,21 @@ Table of Contents
 
  There are 32 register/latch pins with no clock driven by root clock pin: cpu0/div0/ready_o_reg/Q (HIGH)
 
- There are 32 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[0]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[0]/Q (HIGH)
 
- There are 32 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[1]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[1]/Q (HIGH)
 
- There are 32 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[2]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[2]/Q (HIGH)
 
- There are 32 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[3]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[3]/Q (HIGH)
 
- There are 32 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[4]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[4]/Q (HIGH)
 
- There are 32 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[5]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[5]/Q (HIGH)
 
- There are 32 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[6]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[6]/Q (HIGH)
 
- There are 32 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[7]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_aluop_reg[7]/Q (HIGH)
 
  There are 64 register/latch pins with no clock driven by root clock pin: cpu0/ex_mem0/mem_current_inst_addr_reg[0]/Q (HIGH)
 
@@ -303,7 +303,7 @@ Table of Contents
 
 4. checking unconstrained_internal_endpoints
 --------------------------------------------
- There are 4004 pins that are not constrained for maximum delay. (HIGH)
+ There are 3972 pins that are not constrained for maximum delay. (HIGH)
 
  There are 4 pins that are not constrained for maximum delay due to constant clock. (MEDIUM)
 
@@ -317,7 +317,7 @@ Table of Contents
 
 6. checking no_output_delay
 ---------------------------
- There are 110 ports with no output delay specified. (HIGH)
+ There are 111 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 

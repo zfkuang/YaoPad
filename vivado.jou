@@ -2,13 +2,26 @@
 # Vivado v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Sun Dec  3 01:05:22 2017
-# Process ID: 17316
-# Current directory: E:/LLX/5/jy/pro/test/YaoPad
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15412 E:\LLX\5\jy\pro\test\YaoPad\YaoPad.xpr
-# Log file: E:/LLX/5/jy/pro/test/YaoPad/vivado.log
-# Journal file: E:/LLX/5/jy/pro/test/YaoPad\vivado.jou
+# Start of session at: Sun Dec  3 01:31:21 2017
+# Process ID: 14648
+# Current directory: E:/XilinxProjects/YaoPad/YaoPad
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent26852 E:\XilinxProjects\YaoPad\YaoPad\YaoPad.xpr
+# Log file: E:/XilinxProjects/YaoPad/YaoPad/vivado.log
+# Journal file: E:/XilinxProjects/YaoPad/YaoPad\vivado.jou
 #-----------------------------------------------------------
 start_gui
-open_project E:/LLX/5/jy/pro/test/YaoPad/YaoPad.xpr
+open_project E:/XilinxProjects/YaoPad/YaoPad/YaoPad.xpr
 update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+reset_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1

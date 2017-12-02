@@ -1,8 +1,8 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date             : Sat Dec  2 16:09:20 2017
-| Host             : PC201407301139 running 64-bit major release  (build 9200)
+| Date             : Sun Dec  3 03:20:31 2017
+| Host             : DESKTOP-N2UMQR8 running 64-bit major release  (build 9200)
 | Command          : report_power -file openmips_min_sopc_power_routed.rpt -pb openmips_min_sopc_power_summary_routed.pb -rpx openmips_min_sopc_power_routed.rpx
 | Design           : openmips_min_sopc
 | Device           : xc7a100tfgg676-2L
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.124        |
+| Total On-Chip Power (W)  | 0.127        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.027        |
+| Dynamic (W)              | 0.030        |
 | Device Static (W)        | 0.097        |
 | Effective TJA (C/W)      | 2.6          |
 | Max Ambient (C)          | 99.7         |
@@ -53,19 +53,19 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.000 |        3 |       --- |             --- |
-| Slice Logic              |     0.003 |     4439 |       --- |             --- |
-|   LUT as Logic           |     0.003 |     2491 |     63400 |            3.93 |
+| Slice Logic              |     0.003 |     4383 |       --- |             --- |
+|   LUT as Logic           |     0.002 |     2442 |     63400 |            3.85 |
 |   CARRY4                 |    <0.001 |      160 |     15850 |            1.01 |
 |   Register               |    <0.001 |     1329 |    126800 |            1.05 |
 |   BUFG                   |    <0.001 |        8 |        32 |           25.00 |
 |   F7/F8 Muxes            |    <0.001 |        9 |     63400 |            0.01 |
 |   LUT as Distributed RAM |    <0.001 |       72 |     19000 |            0.38 |
 |   Others                 |     0.000 |       28 |       --- |             --- |
-| Signals                  |     0.004 |     4288 |       --- |             --- |
+| Signals                  |     0.004 |     4233 |       --- |             --- |
 | DSPs                     |    <0.001 |        4 |       240 |            1.67 |
-| I/O                      |     0.020 |      157 |       300 |           52.33 |
+| I/O                      |     0.023 |      157 |       300 |           52.33 |
 | Static Power             |     0.097 |          |           |                 |
-| Total                    |     0.124 |          |           |                 |
+| Total                    |     0.127 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -142,7 +142,7 @@ Table of Contents
 +----------------------------------+-----------+
 | Name                             | Power (W) |
 +----------------------------------+-----------+
-| openmips_min_sopc                |     0.027 |
+| openmips_min_sopc                |     0.030 |
 |   cpu0                           |     0.007 |
 |     cp00                         |    <0.001 |
 |     ctrl0                        |    <0.001 |

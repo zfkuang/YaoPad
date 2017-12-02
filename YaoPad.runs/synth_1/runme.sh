@@ -11,9 +11,9 @@ echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executi
 exit
 
 if [ -z "$PATH" ]; then
-  PATH=D:/vivadodo/SDK/2017.3/bin;D:/vivadodo/Vivado/2017.3/ids_lite/ISE/bin/nt64;D:/vivadodo/Vivado/2017.3/ids_lite/ISE/lib/nt64:D:/vivadodo/Vivado/2017.3/bin
+  PATH=E:/Xilinx/SDK/2017.3/bin;E:/Xilinx/Vivado/2017.3/ids_lite/ISE/bin/nt64;E:/Xilinx/Vivado/2017.3/ids_lite/ISE/lib/nt64:E:/Xilinx/Vivado/2017.3/bin
 else
-  PATH=D:/vivadodo/SDK/2017.3/bin;D:/vivadodo/Vivado/2017.3/ids_lite/ISE/bin/nt64;D:/vivadodo/Vivado/2017.3/ids_lite/ISE/lib/nt64:D:/vivadodo/Vivado/2017.3/bin:$PATH
+  PATH=E:/Xilinx/SDK/2017.3/bin;E:/Xilinx/Vivado/2017.3/ids_lite/ISE/bin/nt64;E:/Xilinx/Vivado/2017.3/ids_lite/ISE/lib/nt64:E:/Xilinx/Vivado/2017.3/bin:$PATH
 fi
 export PATH
 
@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='E:/LLX/5/jy/pro/test/YaoPad/YaoPad.runs/synth_1'
+HD_PWD='E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

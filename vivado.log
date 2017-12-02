@@ -2,19 +2,44 @@
 # Vivado v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Sun Dec  3 01:05:22 2017
-# Process ID: 17316
-# Current directory: E:/LLX/5/jy/pro/test/YaoPad
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15412 E:\LLX\5\jy\pro\test\YaoPad\YaoPad.xpr
-# Log file: E:/LLX/5/jy/pro/test/YaoPad/vivado.log
-# Journal file: E:/LLX/5/jy/pro/test/YaoPad\vivado.jou
+# Start of session at: Sun Dec  3 01:31:21 2017
+# Process ID: 14648
+# Current directory: E:/XilinxProjects/YaoPad/YaoPad
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent26852 E:\XilinxProjects\YaoPad\YaoPad\YaoPad.xpr
+# Log file: E:/XilinxProjects/YaoPad/YaoPad/vivado.log
+# Journal file: E:/XilinxProjects/YaoPad/YaoPad\vivado.jou
 #-----------------------------------------------------------
 start_gui
-open_project E:/LLX/5/jy/pro/test/YaoPad/YaoPad.xpr
+open_project E:/XilinxProjects/YaoPad/YaoPad/YaoPad.xpr
+INFO: [Project 1-313] Project file moved from 'E:/LLX/5/jy/pro/test/YaoPad' since last save.
 Scanning sources...
 Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/vivadodo/Vivado/2017.3/data/ip'.
-open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:22 . Memory (MB): peak = 735.293 ; gain = 55.688
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2017.3/data/ip'.
 update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Sun Dec  3 02:29:49 2017] Launched synth_1...
+Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/runme.log
+[Sun Dec  3 02:29:49 2017] Launched impl_1...
+Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Sun Dec  3 02:46:41 2017] Launched synth_1...
+Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/runme.log
+[Sun Dec  3 02:46:41 2017] Launched impl_1...
+Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Sun Dec  3 03:15:23 2017] Launched synth_1...
+Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/runme.log
+[Sun Dec  3 03:15:23 2017] Launched impl_1...
+Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/impl_1/runme.log
+reset_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Sun Dec  3 03:17:40 2017] Launched synth_1...
+Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/runme.log
+[Sun Dec  3 03:17:40 2017] Launched impl_1...
+Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/impl_1/runme.log

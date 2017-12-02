@@ -33,8 +33,7 @@
 `include"div.v"
 `include"cp0.v"
 
-module cpu(
-    input wire rst, 
+module cpu(    input wire rst, 
     input wire clk,
     
     input wire[`WordBus] rom_data_i,
@@ -177,6 +176,7 @@ module cpu(
 
     wire stalleq_from_id ;
     wire stalleq_from_ex ;
+    wire stalleq_from_mem ;
     wire[5:0] stall ;
     wire[`WordBus] new_pc ;
     wire flush ;
@@ -449,7 +449,9 @@ module cpu(
         .excepttype_o(mem_excepttype_o),
         .current_inst_addr_o(mem_current_inst_addr_o),
         .is_in_delayslot_o(mem_is_in_delayslot_o),
-        .cp0_epc_o(mem_cp0_epc_o)
+        .cp0_epc_o(mem_cp0_epc_o),
+        
+        .stallreq(stalleq_from_mem)
     ) ;
     
     mem_wb mem_wb0(
@@ -494,6 +496,7 @@ module cpu(
         .rst(rst),
         .stalleq_from_id(stalleq_from_id),
         .stalleq_from_ex(stalleq_from_ex),
+        .stalleq_from_mem(stalleq_from_mem),
         .cp0_epc_i(mem_cp0_epc_o),
         .excepttype_i(mem_excepttype_o),
         .new_pc(new_pc),

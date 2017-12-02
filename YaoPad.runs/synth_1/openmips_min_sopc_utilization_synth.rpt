@@ -1,8 +1,8 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date         : Sat Dec  2 16:07:54 2017
-| Host         : PC201407301139 running 64-bit major release  (build 9200)
+| Date         : Sun Dec  3 03:19:06 2017
+| Host         : DESKTOP-N2UMQR8 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file openmips_min_sopc_utilization_synth.rpt -pb openmips_min_sopc_utilization_synth.pb
 | Design       : openmips_min_sopc
 | Device       : 7a100tfgg676-2L
@@ -30,8 +30,8 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                | 2564 |     0 |     63400 |  4.04 |
-|   LUT as Logic             | 2492 |     0 |     63400 |  3.93 |
+| Slice LUTs*                | 2515 |     0 |     63400 |  3.97 |
+|   LUT as Logic             | 2443 |     0 |     63400 |  3.85 |
 |   LUT as Memory            |   72 |     0 |     19000 |  0.38 |
 |     LUT as Distributed RAM |   72 |     0 |           |       |
 |     LUT as Shift Register  |    0 |     0 |           |       |
@@ -152,14 +152,14 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     | 1241 |                 LUT |
+| LUT6     | 1221 |                 LUT |
 | FDRE     |  976 |        Flop & Latch |
-| LUT5     |  371 |                 LUT |
 | LDCE     |  353 |        Flop & Latch |
-| LUT2     |  346 |                 LUT |
-| LUT4     |  330 |                 LUT |
-| LUT1     |  261 |                 LUT |
-| LUT3     |  212 |                 LUT |
+| LUT2     |  345 |                 LUT |
+| LUT5     |  336 |                 LUT |
+| LUT4     |  324 |                 LUT |
+| LUT1     |  262 |                 LUT |
+| LUT3     |  218 |                 LUT |
 | CARRY4   |  160 |          CarryLogic |
 | RAMD32   |  108 |  Distributed Memory |
 | OBUF     |   86 |                  IO |

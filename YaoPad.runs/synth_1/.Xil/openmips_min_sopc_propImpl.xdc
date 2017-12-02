@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:E:/LLX/5/jy/pro/test/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc rfile:../../../YaoPad.srcs/constrs_1/new/thinpad_top.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc rfile:../../../YaoPad.srcs/constrs_1/new/thinpad_top.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict {PACKAGE_PIN D18 IOSTANDARD LVCMOS33} [get_ports clk] ;#50MHz main clock in
 set_property src_info {type:XDC file:1 line:5 export:INPUT save:INPUT read:READ} [current_design]

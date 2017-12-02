@@ -1,8 +1,8 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date         : Sat Dec  2 16:08:41 2017
-| Host         : PC201407301139 running 64-bit major release  (build 9200)
+| Date         : Sun Dec  3 03:19:54 2017
+| Host         : DESKTOP-N2UMQR8 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -file openmips_min_sopc_control_sets_placed.rpt
 | Design       : openmips_min_sopc
 | Device       : xc7a100t
@@ -31,12 +31,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             270 |          144 |
+| No           | No                    | No                     |             270 |          142 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             265 |          139 |
-| Yes          | No                    | No                     |             134 |           57 |
+| No           | Yes                   | No                     |             265 |          117 |
+| Yes          | No                    | No                     |             166 |           56 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             660 |          262 |
+| Yes          | Yes                   | No                     |             628 |          230 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
