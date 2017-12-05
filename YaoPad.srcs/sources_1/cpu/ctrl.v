@@ -23,9 +23,11 @@
 module ctrl(
     input wire rst,
 
-    input wire stalleq_from_id,
-    input wire stalleq_from_ex,
-    input wire stalleq_from_mem,
+    input wire stallreq_from_id,
+    input wire stallreq_from_ex,
+    
+    input wire stallreq_from_if,
+    input wire stallreq_from_mem,
     
     input wire[`WordBus] cp0_epc_i,
     input wire[`WordBus] excepttype_i,
@@ -63,12 +65,19 @@ module ctrl(
                     new_pc <= cp0_epc_i ;
                 end
             endcase
-        end else if ((stalleq_from_ex == `Enable) || (stalleq_from_mem == `Enable)) begin
+        end else if (stallreq_from_mem == `Enable) begin
+            stall <= 6'b011111;
+            flush <= `Disable;
+        end else if (stallreq_from_ex == `Enable) begin
             stall <= 6'b001111 ;
-            flush <= `Disable ;
-        end else if (stalleq_from_id == `Enable) begin
+            flush <= `Disable;
+        end else if (stallreq_from_id == `Enable) begin
             stall <= 6'b000111 ;
-            flush <= `Disable ;        
+            flush <= `Disable;
+        end else if (stallreq_from_if == `Enable) begin
+            // 暂停译码阶段的原因是，若译码阶段的指令为转移指令，那么取指阶段的指令为延迟槽指令，在译码阶段的指令到下一个周期执行的时候，取的延迟槽指令还没到，就会把NOP看成延迟槽指令。
+            stall <= 6'b000111;
+            flush <= `Disable;
         end else begin
             stall <= 6'b000000 ;
             flush <= `Disable ;

@@ -174,6 +174,13 @@
 `define DIV_ZERO 2'b10
 `define DIV_END 2'b11
 
+
+
+// Wishbone states //
+`define WB_IDLE 2'b00
+`define WB_BUSY 2'b01
+`define WB_WAIT_FOR_STALL 2'b11
+
 `define CP0_COUNT 5'b01001
 `define CP0_COMPARE 5'b01011
 `define CP0_STATUS 5'b01100
@@ -181,3 +188,4 @@
 `define CP0_EPC 5'b01110
 `define CP0_PRId 5'b01111
 `define CP0_CONFIG 5'b1000
+
