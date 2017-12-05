@@ -36,9 +36,9 @@
 //////////////////////////////////////////////////////////////////////
 
 `include "defines.vh"
-`include "cpu.v"
-`include "inst_rom.v"
-`include "data_ram.v"
+`include "cpu/cpu.v"
+`include "cpu/inst_rom.v"
+`include "cpu/data_ram.v"
 
 module openmips_min_sopc(
 
