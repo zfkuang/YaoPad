@@ -26,6 +26,7 @@ module wishbone_bus_if(
 
     //ctrl module
     input wire[5:0] stall,
+    input wire stall_this,
     input wire flush,
 
     //CPU interface
@@ -58,8 +59,11 @@ module wishbone_bus_if(
 
     /* State change */
 
+    reg is_rst;
+
     always @ (posedge clk) begin
-        if(rst == `Enable) begin
+        is_rst <= rst;
+        if(is_rst == `Enable) begin
             // rest, change to WB_IDLE
             wishbone_state <= `WB_IDLE;
             wishbone_addr_o <= `Zero;
@@ -99,7 +103,7 @@ module wishbone_bus_if(
                         if(cpu_we_i == `Disable) begin
                             rd_buf <= wishbone_data_i;
                         end
-                        if(stall != 6'b000000) begin
+                        if(stall_this == `Enable) begin
                             wishbone_state <= `WB_WAIT_FOR_STALL;
                         end
                     end else if(flush == `Enable) begin
@@ -115,7 +119,7 @@ module wishbone_bus_if(
                 end
 
                 `WB_WAIT_FOR_STALL: begin
-                    if(stall == 6'b000000) begin
+                    if(stall_this == `Disable) begin
                         wishbone_state <= `WB_IDLE;
                     end
                 end

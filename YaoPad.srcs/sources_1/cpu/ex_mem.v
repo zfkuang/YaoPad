@@ -83,7 +83,7 @@ module ex_mem(
         output reg mem_is_in_delayslot
     );    
     
-    always @ (posedge clk) begin 
+    always @ (posedge clk or negedge rst) begin 
         if ((rst == `Enable) || ((stall[3] == `Enable) && (stall[4] == `Disable)) || (flush == `Enable)) begin
             mem_wdata <= `Zero ;
             mem_wd <= `NopRegAddr ;

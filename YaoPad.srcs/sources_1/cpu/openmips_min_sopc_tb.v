@@ -26,7 +26,7 @@
 // File:    openmips_min_sopc_tb.v
 // Author:  Lei Silei
 // E-mail:  leishangwen@163.com
-// Description: openmips_min_sopcµÄtestbench
+// Description: openmips_min_sopcï¿½ï¿½testbench
 // Revision: 1.0
 //////////////////////////////////////////////////////////////////////
 
@@ -36,13 +36,19 @@
 
 module openmips_min_sopc_tb;
 
-    reg     CLOCK_50;
-    reg     rst;
+    reg CLOCK_50;
+    reg CLOCK_100; 
+    reg rst;
 
 
     initial begin
-        CLOCK_50 = 1'b0;
+        CLOCK_50 = 1'b1;
         forever #10 CLOCK_50 = ~CLOCK_50;
+    end
+
+    initial begin
+        CLOCK_100 = 1'b1;
+        forever #5 CLOCK_100 = ~CLOCK_100;
     end
 
     initial begin
@@ -53,6 +59,7 @@ module openmips_min_sopc_tb;
 
     openmips_min_sopc openmips_min_sopc0(
         .clk(CLOCK_50),
+        .clk100(CLOCK_100),
         .rst(rst)	
     );
 

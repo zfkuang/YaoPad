@@ -37,6 +37,7 @@
 module cpu(
     input wire rst, 
     input wire clk,
+    input wire clk100,
     
     // inst wishbone
 	input wire[`WordBus]            iwishbone_data_i,
@@ -557,11 +558,12 @@ module cpu(
     ) ;
 
 	wishbone_bus_if dwishbone_bus_if(
-		.clk(clk),
+		.clk(clk100),
 		.rst(rst),
 	
 		// ctrl
 		.stall(stall),
+        .stall_this(stall[4]),
 		.flush(flush),
 	
 		// CPU
@@ -588,11 +590,12 @@ module cpu(
 	);
 
 	wishbone_bus_if iwishbone_bus_if(
-		.clk(clk),
+		.clk(clk100),
 		.rst(rst),
 	
 		// ctrl
 		.stall(stall),
+        .stall_this(stall[1]),
 		.flush(flush),
 	
 		// CPU

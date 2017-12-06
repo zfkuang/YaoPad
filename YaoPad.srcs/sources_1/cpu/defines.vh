@@ -10,6 +10,8 @@
 
 `define RegNum 20
 
+`define StartInstAddr 32'h00000000
+
 // Length of different data type// 
 `define RegLen 32
 `define DoubleRegLen 64

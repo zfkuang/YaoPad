@@ -8,7 +8,8 @@ module data_ram(
 	input wire[`WordBus] addr,
 	input wire[3:0] sel,
 	input wire[`WordBus] data_i,
-	output reg[`WordBus] data_o
+	output reg[`WordBus] data_o,
+	output reg ack
 );
 	reg[7:0]  data_mem0[0:`DataMemNum-1];
 	reg[7:0]  data_mem1[0:`DataMemNum-1];
@@ -19,7 +20,7 @@ module data_ram(
 		if (ce == `Disable) begin
 			//data_o <= ZeroWord;
 		end else if(we == `Enable) begin
-			  if (sel[3] == 1'b1) begin
+			if (sel[3] == 1'b1) begin
 		      data_mem3[addr[`DataMemNumLog2+1:2]] <= data_i[31:24];
 		    end
 			  if (sel[2] == 1'b1) begin
@@ -37,13 +38,16 @@ module data_ram(
 	always @ (*) begin
 		if (ce == `Disable) begin
 			data_o <= `Zero;
+			ack <= `Disable;
 	  	end else if(we == `Disable) begin
 		    data_o <= {data_mem3[addr[`DataMemNumLog2+1:2]],
 		               data_mem2[addr[`DataMemNumLog2+1:2]],
 		               data_mem1[addr[`DataMemNumLog2+1:2]],
 		               data_mem0[addr[`DataMemNumLog2+1:2]]};
+			ack <= `Enable;
 		end else begin
 			data_o <= `Zero;
+			ack <= `Enable;
 		end
 	end		
 

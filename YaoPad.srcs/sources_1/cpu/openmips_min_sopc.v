@@ -42,8 +42,9 @@
 
 module openmips_min_sopc(
 
-	input	wire										clk,
-	input wire										rst
+	input wire clk,
+	input wire rst,
+	input wire clk100
 	
 );
 
@@ -61,15 +62,19 @@ module openmips_min_sopc(
   wire timer_int;
   wire[5:0] int = {5'b00000, timer_int};
 
+  wire rom_ack;
+  wire ram_ack;
+
  cpu cpu0(
 		.clk(clk),
 		.rst(rst),
+		.clk100(clk100),
 	
 		.iwishbone_addr_o(inst_addr),
 		.iwishbone_data_i(inst),
-		.iwishbone_data_o(inst),
+		//.iwishbone_data_o(inst),
 		//.rom_ce_o(rom_ce),
-		//.iwishbone_ack_i(`Enable),
+		.iwishbone_ack_i(rom_ack),
 		//.iwishbone_stb_o(`Enable),
 		//.iwishbone_cyc_o(`Enable),
 		//.iwishbone_we_o(`Enable),
@@ -80,7 +85,7 @@ module openmips_min_sopc(
     	.dwishbone_sel_o(mem_sel_i),
     	.dwishbone_we_o(mem_we_i),
     	//.ram_ce_o(mem_ce_i),
-		//.dwishbone_ack_i(`Enable),
+		.dwishbone_ack_i(ram_ack),
 		//.dwishbone_stb_o(`Enable),
 		//.dwishbone_cyc_o(`Enable),
 
@@ -92,7 +97,8 @@ module openmips_min_sopc(
 	inst_rom inst_rom0(
 		.addr(inst_addr),
 		.inst(inst),
-		.ce(rom_ce)	
+		.ce(rom_ce),
+		.ack(rom_ack)
 	);
 
 	data_ram data_ram0(
@@ -102,6 +108,7 @@ module openmips_min_sopc(
 		.sel(mem_sel_i),
 		.data_i(mem_data_i),
 		.data_o(mem_data_o),
-		.ce(mem_ce_i)		
+		.ce(mem_ce_i),
+		.ack(ram_ack)
 	);
 endmodule
