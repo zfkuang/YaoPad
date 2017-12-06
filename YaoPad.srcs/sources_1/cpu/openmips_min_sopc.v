@@ -67,7 +67,7 @@ module openmips_min_sopc(
 	
 );
 
-  //����ָ��洢��?
+  //����ָ��洢��??
   wire[`WordBus] inst_addr;
   wire[`WordBus] inst;
   wire rom_ce;
@@ -115,10 +115,20 @@ always @(*)
  wire[31:0] debugdata;
  assign led[31:0] = debugdata[31:0];
  //assign led[31:24] = inst_get[7:0];
+
+ reg[26:0] cnt; 
+ always @(posedge clk) begin 
+	 if (rst == `Enable) begin
+	 	cnt <= 0;
+	 end else begin
+	 	cnt = cnt + 1;
+	 end
+ end
+
  cpu cpu0(
-		.clk(clk),
+		.clk(cnt[26]),
 		.rst(rst),
-		.clk100(clk),
+		.clk100(cnt[26]),
 
 		.iwishbone_addr_o(inst_addr),
 		.iwishbone_data_i(inst_get),

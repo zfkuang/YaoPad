@@ -204,6 +204,8 @@ module cpu(    input wire rst,
     wire[5:0] stall ;
     wire[`WordBus] new_pc ;
     wire flush ;
+    wire[`WordBus] debugdata_of_reg;
+    assign debugdata = {clk, pc[6:0], rom_data_i[7:0], debugdata_of_reg[15:0]};
     //assign debugdata[15:0] = pc[15:0];
     //assign debugdata[31:16] = rom_data_i[15:0];
     assign rom_addr_o = pc;
@@ -285,7 +287,7 @@ module cpu(    input wire rst,
         .raddr2(reg2_addr),
         .rdata2(reg2_data),
         .debug(debug),
-        .debugdata(debugdata)
+        .debugdata(debugdata_of_reg)
     ) ;
     
     id_ex id_ex0(
