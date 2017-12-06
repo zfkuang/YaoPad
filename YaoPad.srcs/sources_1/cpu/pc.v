@@ -20,6 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 `include"defines.vh"
 
+`define StartInstAddr 32'h0
+
 module pc_rom(
     input wire rst,
     input wire clk,

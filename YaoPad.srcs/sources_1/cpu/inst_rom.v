@@ -56,8 +56,7 @@ module inst_rom(
 	assign inst_mem[10] = 32'h0800000a ;
 	assign inst_mem[11] = 32'h00000000 ;
     
-	always @ (*) begin
-	end
+	
 	always @ (*) begin
 		if (ce == `Disable) begin
 			inst <= `Zero;

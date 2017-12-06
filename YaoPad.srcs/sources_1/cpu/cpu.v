@@ -44,7 +44,7 @@ module cpu(    input wire rst,
 	output wire[`WordBus]           iwishbone_addr_o,
 	output wire[`WordBus]           iwishbone_data_o,
 	output wire                    iwishbone_we_o,
-	output wire[3:0]               iwishbone_sel_o,
+    output wire[3:0]               iwishbone_sel_o,
 	output wire                    iwishbone_stb_o,
 	output wire                    iwishbone_cyc_o, 
 	

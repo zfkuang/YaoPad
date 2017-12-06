@@ -43,7 +43,7 @@
 module openmips_min_sopc(
 
 	input wire clk,
-	input wire clk100,
+	//input wire clk100,
 	input wire	rst,
 	input wire	click,
 	
@@ -67,7 +67,7 @@ module openmips_min_sopc(
 	
 );
 
-  //����ָ��洢��
+  //����ָ��洢��?
   wire[`WordBus] inst_addr;
   wire[`WordBus] inst;
   wire rom_ce;
@@ -84,6 +84,17 @@ module openmips_min_sopc(
   wire rom_ack;
   wire ram_ack;
 
+
+  reg click2;
+
+  always @ (posedge click or negedge rst) begin
+	if(rst == `Enable) begin
+		click2 <= `Disable;
+	end
+	else begin
+		click2 = ~click2;
+	end
+  end
   
  assign  base_ram_addr = inst_addr[21:2];
  assign base_ram_ce_n =  1'b0;
@@ -91,7 +102,8 @@ module openmips_min_sopc(
  assign base_ram_we_n = 1'b1;
  assign base_ram_be_n = 4'b0000;
  assign base_ram_data = (base_ram_oe_n==1'b0) ? 32'bz : 32'b0;
- 
+ assign rom_ack = `Enable;
+ assign ram_ack = `Enable;
  reg[31:0] inst_get;
  
 always @(*)
@@ -104,9 +116,9 @@ always @(*)
  assign led[31:0] = debugdata[31:0];
  //assign led[31:24] = inst_get[7:0];
  cpu cpu0(
-		.clk(click),
+		.clk(clk),
 		.rst(rst),
-		.clk100(clk100),
+		.clk100(clk),
 
 		.iwishbone_addr_o(inst_addr),
 		.iwishbone_data_i(inst_get),
