@@ -1,4 +1,13 @@
-/*
-!.gitignore
-!YaoPad.srcs
-!README.md
+.Xil/
+xsim.dir/
+YaoPad.cache/
+YaoPad.hw/
+YaoPad.ip_user_files/
+YaoPad.Runs/
+YaoPad.sim/
+*.log
+*.jou
+*.wcfg
+*.str
+*.tcl
+*.xpr

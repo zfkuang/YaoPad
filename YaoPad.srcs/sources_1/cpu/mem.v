@@ -51,7 +51,6 @@ module mem(
         input wire[`WordBus] wb_cp0_reg_data_i,
         input wire[`RegAddrBus] wb_cp0_reg_write_addr_i,
 
-
         output reg[`RegAddrBus] wd_o,
         output reg wreg_o,
         output reg[`WordBus] wdata_o,
@@ -73,10 +72,13 @@ module mem(
         output reg[`WordBus] excepttype_o,
         output wire[`WordBus] cp0_epc_o,
         output wire[`WordBus] current_inst_addr_o,
-        output wire is_in_delayslot_o
+        output wire is_in_delayslot_o,
+        output wire stallreq
     );
     reg mem_we;
     wire [1:0] addr_mod4 = mem_addr_i[1:0];
+
+    assign stallreq = mem_ce_o ;
 
     always @ (*) begin
         if (rst == `Enable) begin

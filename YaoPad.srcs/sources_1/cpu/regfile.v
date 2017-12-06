@@ -34,10 +34,14 @@ module regfile(
     
     input wire[`RegAddrBus] raddr2,
     input wire re2,
-    output reg[`WordBus] rdata2
+    output reg[`WordBus] rdata2, 
+    
+    input wire[`RegAddrBus] debug,
+    output wire[`WordBus] debugdata
     );
     
     reg[`WordBus] register[`RegIdBus] ; 
+    assign debugdata = register[debug];
     
     always @ (posedge clk or negedge rst) begin
         if (rst == `Disable) begin 

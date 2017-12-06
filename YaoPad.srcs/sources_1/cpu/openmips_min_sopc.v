@@ -43,8 +43,27 @@
 module openmips_min_sopc(
 
 	input wire clk,
-	input wire rst,
-	input wire clk100
+	input wire clk100,
+	input wire	rst,
+	input wire	click,
+	
+	inout wire[31:0] base_ram_data, // [7:0] also connected to CPLD
+    output wire[19:0] base_ram_addr,
+    output wire[3:0] base_ram_be_n,
+    output wire base_ram_ce_n,
+    output wire base_ram_oe_n,
+    output wire base_ram_we_n,
+    
+    inout wire[31:0] ext_ram_data,
+    output wire[19:0] ext_ram_addr,
+    output wire[3:0] ext_ram_be_n,
+    output wire ext_ram_ce_n,
+    output wire ext_ram_oe_n,
+    output wire ext_ram_we_n,
+    
+    
+	input wire[`RegAddrBus] debug,
+	output wire[`WordBus] led
 	
 );
 
@@ -65,13 +84,32 @@ module openmips_min_sopc(
   wire rom_ack;
   wire ram_ack;
 
+  
+ assign  base_ram_addr = inst_addr[21:2];
+ assign base_ram_ce_n =  1'b0;
+ assign base_ram_oe_n =  1'b0;
+ assign base_ram_we_n = 1'b1;
+ assign base_ram_be_n = 4'b0000;
+ assign base_ram_data = (base_ram_oe_n==1'b0) ? 32'bz : 32'b0;
+ 
+ reg[31:0] inst_get;
+ 
+always @(*)
+    if (rom_ce)
+        inst_get <= base_ram_data;
+ 
+//assign led[31:16] = base_ram_addr[15:0];
+//assign led[15:8] = inst_get[7:0];
+ wire[31:0] debugdata;
+ assign led[31:0] = debugdata[31:0];
+ //assign led[31:24] = inst_get[7:0];
  cpu cpu0(
-		.clk(clk),
+		.clk(click),
 		.rst(rst),
 		.clk100(clk100),
-	
+
 		.iwishbone_addr_o(inst_addr),
-		.iwishbone_data_i(inst),
+		.iwishbone_data_i(inst_get),
 		//.iwishbone_data_o(inst),
 		//.rom_ce_o(rom_ce),
 		.iwishbone_ack_i(rom_ack),
@@ -90,9 +128,11 @@ module openmips_min_sopc(
 		//.dwishbone_cyc_o(`Enable),
 
     	.timer_int_o(timer_int),
-    	.int_i(int) 
-
+    	.int_i(int),
+        .debugdata(debugdata),
+        .debug(debug)
 	);
+	/*
 	
 	inst_rom inst_rom0(
 		.addr(inst_addr),
@@ -100,7 +140,23 @@ module openmips_min_sopc(
 		.ce(rom_ce),
 		.ack(rom_ack)
 	);
-
+    */
+    //real mem
+    reg[31:0] data_get;
+    
+   always @(*)
+       if (ext_ram_we_n)
+           data_get <= ext_ram_data;
+    assign ext_ram_data = (mem_we_i == 1'b1) ? mem_data_i : 32'bz;
+    assign ext_ram_addr = mem_addr_i[21:2];
+    assign ext_ram_be_n = (~mem_sel_i);
+    assign ext_ram_ce_n = (~mem_ce_i);
+    assign ext_ram_oe_n = mem_we_i;
+    assign ext_ram_we_n = (~mem_we_i);
+    assign mem_data_o = data_get;
+    
+   /*
+   // fake mem
 	data_ram data_ram0(
 		.clk(clk),
 		.we(mem_we_i),
@@ -111,4 +167,5 @@ module openmips_min_sopc(
 		.ce(mem_ce_i),
 		.ack(ram_ack)
 	);
+	*/
 endmodule
