@@ -11,13 +11,15 @@
 `define UART_ADDR_LEN 32'h00000005
 `define ETHERNET_ADDR_START 32'h1FD00404
 `define ETHERNET_ADDR_LEN 32'h00000005
+`define LED_ADDR_START 32'hBFD0F000
+`define LED_ADDR_LEN 32'h00000020
 
 
  // simple address mapping
 module mmu(
         input wire rst,
         input wire[`WordBus] virtual_address_i,
-        output wire[`WordBus] physical_address_o,
+        output reg[`WordBus] physical_address_o
     );    
     
     always @ (*) begin 
@@ -27,14 +29,17 @@ module mmu(
             if(virtual_address_i >= `RAM_ADDR_START && virtual_address_i < `RAM_ADDR_START+`RAM_ADDR_LEN) begin  // Ram, mapping to slave 0
                 physical_address_o <= virtual_address_i-`RAM_ADDR_START ;
             end else if(virtual_address_i >= `FLASH_ADDR_START && virtual_address_i < `FLASH_ADDR_START+`FLASH_ADDR_LEN) begin  // Flash, mapping to slave 3
-                physical_address_o <= {4'h3, (virtual_address_i-`FLASH_ADDR_START)[27:0]} ;
+                physical_address_o <= 32'h30000000+virtual_address_i-`FLASH_ADDR_START ;
             end else if(virtual_address_i >= `ROM_ADDR_START && virtual_address_i < `ROM_ADDR_START+`ROM_ADDR_LEN) begin  // Rom, mapping to slave 2
-                physical_address_o <= {4'h2, (virtual_address_i-`ROM_ADDR_START)[27:0]} ;
+                physical_address_o <= 32'h20000000+virtual_address_i-`ROM_ADDR_START ;
             end else if(virtual_address_i >= `UART_ADDR_START && virtual_address_i < `UART_ADDR_START+`UART_ADDR_LEN) begin  // Uart, mapping to slave 1
-                physical_address_o <= {4'h1, (virtual_address_i-`UART_ADDR_START)[27:0]}  ;
+                physical_address_o <= 32'h10000000+virtual_address_i-`UART_ADDR_START  ;
             end else if(virtual_address_i >= `ETHERNET_ADDR_START && virtual_address_i < `ETHERNET_ADDR_START+`ETHERNET_ADDR_LEN) begin  // Ethernet, mapping to slave 8
-                physical_address_o <= {4'h8, (virtual_address_i-`ETHERNET_ADDR_START)[27:0]}  ;     
+                physical_address_o <= 32'h80000000+virtual_address_i-`ETHERNET_ADDR_START  ;     
+            end else if(virtual_address_i >= `LED_ADDR_START && virtual_address_i < `LED_ADDR_START+`LED_ADDR_LEN) begin  // Ethernet, mapping to slave 8
+                physical_address_o <= 32'hB0000000+virtual_address_i-`LED_ADDR_START  ;     
             end
+        end
     end
     
 endmodule

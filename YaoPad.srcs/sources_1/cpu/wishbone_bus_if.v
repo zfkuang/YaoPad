@@ -38,6 +38,11 @@ module wishbone_bus_if(
     input wire[3:0] cpu_sel_i,
     output reg[`WordBus] cpu_data_o,
 
+    //MMU interface 
+    input wire[`WordBus] mmu_phy_addr,
+    output wire[`WordBus] mmu_vir_addr,
+
+
     //Wishbone interface
     input wire[`WordBus] wishbone_data_i,
     input wire wishbone_ack_i,
@@ -88,7 +93,8 @@ module wishbone_bus_if(
             wishbone_ack_id <= cpu_req_id;
             cpu_data_o <= wishbone_data_i;
         end
-    assign wishbone_addr_o = cpu_addr_i;
+    assign mmu_vir_addr = cpu_addr_i;
+    assign wishbone_addr_o = mmu_phy_addr;
     assign wishbone_data_o = cpu_data_i;
     // 竞争与冒险？
     assign wishbone_cyc_o = ((request_bus) | ((flush == `Disable) & ~(&req_cnt) & (stallreq == `Enable || stall_this == `Disable)));

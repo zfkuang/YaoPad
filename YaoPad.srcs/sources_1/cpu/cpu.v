@@ -61,7 +61,7 @@ module cpu(    input wire rst,
     input wire[5:0] int_i,
     output wire timer_int_o,
     
-    input wire[`RegAddrBus] debug,
+    input wire[`DebugBus] debug,
     output reg[`WordBus] debugdata
     );
     
@@ -73,23 +73,23 @@ module cpu(    input wire rst,
     wire[`WordBus] regdebugdata ;
     wire[`WordBus] ctrldebugdata ;
     always @(*) begin
-        case(debug)
-            5'b10000: begin
+        case(debug[5:0])
+            6'b100000: begin
                 debugdata <= ifdebugdata ;
             end
-            5'b10001: begin
+            6'b100001: begin
                 debugdata <= iddebugdata ;
             end
-            5'b10010: begin
+            6'b100010: begin
                 debugdata <= exdebugdata ;
             end
-            5'b10011: begin
+            6'b100011: begin
                 debugdata <= memdebugdata ;
             end
-            5'b10100: begin
+            6'b100100: begin
                 debugdata <= wbdebugdata ;
             end           
-            5'b10101: begin
+            6'b100101: begin
                 debugdata <= ctrldebugdata ;
             end
             default: begin
@@ -317,7 +317,7 @@ module cpu(    input wire rst,
         .re2(reg2_read),
         .raddr2(reg2_addr),
         .rdata2(reg2_data),
-        .debug(debug),
+        .debug(debug[4:0]),
         .debugdata(regdebugdata)
     ) ;
     

@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date         : Thu Dec  7 21:55:38 2017
+| Date         : Fri Dec  8 00:52:24 2017
 | Host         : DESKTOP-N2UMQR8 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -file openmips_min_sopc_control_sets_placed.rpt
 | Design       : openmips_min_sopc
@@ -21,7 +21,7 @@ Table of Contents
 +-------------------------------+-------+
 |             Status            | Count |
 +-------------------------------+-------+
-| Number of unique control sets |    57 |
+| Number of unique control sets |    37 |
 +-------------------------------+-------+
 
 
@@ -31,12 +31,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             245 |          117 |
-| No           | No                    | Yes                    |              12 |            7 |
-| No           | Yes                   | No                     |             300 |          156 |
-| Yes          | No                    | No                     |             281 |          109 |
-| Yes          | No                    | Yes                    |             256 |           77 |
-| Yes          | Yes                   | No                     |             686 |          279 |
+| No           | No                    | No                     |             237 |          110 |
+| No           | No                    | Yes                    |               3 |            2 |
+| No           | Yes                   | No                     |             280 |          126 |
+| Yes          | No                    | No                     |             264 |          119 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             654 |          279 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 

@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date         : Thu Dec  7 21:56:21 2017
+| Date         : Fri Dec  8 00:53:04 2017
 | Host         : DESKTOP-N2UMQR8 running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -file openmips_min_sopc_timing_summary_routed.rpt -warn_on_violation -rpx openmips_min_sopc_timing_summary_routed.rpx
 | Design       : openmips_min_sopc
@@ -52,8 +52,6 @@ Table of Contents
 
 1. checking no_clock
 --------------------
- There are 1152 register/latch pins with no clock driven by root clock pin: click (HIGH)
-
  There are 270 register/latch pins with no clock driven by root clock pin: rst (HIGH)
 
  There are 32 register/latch pins with no clock driven by root clock pin: cpu0/cp00/status_o_reg[0]/Q (HIGH)
@@ -286,7 +284,9 @@ Table of Contents
 
  There are 33 register/latch pins with no clock driven by root clock pin: cpu0/mem_wb0/wb_cp0_reg_write_addr_reg[4]/Q (HIGH)
 
- There are 461 register/latch pins with no clock driven by root clock pin: slowclk_reg[21]/Q (HIGH)
+ There are 150 register/latch pins with no clock driven by root clock pin: slowclk_reg[17]/Q (HIGH)
+
+ There are 1123 register/latch pins with no clock driven by root clock pin: slowclk_reg[19]/Q (HIGH)
 
 
 2. checking constant_clock
@@ -301,21 +301,21 @@ Table of Contents
 
 4. checking unconstrained_internal_endpoints
 --------------------------------------------
- There are 5191 pins that are not constrained for maximum delay. (HIGH)
+ There are 4229 pins that are not constrained for maximum delay. (HIGH)
 
  There are 4 pins that are not constrained for maximum delay due to constant clock. (MEDIUM)
 
 
 5. checking no_input_delay
 --------------------------
- There are 65 input ports with no input delay specified. (HIGH)
+ There are 33 input ports with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
 6. checking no_output_delay
 ---------------------------
- There are 142 ports with no output delay specified. (HIGH)
+ There are 99 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -360,7 +360,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-     17.101        0.000                      0                   22        0.093        0.000                      0                   22        9.500        0.000                       0                    23  
+     16.854        0.000                      0                   20        0.265        0.000                      0                   20        9.500        0.000                       0                    21  
 
 
 All user specified timing constraints are met.
@@ -383,7 +383,7 @@ clk    {0.000 10.000}     20.000          50.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-clk                17.101        0.000                      0                   22        0.093        0.000                      0                   22        9.500        0.000                       0                    23  
+clk                16.854        0.000                      0                   20        0.265        0.000                      0                   20        9.500        0.000                       0                    21  
 
 
 ------------------------------------------------------------------------------------------------
@@ -414,27 +414,27 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 From Clock:  clk
   To Clock:  clk
 
-Setup :            0  Failing Endpoints,  Worst Slack       17.101ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.093ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack       16.854ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.265ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        9.500ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             17.101ns  (required time - arrival time)
-  Source:                 slowclk_reg[21]/C
+Slack (MET) :             16.854ns  (required time - arrival time)
+  Source:                 slowclk_reg[17]/C
                             (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@10.000ns period=20.000ns})
-  Destination:            slowclk_reg[21]/D
+  Destination:            slowclk_reg[19]/D
                             (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@10.000ns period=20.000ns})
   Path Group:             clk
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            20.000ns  (clk rise@20.000ns - clk rise@0.000ns)
-  Data Path Delay:        2.923ns  (logic 0.752ns (25.726%)  route 2.171ns (74.274%))
+  Data Path Delay:        3.170ns  (logic 1.095ns (34.543%)  route 2.075ns (65.457%))
   Logic Levels:           2  (BUFG=1 CARRY4=1)
   Clock Path Skew:        0.000ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.601ns = ( 24.601 - 20.000 ) 
-    Source Clock Delay      (SCD):    4.885ns
+    Destination Clock Delay (DCD):    4.615ns = ( 24.615 - 20.000 ) 
+    Source Clock Delay      (SCD):    4.899ns
     Clock Pessimism Removal (CPR):    0.284ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -450,17 +450,17 @@ Slack (MET) :             17.101ns  (required time - arrival time)
     D18                  IBUF (Prop_ibuf_I_O)         1.465     1.465 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.982     3.447    clk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.081     3.528 r  clk_IBUF_BUFG_inst/O
-                         net (fo=22, routed)          1.357     4.885    clk_IBUF_BUFG
-    SLICE_X51Y100        FDRE                                         r  slowclk_reg[21]/C
+                         net (fo=20, routed)          1.372     4.899    clk_IBUF_BUFG
+    SLICE_X52Y96         FDRE                                         r  slowclk_reg[17]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X51Y100        FDRE (Prop_fdre_C_Q)         0.379     5.264 r  slowclk_reg[21]/Q
-                         net (fo=1, routed)           0.701     5.964    slowclk_reg[21]__0
-    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.081     6.045 r  slowclk_reg_BUFG[21]_inst/O
-                         net (fo=462, routed)         1.471     7.516    slowclk_reg_BUFG[21]
-    SLICE_X51Y100        CARRY4 (Prop_carry4_S[1]_O[1])
-                                                      0.292     7.808 r  slowclk_reg[20]_i_1/O[1]
-                         net (fo=1, routed)           0.000     7.808    slowclk_reg[20]_i_1_n_11
-    SLICE_X51Y100        FDRE                                         r  slowclk_reg[21]/D
+    SLICE_X52Y96         FDRE (Prop_fdre_C_Q)         0.379     5.278 r  slowclk_reg[17]/Q
+                         net (fo=1, routed)           0.589     5.867    slowclk_reg[17]__0
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.081     5.948 r  slowclk_reg_BUFG[17]_inst/O
+                         net (fo=151, routed)         1.486     7.434    slowclk_reg_BUFG[17]
+    SLICE_X52Y96         CARRY4 (Prop_carry4_S[1]_O[3])
+                                                      0.635     8.069 r  slowclk_reg[16]_i_1/O[3]
+                         net (fo=1, routed)           0.000     8.069    slowclk_reg[16]_i_1_n_9
+    SLICE_X52Y96         FDRE                                         r  slowclk_reg[19]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk rise edge)       20.000    20.000 r  
@@ -469,16 +469,16 @@ Slack (MET) :             17.101ns  (required time - arrival time)
     D18                  IBUF (Prop_ibuf_I_O)         1.398    21.398 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.880    23.278    clk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.077    23.355 r  clk_IBUF_BUFG_inst/O
-                         net (fo=22, routed)          1.246    24.601    clk_IBUF_BUFG
-    SLICE_X51Y100        FDRE                                         r  slowclk_reg[21]/C
-                         clock pessimism              0.284    24.885    
-                         clock uncertainty           -0.035    24.849    
-    SLICE_X51Y100        FDRE (Setup_fdre_C_D)        0.059    24.908    slowclk_reg[21]
+                         net (fo=20, routed)          1.260    24.615    clk_IBUF_BUFG
+    SLICE_X52Y96         FDRE                                         r  slowclk_reg[19]/C
+                         clock pessimism              0.284    24.899    
+                         clock uncertainty           -0.035    24.864    
+    SLICE_X52Y96         FDRE (Setup_fdre_C_D)        0.059    24.923    slowclk_reg[19]
   -------------------------------------------------------------------
-                         required time                         24.908    
-                         arrival time                          -7.808    
+                         required time                         24.923    
+                         arrival time                          -8.069    
   -------------------------------------------------------------------
-                         slack                                 17.101    
+                         slack                                 16.854    
 
 
 
@@ -486,20 +486,20 @@ Slack (MET) :             17.101ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.093ns  (arrival time - required time)
-  Source:                 slowclk_reg[19]/C
+Slack (MET) :             0.265ns  (arrival time - required time)
+  Source:                 slowclk_reg[10]/C
                             (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@10.000ns period=20.000ns})
-  Destination:            slowclk_reg[20]/D
+  Destination:            slowclk_reg[10]/D
                             (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@10.000ns period=20.000ns})
   Path Group:             clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk rise@0.000ns - clk rise@0.000ns)
-  Data Path Delay:        0.462ns  (logic 0.355ns (76.797%)  route 0.107ns (23.203%))
-  Logic Levels:           2  (CARRY4=2)
-  Clock Path Skew:        0.264ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.219ns
-    Source Clock Delay      (SCD):    1.700ns
-    Clock Pessimism Removal (CPR):    0.254ns
+  Data Path Delay:        0.370ns  (logic 0.252ns (68.170%)  route 0.118ns (31.830%))
+  Logic Levels:           1  (CARRY4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.223ns
+    Source Clock Delay      (SCD):    1.698ns
+    Clock Pessimism Removal (CPR):    0.524ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -509,18 +509,15 @@ Slack (MET) :             0.093ns  (arrival time - required time)
     D18                  IBUF (Prop_ibuf_I_O)         0.301     0.301 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.808     1.109    clk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     1.135 r  clk_IBUF_BUFG_inst/O
-                         net (fo=22, routed)          0.566     1.700    clk_IBUF_BUFG
-    SLICE_X51Y99         FDRE                                         r  slowclk_reg[19]/C
+                         net (fo=20, routed)          0.564     1.698    clk_IBUF_BUFG
+    SLICE_X52Y94         FDRE                                         r  slowclk_reg[10]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X51Y99         FDRE (Prop_fdre_C_Q)         0.141     1.841 r  slowclk_reg[19]/Q
-                         net (fo=1, routed)           0.107     1.948    slowclk_reg_n_5_[19]
-    SLICE_X51Y99         CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.160     2.108 r  slowclk_reg[16]_i_1/CO[3]
-                         net (fo=1, routed)           0.001     2.109    slowclk_reg[16]_i_1_n_5
-    SLICE_X51Y100        CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.054     2.163 r  slowclk_reg[20]_i_1/O[0]
-                         net (fo=1, routed)           0.000     2.163    slowclk_reg[20]_i_1_n_12
-    SLICE_X51Y100        FDRE                                         r  slowclk_reg[20]/D
+    SLICE_X52Y94         FDRE (Prop_fdre_C_Q)         0.141     1.839 r  slowclk_reg[10]/Q
+                         net (fo=1, routed)           0.118     1.957    slowclk_reg_n_5_[10]
+    SLICE_X52Y94         CARRY4 (Prop_carry4_S[2]_O[2])
+                                                      0.111     2.068 r  slowclk_reg[8]_i_1/O[2]
+                         net (fo=1, routed)           0.000     2.068    slowclk_reg[8]_i_1_n_10
+    SLICE_X52Y94         FDRE                                         r  slowclk_reg[10]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk rise edge)        0.000     0.000 r  
@@ -529,15 +526,15 @@ Slack (MET) :             0.093ns  (arrival time - required time)
     D18                  IBUF (Prop_ibuf_I_O)         0.489     0.489 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.871     1.360    clk_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.389 r  clk_IBUF_BUFG_inst/O
-                         net (fo=22, routed)          0.830     2.219    clk_IBUF_BUFG
-    SLICE_X51Y100        FDRE                                         r  slowclk_reg[20]/C
-                         clock pessimism             -0.254     1.964    
-    SLICE_X51Y100        FDRE (Hold_fdre_C_D)         0.105     2.069    slowclk_reg[20]
+                         net (fo=20, routed)          0.834     2.223    clk_IBUF_BUFG
+    SLICE_X52Y94         FDRE                                         r  slowclk_reg[10]/C
+                         clock pessimism             -0.524     1.698    
+    SLICE_X52Y94         FDRE (Hold_fdre_C_D)         0.105     1.803    slowclk_reg[10]
   -------------------------------------------------------------------
-                         required time                         -2.069    
-                         arrival time                           2.163    
+                         required time                         -1.803    
+                         arrival time                           2.068    
   -------------------------------------------------------------------
-                         slack                                  0.093    
+                         slack                                  0.265    
 
 
 
@@ -552,8 +549,8 @@ Sources:            { clk }
 
 Check Type        Corner  Lib Pin  Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location        Pin
 Min Period        n/a     BUFG/I   n/a            1.592         20.000      18.408     BUFGCTRL_X0Y16  clk_IBUF_BUFG_inst/I
-Low Pulse Width   Slow    FDRE/C   n/a            0.500         10.000      9.500      SLICE_X51Y95    slowclk_reg[0]/C
-High Pulse Width  Fast    FDRE/C   n/a            0.500         10.000      9.500      SLICE_X51Y95    slowclk_reg[0]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         10.000      9.500      SLICE_X52Y92    slowclk_reg[0]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         10.000      9.500      SLICE_X52Y92    slowclk_reg[0]/C
 
 
 

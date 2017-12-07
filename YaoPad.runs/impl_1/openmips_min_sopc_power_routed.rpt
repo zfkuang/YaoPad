@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date             : Thu Dec  7 21:56:21 2017
+| Date             : Fri Dec  8 00:53:03 2017
 | Host             : DESKTOP-N2UMQR8 running 64-bit major release  (build 9200)
 | Command          : report_power -file openmips_min_sopc_power_routed.rpt -pb openmips_min_sopc_power_summary_routed.pb -rpx openmips_min_sopc_power_routed.rpx
 | Design           : openmips_min_sopc
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.151        |
+| Total On-Chip Power (W)  | 0.137        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.054        |
+| Dynamic (W)              | 0.040        |
 | Device Static (W)        | 0.097        |
 | Effective TJA (C/W)      | 2.6          |
 | Max Ambient (C)          | 99.6         |
@@ -53,19 +53,19 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |    <0.001 |        3 |       --- |             --- |
-| Slice Logic              |     0.003 |     5490 |       --- |             --- |
-|   LUT as Logic           |     0.003 |     2907 |     63400 |            4.59 |
-|   CARRY4                 |    <0.001 |      168 |     15850 |            1.06 |
-|   Register               |    <0.001 |     1780 |    126800 |            1.40 |
+| Slice Logic              |     0.003 |     4712 |       --- |             --- |
+|   LUT as Logic           |     0.002 |     2604 |     63400 |            4.11 |
+|   CARRY4                 |    <0.001 |      160 |     15850 |            1.01 |
+|   Register               |    <0.001 |     1438 |    126800 |            1.13 |
 |   BUFG                   |    <0.001 |        8 |        32 |           25.00 |
-|   F7/F8 Muxes            |    <0.001 |       57 |     63400 |            0.09 |
+|   F7/F8 Muxes            |    <0.001 |        4 |     63400 |           <0.01 |
 |   LUT as Distributed RAM |    <0.001 |       72 |     19000 |            0.38 |
-|   Others                 |     0.000 |       51 |       --- |             --- |
-| Signals                  |     0.004 |     5001 |       --- |             --- |
+|   Others                 |     0.000 |       70 |       --- |             --- |
+| Signals                  |     0.003 |     4451 |       --- |             --- |
 | DSPs                     |    <0.001 |        4 |       240 |            1.67 |
-| I/O                      |     0.047 |      158 |       300 |           52.67 |
+| I/O                      |     0.034 |      160 |       300 |           53.33 |
 | Static Power             |     0.097 |          |           |                 |
-| Total                    |     0.151 |          |           |                 |
+| Total                    |     0.137 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,9 +75,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.023 |       0.008 |      0.015 |
-| Vccaux    |       1.800 |     0.020 |       0.002 |      0.018 |
-| Vcco33    |       3.300 |     0.017 |       0.013 |      0.004 |
+| Vccint    |       1.000 |     0.021 |       0.006 |      0.015 |
+| Vccaux    |       1.800 |     0.019 |       0.001 |      0.018 |
+| Vcco33    |       3.300 |     0.013 |       0.009 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -144,7 +144,7 @@ Table of Contents
 +----------------------------------+-----------+
 | Name                             | Power (W) |
 +----------------------------------+-----------+
-| openmips_min_sopc                |     0.054 |
+| openmips_min_sopc                |     0.040 |
 |   base_ram_data_IOBUF[0]_inst    |    <0.001 |
 |   base_ram_data_IOBUF[10]_inst   |    <0.001 |
 |   base_ram_data_IOBUF[11]_inst   |    <0.001 |
@@ -177,13 +177,13 @@ Table of Contents
 |   base_ram_data_IOBUF[7]_inst    |    <0.001 |
 |   base_ram_data_IOBUF[8]_inst    |    <0.001 |
 |   base_ram_data_IOBUF[9]_inst    |    <0.001 |
-|   cpu0                           |     0.006 |
+|   cpu0                           |     0.005 |
 |     cp00                         |    <0.001 |
 |     ctrl0                        |    <0.001 |
 |     div0                         |     0.001 |
 |     dwishbone_bus_if             |    <0.001 |
 |     ex0                          |    <0.001 |
-|     ex_mem0                      |     0.002 |
+|     ex_mem0                      |    <0.001 |
 |     hilo0                        |    <0.001 |
 |     id0                          |    <0.001 |
 |     id_ex0                       |    <0.001 |
@@ -211,55 +211,13 @@ Table of Contents
 |       register_reg_r3_0_31_24_29 |    <0.001 |
 |       register_reg_r3_0_31_30_31 |    <0.001 |
 |       register_reg_r3_0_31_6_11  |    <0.001 |
-|   ext_ram_data_IOBUF[0]_inst     |    <0.001 |
-|   ext_ram_data_IOBUF[10]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[11]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[12]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[13]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[14]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[15]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[16]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[17]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[18]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[19]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[1]_inst     |    <0.001 |
-|   ext_ram_data_IOBUF[20]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[21]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[22]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[23]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[24]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[25]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[26]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[27]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[28]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[29]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[2]_inst     |    <0.001 |
-|   ext_ram_data_IOBUF[30]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[31]_inst    |    <0.001 |
-|   ext_ram_data_IOBUF[3]_inst     |    <0.001 |
-|   ext_ram_data_IOBUF[4]_inst     |    <0.001 |
-|   ext_ram_data_IOBUF[5]_inst     |    <0.001 |
-|   ext_ram_data_IOBUF[6]_inst     |    <0.001 |
-|   ext_ram_data_IOBUF[7]_inst     |    <0.001 |
-|   ext_ram_data_IOBUF[8]_inst     |    <0.001 |
-|   ext_ram_data_IOBUF[9]_inst     |    <0.001 |
 |   sram0                          |    <0.001 |
 |   wb_conmax0                     |    <0.001 |
 |     m0                           |    <0.001 |
 |     m1                           |     0.000 |
-|     rf                           |    <0.001 |
 |     s0                           |    <0.001 |
 |       msel                       |    <0.001 |
-|         arb0                     |     0.000 |
-|         arb1                     |    <0.001 |
-|         arb2                     |    <0.001 |
-|         arb3                     |     0.000 |
-|     s15                          |    <0.001 |
-|       msel                       |    <0.001 |
-|         arb0                     |     0.000 |
-|         arb1                     |     0.000 |
-|         arb2                     |    <0.001 |
-|         arb3                     |     0.000 |
+|         arb0                     |    <0.001 |
 +----------------------------------+-----------+
 
 

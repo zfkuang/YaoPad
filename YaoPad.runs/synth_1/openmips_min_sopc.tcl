@@ -44,6 +44,7 @@ read_verilog -library xil_defaultlib {
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/div.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/wishbone_bus_if.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/controller/led_controller.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/controller/sram_controller.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax_defines.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_arb.v
@@ -56,7 +57,6 @@ read_verilog -library xil_defaultlib {
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_top.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/inst_rom.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being

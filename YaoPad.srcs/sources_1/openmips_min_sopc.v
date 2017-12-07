@@ -37,9 +37,9 @@
 
 `include "defines.vh"
 `include "cpu/cpu.v"
-`include "cpu/inst_rom.v"
 `include "cpu/data_ram.v"
 `include "controller/sram_controller.v"
+`include "controller/led_controller.v"
 `include "wb_conmax.v"
 
 module openmips_min_sopc(
@@ -64,8 +64,8 @@ module openmips_min_sopc(
   output wire ext_ram_we_n,
     
     
-	input wire[`RegAddrBus] debug,
-	output wire[`WordBus] led
+	input wire[`DebugBus] debug,
+	output wire[`WordBus] led_o
 	
 );
 
@@ -107,7 +107,8 @@ always @(*)
 //assign led[15:8] = inst_get[7:0];
  wire[`WordBus] debugdata;
  wire[`WordBus] ramdebugdata;
- assign led = (debug[3]==0) ? debugdata : ramdebugdata ;
+ wire[`WordBus] leddebugdata;
+ assign led_o = (debug[7]==0) ? ((debug[6] == 0) ? debugdata : ramdebugdata) : leddebugdata ;
  //assign led[31:24] = inst_get[7:0];
 
 wire[`WordBus] wb_m0_data_i ;
@@ -129,8 +130,8 @@ wire[`WordBus] wb_m1_data_o ;
 wire wb_m1_ack_o ;
 
  cpu cpu0(
-		.clk(click),
-    .clk100(slowclk[21]),
+		.clk(slowclk[19]),
+    .clk100(slowclk[17]),
 		.rst(rst),
 
 		.iwishbone_addr_o(wb_m0_addr_i),
@@ -166,9 +167,18 @@ wire wb_m1_ack_o ;
   wire[`WordBus] wb_s0_data_i ;
   wire wb_s0_ack_i ;
 
+  wire[`WordBus] wb_s11_data_o ;
+  wire[`WordBus] wb_s11_addr_o ;
+  wire[3:0] wb_s11_sel_o ;
+  wire wb_s11_stb_o ;
+  wire wb_s11_cyc_o ;
+  wire wb_s11_we_o ;
+  wire[`WordBus] wb_s11_data_i ;
+  wire wb_s11_ack_i ;
+
   // used interfaces: m0, m1, s0(sram)
   wb_conmax_top wb_conmax0(
-    .clk_i(slowclk[21]), 
+    .clk_i(slowclk[17]), 
     .rst_i(rst),
 
     .m0_data_i(wb_m0_data_i),
@@ -286,7 +296,14 @@ wire wb_m1_ack_o ;
     .s10_err_i(`Disable),
     .s10_rty_i(`Disable),
 
-    .s11_ack_i(`Disable),
+    .s11_data_o(wb_s11_data_o),
+    .s11_addr_o(wb_s11_addr_o),
+    .s11_sel_o(wb_s11_sel_o),
+    .s11_we_o(wb_s11_we_o),
+    .s11_cyc_o(wb_s11_cyc_o),
+    .s11_stb_o(wb_s11_stb_o),
+    .s11_data_i(wb_s11_data_i),
+    .s11_ack_i(wb_s11_ack_i),
     .s11_err_i(`Disable),
     .s11_rty_i(`Disable),
 
@@ -314,7 +331,7 @@ wire wb_m1_ack_o ;
   assign base_ram_be_n = 4'b0000;
   assign ext_ram_be_n = 4'b0000;
   sram sram0(
-    .clk(slowclk[21]), .rst(rst), 
+    .clk(slowclk[17]), .rst(rst), 
 
     .wishbone_addr_i(wb_s0_addr_o),
     .wishbone_data_i(wb_s0_data_o),
@@ -341,8 +358,21 @@ wire wb_m1_ack_o ;
     .debugdata(ramdebugdata)
     );
 
-    reg[`WordBus] data_get;
+  led led0(
+    .clk(slowclk[17]), .rst(rst), 
 
+    .wishbone_addr_i(wb_s11_addr_o),
+    .wishbone_data_i(wb_s11_data_o),
+    .wishbone_we_i(wb_s11_we_o),
+    .wishbone_sel_i(wb_s11_sel_o),
+    .wishbone_stb_i(wb_s11_stb_o),
+    .wishbone_cyc_i(wb_s11_cyc_o),
+    
+    .wishbone_data_o(wb_s11_data_i),
+    .wishbone_ack_o(wb_s11_ack_i),
+
+    .led_o(leddebugdata)
+    );
    
    // fake mem
 	/*data_ram data_ram0(

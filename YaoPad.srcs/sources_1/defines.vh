@@ -24,6 +24,7 @@
 `define MemNumLog 18 
 
 // Buses // 
+`define DebugBus 9:0
 `define StallBus 5:0
 `define AluOpBus 7:0
 `define AluSelBus 2:0
