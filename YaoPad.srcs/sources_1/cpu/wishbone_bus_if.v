@@ -65,7 +65,7 @@ module wishbone_bus_if(
     assign request_bus = (process == 1'b1) && (wishbone_ack_id != cpu_req_id || wishbone_ack_valid == 1'b0); 
     parameter cyc_len_log_2 = 2;
     reg [(cyc_len_log_2 - 1) : 0] req_cnt;
-    always @ (posedge cpu_clk or negedge rst)
+    always @ (posedge cpu_clk)
         if(rst == `Enable)
         begin
             cpu_ack_id <= 1'b0;
@@ -76,7 +76,7 @@ module wishbone_bus_if(
             cpu_ack_id <= wishbone_ack_id;
             req_cnt <= req_cnt + 1'b1;
         end
-    always @ (posedge wishbone_clk or negedge rst)
+    always @ (posedge wishbone_clk)
         if(rst == `Enable)
         begin
             wishbone_ack_valid <= 1'b0;
@@ -97,7 +97,7 @@ module wishbone_bus_if(
     assign wishbone_sel_o = cpu_sel_i;
     reg[delay:0] stall_delay;
     reg not_use;
-    always @ (posedge wishbone_clk or negedge rst)
+    always @ (posedge wishbone_clk)
         if(rst == `Enable)
             stall_delay <= {delay{1'b0}};
         else if(flush == `Enable)

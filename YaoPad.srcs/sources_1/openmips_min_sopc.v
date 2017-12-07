@@ -44,7 +44,7 @@
 
 module openmips_min_sopc(
 
-	//input wire clk,
+	input wire clk,
 	input wire	rst,
   input wire clk100,
 	input wire	click,
@@ -89,8 +89,12 @@ module openmips_min_sopc(
  assign base_ram_we_n = 1'b1;
  assign base_ram_data = (base_ram_oe_n==1'b0) ? 32'bz : 32'b0;*/
  
+ reg[21:0] slowclk ;
+ always @ (posedge clk) begin
+    slowclk <= slowclk+1 ;
+ end
  reg halfclk ;
- always @ ( posedge clk100 ) begin
+ always @ ( posedge click ) begin
     halfclk <= ~halfclk ;
  end
  reg[`WordBus] inst_get;
@@ -102,7 +106,8 @@ always @(*)
 //assign led[31:16] = base_ram_addr[15:0];
 //assign led[15:8] = inst_get[7:0];
  wire[`WordBus] debugdata;
- assign led[`WordBus] = debugdata[`WordBus];
+ wire[`WordBus] ramdebugdata;
+ assign led = (debug[3]==0) ? debugdata : ramdebugdata ;
  //assign led[31:24] = inst_get[7:0];
 
 wire[`WordBus] wb_m0_data_i ;
@@ -124,8 +129,8 @@ wire[`WordBus] wb_m1_data_o ;
 wire wb_m1_ack_o ;
 
  cpu cpu0(
-		.clk(halfclk),
-    .clk100(clk100),
+		.clk(click),
+    .clk100(slowclk[21]),
 		.rst(rst),
 
 		.iwishbone_addr_o(wb_m0_addr_i),
@@ -163,7 +168,7 @@ wire wb_m1_ack_o ;
 
   // used interfaces: m0, m1, s0(sram)
   wb_conmax_top wb_conmax0(
-    .clk_i(clk100), 
+    .clk_i(slowclk[21]), 
     .rst_i(rst),
 
     .m0_data_i(wb_m0_data_i),
@@ -309,7 +314,7 @@ wire wb_m1_ack_o ;
   assign base_ram_be_n = 4'b0000;
   assign ext_ram_be_n = 4'b0000;
   sram sram0(
-    .clk(clk100), .rst(rst), 
+    .clk(slowclk[21]), .rst(rst), 
 
     .wishbone_addr_i(wb_s0_addr_o),
     .wishbone_data_i(wb_s0_data_o),
@@ -331,7 +336,9 @@ wire wb_m1_ack_o ;
     .ram1_oe(ext_ram_oe_n), 
     .ram1_ce(ext_ram_ce_n), 
     .ram1_we(ext_ram_we_n),
-    .ram1_data(ext_ram_data) 
+    .ram1_data(ext_ram_data),
+    
+    .debugdata(ramdebugdata)
     );
 
     reg[`WordBus] data_get;

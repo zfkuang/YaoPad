@@ -49,7 +49,7 @@ module cp0(
     );
 
 
-    always @ (posedge clk or negedge rst) begin
+    always @ (posedge clk) begin
         if(rst == `Enable) begin
             data_o <= `Zero ;
             count_o <= `Zero ;

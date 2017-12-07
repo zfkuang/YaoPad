@@ -2,10 +2,10 @@
 # Vivado v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Thu Dec  7 03:18:42 2017
-# Process ID: 9740
+# Start of session at: Thu Dec  7 16:07:40 2017
+# Process ID: 5356
 # Current directory: E:/XilinxProjects/YaoPad/YaoPad
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent2816 E:\XilinxProjects\YaoPad\YaoPad\YaoPad.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1056 E:\XilinxProjects\YaoPad\YaoPad\YaoPad.xpr
 # Log file: E:/XilinxProjects/YaoPad/YaoPad/vivado.log
 # Journal file: E:/XilinxProjects/YaoPad/YaoPad\vivado.jou
 #-----------------------------------------------------------
@@ -19,401 +19,55 @@ Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2017.3/data/ip'.
-open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:09 . Memory (MB): peak = 794.012 ; gain = 92.520
-update_compile_order -fileset sources_1
-update_compile_order -fileset sim_1
-add_files E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/defines.vh
-add_files {E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc_tb.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax_defines.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/controller/sram_controller.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_rf.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_master_if.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_slave_if.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_top.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_pri_enc.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_arb.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_msel.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_pri_dec.v}
-update_compile_order -fileset sources_1
-update_compile_order -fileset sim_1
-export_ip_user_files -of_objects  [get_files E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc_tb.v] -no_script -reset -force -quiet
-remove_files  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc_tb.v
-update_compile_order -fileset sim_1
-add_files -norecurse E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/wishbone_bus_if.v
-update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'cp0()' found in library 'xil_defaultlib'
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'pc_rom()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'if_id()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'id()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'regfile()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'id_ex()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'ex()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'ex_mem()' found in library 'xil_defaultlib'
-Duplicate found at line 43 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 43 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v
-Duplicate found at line 43 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'mem()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'mem_wb()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'hilo()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'ctrl()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'div()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/div.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wishbone_bus_if()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/wishbone_bus_if.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'cpu()' found in library 'xil_defaultlib'
-	(Active) Duplicate found at line 37 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 37 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'data_ram()' found in library 'xil_defaultlib'
-	(Active) Duplicate found at line 4 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v
-Duplicate found at line 4 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'inst_rom()' found in library 'xil_defaultlib'
-	(Active) Duplicate found at line 35 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/inst_rom.v
-Duplicate found at line 35 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'sram()' found in library 'xil_defaultlib'
-Duplicate found at line 30 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-	(Active) Duplicate found at line 30 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/controller/sram_controller.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_top()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_top.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_arb()' found in library 'xil_defaultlib'
-Duplicate found at line 63 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 63 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 63 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_arb.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_master_if()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_master_if.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_msel()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_msel.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_pri_dec()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_pri_dec.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_pri_enc()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_pri_enc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_rf()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_rf.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_slave_if()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_slave_if.v
-[Thu Dec  7 03:22:34 2017] Launched synth_1...
-Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/runme.log
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'cp0()' found in library 'xil_defaultlib'
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'pc_rom()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'if_id()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'id()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'regfile()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'id_ex()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'ex()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'ex_mem()' found in library 'xil_defaultlib'
-Duplicate found at line 43 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 43 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v
-Duplicate found at line 43 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'mem()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'mem_wb()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'hilo()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'ctrl()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'div()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/div.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wishbone_bus_if()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/wishbone_bus_if.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'cpu()' found in library 'xil_defaultlib'
-	(Active) Duplicate found at line 37 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 37 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'data_ram()' found in library 'xil_defaultlib'
-	(Active) Duplicate found at line 4 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v
-Duplicate found at line 4 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'inst_rom()' found in library 'xil_defaultlib'
-	(Active) Duplicate found at line 35 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/inst_rom.v
-Duplicate found at line 35 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'sram()' found in library 'xil_defaultlib'
-Duplicate found at line 30 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-	(Active) Duplicate found at line 30 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/controller/sram_controller.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_top()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_top.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_arb()' found in library 'xil_defaultlib'
-Duplicate found at line 63 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 63 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 63 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_arb.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_master_if()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_master_if.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_msel()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_msel.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_pri_dec()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_pri_dec.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_pri_enc()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_pri_enc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_rf()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_rf.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_slave_if()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_slave_if.v
-[Thu Dec  7 03:26:36 2017] Launched synth_1...
-Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/runme.log
-launch_runs impl_1 -jobs 2
-[Thu Dec  7 03:29:26 2017] Launched impl_1...
-Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/impl_1/runme.log
-reset_run impl_1
-launch_runs impl_1 -jobs 2
-[Thu Dec  7 03:31:42 2017] Launched impl_1...
-Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/impl_1/runme.log
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'cp0()' found in library 'xil_defaultlib'
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'pc_rom()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'if_id()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'id()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'regfile()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'id_ex()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'ex()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'ex_mem()' found in library 'xil_defaultlib'
-Duplicate found at line 43 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 43 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v
-Duplicate found at line 43 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'mem()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'mem_wb()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'hilo()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'ctrl()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'div()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/div.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wishbone_bus_if()' found in library 'xil_defaultlib'
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-	(Active) Duplicate found at line 23 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/wishbone_bus_if.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'cpu()' found in library 'xil_defaultlib'
-	(Active) Duplicate found at line 37 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
-Duplicate found at line 37 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'data_ram()' found in library 'xil_defaultlib'
-	(Active) Duplicate found at line 4 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v
-Duplicate found at line 4 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'inst_rom()' found in library 'xil_defaultlib'
-	(Active) Duplicate found at line 35 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/inst_rom.v
-Duplicate found at line 35 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'sram()' found in library 'xil_defaultlib'
-Duplicate found at line 30 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-	(Active) Duplicate found at line 30 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/controller/sram_controller.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_top()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_top.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_arb()' found in library 'xil_defaultlib'
-Duplicate found at line 63 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 63 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 63 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_arb.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_master_if()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_master_if.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_msel()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_msel.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_pri_dec()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_pri_dec.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_pri_enc()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_pri_enc.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_rf()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_rf.v
-WARNING: [filemgmt 20-1318] Duplicate Design Unit 'wb_conmax_slave_if()' found in library 'xil_defaultlib'
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
-Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
-	(Active) Duplicate found at line 61 of file E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_slave_if.v
-[Thu Dec  7 03:33:20 2017] Launched synth_1...
-Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/runme.log
-launch_runs impl_1 -jobs 2
-[Thu Dec  7 03:35:42 2017] Launched impl_1...
-Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/impl_1/runme.log
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-[Thu Dec  7 03:49:56 2017] Launched impl_1...
-Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/impl_1/runme.log
-open_run impl_1
-INFO: [Common 17-41] Interrupt caught. Command should exit soon.
-INFO: [Netlist 29-17] Analyzing 943 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
-INFO: [Project 1-479] Netlist was created with Vivado 2017.3
-INFO: [Common 17-344] 'open_run' was cancelled
-the value of str is 0.000 
-
-the value of str is 0.000 
-
-the value of str is 0.000 
-
-the value of str is 0.000 
-
-the value of str is 0.000 
-
-the value of str is 0.000 
-
-the value of str is 0.000 
-
-update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-set_property top openmips_min_sopc [current_fileset]
+open_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:06 . Memory (MB): peak = 803.367 ; gain = 96.953
 update_compile_order -fileset sources_1
 reset_run synth_1
 launch_runs impl_1 -to_step write_bitstream -jobs 2
-[Thu Dec  7 03:59:56 2017] Launched synth_1...
+[Thu Dec  7 16:14:44 2017] Launched synth_1...
 Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/runme.log
-[Thu Dec  7 03:59:56 2017] Launched impl_1...
+[Thu Dec  7 16:14:44 2017] Launched impl_1...
+Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/impl_1/runme.log
+reorder_files -fileset constrs_1 -after E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+WARNING: [Vivado 12-872] Run step 'Design Initialization' is out-of-date.
+[Thu Dec  7 16:18:20 2017] Launched impl_1...
+Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Thu Dec  7 16:18:33 2017] Launched synth_1...
+Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/runme.log
+[Thu Dec  7 16:18:33 2017] Launched impl_1...
+Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Thu Dec  7 16:32:09 2017] Launched synth_1...
+Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/runme.log
+[Thu Dec  7 16:32:09 2017] Launched impl_1...
 Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/impl_1/runme.log
 open_run impl_1
-INFO: [Netlist 29-17] Analyzing 943 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 946 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-479] Netlist was created with Vivado 2017.3
 INFO: [Device 21-403] Loading part xc7a100tfgg676-2L
 INFO: [Project 1-570] Preparing netlist for logic optimization
-Parsing XDC File [E:/XilinxProjects/YaoPad/YaoPad/.Xil/Vivado-9740-DESKTOP-N2UMQR8/dcp15/openmips_min_sopc.xdc]
-Finished Parsing XDC File [E:/XilinxProjects/YaoPad/YaoPad/.Xil/Vivado-9740-DESKTOP-N2UMQR8/dcp15/openmips_min_sopc.xdc]
+Parsing XDC File [E:/XilinxProjects/YaoPad/YaoPad/.Xil/Vivado-5356-DESKTOP-N2UMQR8/dcp1/openmips_min_sopc.xdc]
+Finished Parsing XDC File [E:/XilinxProjects/YaoPad/YaoPad/.Xil/Vivado-5356-DESKTOP-N2UMQR8/dcp1/openmips_min_sopc.xdc]
 Reading XDEF placement.
 Reading placer database...
 Reading XDEF routing.
-Read XDEF File: Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1160.371 ; gain = 14.094
-Restored from archive | CPU: 2.000000 secs | Memory: 0.000000 MB |
-Finished XDEF File Restore: Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1160.371 ; gain = 14.094
+Read XDEF File: Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 1116.875 ; gain = 16.406
+Restored from archive | CPU: 1.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 1116.875 ; gain = 16.406
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 64 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 64 instances
 
-open_run: Time (s): cpu = 00:00:13 ; elapsed = 00:00:09 . Memory (MB): peak = 1259.758 ; gain = 217.781
+open_run: Time (s): cpu = 00:00:21 ; elapsed = 00:00:15 . Memory (MB): peak = 1234.148 ; gain = 330.770
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
 reset_run synth_1
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1
-
 launch_runs impl_1 -to_step write_bitstream -jobs 2
-[Thu Dec  7 04:15:52 2017] Launched synth_1...
+[Thu Dec  7 18:46:02 2017] Launched synth_1...
 Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/runme.log
-[Thu Dec  7 04:15:52 2017] Launched impl_1...
+[Thu Dec  7 18:46:02 2017] Launched impl_1...
 Run output will be captured here: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/impl_1/runme.log
-reorder_files -fileset constrs_1 -after E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc
-exit

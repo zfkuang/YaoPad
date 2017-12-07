@@ -2,59 +2,31 @@
 # Vivado v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Thu Dec  7 03:18:42 2017
-# Process ID: 9740
+# Start of session at: Thu Dec  7 16:07:40 2017
+# Process ID: 5356
 # Current directory: E:/XilinxProjects/YaoPad/YaoPad
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent2816 E:\XilinxProjects\YaoPad\YaoPad\YaoPad.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1056 E:\XilinxProjects\YaoPad\YaoPad\YaoPad.xpr
 # Log file: E:/XilinxProjects/YaoPad/YaoPad/vivado.log
 # Journal file: E:/XilinxProjects/YaoPad/YaoPad\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project E:/XilinxProjects/YaoPad/YaoPad/YaoPad.xpr
 update_compile_order -fileset sources_1
-update_compile_order -fileset sim_1
-add_files E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/defines.vh
-add_files {E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc_tb.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax_defines.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/controller/sram_controller.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_rf.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_master_if.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_slave_if.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_top.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_pri_enc.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_arb.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_msel.v E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_pri_dec.v}
-update_compile_order -fileset sources_1
-update_compile_order -fileset sim_1
-export_ip_user_files -of_objects  [get_files E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc_tb.v] -no_script -reset -force -quiet
-remove_files  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc_tb.v
-update_compile_order -fileset sim_1
-add_files -norecurse E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/wishbone_bus_if.v
-update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-wait_on_run synth_1
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-wait_on_run synth_1
-launch_runs impl_1 -jobs 2
-wait_on_run impl_1
-reset_run impl_1
-launch_runs impl_1 -jobs 2
-wait_on_run impl_1
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-wait_on_run synth_1
-launch_runs impl_1 -jobs 2
-wait_on_run impl_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-open_run impl_1
-update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
-set_property source_mgmt_mode None [current_project]
-set_property top openmips_min_sopc [current_fileset]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode All [current_project]
-update_compile_order -fileset sources_1
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-open_run impl_1
 reset_run synth_1
 launch_runs impl_1 -to_step write_bitstream -jobs 2
 wait_on_run impl_1
 reorder_files -fileset constrs_1 -after E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+open_run impl_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1

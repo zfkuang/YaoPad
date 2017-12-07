@@ -90,9 +90,12 @@ module ex(
     output wire is_in_delayslot_o,
 
 
+    output wire[`WordBus] debugdata,
     output reg stallreq
     );
 
+    assign debugdata = inst_i ;
+    
     reg[`WordBus] logicres ;
     reg[`WordBus] shiftres ;
     reg[`WordBus] moveres ;

@@ -43,7 +43,7 @@ module regfile(
     reg[`WordBus] register[`RegIdBus] ; 
     assign debugdata = register[debug];
     
-    always @ (posedge clk or negedge rst) begin
+    always @ (posedge clk) begin
         if (rst == `Disable) begin 
             if (we == `Enable && waddr != `NopRegAddr) begin 
                 register[waddr] <= wdata ;

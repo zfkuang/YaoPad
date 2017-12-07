@@ -63,7 +63,7 @@ module id_ex(
     output reg is_in_delayslot_o
     );
     
-    always @ (posedge clk or negedge rst) begin 
+    always @ (posedge clk) begin 
         if ((rst == `Enable) || ((stall[2] == `Enable) && (stall[3] == `Disable)) || (flush == `Enable)) begin
             ex_alusel <= `ALUS_NOP ;
             ex_aluop <= `ALU_NOP ;

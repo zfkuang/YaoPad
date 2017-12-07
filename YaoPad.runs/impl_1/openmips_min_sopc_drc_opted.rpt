@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date         : Thu Dec  7 04:18:49 2017
+| Date         : Thu Dec  7 21:55:17 2017
 | Host         : DESKTOP-N2UMQR8 running 64-bit major release  (build 9200)
 | Command      : report_drc -file openmips_min_sopc_drc_opted.rpt -pb openmips_min_sopc_drc_opted.pb -rpx openmips_min_sopc_drc_opted.rpx
 | Design       : openmips_min_sopc
@@ -122,8 +122,8 @@ Poor placement for routing between an IO pin and BUFG.
 Resolution: Poor placement of an IO pin and a BUFG has resulted in the router using a non-dedicated path between the two.  There are several things that could trigger this DRC, each of which can cause unpredictable clock insertion delays that result in poor timing.  This DRC could be caused by any of the following: (a) a clock port was placed on a pin that is not a CCIO-pin (b)the BUFG has not been placed in the same half of the device or SLR as the CCIO-pin (c) a single ended clock has been placed on the N-Side of a differential pair CCIO-pin.
  This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
 
-	clk100_IBUF_inst (IBUF.O) is locked to H19
-	clk100_IBUF_BUFG_inst (BUFG.I) cannot be placed
+	click_IBUF_inst (IBUF.O) is locked to H19
+	click_IBUF_BUFG_inst (BUFG.I) cannot be placed
 
 Related violations: <none>
 

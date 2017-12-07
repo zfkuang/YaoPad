@@ -62,10 +62,41 @@ module cpu(    input wire rst,
     output wire timer_int_o,
     
     input wire[`RegAddrBus] debug,
-    output wire[`WordBus] debugdata
+    output reg[`WordBus] debugdata
     );
     
-
+    wire[`WordBus] ifdebugdata ;
+    wire[`WordBus] iddebugdata ;
+    wire[`WordBus] exdebugdata ;
+    wire[`WordBus] memdebugdata ;
+    wire[`WordBus] wbdebugdata ;
+    wire[`WordBus] regdebugdata ;
+    wire[`WordBus] ctrldebugdata ;
+    always @(*) begin
+        case(debug)
+            5'b10000: begin
+                debugdata <= ifdebugdata ;
+            end
+            5'b10001: begin
+                debugdata <= iddebugdata ;
+            end
+            5'b10010: begin
+                debugdata <= exdebugdata ;
+            end
+            5'b10011: begin
+                debugdata <= memdebugdata ;
+            end
+            5'b10100: begin
+                debugdata <= wbdebugdata ;
+            end           
+            5'b10101: begin
+                debugdata <= ctrldebugdata ;
+            end
+            default: begin
+                debugdata <= regdebugdata ;
+            end
+        endcase
+    end
     wire[`WordBus] rom_data_i ;
     wire[`WordBus] rom_addr_o ;
     wire rom_ce_o ;
@@ -225,6 +256,7 @@ module cpu(    input wire rst,
         .id_pc(id_pc_i), 
         .id_inst(id_inst_i),
         .stall(stall),
+        .debugdata(ifdebugdata),
         .flush(flush)
     ) ;
     
@@ -267,6 +299,7 @@ module cpu(    input wire rst,
         .excepttype_o(id_excepttype_o),
         .current_inst_addr_o(id_current_inst_addr_o),
 
+        .debugdata(iddebugdata),
         .stallreq(stallreq_from_id)
     ) ;
     
@@ -285,7 +318,7 @@ module cpu(    input wire rst,
         .raddr2(reg2_addr),
         .rdata2(reg2_data),
         .debug(debug),
-        .debugdata(debugdata)
+        .debugdata(regdebugdata)
     ) ;
     
     id_ex id_ex0(
@@ -315,12 +348,12 @@ module cpu(    input wire rst,
         .next_inst_in_delayslot_i(id_next_inst_in_delayslot_o),
         .is_in_delayslot_o(id_is_in_delayslot_i),
 
-        .flush(flush),
         .id_excepttype(id_excepttype_o),
         .id_current_inst_addr(id_current_inst_addr_o),
         .ex_excepttype(ex_excepttype_i),
         .ex_current_inst_addr(ex_current_inst_addr_i),
 
+        .flush(flush),
         .stall(stall)
     ) ;
     
@@ -383,6 +416,7 @@ module cpu(    input wire rst,
         .current_inst_addr_o(ex_current_inst_addr_o),
         .is_in_delayslot_o(ex_is_in_delayslot_o),
 
+        .debugdata(exdebugdata),
         .stallreq(stallreq_from_ex)
     ) ;
     
@@ -475,6 +509,7 @@ module cpu(    input wire rst,
         .is_in_delayslot_o(mem_is_in_delayslot_o),
         .cp0_epc_o(mem_cp0_epc_o),
         
+        .debugdata(memdebugdata),
         .stallreq(stalleq_from_mem)
     ) ;
     
@@ -503,6 +538,7 @@ module cpu(    input wire rst,
 
         .flush(flush),
 
+        .debugdata(wbdebugdata),
         .stall(stall) 
     ) ;
 
@@ -527,7 +563,8 @@ module cpu(    input wire rst,
         .new_pc(new_pc),
 
         .flush(flush),
-        .stall(stall)
+        .stall(stall),
+        .debugdata(ctrldebugdata)
     ) ;
 
     assign div_annul = 0 ;

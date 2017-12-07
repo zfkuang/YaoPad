@@ -2,8 +2,8 @@
 # Vivado v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Thu Dec  7 04:16:01 2017
-# Process ID: 8480
+# Start of session at: Thu Dec  7 21:52:46 2017
+# Process ID: 18044
 # Current directory: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1
 # Command line: vivado.exe -log openmips_min_sopc.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source openmips_min_sopc.tcl
 # Log file: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/openmips_min_sopc.vds
