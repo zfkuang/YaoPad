@@ -60,6 +60,7 @@ module wishbone_bus_if(
     
     // buffer register of data from wishbone.
     reg[`WordBus] rd_buf;
+    reg rd_buf_has_read;
 
 
     /* State change */
@@ -89,6 +90,7 @@ module wishbone_bus_if(
             wishbone_stb_o <= `Disable;
             wishbone_cyc_o <= `Disable;
             rd_buf <= `Zero;
+            rd_buf_has_read <= `Disable;
         end else begin
             if(wishbone_busy == `Disable) begin
                 if((cpu_ce_i == `Enable) && (flush == `Disable)) begin
@@ -101,6 +103,7 @@ module wishbone_bus_if(
                     wishbone_sel_o <= cpu_sel_i;
                     wishbone_busy <= `Enable;
                     rd_buf <= `Zero;
+                    rd_buf_has_read <= `Disable;
                 end
             end else begin
                 if(wishbone_has_acked == `Enable) begin
@@ -111,8 +114,9 @@ module wishbone_bus_if(
                     wishbone_we_o <= `Disable;
                     wishbone_sel_o <= 4'b0000;
 
-                    if(cpu_we_i == `Disable) begin
+                    if((!cpu_we_i) & (!rd_buf_has_read)) begin
                         rd_buf <= wishbone_data_i;
+                        rd_buf_has_read <= `Enable;
                     end
                     if((!stall_this) & (!wishbone_wait_cpu)) begin
                         wishbone_busy <= `Disable;
@@ -126,6 +130,7 @@ module wishbone_bus_if(
                     wishbone_sel_o <= 4'b0000;
                     wishbone_busy <= `Disable;
                     rd_buf <= `Zero;
+                    rd_buf_has_read <= `Disable;
                 end
             end
         end
