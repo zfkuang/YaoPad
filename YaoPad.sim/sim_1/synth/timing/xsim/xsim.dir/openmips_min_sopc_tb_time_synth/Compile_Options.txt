@@ -1,1 +1,0 @@
--wto "c0b4e576a1cc4d7fbd9bd09e49ac2af0" --incr --debug "typical" --relax --mt "2" --maxdelay -L "xil_defaultlib" -L "simprims_ver" -L "secureip" --snapshot "openmips_min_sopc_tb_time_synth" -transport_int_delays -pulse_r "0" -pulse_int_r "0" -pulse_e "0" -pulse_int_e "0" "xil_defaultlib.openmips_min_sopc_tb" "xil_defaultlib.glbl" -log "elaborate.log" 
