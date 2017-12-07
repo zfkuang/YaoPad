@@ -35,16 +35,19 @@ module pc_rom(
     output wire[`WordBus] debugdata
     );
     
+    reg is_rst;
+
     always @ (*) begin
-        ce <= ~rst ;
+        ce <= ~rst;
     end
     
     always @ (posedge clk) begin
+        is_rst <= rst;
         if (ce == `Disable) begin
-            pc <= 32'h00000000;       
+            pc <= `StartInstAddr;
         end else begin
-            if (rst == `Enable) begin
-                pc <= 32'h00000000;
+            if (is_rst == `Enable) begin
+                pc <= `StartInstAddr;
             end else if(flush == `Enable) begin
                 pc <= new_pc ;
             end else if(stall[0] == `Disable) begin

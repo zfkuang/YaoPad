@@ -48,7 +48,7 @@ module mem_wb(
         output reg[`WordBus] wb_cp0_reg_data
     );    
     
-    always @ (posedge clk) begin 
+    always @ (posedge clk or negedge rst) begin 
         if ((rst == `Enable) || ((stall[4] == `Enable) && (stall[5] == `Disable)) || (flush == `Enable)) begin
             wb_wdata <= `Zero ;
             wb_wd <= `NopRegAddr ;

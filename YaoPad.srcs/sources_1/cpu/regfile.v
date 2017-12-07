@@ -43,7 +43,7 @@ module regfile(
     reg[`WordBus] register[`RegIdBus] ; 
     assign debugdata = register[debug];
     
-    always @ (posedge clk) begin
+    always @ (posedge clk or negedge rst) begin
         if (rst == `Disable) begin 
             if (we == `Enable && waddr != `NopRegAddr) begin 
                 register[waddr] <= wdata ;
@@ -55,7 +55,7 @@ module regfile(
         
         if((raddr1 == `NopRegAddr) || (re1 == `Disable)) begin
             rdata1 <= `Zero ; 
-        end else if((raddr1 == waddr) && (we == `Enable)) begin  //Êý¾ÝÌáÇ°
+        end else if((raddr1 == waddr) && (we == `Enable)) begin  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°
             rdata1 <= wdata ;
         end else begin
             rdata1 <= register[raddr1] ;
@@ -63,7 +63,7 @@ module regfile(
         
         if((raddr2 == `NopRegAddr) || (re2 == `Disable)) begin
             rdata2 <= `Zero ; 
-        end else if((raddr2 == waddr) && (we == `Enable)) begin  //Êý¾ÝÌáÇ°
+        end else if((raddr2 == waddr) && (we == `Enable)) begin  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°
             rdata2 <= wdata ;
         end else begin
             rdata2 <= register[raddr2] ;

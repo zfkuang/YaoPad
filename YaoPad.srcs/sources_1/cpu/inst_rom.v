@@ -26,7 +26,7 @@
 // File:    inst_rom.v
 // Author:  Lei Silei
 // E-mail:  leishangwen@163.com
-// Description: Ö¸Áî´æ´¢Æ÷
+// Description: Ö¸ï¿½ï¿½æ´¢ï¿½ï¿½
 // Revision: 1.0
 //////////////////////////////////////////////////////////////////////
 
@@ -36,12 +36,16 @@ module inst_rom(
 
 //	input	wire										clk,
 	input wire                    ce,
-	input wire[`WordBus]			addr,
-	output reg[`WordBus]					inst
+	input wire[`RamAddrBus]			addr,
+	output reg[`WordBus]					inst,
+	output reg ack
 	
 );
 
-	wire[`WordBus]  inst_mem[0:11];
+	reg[`WordBus]  inst_mem[0:1000];
+	initial $readmemh ( "inst_rom.data", inst_mem );
+	
+	/*wire[`WordBus]  inst_mem[0:11];
     assign inst_mem[0] = 32'h3c010101 ;
     assign inst_mem[1] = 32'h3c010101 ;
 	assign inst_mem[2] = 32'h34210101 ;
@@ -53,15 +57,15 @@ module inst_rom(
 	assign inst_mem[8] = 32'h00810826 ;
 	assign inst_mem[9] = 32'h00810827 ;
 	assign inst_mem[10] = 32'h0800000a ;
-	assign inst_mem[11] = 32'h00000000 ;
-    
-	always @ (*) begin
-	end
+	assign inst_mem[11] = 32'h00000000 ;*/
+
 	always @ (*) begin
 		if (ce == `Disable) begin
 			inst <= `Zero;
+			ack <= `Disable;
 	  end else begin
 		  inst <= inst_mem[addr[`MemNumLog+1:2]]; //gao wei bu 0
+		  ack <= `Enable;
 		end
 	end
 

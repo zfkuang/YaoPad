@@ -26,10 +26,6 @@ IDLE<-----------------------------
 `define SRAM_WRITE1   3'b100
 `define SRAM_WRITE2   3'b101
 `define PART_WRITE0   3'b110
-`define REnable  1'b0
-`define RDisable 1'b1
-`define RamSel 22
-`define RamBus 22:0
 
 module sram(
 	input wire clk,	input wire rst,	
@@ -50,7 +46,7 @@ module sram(
 	output wire ram0_oe, ram1_oe,
 	output wire ram0_ce, ram1_ce,
 	output wire ram0_we, ram1_we,
-	inout wire[31:0] ram0_data, ram1_data		// data bus
+	inout wire[`WordBus] ram0_data, ram1_data		// data bus
 
 );
 
@@ -58,9 +54,9 @@ module sram(
 	// output buffer
 
 	reg oe, ce, we;
-	reg [19:0] addr;
-	reg [31:0] databuf;
-	wire [31:0] datain[1:0];
+	reg [`RamAddrBus] addr;
+	reg [`WordBus] databuf;
+	wire [`WordBus] datain[1:0];
 	reg [2:0] state;
 	wire chipnum;
 
@@ -69,7 +65,7 @@ module sram(
 	assign writing = wishbone_stb_i & wishbone_cyc_i & wishbone_we_i;
 	
 	// ram wires
-	assign chipnum = wishbone_addr_i[`RamBus];
+	assign chipnum = wishbone_addr_i[`RamAddrLog];
 	assign ram0_oe = (~chipnum) ? oe : `RDisable;
 	assign ram0_ce = (~chipnum) ? ce : `RDisable;
 	assign ram0_we = (~chipnum) ? we : `RDisable;
@@ -77,8 +73,8 @@ module sram(
 	assign ram1_ce = chipnum ? ce : `RDisable;
 	assign ram1_we = chipnum ? we : `RDisable;
 
-	assign ram0_addr = (~chipnum) ? addr : 20'h0;
-	assign ram1_addr = chipnum ? addr : 20'h0;
+	assign ram0_addr = (~chipnum) ? addr[21:2] : 20'h0;
+	assign ram1_addr = chipnum ? addr[21:2] : 20'h0;
 
 	assign ram0_data = ram0_oe == `RDisable ? databuf : 32'hz;
 	assign ram1_data = ram1_oe == `RDisable ? databuf : 32'hz;
@@ -126,21 +122,21 @@ module sram(
 				ce <= `REnable;
 				we <= `RDisable;
 				oe <= `REnable;
-				addr <= wishbone_addr_i[21:2];
+				addr <= wishbone_addr_i[`RamAddrBus];
 			end else if (writing) begin
 				if (wishbone_sel_i != 4'b1111) begin
 					// Partial WRITE. Read from the given addr first
 					ce <= `REnable;
 					we <= `RDisable;
 					oe <= `REnable;
-					addr <= wishbone_addr_i[21:2];
+					addr <= wishbone_addr_i[`RamAddrBus];
 				end
 				else begin
 					// Full WRITE. Set up data and wait for one cycle
 					ce <= `REnable;
 					we <= `RDisable;
 					oe <= `RDisable;
-					addr <= wishbone_addr_i[21:2];
+					addr <= wishbone_addr_i[`RamAddrBus];
 					databuf <= wishbone_data_i;
 				end
 			end
@@ -156,7 +152,7 @@ module sram(
 			ce <= `REnable;
 			we <= `RDisable;
 			oe <= `RDisable;
-			addr <= wishbone_addr_i[21:2];
+			addr <= wishbone_addr_i[`RamAddrBus];
 			// mask 
 			if (wishbone_sel_i[0] == 1'b1)
 				databuf[7:0] <= wishbone_data_i[7:0];

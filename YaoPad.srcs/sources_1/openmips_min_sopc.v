@@ -44,19 +44,19 @@
 
 module openmips_min_sopc(
 
-	input wire clk,
-  input wire wishbone_clk,
+	//input wire clk,
 	input wire	rst,
+  input wire clk100,
 	input wire	click,
 	
-	inout wire[31:0] base_ram_data, // [7:0] also connected to CPLD
+	inout wire[`WordBus] base_ram_data, // [7:0] also connected to CPLD
   output wire[19:0] base_ram_addr,
   output wire[3:0] base_ram_be_n,
   output wire base_ram_ce_n,
   output wire base_ram_oe_n,
   output wire base_ram_we_n,
   
-  inout wire[31:0] ext_ram_data,
+  inout wire[`WordBus] ext_ram_data,
   output wire[19:0] ext_ram_addr,
   output wire[3:0] ext_ram_be_n,
   output wire ext_ram_ce_n,
@@ -69,7 +69,7 @@ module openmips_min_sopc(
 	
 );
 
-  //����ָ��洢��
+  //����ָ��洢��?
   wire[`WordBus] inst_addr;
   wire[`WordBus] inst;
   wire rom_ce;
@@ -88,10 +88,12 @@ module openmips_min_sopc(
  assign base_ram_oe_n =  1'b0;
  assign base_ram_we_n = 1'b1;
  assign base_ram_data = (base_ram_oe_n==1'b0) ? 32'bz : 32'b0;*/
-  assign base_ram_be_n = 4'b0000;
-  assign ext_ram_be_n = 4'b0000;
  
- reg[31:0] inst_get;
+ reg halfclk ;
+ always @ ( posedge clk100 ) begin
+    halfclk <= ~halfclk ;
+ end
+ reg[`WordBus] inst_get;
  
 always @(*)
     if (rom_ce)
@@ -99,8 +101,8 @@ always @(*)
  
 //assign led[31:16] = base_ram_addr[15:0];
 //assign led[15:8] = inst_get[7:0];
- wire[31:0] debugdata;
- assign led[31:0] = debugdata[31:0];
+ wire[`WordBus] debugdata;
+ assign led[`WordBus] = debugdata[`WordBus];
  //assign led[31:24] = inst_get[7:0];
 
 wire[`WordBus] wb_m0_data_i ;
@@ -122,7 +124,8 @@ wire[`WordBus] wb_m1_data_o ;
 wire wb_m1_ack_o ;
 
  cpu cpu0(
-		.clk(click),
+		.clk(halfclk),
+    .clk100(clk100),
 		.rst(rst),
 
 		.iwishbone_addr_o(wb_m0_addr_i),
@@ -134,29 +137,20 @@ wire wb_m1_ack_o ;
 		.iwishbone_cyc_o(wb_m0_cyc_i),
 		.iwishbone_we_o(wb_m0_we_i),
 
-		.dwishbone_data_i(wb_m1_addr_i),
-    .dwishbone_data_o(wb_m1_data_o),
-    .dwishbone_addr_o(wb_m1_data_i),
+		.dwishbone_data_i(wb_m1_data_o),
+    .dwishbone_data_o(wb_m1_data_i),
+    .dwishbone_addr_o(wb_m1_addr_i),
     .dwishbone_sel_o(wb_m1_sel_i),
-    .dwishbone_we_o(wb_m1_ack_o),
-		.dwishbone_ack_i(wb_m1_stb_i),
-		.dwishbone_stb_o(wb_m1_cyc_i),
-		.dwishbone_cyc_o(wb_m1_we_i),
+    .dwishbone_we_o(wb_m1_we_i),
+		.dwishbone_ack_i(wb_m1_ack_o),
+		.dwishbone_stb_o(wb_m1_stb_i),
+		.dwishbone_cyc_o(wb_m1_cyc_i),
 
   	.timer_int_o(timer_int),
   	.int_i(int),
     .debugdata(debugdata),
     .debug(debug)
 	);
-	/*
-	
-	inst_rom inst_rom0(
-		.addr(inst_addr),
-		.inst(inst),
-		.ce(rom_ce)	
-	);
-    */
-    //real mem
 
   wire[`WordBus] wb_s0_data_o ;
   wire[`WordBus] wb_s0_addr_o ;
@@ -169,7 +163,7 @@ wire wb_m1_ack_o ;
 
   // used interfaces: m0, m1, s0(sram)
   wb_conmax_top wb_conmax0(
-    .clk_i(wishbone_clk), 
+    .clk_i(clk100), 
     .rst_i(rst),
 
     .m0_data_i(wb_m0_data_i),
@@ -239,9 +233,9 @@ wire wb_m1_ack_o ;
     .s0_data_o(wb_s0_data_o),
     .s0_addr_o(wb_s0_addr_o),
     .s0_sel_o(wb_s0_sel_o),
-    .s0_we_o(wb_s0_stb_o),
+    .s0_we_o(wb_s0_we_o),
     .s0_cyc_o(wb_s0_cyc_o),
-    .s0_stb_o(wb_s0_we_o),
+    .s0_stb_o(wb_s0_stb_o),
     .s0_data_i(wb_s0_data_i),
     .s0_ack_i(wb_s0_ack_i),
     .s0_err_i(`Disable),
@@ -308,8 +302,14 @@ wire wb_m1_ack_o ;
     .s15_rty_i(`Disable)
   );
 
+
+  wire[`WordBus] debug_base_ram_data ;
+  wire[`WordBus] debug_ext_ram_data ;
+
+  assign base_ram_be_n = 4'b0000;
+  assign ext_ram_be_n = 4'b0000;
   sram sram0(
-    .clk(wishbone_clk), .rst(rst), 
+    .clk(clk100), .rst(rst), 
 
     .wishbone_addr_i(wb_s0_addr_o),
     .wishbone_data_i(wb_s0_data_o),
@@ -321,41 +321,28 @@ wire wb_m1_ack_o ;
     .wishbone_data_o(wb_s0_data_i),
     .wishbone_ack_o(wb_s0_ack_i),
 
-    .ram0_addr(base_ram_addr),
-    .ram1_addr(ext_ram_addr), 
-    .ram0_oe(base_ram_oe_n), 
-    .ram1_oe(ext_ram_oe_n),
-    .ram0_ce(base_ram_ce_n), 
-    .ram1_ce(ext_ram_ce_n),
+    .ram0_addr(base_ram_addr), 
+    .ram0_oe(base_ram_oe_n),
+    .ram0_ce(base_ram_ce_n),
     .ram0_we(base_ram_we_n), 
+    .ram0_data(base_ram_data),
+
+    .ram1_addr(ext_ram_addr), 
+    .ram1_oe(ext_ram_oe_n), 
+    .ram1_ce(ext_ram_ce_n), 
     .ram1_we(ext_ram_we_n),
-    .ram0_data(base_ram_data), 
-    .ram1_data(ext_ram_data)   // data bus
+    .ram1_data(ext_ram_data) 
     );
 
-    reg[31:0] data_get;
+    reg[`WordBus] data_get;
 
-    /*always @(*)
-       if (ext_ram_we_n)
-           data_get <= ext_ram_data;
-    assign ext_ram_data = (mem_we_i == 1'b1) ? mem_data_i : 32'bz;
-    assign ext_ram_addr = mem_addr_i[21:2];
-    assign ext_ram_be_n = (~mem_sel_i);
-    assign ext_ram_ce_n = (~mem_ce_i);
-    assign ext_ram_oe_n = mem_we_i;
-    assign ext_ram_we_n = (~mem_we_i);
-    assign mem_data_o = data_get;*/
-    
-   /*
+   
    // fake mem
-	data_ram data_ram0(
-		.clk(clk),
-		.we(mem_we_i),
-		.addr(mem_addr_i),
-		.sel(mem_sel_i),
-		.data_i(mem_data_i),
-		.data_o(mem_data_o),
-		.ce(mem_ce_i)		
-	);
-	*/
+	/*data_ram data_ram0(
+		.we(~base_ram_we_n),
+    .sel(~base_ram_be_n),
+    .ce(~base_ram_ce_n),
+		.addr(base_ram_addr),
+		.data(debug_base_ram_data)
+	);*/
 endmodule

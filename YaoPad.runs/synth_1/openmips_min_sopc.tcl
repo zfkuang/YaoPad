@@ -16,6 +16,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
+set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xc7a100tfgg676-2L
 
 set_param project.singleFileAddWarning.threshold 0
@@ -27,6 +28,7 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo e:/XilinxProjects/YaoPad/YaoPad/YaoPad.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
+read_verilog E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/defines.vh
 read_verilog -library xil_defaultlib {
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v
@@ -41,10 +43,22 @@ read_verilog -library xil_defaultlib {
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/div.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/wishbone_bus_if.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/controller/sram_controller.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax_defines.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_arb.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_master_if.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_msel.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_pri_dec.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_pri_enc.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_rf.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_slave_if.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_top.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/data_ram.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax.v
   E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/inst_rom.v
-  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/openmips_min_sopc.v
+  E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

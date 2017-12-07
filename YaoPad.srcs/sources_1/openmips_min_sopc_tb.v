@@ -26,7 +26,7 @@
 // File:    openmips_min_sopc_tb.v
 // Author:  Lei Silei
 // E-mail:  leishangwen@163.com
-// Description: openmips_min_sopcµÄtestbench
+// Description: openmips_min_sopcï¿½ï¿½testbench
 // Revision: 1.0
 //////////////////////////////////////////////////////////////////////
 
@@ -36,13 +36,19 @@
 
 module openmips_min_sopc_tb;
 
-    reg     clk;
-    reg     rst;
+    reg CLOCK_50;
+    reg CLOCK_100; 
+    reg rst;
 
 
     initial begin
-        clk = 1'b0;
-        forever #10 clk = ~clk;
+        CLOCK_50 = 1'b1;
+        forever #20 CLOCK_50 = ~CLOCK_50;
+    end
+
+    initial begin
+        CLOCK_100 = 1'b1;
+        forever #5 CLOCK_100 = ~CLOCK_100;
     end
 
     initial begin
@@ -52,9 +58,9 @@ module openmips_min_sopc_tb;
     end
 
     openmips_min_sopc openmips_min_sopc0(
-        .clk(clk),
-        .rst(rst),
-        .debug(5'b00001)
+        .clk(CLOCK_50),
+        .clk100(CLOCK_100),
+        .rst(rst)	
     );
 
     initial begin
@@ -97,8 +103,8 @@ module openmips_min_sopc_tb;
             openmips_min_sopc0.cpu0.hilo0.lo_o,
             openmips_min_sopc0.cpu0.pc_rom0.pc,
             openmips_min_sopc0.cpu0.regfile0.register[31],
-        );
-        $dumpfile("openmips_min_sopc_tb.vcd");*/
+        );*/
+        $dumpfile("openmips_min_sopc_tb.vcd");
         $dumpvars(0, openmips_min_sopc0);
         #4000;
         $finish;

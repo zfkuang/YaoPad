@@ -8,7 +8,14 @@
 `define Zero 32'h00000000
 `define DZero 64'h0000000000000000
 
+`define REnable  1'b0
+`define RDisable 1'b1
+`define RamAddrLog 22 
+`define RamAddrBus 21:0
+
 `define RegNum 20
+
+`define StartInstAddr 32'h00000000
 
 // Length of different data type// 
 `define RegLen 32

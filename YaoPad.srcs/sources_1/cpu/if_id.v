@@ -32,7 +32,7 @@ module if_id(
     output reg[`WordBus] id_inst
     );
     
-    always @ (posedge clk) begin
+    always @ (posedge clk or negedge rst) begin
         if ((rst == `Enable) || ((stall[1] == `Enable) && (stall[2] == `Disable)) || (flush == `Enable)) begin
             id_pc <= `Zero ;
             id_inst <= `Zero ;

@@ -1,6 +1,4 @@
 set_property SRC_FILE_INFO {cfile:E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc rfile:../../../YaoPad.srcs/constrs_1/new/thinpad_top.xdc id:1} [current_design]
-set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
-set_property -dict {PACKAGE_PIN D18 IOSTANDARD LVCMOS33} [get_ports clk] ;#50MHz main clock in
 set_property src_info {type:XDC file:1 line:5 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict {PACKAGE_PIN C18 IOSTANDARD LVCMOS33} [get_ports clk_uart_in] ;#11.0592MHz clock for UART
 set_property src_info {type:XDC file:1 line:6 export:INPUT save:INPUT read:READ} [current_design]
@@ -12,9 +10,9 @@ set_property PACKAGE_PIN F22 [get_ports rst] ;#BTN6
 set_property src_info {type:XDC file:1 line:12 export:INPUT save:INPUT read:READ} [current_design]
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets rst_IBUF]
 set_property src_info {type:XDC file:1 line:16 export:INPUT save:INPUT read:READ} [current_design]
-set_property PACKAGE_PIN H19 [get_ports click] ;#BTN5
+set_property PACKAGE_PIN H19 [get_ports clk100] ;#BTN5
 set_property src_info {type:XDC file:1 line:17 export:INPUT save:INPUT read:READ} [current_design]
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets click_IBUF]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets clk100_IBUF]
 set_property src_info {type:XDC file:1 line:20 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN N3 [get_ports {debug[0]}]
 set_property src_info {type:XDC file:1 line:21 export:INPUT save:INPUT read:READ} [current_design]
