@@ -58,7 +58,6 @@ module wishbone_bus_if(
     reg wishbone_has_acked;
     wire old_cpu_in;
     
-    assign old_cpu_in = {}
     // buffer register of data from wishbone.
     reg[`WordBus] rd_buf;
 
@@ -73,7 +72,7 @@ module wishbone_bus_if(
         if(cpu_is_rst | flush) begin
             wishbone_wait_cpu <= `Disable;
         end else begin
-            wishbone_wait_cpu <= ~wishbone_has_acked;
+            wishbone_wait_cpu <= (~wishbone_has_acked) | stall_this;
         end
     end
 
