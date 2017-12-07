@@ -32,6 +32,7 @@
 `include"cpu/ctrl.v"
 `include"cpu/div.v"
 `include"cpu/cp0.v"
+`include"cpu/mmu.v"
 `include"cpu/wishbone_bus_if.v"
 
 module cpu(    input wire rst, 
@@ -601,6 +602,22 @@ module cpu(    input wire rst,
         .data_o(cp0_data_o)
     ) ;
 
+    wire[`WordBus] iviraddr ;
+    wire[`WordBus] iphyaddr ;
+    wire[`WordBus] dviraddr ;
+    wire[`WordBus] dphyaddr ;
+
+    mmu immu(
+        .rst(rst),
+        .virtual_address_i(iviraddr),
+        .physical_address_o(iphyaddr)
+    ) ;
+    mmu dmmu(
+        .rst(rst),
+        .virtual_address_i(dviraddr),
+        .physical_address_o(dphyaddr)
+    ) ;
+
 	wishbone_bus_if dwishbone_bus_if(      
         .wishbone_clk(clk100),
         .cpu_clk(clk),
@@ -620,6 +637,8 @@ module cpu(    input wire rst,
 		.cpu_sel_i(ram_sel_o),
 		.cpu_data_o(ram_data_i),
 
+        .mmu_phy_addr(dphyaddr),
+        .mmu_vir_addr(dviraddr),
 
 		// Wishbone 
 		.wishbone_data_i(dwishbone_data_i),
@@ -654,6 +673,8 @@ module cpu(    input wire rst,
 		.cpu_sel_i(4'b1111),
 		.cpu_data_o(rom_data_i),
 
+        .mmu_phy_addr(iphyaddr),
+        .mmu_vir_addr(iviraddr),
 
 		// Wishbone 
 		.wishbone_data_i(iwishbone_data_i),

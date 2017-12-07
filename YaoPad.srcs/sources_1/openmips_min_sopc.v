@@ -90,8 +90,9 @@ module openmips_min_sopc(
  assign base_ram_data = (base_ram_oe_n==1'b0) ? 32'bz : 32'b0;*/
  
  reg[21:0] slowclk ;
+ //initial begin slowclk <= 22'b0 ;end
  always @ (posedge clk) begin
-    slowclk <= slowclk+1 ;
+      slowclk <= slowclk+1 ;
  end
  reg halfclk ;
  always @ ( posedge click ) begin
