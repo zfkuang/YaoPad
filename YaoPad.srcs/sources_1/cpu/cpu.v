@@ -65,7 +65,9 @@ module cpu(    input wire rst,
     output wire[`WordBus] debugdata
     );
     
-
+    wire[`WordBus] regdebugdata ;
+    wire[`WordBus] ifdebugdata ;
+    assign debugdata = ((|debug)==0) ? ifdebugdata : regdebugdata ;
     wire[`WordBus] rom_data_i ;
     wire[`WordBus] rom_addr_o ;
     wire rom_ce_o ;
@@ -207,6 +209,7 @@ module cpu(    input wire rst,
     //assign debugdata[15:0] = pc[15:0];
     //assign debugdata[31:16] = rom_data_i[15:0];
     assign rom_addr_o = pc;
+    
     pc_rom pc_rom0(
         .clk(clk), .rst(rst), 
         .pc(pc), 
@@ -225,6 +228,7 @@ module cpu(    input wire rst,
         .id_pc(id_pc_i), 
         .id_inst(id_inst_i),
         .stall(stall),
+        .debugdata(ifdebugdata),
         .flush(flush)
     ) ;
     
@@ -285,7 +289,7 @@ module cpu(    input wire rst,
         .raddr2(reg2_addr),
         .rdata2(reg2_data),
         .debug(debug),
-        .debugdata(debugdata)
+        .debugdata(regdebugdata)
     ) ;
     
     id_ex id_ex0(

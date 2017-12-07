@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date             : Thu Dec  7 04:20:08 2017
+| Date             : Thu Dec  7 13:19:42 2017
 | Host             : DESKTOP-N2UMQR8 running 64-bit major release  (build 9200)
 | Command          : report_power -file openmips_min_sopc_power_routed.rpt -pb openmips_min_sopc_power_summary_routed.pb -rpx openmips_min_sopc_power_routed.rpx
 | Design           : openmips_min_sopc
@@ -29,20 +29,20 @@ Table of Contents
 1. Summary
 ----------
 
-+--------------------------+-----------------------------------+
-| Total On-Chip Power (W)  | 158.541 (Junction temp exceeded!) |
-| Design Power Budget (W)  | Unspecified*                      |
-| Power Budget Margin (W)  | NA                                |
-| Dynamic (W)              | 157.744                           |
-| Device Static (W)        | 0.797                             |
-| Effective TJA (C/W)      | 2.6                               |
-| Max Ambient (C)          | 0.0                               |
-| Junction Temperature (C) | 125.0                             |
-| Confidence Level         | Low                               |
-| Setting File             | ---                               |
-| Simulation Activity File | ---                               |
-| Design Nets Matched      | NA                                |
-+--------------------------+-----------------------------------+
++--------------------------+--------------+
+| Total On-Chip Power (W)  | 0.189        |
+| Design Power Budget (W)  | Unspecified* |
+| Power Budget Margin (W)  | NA           |
+| Dynamic (W)              | 0.092        |
+| Device Static (W)        | 0.097        |
+| Effective TJA (C/W)      | 2.6          |
+| Max Ambient (C)          | 99.5         |
+| Junction Temperature (C) | 25.5         |
+| Confidence Level         | Low          |
+| Setting File             | ---          |
+| Simulation Activity File | ---          |
+| Design Nets Matched      | NA           |
++--------------------------+--------------+
 * Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
 
 
@@ -52,18 +52,19 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |    18.210 |    13292 |       --- |             --- |
-|   LUT as Logic |    17.156 |     7144 |     63400 |           11.27 |
-|   CARRY4       |     0.603 |      162 |     15850 |            1.02 |
-|   F7/F8 Muxes  |     0.220 |      706 |     63400 |            1.11 |
-|   Register     |     0.172 |     4821 |    126800 |            3.80 |
-|   BUFG         |     0.060 |        8 |        32 |           25.00 |
-|   Others       |     0.000 |       51 |       --- |             --- |
-| Signals        |    25.114 |    11662 |       --- |             --- |
-| DSPs           |     1.367 |        4 |       240 |            1.67 |
-| I/O            |   113.053 |      157 |       300 |           52.33 |
-| Static Power   |     0.797 |          |           |                 |
-| Total          |   158.541 |          |           |                 |
+| Clocks         |     0.001 |        3 |       --- |             --- |
+| Slice Logic    |     0.011 |    13353 |       --- |             --- |
+|   LUT as Logic |     0.010 |     7145 |     63400 |           11.27 |
+|   CARRY4       |    <0.001 |      162 |     15850 |            1.02 |
+|   F7/F8 Muxes  |    <0.001 |      770 |     63400 |            1.21 |
+|   Register     |    <0.001 |     4820 |    126800 |            3.80 |
+|   BUFG         |    <0.001 |        7 |        32 |           21.88 |
+|   Others       |     0.000 |       50 |       --- |             --- |
+| Signals        |     0.013 |    11566 |       --- |             --- |
+| DSPs           |    <0.001 |        4 |       240 |            1.67 |
+| I/O            |     0.067 |      158 |       300 |           52.67 |
+| Static Power   |     0.097 |          |           |                 |
+| Total          |     0.189 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,16 +74,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |    45.686 |      45.124 |      0.563 |
-| Vccaux    |       1.800 |     4.220 |       4.127 |      0.093 |
-| Vcco33    |       3.300 |    31.880 |      31.876 |      0.004 |
+| Vccint    |       1.000 |     0.041 |       0.026 |      0.015 |
+| Vccaux    |       1.800 |     0.021 |       0.002 |      0.018 |
+| Vcco33    |       3.300 |     0.023 |       0.019 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.018 |       0.000 |      0.018 |
+| Vccbram   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
@@ -129,6 +130,8 @@ Table of Contents
 +-------+--------+-----------------+
 | Clock | Domain | Constraint (ns) |
 +-------+--------+-----------------+
+| clk   | clk100 |            20.0 |
++-------+--------+-----------------+
 
 
 3. Detailed Reports
@@ -140,104 +143,104 @@ Table of Contents
 +--------------------------------+-----------+
 | Name                           | Power (W) |
 +--------------------------------+-----------+
-| openmips_min_sopc              |   157.744 |
-|   base_ram_data_IOBUF[0]_inst  |     1.375 |
-|   base_ram_data_IOBUF[10]_inst |     1.266 |
-|   base_ram_data_IOBUF[11]_inst |     1.257 |
-|   base_ram_data_IOBUF[12]_inst |     1.272 |
-|   base_ram_data_IOBUF[13]_inst |     1.041 |
-|   base_ram_data_IOBUF[14]_inst |     1.550 |
-|   base_ram_data_IOBUF[15]_inst |     1.551 |
-|   base_ram_data_IOBUF[16]_inst |     1.035 |
-|   base_ram_data_IOBUF[17]_inst |     1.031 |
-|   base_ram_data_IOBUF[18]_inst |     1.025 |
-|   base_ram_data_IOBUF[19]_inst |     1.048 |
-|   base_ram_data_IOBUF[1]_inst  |     1.366 |
-|   base_ram_data_IOBUF[20]_inst |     1.031 |
-|   base_ram_data_IOBUF[21]_inst |     1.034 |
-|   base_ram_data_IOBUF[22]_inst |     1.035 |
-|   base_ram_data_IOBUF[23]_inst |     1.049 |
-|   base_ram_data_IOBUF[24]_inst |     1.030 |
-|   base_ram_data_IOBUF[25]_inst |     1.466 |
-|   base_ram_data_IOBUF[26]_inst |     1.019 |
-|   base_ram_data_IOBUF[27]_inst |     1.019 |
-|   base_ram_data_IOBUF[28]_inst |     1.023 |
-|   base_ram_data_IOBUF[29]_inst |     1.018 |
-|   base_ram_data_IOBUF[2]_inst  |     1.323 |
-|   base_ram_data_IOBUF[30]_inst |     1.030 |
-|   base_ram_data_IOBUF[31]_inst |     1.028 |
-|   base_ram_data_IOBUF[3]_inst  |     1.357 |
-|   base_ram_data_IOBUF[4]_inst  |     1.356 |
-|   base_ram_data_IOBUF[5]_inst  |     1.218 |
-|   base_ram_data_IOBUF[6]_inst  |     1.325 |
-|   base_ram_data_IOBUF[7]_inst  |     1.197 |
-|   base_ram_data_IOBUF[8]_inst  |     1.030 |
-|   base_ram_data_IOBUF[9]_inst  |     1.309 |
-|   cpu0                         |    39.714 |
-|     cp00                       |     0.243 |
+| openmips_min_sopc              |     0.092 |
+|   base_ram_data_IOBUF[0]_inst  |    <0.001 |
+|   base_ram_data_IOBUF[10]_inst |    <0.001 |
+|   base_ram_data_IOBUF[11]_inst |    <0.001 |
+|   base_ram_data_IOBUF[12]_inst |    <0.001 |
+|   base_ram_data_IOBUF[13]_inst |    <0.001 |
+|   base_ram_data_IOBUF[14]_inst |    <0.001 |
+|   base_ram_data_IOBUF[15]_inst |    <0.001 |
+|   base_ram_data_IOBUF[16]_inst |    <0.001 |
+|   base_ram_data_IOBUF[17]_inst |    <0.001 |
+|   base_ram_data_IOBUF[18]_inst |    <0.001 |
+|   base_ram_data_IOBUF[19]_inst |    <0.001 |
+|   base_ram_data_IOBUF[1]_inst  |    <0.001 |
+|   base_ram_data_IOBUF[20]_inst |    <0.001 |
+|   base_ram_data_IOBUF[21]_inst |    <0.001 |
+|   base_ram_data_IOBUF[22]_inst |    <0.001 |
+|   base_ram_data_IOBUF[23]_inst |    <0.001 |
+|   base_ram_data_IOBUF[24]_inst |    <0.001 |
+|   base_ram_data_IOBUF[25]_inst |    <0.001 |
+|   base_ram_data_IOBUF[26]_inst |    <0.001 |
+|   base_ram_data_IOBUF[27]_inst |    <0.001 |
+|   base_ram_data_IOBUF[28]_inst |    <0.001 |
+|   base_ram_data_IOBUF[29]_inst |    <0.001 |
+|   base_ram_data_IOBUF[2]_inst  |    <0.001 |
+|   base_ram_data_IOBUF[30]_inst |    <0.001 |
+|   base_ram_data_IOBUF[31]_inst |    <0.001 |
+|   base_ram_data_IOBUF[3]_inst  |    <0.001 |
+|   base_ram_data_IOBUF[4]_inst  |    <0.001 |
+|   base_ram_data_IOBUF[5]_inst  |    <0.001 |
+|   base_ram_data_IOBUF[6]_inst  |    <0.001 |
+|   base_ram_data_IOBUF[7]_inst  |    <0.001 |
+|   base_ram_data_IOBUF[8]_inst  |    <0.001 |
+|   base_ram_data_IOBUF[9]_inst  |    <0.001 |
+|   cpu0                         |     0.023 |
+|     cp00                       |    <0.001 |
 |     ctrl0                      |    <0.001 |
-|     div0                       |     3.039 |
-|     dwishbone_bus_if           |     0.268 |
-|     ex0                        |     3.637 |
-|     ex_mem0                    |     4.433 |
+|     div0                       |     0.001 |
+|     dwishbone_bus_if           |    <0.001 |
+|     ex0                        |     0.002 |
+|     ex_mem0                    |     0.002 |
 |     hilo0                      |    <0.001 |
-|     id0                        |     0.663 |
-|     id_ex0                     |     2.144 |
-|     if_id0                     |     3.686 |
-|     iwishbone_bus_if           |     0.065 |
+|     id0                        |    <0.001 |
+|     id_ex0                     |     0.002 |
+|     if_id0                     |     0.002 |
+|     iwishbone_bus_if           |    <0.001 |
 |     mem0                       |    <0.001 |
-|     mem_wb0                    |     8.252 |
-|     pc_rom0                    |     0.118 |
-|     regfile0                   |    13.165 |
-|   ext_ram_data_IOBUF[0]_inst   |     1.387 |
-|   ext_ram_data_IOBUF[10]_inst  |     1.274 |
-|   ext_ram_data_IOBUF[11]_inst  |     1.265 |
-|   ext_ram_data_IOBUF[12]_inst  |     1.269 |
-|   ext_ram_data_IOBUF[13]_inst  |     1.041 |
-|   ext_ram_data_IOBUF[14]_inst  |     1.559 |
-|   ext_ram_data_IOBUF[15]_inst  |     1.556 |
-|   ext_ram_data_IOBUF[16]_inst  |     1.033 |
-|   ext_ram_data_IOBUF[17]_inst  |     1.028 |
-|   ext_ram_data_IOBUF[18]_inst  |     1.025 |
-|   ext_ram_data_IOBUF[19]_inst  |     1.047 |
-|   ext_ram_data_IOBUF[1]_inst   |     1.376 |
-|   ext_ram_data_IOBUF[20]_inst  |     1.028 |
-|   ext_ram_data_IOBUF[21]_inst  |     1.028 |
-|   ext_ram_data_IOBUF[22]_inst  |     1.033 |
-|   ext_ram_data_IOBUF[23]_inst  |     1.041 |
-|   ext_ram_data_IOBUF[24]_inst  |     1.030 |
-|   ext_ram_data_IOBUF[25]_inst  |     1.464 |
-|   ext_ram_data_IOBUF[26]_inst  |     1.021 |
-|   ext_ram_data_IOBUF[27]_inst  |     1.026 |
-|   ext_ram_data_IOBUF[28]_inst  |     1.024 |
-|   ext_ram_data_IOBUF[29]_inst  |     1.020 |
-|   ext_ram_data_IOBUF[2]_inst   |     1.328 |
-|   ext_ram_data_IOBUF[30]_inst  |     1.037 |
-|   ext_ram_data_IOBUF[31]_inst  |     1.031 |
-|   ext_ram_data_IOBUF[3]_inst   |     1.366 |
-|   ext_ram_data_IOBUF[4]_inst   |     1.362 |
-|   ext_ram_data_IOBUF[5]_inst   |     1.225 |
-|   ext_ram_data_IOBUF[6]_inst   |     1.334 |
-|   ext_ram_data_IOBUF[7]_inst   |     1.205 |
-|   ext_ram_data_IOBUF[8]_inst   |     1.037 |
-|   ext_ram_data_IOBUF[9]_inst   |     1.310 |
-|   sram0                        |     0.128 |
-|   wb_conmax0                   |     0.374 |
-|     m0                         |     0.008 |
-|     m1                         |     0.000 |
-|     rf                         |     0.214 |
-|     s0                         |     0.026 |
-|       msel                     |     0.022 |
-|         arb0                   |     0.000 |
+|     mem_wb0                    |     0.005 |
+|     pc_rom0                    |    <0.001 |
+|     regfile0                   |     0.007 |
+|   ext_ram_data_IOBUF[0]_inst   |    <0.001 |
+|   ext_ram_data_IOBUF[10]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[11]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[12]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[13]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[14]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[15]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[16]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[17]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[18]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[19]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[1]_inst   |    <0.001 |
+|   ext_ram_data_IOBUF[20]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[21]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[22]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[23]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[24]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[25]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[26]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[27]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[28]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[29]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[2]_inst   |    <0.001 |
+|   ext_ram_data_IOBUF[30]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[31]_inst  |    <0.001 |
+|   ext_ram_data_IOBUF[3]_inst   |    <0.001 |
+|   ext_ram_data_IOBUF[4]_inst   |    <0.001 |
+|   ext_ram_data_IOBUF[5]_inst   |    <0.001 |
+|   ext_ram_data_IOBUF[6]_inst   |    <0.001 |
+|   ext_ram_data_IOBUF[7]_inst   |    <0.001 |
+|   ext_ram_data_IOBUF[8]_inst   |    <0.001 |
+|   ext_ram_data_IOBUF[9]_inst   |    <0.001 |
+|   sram0                        |    <0.001 |
+|   wb_conmax0                   |    <0.001 |
+|     m0                         |    <0.001 |
+|     m1                         |    <0.001 |
+|     rf                         |    <0.001 |
+|     s0                         |    <0.001 |
+|       msel                     |    <0.001 |
+|         arb0                   |    <0.001 |
 |         arb1                   |    <0.001 |
-|         arb2                   |     0.021 |
-|         arb3                   |     0.000 |
-|     s15                        |     0.109 |
-|       msel                     |     0.109 |
-|         arb0                   |     0.000 |
-|         arb1                   |     0.000 |
-|         arb2                   |     0.109 |
-|         arb3                   |     0.000 |
+|         arb2                   |    <0.001 |
+|         arb3                   |    <0.001 |
+|     s15                        |    <0.001 |
+|       msel                     |    <0.001 |
+|         arb0                   |    <0.001 |
+|         arb1                   |    <0.001 |
+|         arb2                   |    <0.001 |
+|         arb3                   |    <0.001 |
 +--------------------------------+-----------+
 
 

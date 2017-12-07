@@ -44,7 +44,7 @@
 
 module openmips_min_sopc(
 
-	//input wire clk,
+	input wire clk,
 	input wire	rst,
   input wire clk100,
 	input wire	click,
@@ -86,8 +86,7 @@ module openmips_min_sopc(
  /*assign  base_ram_addr = inst_addr[21:2];
  assign base_ram_ce_n =  1'b0;
  assign base_ram_oe_n =  1'b0;
- assign base_ram_we_n = 1'b1;
- assign base_ram_data = (base_ram_oe_n==1'b0) ? 32'bz : 32'b0;*/
+ assign base_ram_we_n = 1'b1;*/
  
  reg halfclk ;
  always @ ( posedge clk100 ) begin
@@ -124,8 +123,8 @@ wire[`WordBus] wb_m1_data_o ;
 wire wb_m1_ack_o ;
 
  cpu cpu0(
-		.clk(halfclk),
-    .clk100(clk100),
+		.clk(click),
+        .clk100(clk100),
 		.rst(rst),
 
 		.iwishbone_addr_o(wb_m0_addr_i),

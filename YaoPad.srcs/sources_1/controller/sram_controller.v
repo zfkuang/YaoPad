@@ -28,7 +28,8 @@ IDLE<-----------------------------
 `define PART_WRITE0   3'b110
 
 module sram(
-	input wire clk,	input wire rst,	
+	input wire clk,	
+	input wire rst,	
 
 	input wire[`WordBus]           wishbone_addr_i,
 	input wire[`WordBus]           wishbone_data_i,

@@ -29,9 +29,11 @@ module if_id(
     input wire[`WordBus] if_pc,
     input wire[`WordBus] if_inst,
     output reg[`WordBus] id_pc,
-    output reg[`WordBus] id_inst
+    output reg[`WordBus] id_inst,
+    output wire[`WordBus] debugdata
     );
     
+    assign debugdata = if_inst ;
     always @ (posedge clk or negedge rst) begin
         if ((rst == `Enable) || ((stall[1] == `Enable) && (stall[2] == `Disable)) || (flush == `Enable)) begin
             id_pc <= `Zero ;

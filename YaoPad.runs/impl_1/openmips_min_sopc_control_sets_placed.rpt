@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date         : Thu Dec  7 04:19:17 2017
+| Date         : Thu Dec  7 13:18:39 2017
 | Host         : DESKTOP-N2UMQR8 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -file openmips_min_sopc_control_sets_placed.rpt
 | Design       : openmips_min_sopc
@@ -31,12 +31,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             221 |          101 |
-| No           | No                    | Yes                    |            2181 |         2096 |
-| No           | Yes                   | No                     |            1132 |         1088 |
-| Yes          | No                    | No                     |             281 |          100 |
-| Yes          | No                    | Yes                    |             814 |          299 |
-| Yes          | Yes                   | No                     |             192 |           92 |
+| No           | No                    | No                     |             220 |          118 |
+| No           | No                    | Yes                    |            2181 |         2093 |
+| No           | Yes                   | No                     |            1132 |         1083 |
+| Yes          | No                    | No                     |             281 |           98 |
+| Yes          | No                    | Yes                    |             814 |          255 |
+| Yes          | Yes                   | No                     |             192 |           80 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 

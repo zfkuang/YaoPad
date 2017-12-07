@@ -2,8 +2,8 @@
 # Vivado v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Thu Dec  7 04:16:01 2017
-# Process ID: 8480
+# Start of session at: Thu Dec  7 13:15:23 2017
+# Process ID: 14508
 # Current directory: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1
 # Command line: vivado.exe -log openmips_min_sopc.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source openmips_min_sopc.tcl
 # Log file: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/openmips_min_sopc.vds
@@ -15,7 +15,7 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 18648 
+INFO: Helper process launched with PID 11012 
 CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module pc_rom [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
 CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module if_id [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
 CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module id [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
@@ -65,16 +65,16 @@ CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module wb_co
 CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module wb_conmax_rf [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_rf.v:61]
 CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module wb_conmax_slave_if [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_slave_if.v:61]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 353.539 ; gain = 104.152
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 353.082 ; gain = 103.723
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'openmips_min_sopc' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:45]
 INFO: [Synth 8-638] synthesizing module 'cpu' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:37]
 INFO: [Synth 8-638] synthesizing module 'pc_rom' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
 WARNING: [Synth 8-3848] Net debugdata in module/entity pc_rom does not have driver. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:35]
 INFO: [Synth 8-256] done synthesizing module 'pc_rom' (1#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
-WARNING: [Synth 8-350] instance 'pc_rom0' of module 'pc_rom' requires 10 connections, but only 9 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:210]
+WARNING: [Synth 8-350] instance 'pc_rom0' of module 'pc_rom' requires 10 connections, but only 9 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:213]
 INFO: [Synth 8-638] synthesizing module 'if_id' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
-CRITICAL WARNING: [Synth 8-5413] Mix of synchronous and asynchronous control for register id_pc_reg in module if_id. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:37]
+CRITICAL WARNING: [Synth 8-5413] Mix of synchronous and asynchronous control for register id_pc_reg in module if_id. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:39]
 INFO: [Synth 8-256] done synthesizing module 'if_id' (2#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
 INFO: [Synth 8-638] synthesizing module 'id' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
 INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:240]
@@ -82,7 +82,7 @@ INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProj
 INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:379]
 WARNING: [Synth 8-3848] Net timer_int_o in module/entity id does not have driver. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:70]
 INFO: [Synth 8-256] done synthesizing module 'id' (3#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
-WARNING: [Synth 8-350] instance 'id0' of module 'id' requires 34 connections, but only 32 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:231]
+WARNING: [Synth 8-350] instance 'id0' of module 'id' requires 34 connections, but only 32 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:235]
 INFO: [Synth 8-638] synthesizing module 'regfile' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v:23]
 WARNING: [Synth 8-5788] Register register_reg in module regfile is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code 
 WARNING: [Synth 8-4767] Trying to implement RAM 'register_reg' in registers. Block RAM or DRAM implementation is not possible; see log for reasons.
@@ -126,7 +126,7 @@ INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProj
 INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:95]
 INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:165]
 INFO: [Synth 8-256] done synthesizing module 'cp0' (13#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:23]
-WARNING: [Synth 8-350] instance 'cp00' of module 'cp0' requires 19 connections, but only 15 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:546]
+WARNING: [Synth 8-350] instance 'cp00' of module 'cp0' requires 19 connections, but only 15 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:550]
 INFO: [Synth 8-638] synthesizing module 'wishbone_bus_if' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/wishbone_bus_if.v:23]
 	Parameter delay bound to: 2 - type: integer 
 	Parameter cyc_len_log_2 bound to: 2 - type: integer 
@@ -214,11 +214,12 @@ INFO: [Synth 8-638] synthesizing module 'wb_conmax_rf' [E:/XilinxProjects/YaoPad
 	Parameter sw bound to: 4 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'wb_conmax_rf' (22#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_rf.v:61]
 INFO: [Synth 8-256] done synthesizing module 'wb_conmax_top' (23#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_top.v:61]
-WARNING: [Synth 8-350] instance 'wb_conmax0' of module 'wb_conmax_top' requires 242 connections, but only 113 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
+WARNING: [Synth 8-350] instance 'wb_conmax0' of module 'wb_conmax_top' requires 242 connections, but only 113 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
 INFO: [Synth 8-638] synthesizing module 'sram' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/controller/sram_controller.v:30]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/controller/sram_controller.v:92]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/controller/sram_controller.v:93]
 INFO: [Synth 8-256] done synthesizing module 'sram' (24#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/controller/sram_controller.v:30]
-WARNING: [Synth 8-350] instance 'sram0' of module 'sram' requires 21 connections, but only 20 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:311]
+WARNING: [Synth 8-350] instance 'sram0' of module 'sram' requires 21 connections, but only 20 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:310]
+WARNING: [Synth 8-6014] Unused sequential element halfclk_reg was removed.  [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:93]
 INFO: [Synth 8-256] done synthesizing module 'openmips_min_sopc' (25#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:45]
 WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_be_n[3] driven by constant 0
 WARNING: [Synth 8-3917] design openmips_min_sopc has port base_ram_be_n[2] driven by constant 0
@@ -330,7 +331,7 @@ WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[26]
 WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[25]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 414.281 ; gain = 164.895
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 412.824 ; gain = 163.465
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -339,109 +340,109 @@ Report Check Netlist:
 +------+------------------+-------+---------+-------+------------------+
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[31] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[30] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[29] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[28] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[27] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[26] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[25] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[24] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[23] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[22] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[21] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[20] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[19] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[18] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[17] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[16] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[15] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[14] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[13] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[12] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[11] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[10] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[9] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[8] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[7] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[6] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[5] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[4] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[3] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[2] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[1] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[0] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[31] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[30] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[29] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[28] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[27] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[26] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[25] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[24] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[23] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[22] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[21] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[20] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[19] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[18] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[17] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[16] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[15] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[14] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[13] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[12] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[11] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[10] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[9] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[8] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[7] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[6] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[5] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[4] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[3] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[2] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[1] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[0] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[31] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[30] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[29] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[28] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[27] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[26] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[25] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[24] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[23] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[22] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[21] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[20] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[19] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[18] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[17] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[16] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[15] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[14] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[13] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[12] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[11] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[10] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[9] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[8] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[7] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[6] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[5] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[4] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[3] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[2] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[1] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[0] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s4_data_i[31] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s4_data_i[30] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s4_data_i[29] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
-WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s4_data_i[28] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:165]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[31] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[30] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[29] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[28] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[27] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[26] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[25] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[24] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[23] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[22] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[21] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[20] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[19] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[18] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[17] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[16] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[15] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[14] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[13] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[12] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[11] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[10] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[9] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[8] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[7] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[6] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[5] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[4] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[3] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[2] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[1] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s1_data_i[0] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[31] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[30] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[29] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[28] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[27] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[26] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[25] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[24] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[23] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[22] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[21] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[20] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[19] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[18] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[17] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[16] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[15] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[14] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[13] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[12] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[11] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[10] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[9] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[8] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[7] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[6] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[5] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[4] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[3] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[2] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[1] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s2_data_i[0] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[31] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[30] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[29] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[28] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[27] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[26] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[25] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[24] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[23] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[22] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[21] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[20] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[19] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[18] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[17] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[16] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[15] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[14] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[13] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[12] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[11] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[10] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[9] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[8] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[7] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[6] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[5] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[4] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[3] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[2] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[1] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s3_data_i[0] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s4_data_i[31] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s4_data_i[30] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s4_data_i[29] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
+WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s4_data_i[28] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
 INFO: [Common 17-14] Message 'Synth 8-3295' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 414.281 ; gain = 164.895
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 412.824 ; gain = 163.465
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a100tfgg676-2L
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -461,7 +462,7 @@ Resolution: Check if the specified object(s) exists in the current design. If it
 WARNING: [Vivado 12-507] No nets matched 'rst_IBUF'. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:12]
 CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:12]
 Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-507] No nets matched 'clk100_IBUF'. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:17]
+WARNING: [Vivado 12-507] No nets matched 'click_IBUF'. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:17]
 CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:17]
 Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
 WARNING: [Vivado 12-584] No ports matched 'uart_wrn'. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/constrs_1/new/thinpad_top.xdc:66]
@@ -493,22 +494,22 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 775.672 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 782.414 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 775.672 ; gain = 526.285
+Finished Constraint Validation : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 782.414 ; gain = 533.055
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tfgg676-2L
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 775.672 ; gain = 526.285
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 782.414 ; gain = 533.055
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 775.672 ; gain = 526.285
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 782.414 ; gain = 533.055
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "next_inst_in_delayslot_o" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "aluop_o" won't be mapped to RAM because it is too sparse
@@ -607,14 +608,14 @@ WARNING: [Synth 8-327] inferring latch for variable 'data_o_reg' [E:/XilinxProje
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'sram'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 775.672 ; gain = 526.285
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:29 ; elapsed = 00:00:29 . Memory (MB): peak = 782.414 ; gain = 533.055
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
 +------+-----------------------+------------+----------+
 |      |RTL Partition          |Replication |Instances |
 +------+-----------------------+------------+----------+
-|1     |openmips_min_sopc__GB0 |           1|     40218|
+|1     |openmips_min_sopc__GB0 |           1|     40252|
 |2     |wb_conmax_top          |           1|     37907|
 +------+-----------------------+------------+----------+
 ---------------------------------------------------------------------------------
@@ -641,7 +642,7 @@ Detailed RTL Component Info :
 	                5 Bit    Registers := 5     
 	                3 Bit    Registers := 84    
 	                2 Bit    Registers := 19    
-	                1 Bit    Registers := 298   
+	                1 Bit    Registers := 297   
 +---Muxes : 
 	   2 Input   1024 Bit        Muxes := 2     
 	   2 Input     65 Bit        Muxes := 7     
@@ -649,7 +650,7 @@ Detailed RTL Component Info :
 	   2 Input     64 Bit        Muxes := 2     
 	   3 Input     64 Bit        Muxes := 1     
 	   4 Input     64 Bit        Muxes := 1     
-	   2 Input     32 Bit        Muxes := 75    
+	   2 Input     32 Bit        Muxes := 76    
 	   5 Input     32 Bit        Muxes := 4     
 	   8 Input     32 Bit        Muxes := 2     
 	   4 Input     32 Bit        Muxes := 7     
@@ -713,10 +714,6 @@ Finished RTL Component Statistics
 Start RTL Hierarchical Component Statistics 
 ---------------------------------------------------------------------------------
 Hierarchical RTL Component report 
-Module openmips_min_sopc 
-Detailed RTL Component Info : 
-+---Registers : 
-	                1 Bit    Registers := 1     
 Module wb_conmax_master_if__1 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -2589,6 +2586,10 @@ Detailed RTL Component Info :
 +---Muxes : 
 	   2 Input      3 Bit        Muxes := 2     
 	   2 Input      1 Bit        Muxes := 1     
+Module cpu 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
 Module sram 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -3037,7 +3038,7 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (wb_conmax
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (wb_conmax0/s0/m2_cyc_r_reg)
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (wb_conmax0/s15/m2_cyc_r_reg)
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:29 ; elapsed = 00:01:34 . Memory (MB): peak = 923.566 ; gain = 674.180
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 924.281 ; gain = 674.922
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -3062,27 +3063,27 @@ Report RTL Partitions:
 +------+-----------------------+------------+----------+
 |      |RTL Partition          |Replication |Instances |
 +------+-----------------------+------------+----------+
-|1     |openmips_min_sopc__GB0 |           1|     23614|
+|1     |openmips_min_sopc__GB0 |           1|     23712|
 |2     |wb_conmax_top          |           1|      1239|
 +------+-----------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:45 ; elapsed = 00:01:50 . Memory (MB): peak = 923.566 ; gain = 674.180
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:38 ; elapsed = 00:01:41 . Memory (MB): peak = 924.281 ; gain = 674.922
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:45 ; elapsed = 00:01:50 . Memory (MB): peak = 923.566 ; gain = 674.180
+Finished Timing Optimization : Time (s): cpu = 00:01:40 ; elapsed = 00:01:43 . Memory (MB): peak = 924.281 ; gain = 674.922
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
 +------+-----------------------+------------+----------+
 |      |RTL Partition          |Replication |Instances |
 +------+-----------------------+------------+----------+
-|1     |openmips_min_sopc__GB0 |           1|     23614|
+|1     |openmips_min_sopc__GB0 |           1|     23712|
 |2     |wb_conmax_top          |           1|      1239|
 +------+-----------------------+------------+----------+
 ---------------------------------------------------------------------------------
@@ -3093,7 +3094,7 @@ INFO: [Synth 8-5844] Detected registers with asynchronous reset at DSP/BRAM bloc
 INFO: [Synth 8-5844] Detected registers with asynchronous reset at DSP/BRAM block boundary. Consider using synchronous reset for optimal packing [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:71]
 INFO: [Synth 8-5844] Detected registers with asynchronous reset at DSP/BRAM block boundary. Consider using synchronous reset for optimal packing [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:70]
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:52 ; elapsed = 00:01:57 . Memory (MB): peak = 923.566 ; gain = 674.180
+Finished Technology Mapping : Time (s): cpu = 00:01:48 ; elapsed = 00:01:51 . Memory (MB): peak = 924.281 ; gain = 674.922
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3117,7 +3118,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:54 ; elapsed = 00:01:59 . Memory (MB): peak = 923.566 ; gain = 674.180
+Finished IO Insertion : Time (s): cpu = 00:01:50 ; elapsed = 00:01:53 . Memory (MB): peak = 924.281 ; gain = 674.922
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -3130,7 +3131,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:54 ; elapsed = 00:02:00 . Memory (MB): peak = 923.566 ; gain = 674.180
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:50 ; elapsed = 00:01:53 . Memory (MB): peak = 924.281 ; gain = 674.922
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3142,25 +3143,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:54 ; elapsed = 00:02:00 . Memory (MB): peak = 923.566 ; gain = 674.180
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:51 ; elapsed = 00:01:53 . Memory (MB): peak = 924.281 ; gain = 674.922
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:54 ; elapsed = 00:02:00 . Memory (MB): peak = 923.566 ; gain = 674.180
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:51 ; elapsed = 00:01:53 . Memory (MB): peak = 924.281 ; gain = 674.922
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:55 ; elapsed = 00:02:00 . Memory (MB): peak = 923.566 ; gain = 674.180
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:51 ; elapsed = 00:01:54 . Memory (MB): peak = 924.281 ; gain = 674.922
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:55 ; elapsed = 00:02:00 . Memory (MB): peak = 923.566 ; gain = 674.180
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:51 ; elapsed = 00:01:54 . Memory (MB): peak = 924.281 ; gain = 674.922
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -3179,21 +3180,21 @@ Report Cell Usage:
 |1     |BUFG    |     8|
 |2     |CARRY4  |   162|
 |3     |DSP48E1 |     4|
-|4     |LUT1    |   266|
+|4     |LUT1    |   265|
 |5     |LUT2    |   460|
 |6     |LUT3    |  1282|
 |7     |LUT4    |   397|
-|8     |LUT5    |   550|
-|9     |LUT6    |  4592|
+|8     |LUT5    |   583|
+|9     |LUT6    |  4560|
 |10    |MUXF7   |   562|
-|11    |MUXF8   |   144|
+|11    |MUXF8   |   208|
 |12    |FDCE    |  1971|
 |13    |FDPE    |  1024|
-|14    |FDRE    |   511|
+|14    |FDRE    |   510|
 |15    |FDSE    |     2|
 |16    |LD      |   206|
 |17    |LDC     |  1107|
-|18    |IBUF    |     7|
+|18    |IBUF    |     8|
 |19    |IOBUF   |    64|
 |20    |OBUF    |    86|
 +------+--------+------+
@@ -3202,8 +3203,8 @@ Report Instance Areas:
 +------+---------------------+----------------------+------+
 |      |Instance             |Module                |Cells |
 +------+---------------------+----------------------+------+
-|1     |top                  |                      | 13405|
-|2     |  cpu0               |cpu                   | 12633|
+|1     |top                  |                      | 13469|
+|2     |  cpu0               |cpu                   | 12697|
 |3     |    ctrl0            |ctrl                  |    32|
 |4     |    cp00             |cp0                   |   138|
 |5     |    div0             |div                   |   443|
@@ -3218,7 +3219,7 @@ Report Instance Areas:
 |14    |    mem0             |mem                   |    70|
 |15    |    mem_wb0          |mem_wb                |   346|
 |16    |    pc_rom0          |pc_rom                |   105|
-|17    |    regfile0         |regfile               |  7904|
+|17    |    regfile0         |regfile               |  7968|
 |18    |  sram0              |sram                  |   117|
 |19    |  wb_conmax0         |wb_conmax_top         |   488|
 |20    |    m0               |wb_conmax_master_if   |     2|
@@ -3238,13 +3239,13 @@ Report Instance Areas:
 |34    |        arb3         |wb_conmax_arb_4       |     1|
 +------+---------------------+----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:55 ; elapsed = 00:02:00 . Memory (MB): peak = 923.566 ; gain = 674.180
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:51 ; elapsed = 00:01:54 . Memory (MB): peak = 924.281 ; gain = 674.922
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 96 critical warnings and 758 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:38 ; elapsed = 00:01:51 . Memory (MB): peak = 923.566 ; gain = 312.789
-Synthesis Optimization Complete : Time (s): cpu = 00:01:55 ; elapsed = 00:02:01 . Memory (MB): peak = 923.566 ; gain = 674.180
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:34 ; elapsed = 00:01:44 . Memory (MB): peak = 924.281 ; gain = 305.332
+Synthesis Optimization Complete : Time (s): cpu = 00:01:52 ; elapsed = 00:01:54 . Memory (MB): peak = 924.281 ; gain = 674.922
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 2256 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 2321 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 1 inverter(s) to 72 load pin(s).
@@ -3256,10 +3257,10 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   LDC => LDCE: 1107 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-341 Infos, 389 Warnings, 160 Critical Warnings and 0 Errors encountered.
+341 Infos, 390 Warnings, 160 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:59 ; elapsed = 00:02:04 . Memory (MB): peak = 923.566 ; gain = 686.266
+synth_design: Time (s): cpu = 00:01:55 ; elapsed = 00:01:57 . Memory (MB): peak = 924.281 ; gain = 686.445
 INFO: [Common 17-1381] The checkpoint 'E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/openmips_min_sopc.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file openmips_min_sopc_utilization_synth.rpt -pb openmips_min_sopc_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.118 . Memory (MB): peak = 923.566 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Thu Dec  7 04:18:11 2017...
+report_utilization: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.114 . Memory (MB): peak = 924.281 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Dec  7 13:17:26 2017...
