@@ -69,7 +69,7 @@ module openmips_min_sopc(
 	
 );
 
-  //����ָ��洢��?
+  //����ָ��洢��?
   wire[`WordBus] inst_addr;
   wire[`WordBus] inst;
   wire rom_ce;
@@ -123,27 +123,27 @@ wire[`WordBus] wb_m1_data_o ;
 wire wb_m1_ack_o ;
 
  cpu cpu0(
-		.clk(click),
+		.clk(clk),
         .clk100(clk100),
 		.rst(rst),
 
-		.iwishbone_addr_o(wb_m0_addr_i),
-		.iwishbone_data_i(wb_m0_data_o),
-		.iwishbone_data_o(wb_m0_data_i),
-    .iwishbone_sel_o(wb_m0_sel_i),
-		.iwishbone_ack_i(wb_m0_ack_o),
-		.iwishbone_stb_o(wb_m0_stb_i),
-		.iwishbone_cyc_o(wb_m0_cyc_i),
-		.iwishbone_we_o(wb_m0_we_i),
+		.iwishbone_addr_o(wb_m1_addr_i),
+		.iwishbone_data_i(wb_m1_data_o),
+		.iwishbone_data_o(wb_m1_data_i),
+    .iwishbone_sel_o(wb_m1_sel_i),
+		.iwishbone_ack_i(wb_m1_ack_o),
+		.iwishbone_stb_o(wb_m1_stb_i),
+		.iwishbone_cyc_o(wb_m1_cyc_i),
+		.iwishbone_we_o(wb_m1_we_i),
 
-		.dwishbone_data_i(wb_m1_data_o),
-    .dwishbone_data_o(wb_m1_data_i),
-    .dwishbone_addr_o(wb_m1_addr_i),
-    .dwishbone_sel_o(wb_m1_sel_i),
-    .dwishbone_we_o(wb_m1_we_i),
-		.dwishbone_ack_i(wb_m1_ack_o),
-		.dwishbone_stb_o(wb_m1_stb_i),
-		.dwishbone_cyc_o(wb_m1_cyc_i),
+		.dwishbone_data_i(wb_m0_data_o),
+    .dwishbone_data_o(wb_m0_data_i),
+    .dwishbone_addr_o(wb_m0_addr_i),
+    .dwishbone_sel_o(wb_m0_sel_i),
+    .dwishbone_we_o(wb_m0_we_i),
+		.dwishbone_ack_i(wb_m0_ack_o),
+		.dwishbone_stb_o(wb_m0_stb_i),
+		.dwishbone_cyc_o(wb_m0_cyc_i),
 
   	.timer_int_o(timer_int),
   	.int_i(int),
@@ -324,24 +324,24 @@ wire wb_m1_ack_o ;
     .ram0_oe(base_ram_oe_n),
     .ram0_ce(base_ram_ce_n),
     .ram0_we(base_ram_we_n), 
-    .ram0_data(base_ram_data),
+    .ram0_data(debug_base_ram_data),
 
     .ram1_addr(ext_ram_addr), 
     .ram1_oe(ext_ram_oe_n), 
     .ram1_ce(ext_ram_ce_n), 
     .ram1_we(ext_ram_we_n),
-    .ram1_data(ext_ram_data) 
+    .ram1_data(debug_ext_ram_data) 
     );
 
     reg[`WordBus] data_get;
 
    
    // fake mem
-	/*data_ram data_ram0(
+	data_ram data_ram0(
 		.we(~base_ram_we_n),
     .sel(~base_ram_be_n),
     .ce(~base_ram_ce_n),
 		.addr(base_ram_addr),
 		.data(debug_base_ram_data)
-	);*/
+	);
 endmodule

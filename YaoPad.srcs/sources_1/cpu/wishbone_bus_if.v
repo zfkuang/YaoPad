@@ -41,72 +41,140 @@ module wishbone_bus_if(
     //Wishbone interface
     input wire[`WordBus] wishbone_data_i,
     input wire wishbone_ack_i,
-    output wire[`WordBus] wishbone_addr_o,
-    output wire[`WordBus] wishbone_data_o,
-    output wire wishbone_we_o,
-    output wire[3:0] wishbone_sel_o,
-    output wire wishbone_stb_o,
-    output wire wishbone_cyc_o,
+    output reg[`WordBus] wishbone_addr_o,
+    output reg[`WordBus] wishbone_data_o,
+    output reg wishbone_we_o,
+    output reg[3:0] wishbone_sel_o,
+    output reg wishbone_stb_o,
+    output reg wishbone_cyc_o,
 
-    output wire stallreq
+    output reg stallreq
 
 );
 
-    // 留几个总线周期的缓冲
-    parameter delay = 2;
-    reg cpu_ack_id;
-    reg wishbone_ack_id;
-    reg wishbone_ack_valid;
-    wire process;
-    assign process = (cpu_ce_i == 1'b1) && (flush == `Disable);
-    wire cpu_req_id;
-    assign cpu_req_id = (process == 1'b1) ? (cpu_ack_id ^ 1'b1) : cpu_ack_id;
-    wire request_bus;
-    assign request_bus = (process == 1'b1) && (wishbone_ack_id != cpu_req_id || wishbone_ack_valid == 1'b0); 
-    parameter cyc_len_log_2 = 2;
-    reg [(cyc_len_log_2 - 1) : 0] req_cnt;
-    always @ (posedge cpu_clk or negedge rst)
-        if(rst == `Enable)
-        begin
-            cpu_ack_id <= 1'b0;
-            req_cnt <= {cyc_len_log_2{1'b0}};
+    // State of wishbone interface.
+    reg[1:0] wishbone_state;
+    // buffer register of data from wishbone.
+    reg[`WordBus] rd_buf;
+
+
+    /* State change */
+
+    reg is_rst;
+
+    always @ (posedge wishbone_clk) begin
+        is_rst <= rst;
+        if(is_rst == `Enable) begin
+            // rest, change to WB_IDLE
+            wishbone_state <= `WB_IDLE;
+            wishbone_addr_o <= `Zero;
+            wishbone_data_o <= `Zero;
+            wishbone_we_o <= `Disable;
+            wishbone_sel_o <= 4'b0000;
+            wishbone_stb_o <= `Disable;
+            wishbone_cyc_o <= `Disable;
+            rd_buf <= `Zero;
+        end else begin
+            case (wishbone_state)
+                `WB_IDLE:   begin
+                    if((cpu_ce_i == `Enable) && (flush == `Disable)) begin
+                        // Initalize and change to WB_BUSY
+                        wishbone_stb_o <= `Enable;
+                        wishbone_cyc_o <= `Enable;
+                        wishbone_addr_o <= cpu_addr_i;
+                        wishbone_data_o <= cpu_data_i;
+                        wishbone_we_o <= cpu_we_i;
+                        wishbone_sel_o <= cpu_sel_i;
+                        wishbone_state <= `WB_BUSY;
+                        rd_buf <= `Zero;
+                    end
+                end
+
+                `WB_BUSY:   begin
+                // If we get flush == `Enable and ack_i == `Enable both, we do not flush.
+                    if(wishbone_ack_i == `Enable) begin
+                        wishbone_stb_o <= `Disable;
+                        wishbone_cyc_o <= `Disable;
+                        wishbone_addr_o <= `Zero;
+                        wishbone_data_o <= `Zero;
+                        wishbone_we_o <= `Disable;
+                        wishbone_sel_o <= 4'b0000;
+                        wishbone_state <= `WB_IDLE;
+
+                        if(cpu_we_i == `Disable) begin
+                            rd_buf <= wishbone_data_i;
+                        end
+                        if(stall_this == `Enable) begin
+                            wishbone_state <= `WB_WAIT_FOR_STALL;
+                        end
+                    end else if(flush == `Enable) begin
+                        wishbone_stb_o <= `Disable;
+                        wishbone_cyc_o <= `Disable;
+                        wishbone_addr_o <= `Zero;
+                        wishbone_data_o <= `Zero;
+                        wishbone_we_o <= `Disable;
+                        wishbone_sel_o <= 4'b0000;
+                        wishbone_state <= `WB_IDLE;
+                        rd_buf <= `Zero;
+                    end
+                end
+
+                `WB_WAIT_FOR_STALL: begin
+                    if(stall_this == `Disable) begin
+                        wishbone_state <= `WB_IDLE;
+                    end
+                end
+
+                default: begin
+                end
+
+            endcase
         end
-        else if(stallreq != `Enable && (stall_this != `Enable || flush == `Disable))
-        begin
-            cpu_ack_id <= wishbone_ack_id;
-            req_cnt <= req_cnt + 1'b1;
+    end
+
+
+    /* Data Signal Change */
+    always @ (*) begin
+        if(rst == `Enable) begin
+            stallreq <= `Disable;
+            cpu_data_o <= `Zero;
+        end else begin
+            stallreq <= `Disable;
+            case (wishbone_state)
+                `WB_IDLE: begin
+                    if((cpu_ce_i == 1'b1) && (flush == `Disable)) begin
+                        stallreq <= `Enable;
+                        cpu_data_o <= `Zero;
+                    end
+                end
+
+                `WB_BUSY: begin
+                    if(wishbone_ack_i == 1'b1) begin
+                        if(stall_this == `Enable) begin
+                            stallreq <= `Enable;
+                        end else begin
+                            stallreq <= `Disable;
+                        end
+                        if(wishbone_we_o == `Disable) begin
+                            cpu_data_o <= wishbone_data_i;
+                        end else begin
+                            cpu_data_o <= `Zero;
+                        end
+                    end else begin
+                        stallreq <= `Enable;
+                        cpu_data_o <= `Zero;
+                    end
+                end
+
+                `WB_WAIT_FOR_STALL: begin
+                    stallreq <= `Disable;
+                    cpu_data_o <= rd_buf;
+                end
+
+                default: begin
+                end
+            endcase
         end
-    always @ (posedge wishbone_clk or negedge rst)
-        if(rst == `Enable)
-        begin
-            wishbone_ack_valid <= 1'b0;
-            wishbone_ack_id <= 1'b0;
-        end
-        else if((wishbone_ack_i & request_bus) == 1'b1)
-        begin
-            wishbone_ack_valid <= 1'b1;
-            wishbone_ack_id <= cpu_req_id;
-            cpu_data_o <= wishbone_data_i;
-        end
-    assign wishbone_addr_o = cpu_addr_i;
-    assign wishbone_data_o = cpu_data_i;
-    // 竞争与冒险？
-    assign wishbone_cyc_o = ((request_bus) | ((flush == `Disable) & ~(&req_cnt) & (stallreq == `Enable || stall_this == `Disable)));
-    assign wishbone_stb_o = request_bus; 
-    assign wishbone_we_o = cpu_we_i;
-    assign wishbone_sel_o = cpu_sel_i;
-    reg[delay:0] stall_delay;
-    reg not_use;
-    always @ (posedge wishbone_clk or negedge rst)
-        if(rst == `Enable)
-            stall_delay <= {delay{1'b0}};
-        else if(flush == `Enable)
-            stall_delay <= {delay{1'b0}};
-        else if((wishbone_ack_i & request_bus) == 1'b1)
-            {not_use, stall_delay} <= {stall_delay, 1'b0};
-        else
-            {not_use, stall_delay} <= {stall_delay, request_bus};
-    // 留两个总线周期的缓冲
-    assign stallreq = (|stall_delay) && (flush == `Disable);
+    end
 
 endmodule
