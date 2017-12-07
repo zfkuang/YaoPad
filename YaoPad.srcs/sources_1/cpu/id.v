@@ -66,10 +66,12 @@ module id(
     output wire[`WordBus] excepttype_o,
     output wire[`WordBus] current_inst_addr_o,
 
+    output wire[`WordBus] debugdata,
     output wire stallreq,
     output wire timer_int_o
     );
 
+    assign debugdata = inst_i ;
     reg[`WordBus] immi ;
     wire[5:0] op1 = inst_i[31:26] ;
     wire[4:0] op2 = inst_i[10:6] ;

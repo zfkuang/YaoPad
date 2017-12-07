@@ -2,8 +2,8 @@
 # Vivado v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Thu Dec  7 13:15:23 2017
-# Process ID: 14508
+# Start of session at: Thu Dec  7 15:26:16 2017
+# Process ID: 2116
 # Current directory: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1
 # Command line: vivado.exe -log openmips_min_sopc.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source openmips_min_sopc.tcl
 # Log file: E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/openmips_min_sopc.vds
@@ -15,7 +15,7 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 11012 
+INFO: Helper process launched with PID 10128 
 CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module pc_rom [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
 CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module if_id [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
 CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module id [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
@@ -65,24 +65,24 @@ CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module wb_co
 CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module wb_conmax_rf [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_rf.v:61]
 CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module wb_conmax_slave_if [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/wb_conmax/wb_conmax_slave_if.v:61]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 353.082 ; gain = 103.723
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 353.520 ; gain = 104.461
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'openmips_min_sopc' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:45]
 INFO: [Synth 8-638] synthesizing module 'cpu' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:37]
 INFO: [Synth 8-638] synthesizing module 'pc_rom' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
 WARNING: [Synth 8-3848] Net debugdata in module/entity pc_rom does not have driver. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:35]
 INFO: [Synth 8-256] done synthesizing module 'pc_rom' (1#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/pc.v:23]
-WARNING: [Synth 8-350] instance 'pc_rom0' of module 'pc_rom' requires 10 connections, but only 9 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:213]
+WARNING: [Synth 8-350] instance 'pc_rom0' of module 'pc_rom' requires 10 connections, but only 9 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:239]
 INFO: [Synth 8-638] synthesizing module 'if_id' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
 CRITICAL WARNING: [Synth 8-5413] Mix of synchronous and asynchronous control for register id_pc_reg in module if_id. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:39]
 INFO: [Synth 8-256] done synthesizing module 'if_id' (2#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/if_id.v:23]
 INFO: [Synth 8-638] synthesizing module 'id' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:240]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:290]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:379]
-WARNING: [Synth 8-3848] Net timer_int_o in module/entity id does not have driver. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:70]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:242]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:292]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:381]
+WARNING: [Synth 8-3848] Net timer_int_o in module/entity id does not have driver. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:71]
 INFO: [Synth 8-256] done synthesizing module 'id' (3#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:23]
-WARNING: [Synth 8-350] instance 'id0' of module 'id' requires 34 connections, but only 32 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:235]
+WARNING: [Synth 8-350] instance 'id0' of module 'id' requires 35 connections, but only 33 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:261]
 INFO: [Synth 8-638] synthesizing module 'regfile' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/regfile.v:23]
 WARNING: [Synth 8-5788] Register register_reg in module regfile is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code 
 WARNING: [Synth 8-4767] Trying to implement RAM 'register_reg' in registers. Block RAM or DRAM implementation is not possible; see log for reasons.
@@ -96,7 +96,7 @@ INFO: [Synth 8-638] synthesizing module 'id_ex' [E:/XilinxProjects/YaoPad/YaoPad
 CRITICAL WARNING: [Synth 8-5413] Mix of synchronous and asynchronous control for register ex_alusel_reg in module id_ex. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:68]
 INFO: [Synth 8-256] done synthesizing module 'id_ex' (5#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:23]
 INFO: [Synth 8-638] synthesizing module 'ex' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:328]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:329]
 INFO: [Synth 8-256] done synthesizing module 'ex' (6#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:23]
 INFO: [Synth 8-638] synthesizing module 'ex_mem' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v:43]
 CRITICAL WARNING: [Synth 8-5413] Mix of synchronous and asynchronous control for register mem_wdata_reg in module ex_mem. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v:88]
@@ -106,12 +106,12 @@ WARNING: [Synth 8-5788] Register mem_reg2_reg in module ex_mem is has both Set a
 WARNING: [Synth 8-5788] Register mem_mem_addr_reg in module ex_mem is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v:107]
 INFO: [Synth 8-256] done synthesizing module 'ex_mem' (7#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex_mem.v:43]
 INFO: [Synth 8-638] synthesizing module 'mem' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:23]
-WARNING: [Synth 8-151] case item 8'b11100010 is unreachable [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:112]
+WARNING: [Synth 8-151] case item 8'b11100010 is unreachable [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:115]
 INFO: [Synth 8-256] done synthesizing module 'mem' (8#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:23]
 INFO: [Synth 8-638] synthesizing module 'mem_wb' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:23]
-CRITICAL WARNING: [Synth 8-5413] Mix of synchronous and asynchronous control for register wb_wdata_reg in module mem_wb. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:53]
-WARNING: [Synth 8-5788] Register wb_hi_reg in module mem_wb is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:66]
-WARNING: [Synth 8-5788] Register wb_lo_reg in module mem_wb is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:67]
+CRITICAL WARNING: [Synth 8-5413] Mix of synchronous and asynchronous control for register wb_wdata_reg in module mem_wb. [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:57]
+WARNING: [Synth 8-5788] Register wb_hi_reg in module mem_wb is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:70]
+WARNING: [Synth 8-5788] Register wb_lo_reg in module mem_wb is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:71]
 INFO: [Synth 8-256] done synthesizing module 'mem_wb' (9#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem_wb.v:23]
 INFO: [Synth 8-638] synthesizing module 'hilo' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v:23]
 INFO: [Synth 8-256] done synthesizing module 'hilo' (10#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/hilo.v:23]
@@ -126,7 +126,7 @@ INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProj
 INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:95]
 INFO: [Synth 8-155] case statement is not full and has no default [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:165]
 INFO: [Synth 8-256] done synthesizing module 'cp0' (13#1) [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:23]
-WARNING: [Synth 8-350] instance 'cp00' of module 'cp0' requires 19 connections, but only 15 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:550]
+WARNING: [Synth 8-350] instance 'cp00' of module 'cp0' requires 19 connections, but only 15 given [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cpu.v:580]
 INFO: [Synth 8-638] synthesizing module 'wishbone_bus_if' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/wishbone_bus_if.v:23]
 	Parameter delay bound to: 2 - type: integer 
 	Parameter cyc_len_log_2 bound to: 2 - type: integer 
@@ -280,22 +280,6 @@ WARNING: [Synth 8-3331] design ex_mem has unconnected port stall[5]
 WARNING: [Synth 8-3331] design ex_mem has unconnected port stall[2]
 WARNING: [Synth 8-3331] design ex_mem has unconnected port stall[1]
 WARNING: [Synth 8-3331] design ex_mem has unconnected port stall[0]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[31]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[30]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[29]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[28]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[27]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[26]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[25]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[24]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[23]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[22]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[21]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[20]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[19]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[18]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[17]
-WARNING: [Synth 8-3331] design ex has unconnected port inst_i[16]
 WARNING: [Synth 8-3331] design ex has unconnected port excepttype_i[11]
 WARNING: [Synth 8-3331] design ex has unconnected port excepttype_i[10]
 WARNING: [Synth 8-3331] design ex has unconnected port excepttype_i[7]
@@ -329,9 +313,25 @@ WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[28]
 WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[27]
 WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[26]
 WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[25]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[24]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[23]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[22]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[21]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[20]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[19]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[18]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[17]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[16]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[15]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[14]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[13]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[12]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[11]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[10]
+WARNING: [Synth 8-3331] design pc_rom has unconnected port debugdata[9]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 412.824 ; gain = 163.465
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 413.262 ; gain = 164.203
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -442,7 +442,7 @@ WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s4_data_i[29] to constant 
 WARNING: [Synth 8-3295] tying undriven pin wb_conmax0:s4_data_i[28] to constant 0 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/openmips_min_sopc.v:164]
 INFO: [Common 17-14] Message 'Synth 8-3295' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 412.824 ; gain = 163.465
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 413.262 ; gain = 164.203
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a100tfgg676-2L
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -494,22 +494,22 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 782.414 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 782.668 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 782.414 ; gain = 533.055
+Finished Constraint Validation : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 782.668 ; gain = 533.609
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tfgg676-2L
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 782.414 ; gain = 533.055
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 782.668 ; gain = 533.609
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 782.414 ; gain = 533.055
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 782.668 ; gain = 533.609
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "next_inst_in_delayslot_o" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "aluop_o" won't be mapped to RAM because it is too sparse
@@ -531,7 +531,7 @@ INFO: [Synth 8-5546] ROM "hi_o" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "lo_o" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "whilo_o" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "div_opdata1_o" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:252]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:253]
 INFO: [Synth 8-5546] ROM "mem_we" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "mem_ce_o" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5544] ROM "mem_sel_o" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
@@ -569,30 +569,30 @@ INFO: [Synth 8-5544] ROM "oe" won't be mapped to Block RAM because address size 
 INFO: [Synth 8-5544] ROM "we" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-WARNING: [Synth 8-327] inferring latch for variable 'aluop_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:97]
-WARNING: [Synth 8-327] inferring latch for variable 'alusel_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:98]
-WARNING: [Synth 8-327] inferring latch for variable 'wreg_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:118]
-WARNING: [Synth 8-327] inferring latch for variable 'reg2_addr_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:100]
-WARNING: [Synth 8-327] inferring latch for variable 'reg2_read_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:115]
-WARNING: [Synth 8-327] inferring latch for variable 'reg1_read_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:114]
-WARNING: [Synth 8-327] inferring latch for variable 'instvalid_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:92]
-WARNING: [Synth 8-327] inferring latch for variable 'except_syscall_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:92]
-WARNING: [Synth 8-327] inferring latch for variable 'except_eret_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:92]
-WARNING: [Synth 8-327] inferring latch for variable 'wdata_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:343]
-WARNING: [Synth 8-327] inferring latch for variable 'whilo_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:281]
-WARNING: [Synth 8-327] inferring latch for variable 'hi_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:274]
-WARNING: [Synth 8-327] inferring latch for variable 'lo_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:274]
-WARNING: [Synth 8-327] inferring latch for variable 'div_start_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:277]
-WARNING: [Synth 8-327] inferring latch for variable 'signed_div_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:297]
-WARNING: [Synth 8-327] inferring latch for variable 'div_opdata1_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:295]
-WARNING: [Synth 8-327] inferring latch for variable 'div_opdata2_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:296]
-WARNING: [Synth 8-327] inferring latch for variable 'cp0_reg_read_addr_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:173]
-WARNING: [Synth 8-327] inferring latch for variable 'ovassert_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:323]
-WARNING: [Synth 8-327] inferring latch for variable 'stallreq_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:275]
-WARNING: [Synth 8-327] inferring latch for variable 'mulres_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:256]
-WARNING: [Synth 8-327] inferring latch for variable 'hi_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:102]
-WARNING: [Synth 8-327] inferring latch for variable 'lo_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:103]
-WARNING: [Synth 8-327] inferring latch for variable 'cp0_cause_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:382]
+WARNING: [Synth 8-327] inferring latch for variable 'aluop_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:99]
+WARNING: [Synth 8-327] inferring latch for variable 'alusel_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:100]
+WARNING: [Synth 8-327] inferring latch for variable 'wreg_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:120]
+WARNING: [Synth 8-327] inferring latch for variable 'reg2_addr_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:102]
+WARNING: [Synth 8-327] inferring latch for variable 'reg2_read_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:117]
+WARNING: [Synth 8-327] inferring latch for variable 'reg1_read_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:116]
+WARNING: [Synth 8-327] inferring latch for variable 'instvalid_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:94]
+WARNING: [Synth 8-327] inferring latch for variable 'except_syscall_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:94]
+WARNING: [Synth 8-327] inferring latch for variable 'except_eret_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id.v:94]
+WARNING: [Synth 8-327] inferring latch for variable 'wdata_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:344]
+WARNING: [Synth 8-327] inferring latch for variable 'whilo_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:282]
+WARNING: [Synth 8-327] inferring latch for variable 'hi_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:275]
+WARNING: [Synth 8-327] inferring latch for variable 'lo_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:275]
+WARNING: [Synth 8-327] inferring latch for variable 'div_start_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:278]
+WARNING: [Synth 8-327] inferring latch for variable 'signed_div_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:298]
+WARNING: [Synth 8-327] inferring latch for variable 'div_opdata1_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:296]
+WARNING: [Synth 8-327] inferring latch for variable 'div_opdata2_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:297]
+WARNING: [Synth 8-327] inferring latch for variable 'cp0_reg_read_addr_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:174]
+WARNING: [Synth 8-327] inferring latch for variable 'ovassert_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:324]
+WARNING: [Synth 8-327] inferring latch for variable 'stallreq_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:276]
+WARNING: [Synth 8-327] inferring latch for variable 'mulres_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ex.v:257]
+WARNING: [Synth 8-327] inferring latch for variable 'hi_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:105]
+WARNING: [Synth 8-327] inferring latch for variable 'lo_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:106]
+WARNING: [Synth 8-327] inferring latch for variable 'cp0_cause_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/mem.v:385]
 WARNING: [Synth 8-327] inferring latch for variable 'new_pc_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/ctrl.v:44]
 WARNING: [Synth 8-327] inferring latch for variable 'data_o_reg' [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/cp0.v:163]
 ---------------------------------------------------------------------------------------------------
@@ -608,14 +608,14 @@ WARNING: [Synth 8-327] inferring latch for variable 'data_o_reg' [E:/XilinxProje
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'sram'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:29 ; elapsed = 00:00:29 . Memory (MB): peak = 782.414 ; gain = 533.055
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 782.668 ; gain = 533.609
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
 +------+-----------------------+------------+----------+
 |      |RTL Partition          |Replication |Instances |
 +------+-----------------------+------------+----------+
-|1     |openmips_min_sopc__GB0 |           1|     40252|
+|1     |openmips_min_sopc__GB0 |           1|     40448|
 |2     |wb_conmax_top          |           1|     37907|
 +------+-----------------------+------------+----------+
 ---------------------------------------------------------------------------------
@@ -3038,7 +3038,7 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (wb_conmax
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (wb_conmax0/s0/m2_cyc_r_reg)
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (wb_conmax0/s15/m2_cyc_r_reg)
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 924.281 ; gain = 674.922
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:24 ; elapsed = 00:01:27 . Memory (MB): peak = 924.539 ; gain = 675.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -3063,27 +3063,27 @@ Report RTL Partitions:
 +------+-----------------------+------------+----------+
 |      |RTL Partition          |Replication |Instances |
 +------+-----------------------+------------+----------+
-|1     |openmips_min_sopc__GB0 |           1|     23712|
+|1     |openmips_min_sopc__GB0 |           1|     23945|
 |2     |wb_conmax_top          |           1|      1239|
 +------+-----------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:38 ; elapsed = 00:01:41 . Memory (MB): peak = 924.281 ; gain = 674.922
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:39 ; elapsed = 00:01:42 . Memory (MB): peak = 924.539 ; gain = 675.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:40 ; elapsed = 00:01:43 . Memory (MB): peak = 924.281 ; gain = 674.922
+Finished Timing Optimization : Time (s): cpu = 00:01:41 ; elapsed = 00:01:44 . Memory (MB): peak = 924.539 ; gain = 675.480
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
 +------+-----------------------+------------+----------+
 |      |RTL Partition          |Replication |Instances |
 +------+-----------------------+------------+----------+
-|1     |openmips_min_sopc__GB0 |           1|     23712|
+|1     |openmips_min_sopc__GB0 |           1|     23945|
 |2     |wb_conmax_top          |           1|      1239|
 +------+-----------------------+------------+----------+
 ---------------------------------------------------------------------------------
@@ -3094,7 +3094,7 @@ INFO: [Synth 8-5844] Detected registers with asynchronous reset at DSP/BRAM bloc
 INFO: [Synth 8-5844] Detected registers with asynchronous reset at DSP/BRAM block boundary. Consider using synchronous reset for optimal packing [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:71]
 INFO: [Synth 8-5844] Detected registers with asynchronous reset at DSP/BRAM block boundary. Consider using synchronous reset for optimal packing [E:/XilinxProjects/YaoPad/YaoPad/YaoPad.srcs/sources_1/cpu/id_ex.v:70]
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:48 ; elapsed = 00:01:51 . Memory (MB): peak = 924.281 ; gain = 674.922
+Finished Technology Mapping : Time (s): cpu = 00:01:47 ; elapsed = 00:01:51 . Memory (MB): peak = 983.469 ; gain = 734.410
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3118,7 +3118,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:50 ; elapsed = 00:01:53 . Memory (MB): peak = 924.281 ; gain = 674.922
+Finished IO Insertion : Time (s): cpu = 00:01:49 ; elapsed = 00:01:52 . Memory (MB): peak = 983.469 ; gain = 734.410
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -3131,7 +3131,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:50 ; elapsed = 00:01:53 . Memory (MB): peak = 924.281 ; gain = 674.922
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:49 ; elapsed = 00:01:52 . Memory (MB): peak = 983.469 ; gain = 734.410
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3143,25 +3143,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:51 ; elapsed = 00:01:53 . Memory (MB): peak = 924.281 ; gain = 674.922
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:50 ; elapsed = 00:01:53 . Memory (MB): peak = 983.469 ; gain = 734.410
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:51 ; elapsed = 00:01:53 . Memory (MB): peak = 924.281 ; gain = 674.922
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:50 ; elapsed = 00:01:53 . Memory (MB): peak = 983.469 ; gain = 734.410
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:51 ; elapsed = 00:01:54 . Memory (MB): peak = 924.281 ; gain = 674.922
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:50 ; elapsed = 00:01:54 . Memory (MB): peak = 983.469 ; gain = 734.410
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:51 ; elapsed = 00:01:54 . Memory (MB): peak = 924.281 ; gain = 674.922
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:50 ; elapsed = 00:01:54 . Memory (MB): peak = 983.469 ; gain = 734.410
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -3180,73 +3180,72 @@ Report Cell Usage:
 |1     |BUFG    |     8|
 |2     |CARRY4  |   162|
 |3     |DSP48E1 |     4|
-|4     |LUT1    |   265|
-|5     |LUT2    |   460|
-|6     |LUT3    |  1282|
-|7     |LUT4    |   397|
-|8     |LUT5    |   583|
-|9     |LUT6    |  4560|
-|10    |MUXF7   |   562|
-|11    |MUXF8   |   208|
-|12    |FDCE    |  1971|
+|4     |LUT1    |   264|
+|5     |LUT2    |   477|
+|6     |LUT3    |  1255|
+|7     |LUT4    |   390|
+|8     |LUT5    |   631|
+|9     |LUT6    |  4632|
+|10    |MUXF7   |   565|
+|11    |MUXF8   |   144|
+|12    |FDCE    |  1987|
 |13    |FDPE    |  1024|
-|14    |FDRE    |   510|
-|15    |FDSE    |     2|
-|16    |LD      |   206|
-|17    |LDC     |  1107|
-|18    |IBUF    |     8|
-|19    |IOBUF   |    64|
-|20    |OBUF    |    86|
+|14    |FDRE    |   512|
+|15    |LD      |   206|
+|16    |LDC     |  1107|
+|17    |IBUF    |     8|
+|18    |IOBUF   |    64|
+|19    |OBUF    |    86|
 +------+--------+------+
 
 Report Instance Areas: 
 +------+---------------------+----------------------+------+
 |      |Instance             |Module                |Cells |
 +------+---------------------+----------------------+------+
-|1     |top                  |                      | 13469|
-|2     |  cpu0               |cpu                   | 12697|
+|1     |top                  |                      | 13526|
+|2     |  cpu0               |cpu                   | 12750|
 |3     |    ctrl0            |ctrl                  |    32|
 |4     |    cp00             |cp0                   |   138|
-|5     |    div0             |div                   |   443|
-|6     |    dwishbone_bus_if |wishbone_bus_if       |    96|
+|5     |    div0             |div                   |   440|
+|6     |    dwishbone_bus_if |wishbone_bus_if       |    99|
 |7     |    ex0              |ex                    |   499|
-|8     |    ex_mem0          |ex_mem                |   988|
+|8     |    ex_mem0          |ex_mem                |  1027|
 |9     |    hilo0            |hilo                  |    64|
-|10    |    id0              |id                    |   111|
-|11    |    id_ex0           |id_ex                 |  1144|
-|12    |    if_id0           |if_id                 |   640|
-|13    |    iwishbone_bus_if |wishbone_bus_if_10    |    53|
+|10    |    id0              |id                    |   109|
+|11    |    id_ex0           |id_ex                 |  1214|
+|12    |    if_id0           |if_id                 |   656|
+|13    |    iwishbone_bus_if |wishbone_bus_if_10    |    57|
 |14    |    mem0             |mem                   |    70|
 |15    |    mem_wb0          |mem_wb                |   346|
-|16    |    pc_rom0          |pc_rom                |   105|
-|17    |    regfile0         |regfile               |  7968|
-|18    |  sram0              |sram                  |   117|
-|19    |  wb_conmax0         |wb_conmax_top         |   488|
+|16    |    pc_rom0          |pc_rom                |    95|
+|17    |    regfile0         |regfile               |  7904|
+|18    |  sram0              |sram                  |   126|
+|19    |  wb_conmax0         |wb_conmax_top         |   481|
 |20    |    m0               |wb_conmax_master_if   |     2|
 |21    |    m1               |wb_conmax_master_if_0 |     2|
-|22    |    rf               |wb_conmax_rf          |   419|
-|23    |    s0               |wb_conmax_slave_if    |    28|
-|24    |      msel           |wb_conmax_msel_5      |    25|
+|22    |    rf               |wb_conmax_rf          |   409|
+|23    |    s0               |wb_conmax_slave_if    |    40|
+|24    |      msel           |wb_conmax_msel_5      |    37|
 |25    |        arb0         |wb_conmax_arb_6       |     1|
 |26    |        arb1         |wb_conmax_arb_7       |     1|
-|27    |        arb2         |wb_conmax_arb_8       |    19|
+|27    |        arb2         |wb_conmax_arb_8       |    30|
 |28    |        arb3         |wb_conmax_arb_9       |     1|
-|29    |    s15              |wb_conmax_slave_if_1  |    25|
-|30    |      msel           |wb_conmax_msel        |    22|
+|29    |    s15              |wb_conmax_slave_if_1  |    28|
+|30    |      msel           |wb_conmax_msel        |    25|
 |31    |        arb0         |wb_conmax_arb         |     1|
 |32    |        arb1         |wb_conmax_arb_2       |     1|
-|33    |        arb2         |wb_conmax_arb_3       |    16|
+|33    |        arb2         |wb_conmax_arb_3       |    18|
 |34    |        arb3         |wb_conmax_arb_4       |     1|
 +------+---------------------+----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:51 ; elapsed = 00:01:54 . Memory (MB): peak = 924.281 ; gain = 674.922
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:50 ; elapsed = 00:01:54 . Memory (MB): peak = 983.469 ; gain = 734.410
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 96 critical warnings and 758 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:34 ; elapsed = 00:01:44 . Memory (MB): peak = 924.281 ; gain = 305.332
-Synthesis Optimization Complete : Time (s): cpu = 00:01:52 ; elapsed = 00:01:54 . Memory (MB): peak = 924.281 ; gain = 674.922
+Synthesis finished with 0 errors, 96 critical warnings and 742 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:33 ; elapsed = 00:01:44 . Memory (MB): peak = 983.469 ; gain = 365.004
+Synthesis Optimization Complete : Time (s): cpu = 00:01:51 ; elapsed = 00:01:54 . Memory (MB): peak = 983.469 ; gain = 734.410
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 2321 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Netlist 29-17] Analyzing 2260 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 1 inverter(s) to 72 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
@@ -3259,8 +3258,8 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 341 Infos, 390 Warnings, 160 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:55 ; elapsed = 00:01:57 . Memory (MB): peak = 924.281 ; gain = 686.445
+synth_design: Time (s): cpu = 00:01:55 ; elapsed = 00:01:57 . Memory (MB): peak = 983.469 ; gain = 745.930
 INFO: [Common 17-1381] The checkpoint 'E:/XilinxProjects/YaoPad/YaoPad/YaoPad.runs/synth_1/openmips_min_sopc.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file openmips_min_sopc_utilization_synth.rpt -pb openmips_min_sopc_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.114 . Memory (MB): peak = 924.281 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Thu Dec  7 13:17:26 2017...
+report_utilization: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.116 . Memory (MB): peak = 983.469 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Dec  7 15:28:19 2017...

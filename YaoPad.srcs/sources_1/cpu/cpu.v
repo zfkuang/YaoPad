@@ -62,12 +62,38 @@ module cpu(    input wire rst,
     output wire timer_int_o,
     
     input wire[`RegAddrBus] debug,
-    output wire[`WordBus] debugdata
+    output reg[`WordBus] debugdata
     );
     
     wire[`WordBus] regdebugdata ;
     wire[`WordBus] ifdebugdata ;
-    assign debugdata = ((|debug)==0) ? ifdebugdata : regdebugdata ;
+    wire[`WordBus] iddebugdata ;
+    wire[`WordBus] exedebugdata ;
+   wire[`WordBus] memdebugdata ;
+   wire[`WordBus] wbdebugdata ;
+   always @(*) begin
+     case(debug)
+        5'b10000: begin
+            debugdata <= ifdebugdata ;            
+        end
+        5'b10001: begin
+            debugdata <= iddebugdata ;            
+        end
+        5'b10010: begin
+            debugdata <= exedebugdata ;            
+        end
+        5'b10011: begin
+            debugdata <= memdebugdata ;            
+        end        
+        5'b10100: begin
+            debugdata <= wbdebugdata ;            
+        end
+        default: begin
+            debugdata <= regdebugdata ;
+        end
+     endcase
+   end 
+   
     wire[`WordBus] rom_data_i ;
     wire[`WordBus] rom_addr_o ;
     wire rom_ce_o ;
@@ -271,6 +297,7 @@ module cpu(    input wire rst,
         .excepttype_o(id_excepttype_o),
         .current_inst_addr_o(id_current_inst_addr_o),
 
+        .debugdata(iddebugdata),
         .stallreq(stallreq_from_id)
     ) ;
     
@@ -387,6 +414,7 @@ module cpu(    input wire rst,
         .current_inst_addr_o(ex_current_inst_addr_o),
         .is_in_delayslot_o(ex_is_in_delayslot_o),
 
+        .debugdata(exedebugdata),
         .stallreq(stallreq_from_ex)
     ) ;
     
@@ -479,6 +507,7 @@ module cpu(    input wire rst,
         .is_in_delayslot_o(mem_is_in_delayslot_o),
         .cp0_epc_o(mem_cp0_epc_o),
         
+        .debugdata(memdebugdata),
         .stallreq(stalleq_from_mem)
     ) ;
     
@@ -505,6 +534,7 @@ module cpu(    input wire rst,
         .wb_cp0_reg_write_addr(wb_cp0_reg_write_addr_i),
         .wb_cp0_reg_data(wb_cp0_reg_data_i),
 
+        .debugdata(wbdebugdata),
         .flush(flush),
 
         .stall(stall) 

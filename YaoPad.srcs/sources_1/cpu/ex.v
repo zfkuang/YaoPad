@@ -89,7 +89,7 @@ module ex(
     output wire[`WordBus] current_inst_addr_o,
     output wire is_in_delayslot_o,
 
-
+    output wire[`WordBus] debugdata,
     output reg stallreq
     );
 
@@ -103,6 +103,7 @@ module ex(
     reg ovassert ;
     reg trapassert ;
 
+    assign debugdata = inst_i ;
     assign reg2_o = reg2_i;
     assign mem_addr_o = reg1_i + {{16{inst_i[15]}},inst_i[15:0]};
     assign aluop_o = aluop_i;
