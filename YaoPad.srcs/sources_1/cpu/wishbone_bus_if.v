@@ -118,7 +118,7 @@ module wishbone_bus_if(
                         rd_buf <= wishbone_data_i;
                         rd_buf_has_read <= `Enable;
                     end
-                    if((!stall_this) & (!wishbone_wait_cpu)) begin
+                    if(!wishbone_wait_cpu) begin
                         wishbone_busy <= `Disable;
                     end
                 end else if(flush == `Enable) begin
