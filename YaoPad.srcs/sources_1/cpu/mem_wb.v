@@ -65,7 +65,6 @@ module mem_wb(
             wb_wdata <= mem_wdata ;
             wb_wd <= mem_wd ;
             wb_wreg <= mem_wreg  ;
-
             wb_whilo <= mem_whilo ;
             wb_hi <= mem_hi ;
             wb_lo <= mem_lo ;

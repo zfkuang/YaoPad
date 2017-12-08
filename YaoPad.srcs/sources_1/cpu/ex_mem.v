@@ -90,6 +90,8 @@ module ex_mem(
             mem_wreg <= 0 ;
             mem_whilo <= 0 ;
             mem_aluop <= `ALU_NOP;
+            mem_reg2 <= `Zero ;
+            mem_mem_addr <= `Zero;
             mem_cp0_reg_write_addr <= `NopRegAddr ;
             mem_cp0_reg_we <= 0 ;
             mem_cp0_reg_data <= `Zero ;

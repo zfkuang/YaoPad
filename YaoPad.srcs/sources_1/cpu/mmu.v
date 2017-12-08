@@ -3,6 +3,8 @@
 
 `define RAM_ADDR_START 32'h00000000
 `define RAM_ADDR_LEN 32'h00800000
+`define VIR_RAM_ADDR_START 32'h80000000
+`define VIR_RAM_ADDR_LEN 32'h00800000
 `define FLASH_ADDR_START 32'h1E000000
 `define FLASH_ADDR_LEN 32'h00800000
 `define ROM_ADDR_START 32'h1FC00000
@@ -27,7 +29,9 @@ module mmu(
             physical_address_o <= `Zero ;
         end else begin 
             if(virtual_address_i >= `RAM_ADDR_START && virtual_address_i < `RAM_ADDR_START+`RAM_ADDR_LEN) begin  // Ram, mapping to slave 0
-                physical_address_o <= virtual_address_i-`RAM_ADDR_START ;
+                physical_address_o <= virtual_address_i-`RAM_ADDR_START ;            
+            end else if(virtual_address_i >= `VIR_RAM_ADDR_START && virtual_address_i < `VIR_RAM_ADDR_START+`VIR_RAM_ADDR_LEN) begin  // Ram, mapping to slave 0
+                physical_address_o <= virtual_address_i-`VIR_RAM_ADDR_START ;
             end else if(virtual_address_i >= `FLASH_ADDR_START && virtual_address_i < `FLASH_ADDR_START+`FLASH_ADDR_LEN) begin  // Flash, mapping to slave 3
                 physical_address_o <= 32'h30000000+virtual_address_i-`FLASH_ADDR_START ;
             end else if(virtual_address_i >= `ROM_ADDR_START && virtual_address_i < `ROM_ADDR_START+`ROM_ADDR_LEN) begin  // Rom, mapping to slave 2

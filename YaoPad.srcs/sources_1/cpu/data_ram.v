@@ -32,8 +32,11 @@ module data_ram(
 			  if (sel[0] == 1'b1) begin
 		      data_mem[addr[`DataMemNumLog2-1:0]][7:0] <= data[7:0];
 		    end			
-		end else if(we == `Disable) begin
-		    data_o <= data_mem[addr[`DataMemNumLog2-1:0]];
+		end else if(we == `Disable) begin			
+		      data_o[31:24] <= data_mem[addr[`DataMemNumLog2-1:0]][31:24] ;
+		      data_o[23:16] <= data_mem[addr[`DataMemNumLog2-1:0]][23:16] ;
+		      data_o[15:8] <= data_mem[addr[`DataMemNumLog2-1:0]][15:8] ;
+		      data_o[7:0] <= data_mem[addr[`DataMemNumLog2-1:0]][7:0] ;
 			ack <= `Enable;
 		end else begin
 			data_o <= `Zero;
