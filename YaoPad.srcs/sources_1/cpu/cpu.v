@@ -540,8 +540,6 @@ module cpu(    input wire rst,
 
         .debugdata(wbdebugdata),
         .flush(flush),
-
-        .debugdata(wbdebugdata),
         .stall(stall) 
     ) ;
 
