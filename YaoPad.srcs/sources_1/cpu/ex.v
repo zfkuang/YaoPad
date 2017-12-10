@@ -93,6 +93,8 @@ module ex(
     output reg stallreq
     );
 
+    assign debugdata = inst_i ;
+    
     reg[`WordBus] logicres ;
     reg[`WordBus] shiftres ;
     reg[`WordBus] moveres ;

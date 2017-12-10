@@ -31,7 +31,7 @@ module hilo(
     output reg[`WordBus] lo_o
     );
     
-    always @ (posedge clk or negedge rst) begin
+    always @ (posedge clk) begin
         if (rst == `Enable) begin
             hi_o <= `Zero ;
             lo_o <= `Zero ;

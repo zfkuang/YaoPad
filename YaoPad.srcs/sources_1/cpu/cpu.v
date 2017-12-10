@@ -32,6 +32,7 @@
 `include"cpu/ctrl.v"
 `include"cpu/div.v"
 `include"cpu/cp0.v"
+`include"cpu/mmu.v"
 `include"cpu/wishbone_bus_if.v"
 
 module cpu(    input wire rst, 
@@ -61,39 +62,42 @@ module cpu(    input wire rst,
     input wire[5:0] int_i,
     output wire timer_int_o,
     
-    input wire[`RegAddrBus] debug,
+    input wire[`DebugBus] debug,
     output reg[`WordBus] debugdata
     );
     
-    wire[`WordBus] regdebugdata ;
     wire[`WordBus] ifdebugdata ;
     wire[`WordBus] iddebugdata ;
-    wire[`WordBus] exedebugdata ;
-   wire[`WordBus] memdebugdata ;
-   wire[`WordBus] wbdebugdata ;
-   always @(*) begin
-     case(debug)
-        5'b10000: begin
-            debugdata <= ifdebugdata ;            
-        end
-        5'b10001: begin
-            debugdata <= iddebugdata ;            
-        end
-        5'b10010: begin
-            debugdata <= exedebugdata ;            
-        end
-        5'b10011: begin
-            debugdata <= memdebugdata ;            
-        end        
-        5'b10100: begin
-            debugdata <= wbdebugdata ;            
-        end
-        default: begin
-            debugdata <= regdebugdata ;
-        end
-     endcase
-   end 
-   
+    wire[`WordBus] exdebugdata ;
+    wire[`WordBus] memdebugdata ;
+    wire[`WordBus] wbdebugdata ;
+    wire[`WordBus] regdebugdata ;
+    wire[`WordBus] ctrldebugdata ;
+    always @(*) begin
+        case(debug[5:0])
+            6'b100000: begin
+                debugdata <= ifdebugdata ;
+            end
+            6'b100001: begin
+                debugdata <= iddebugdata ;
+            end
+            6'b100010: begin
+                debugdata <= exdebugdata ;
+            end
+            6'b100011: begin
+                debugdata <= memdebugdata ;
+            end
+            6'b100100: begin
+                debugdata <= wbdebugdata ;
+            end           
+            6'b100101: begin
+                debugdata <= ctrldebugdata ;
+            end
+            default: begin
+                debugdata <= regdebugdata ;
+            end
+        endcase
+    end
     wire[`WordBus] rom_data_i ;
     wire[`WordBus] rom_addr_o ;
     wire rom_ce_o ;
@@ -315,7 +319,7 @@ module cpu(    input wire rst,
         .re2(reg2_read),
         .raddr2(reg2_addr),
         .rdata2(reg2_data),
-        .debug(debug),
+        .debug(debug[4:0]),
         .debugdata(regdebugdata)
     ) ;
     
@@ -346,12 +350,12 @@ module cpu(    input wire rst,
         .next_inst_in_delayslot_i(id_next_inst_in_delayslot_o),
         .is_in_delayslot_o(id_is_in_delayslot_i),
 
-        .flush(flush),
         .id_excepttype(id_excepttype_o),
         .id_current_inst_addr(id_current_inst_addr_o),
         .ex_excepttype(ex_excepttype_i),
         .ex_current_inst_addr(ex_current_inst_addr_i),
 
+        .flush(flush),
         .stall(stall)
     ) ;
     
@@ -414,7 +418,7 @@ module cpu(    input wire rst,
         .current_inst_addr_o(ex_current_inst_addr_o),
         .is_in_delayslot_o(ex_is_in_delayslot_o),
 
-        .debugdata(exedebugdata),
+        .debugdata(exdebugdata),
         .stallreq(stallreq_from_ex)
     ) ;
     
@@ -537,6 +541,7 @@ module cpu(    input wire rst,
         .debugdata(wbdebugdata),
         .flush(flush),
 
+        .debugdata(wbdebugdata),
         .stall(stall) 
     ) ;
 
@@ -561,7 +566,8 @@ module cpu(    input wire rst,
         .new_pc(new_pc),
 
         .flush(flush),
-        .stall(stall)
+        .stall(stall),
+        .debugdata(ctrldebugdata)
     ) ;
 
     assign div_annul = 0 ;
@@ -598,6 +604,22 @@ module cpu(    input wire rst,
         .data_o(cp0_data_o)
     ) ;
 
+    wire[`WordBus] iviraddr ;
+    wire[`WordBus] iphyaddr ;
+    wire[`WordBus] dviraddr ;
+    wire[`WordBus] dphyaddr ;
+
+    mmu immu(
+        .rst(rst),
+        .virtual_address_i(iviraddr),
+        .physical_address_o(iphyaddr)
+    ) ;
+    mmu dmmu(
+        .rst(rst),
+        .virtual_address_i(dviraddr),
+        .physical_address_o(dphyaddr)
+    ) ;
+
 	wishbone_bus_if dwishbone_bus_if(      
         .wishbone_clk(clk100),
         .cpu_clk(clk),
@@ -617,6 +639,8 @@ module cpu(    input wire rst,
 		.cpu_sel_i(ram_sel_o),
 		.cpu_data_o(ram_data_i),
 
+        .mmu_phy_addr(dphyaddr),
+        .mmu_vir_addr(dviraddr),
 
 		// Wishbone 
 		.wishbone_data_i(dwishbone_data_i),
@@ -651,6 +675,8 @@ module cpu(    input wire rst,
 		.cpu_sel_i(4'b1111),
 		.cpu_data_o(rom_data_i),
 
+        .mmu_phy_addr(iphyaddr),
+        .mmu_vir_addr(iviraddr),
 
 		// Wishbone 
 		.wishbone_data_i(iwishbone_data_i),

@@ -15,7 +15,7 @@
 
 `define RegNum 20
 
-`define StartInstAddr 32'h00000000
+`define StartInstAddr 32'h80000000
 
 // Length of different data type// 
 `define RegLen 32
@@ -24,6 +24,7 @@
 `define MemNumLog 18 
 
 // Buses // 
+`define DebugBus 9:0
 `define StallBus 5:0
 `define AluOpBus 7:0
 `define AluSelBus 2:0
@@ -165,6 +166,7 @@
 
 
 // Alu Suboperation Number // 
+`define ALUS_LOAD_STORE 3'b111	
 `define ALUS_JUMP 3'b110
 `define ALUS_MUL 3'b101
 `define ALUS_ARITHMETIC 3'b100
@@ -172,7 +174,6 @@
 `define ALUS_SHIFT 3'b010
 `define ALUS_LOGIC 3'b001
 `define ALUS_NOP 3'b000
-`define ALUS_LOAD_STORE 3'b111	
 
 `define NopRegAddr 5'b00000
 

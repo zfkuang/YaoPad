@@ -73,14 +73,13 @@ module mem(
         output wire[`WordBus] cp0_epc_o,
         output wire[`WordBus] current_inst_addr_o,
         output wire is_in_delayslot_o,
-        
         output wire[`WordBus] debugdata,
         output wire stallreq
     );
     reg mem_we;
     wire [1:0] addr_mod4 = mem_addr_i[1:0];
 
-    assign debugdata = aluop_i ;
+    assign debugdata = {24'b0, aluop_i} ;
     assign stallreq = mem_ce_o ;
 
     always @ (*) begin

@@ -34,8 +34,11 @@ module ctrl(
 
     output reg[`WordBus] new_pc,
     output reg flush,
+    output wire[`WordBus] debugdata,
     output reg[5:0] stall
     );
+    
+    assign debugdata = {22'b0, stall, stallreq_from_id, stallreq_from_ex, stallreq_from_if, stallreq_from_mem} ;
     
     always @ (*) begin
         if (rst == `Enable) begin
@@ -47,19 +50,19 @@ module ctrl(
             stall <= 6'b000000 ;
             case(excepttype_i)
                 32'h00000001: begin
-                    new_pc <= 32'h00000020 ;
+                    new_pc <= 32'h80000380 ;
                 end
                 32'h00000008: begin
-                    new_pc <= 32'h00000040 ;
+                    new_pc <= 32'h80000380 ;
                 end
                 32'h0000000a: begin
-                    new_pc <= 32'h00000040 ;
+                    new_pc <= 32'h80000380 ;
                 end
                 32'h0000000d: begin
-                    new_pc <= 32'h00000040 ;
+                    new_pc <= 32'h80000380 ;
                 end
                 32'h0000000c: begin
-                    new_pc <= 32'h00000040 ;
+                    new_pc <= 32'h80000380 ;
                 end
                 32'h0000000e: begin
                     new_pc <= cp0_epc_i ;
@@ -75,7 +78,7 @@ module ctrl(
             stall <= 6'b000111 ;
             flush <= `Disable;
         end else if (stallreq_from_if == `Enable) begin
-            // 暂停译码阶段的原因是，若译码阶段的指令为转移指令，那么取指阶段的指令为延迟槽指令，在译码阶段的指令到下一个周期执行的时候，取的延迟槽指令还没到，就会把NOP看成延迟槽指令。
+            // 暂停译码阶段的原因是，若译码阶段的指令为转移指令，那么取指阶段的指令为延迟槽指令，在译码阶段的指令到下一个周期执行的时�?�，取的延迟槽指令还没到，就会把NOP看成延迟槽指令�??
             stall <= 6'b000111;
             flush <= `Disable;
         end else begin

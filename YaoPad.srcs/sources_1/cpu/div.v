@@ -42,7 +42,7 @@ module div(
     wire[32:0] tempres ;
     assign tempres = {1'b0, result[63:32]}-{1'b0, divider} ;
 
-    always @ (posedge clk or negedge rst) begin
+    always @ (posedge clk) begin
         if (rst == `Enable) begin 
             state <= `DIV_FREE ;
             ready_o <= `Disable ;

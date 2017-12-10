@@ -34,7 +34,8 @@ module if_id(
     );
     
     assign debugdata = if_inst ;
-    always @ (posedge clk or negedge rst) begin
+
+    always @ (posedge clk) begin
         if ((rst == `Enable) || ((stall[1] == `Enable) && (stall[2] == `Disable)) || (flush == `Enable)) begin
             id_pc <= `Zero ;
             id_inst <= `Zero ;
