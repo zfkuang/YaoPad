@@ -120,8 +120,8 @@ module wishbone_bus_if(
     assign wishbone_data_o = cpu_data_i;
     assign wishbone_we_o = cpu_we_i;
     assign wishbone_sel_o = cpu_sel_i;
-    assign wishbone_cyc_o = (!rst) & (((!wishbone_busy) & cpu_ce_i & (!flush)) | (wishbone_busy & (!wishbone_has_acked) & (!flush)));
-    assign wishbone_stb_o = (!rst) & (((!wishbone_busy) & cpu_ce_i & (!flush)) | (wishbone_busy & (!wishbone_has_acked) & (!flush)));
+    assign wishbone_cyc_o = (!rst) & (((!wishbone_busy) & cpu_ce_i & (!flush)) | (wishbone_busy & (!wishbone_has_acked) & (!flush)) | (wishbone_busy & wishbone_has_acked & (!wishbone_wait_cpu) & cpu_ce_i & (!flush)));
+    assign wishbone_stb_o = wishbone_cyc_o;
 
     /* Data Signal Change */
     always @ (*) begin
