@@ -61,7 +61,9 @@ module wishbone_bus_if(
     reg wishbone_busy;
     reg wishbone_wait_cpu;
     reg wishbone_has_acked;
-    wire old_cpu_in;
+    reg wishbone_early_cyc;
+
+    wire wishbone_start;
     
     // buffer register of data from wishbone.
     reg[`WordBus] rd_buf;
@@ -75,10 +77,24 @@ module wishbone_bus_if(
 
     always @ (posedge cpu_clk) begin
         cpu_is_rst <= rst;
+        wishbone_early_cyc <= `Disable;
         if(cpu_is_rst | flush) begin
             wishbone_wait_cpu <= `Disable;
         end else begin
-            wishbone_wait_cpu <= (~wishbone_has_acked) | stall_this;
+            wishbone_wait_cpu <= ((~wishbone_has_acked) | stall_this);
+        end
+    end
+
+    always @ (negedge wishbone_clk) begin
+        wishbone_early_cyc <= `Disable;
+        if(wb_is_rst == `Disable) begin
+            if(wishbone_busy == `Enable) begin
+                if(wishbone_has_acked == `Enable) begin
+                    if(!wishbone_wait_cpu) begin
+                        wishbone_early_cyc <= `Enable;
+                    end
+                end
+            end
         end
     end
 
@@ -115,13 +131,17 @@ module wishbone_bus_if(
         end
     end
 
+
+
     assign mmu_vir_addr = cpu_addr_i;
     assign wishbone_addr_o = mmu_phy_addr;
     assign wishbone_data_o = cpu_data_i;
     assign wishbone_we_o = cpu_we_i;
     assign wishbone_sel_o = cpu_sel_i;
-    assign wishbone_cyc_o = (!rst) & (((!wishbone_busy) & cpu_ce_i & (!flush)) | (wishbone_busy & (!wishbone_has_acked) & (!flush)) | (wishbone_busy & wishbone_has_acked & (!wishbone_wait_cpu) & cpu_ce_i & (!flush)));
-    assign wishbone_stb_o = wishbone_cyc_o;
+    assign wishbone_start = (!rst) & (((!wishbone_busy) & cpu_ce_i & (!flush)) | (wishbone_busy & (!wishbone_has_acked) & (!flush)));
+    assign wishbone_cyc_o = wishbone_start || wishbone_early_cyc;
+    assign wishbone_stb_o = wishbone_start || wishbone_early_cyc;
+
 
     /* Data Signal Change */
     always @ (*) begin
