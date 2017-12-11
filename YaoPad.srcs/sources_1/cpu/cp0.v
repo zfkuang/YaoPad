@@ -51,7 +51,6 @@ module cp0(
 
     always @ (posedge clk) begin
         if(rst == `Enable) begin
-            data_o <= `Zero ;
             count_o <= `Zero ;
             compare_o <= `Zero ;
             status_o <= `Zero ;
@@ -162,6 +161,7 @@ module cp0(
         if(rst == `Enable) begin
             data_o <= `Zero ;
         end else begin
+            data_o <= `Zero ;
             case(raddr_i) 
                 `CP0_COUNT: begin
                     data_o <= count_o ;
