@@ -50,7 +50,7 @@ module mem_wb(
         output wire[`WordBus] debugdata
     );    
     
-    assign debugdata = {27'b0, wb_wd} ;
+    assign debugdata = {10'b0, wb_wreg, wb_wd, wb_wdata[15:0]} ;
 
     always @ (posedge clk) begin 
         if ((rst == `Enable) || ((stall[4] == `Enable) && (stall[5] == `Disable)) || (flush == `Enable)) begin

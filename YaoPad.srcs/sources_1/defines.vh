@@ -195,5 +195,5 @@
 `define CP0_CAUSE 5'b01101
 `define CP0_EPC 5'b01110
 `define CP0_PRId 5'b01111
-`define CP0_CONFIG 5'b1000
+`define CP0_CONFIG 5'b10000
 

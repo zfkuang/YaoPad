@@ -50,7 +50,7 @@ module sram(
     output wire[`WordBus] debugdata
 );
 
-    assign debugdata = {24'b0, reading, writing, ram0_oe, ram1_oe, ram0_ce, ram1_ce, ram0_we, ram1_we} ;
+    assign debugdata = {wishbone_data_i[23:0], reading, writing, ram0_oe, ram1_oe, ram0_ce, ram1_ce, ram0_we, ram1_we} ;
 	wire reading, writing;
 	// output buffer
 

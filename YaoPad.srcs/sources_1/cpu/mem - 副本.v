@@ -79,9 +79,14 @@ module mem(
     );
     reg mem_we;
     wire [1:0] addr_mod4 = mem_addr_i[1:0];
+    wire [7:0] mem_byte[3:0] ;
 
-    //assign debugdata = {aluop_i, mem_addr_i[7:0], reg2_i[15:0]} ;
-    assign debugdata = {10'b0, wreg_o, wd_i, wdata_i[15:0]} ;
+    assign mem_byte[0] = mem_data_i[31:24] ; // 67
+    assign mem_byte[1] = mem_data_i[23:16] ; // 45
+    assign mem_byte[2] = mem_data_i[15:8] ; // 23
+    assign mem_byte[3] = mem_data_i[7:0] ; // 01
+    
+    assign debugdata = {24'b0, aluop_i} ;
     assign stallreq = mem_ce_o ;
 
     always @ (*) begin
@@ -117,102 +122,94 @@ module mem(
                 `MEM_LB: begin
                     mem_we <= `Disable;
                     mem_ce_o <= `Enable;
-                    wreg_o <= `Enable ;
                     case(addr_mod4)
-                        2'b00: begin
+                        2'b00: begin  
                             mem_sel_o <= 4'b1000;
-                            wdata_o <= {{24{mem_data_i[7]}},mem_data_i[7:0]};
+                            wdata_o <= {{24{mem_byte[0][7]}},mem_byte[0]};
                         end
                         2'b01: begin
                             mem_sel_o <= 4'b0100;
-                            wdata_o <= {{24{mem_data_i[15]}},mem_data_i[15:8]};
+                            wdata_o <= {{24{mem_byte[1][7]}},mem_byte[1]};
                         end
                         2'b10: begin
                             mem_sel_o <= 4'b0010;
-                            wdata_o <= {{24{mem_data_i[23]}},mem_data_i[23:16]};
+                            wdata_o <= {{24{mem_byte[2][7]}},mem_byte[2]};
                         end
                         2'b11: begin
                             mem_sel_o <= 4'b0001;
-                            wdata_o <= {{24{mem_data_i[31]}},mem_data_i[31:24]};
+                            wdata_o <= {{24{mem_byte[3][7]}},mem_byte[3]};
                         end
                     endcase
                 end
                 `MEM_LBU: begin
                     mem_we <= `Disable;
                     mem_ce_o <= `Enable;
-                    wreg_o <= `Enable ;
                     case(addr_mod4)
                         2'b00: begin
                             mem_sel_o <= 4'b1000;
-                            wdata_o <= {{24'b0},mem_data_i[7:0]};
+                            wdata_o <= {{24'b0},mem_byte[0]};
                         end
                         2'b01: begin
                             mem_sel_o <= 4'b0100;
-                            wdata_o <= {{24'b0},mem_data_i[15:8]};
+                            wdata_o <= {{24'b0},mem_byte[1]};
                         end
                         2'b10: begin
                             mem_sel_o <= 4'b0010;
-                            wdata_o <= {{24'b0},mem_data_i[23:16]};
+                            wdata_o <= {{24'b0},mem_byte[2]};
                         end
                         2'b11: begin
                             mem_sel_o <= 4'b0001;
-                            wdata_o <= {{24'b0},mem_data_i[31:24]};
+                            wdata_o <= {{24'b0},mem_byte[3]};
                         end
                     endcase
                 end
                 `MEM_LH: begin
                     mem_we <= `Disable;
                     mem_ce_o <= `Enable;
-                    wreg_o <= `Enable ;
                     case(addr_mod4)
                         2'b00: begin
                             mem_sel_o <= 4'b1100;
-                            wdata_o <= {{16{mem_data_i[31]}},mem_data_i[15:0]};
+                            wdata_o <= {{16{mem_byte[1][7]}},{mem_byte[1], mem_byte[0]}};
                         end
                         2'b10: begin
                             mem_sel_o <= 4'b0011;
-                            wdata_o <= {{16{mem_data_i[15]}},mem_data_i[31:16]};
+                            wdata_o <= {{16{mem_byte[3][7]}},{mem_byte[3], mem_byte[2]}};
                         end
                         default: begin
                             mem_sel_o <= 4'b0000;
                             wdata_o <= `Zero;
-                            wreg_o <= `Disable ;
                         end
                     endcase
                 end
                 `MEM_LHU: begin
                     mem_we <= `Disable;
                     mem_ce_o <= `Enable;
-                    wreg_o <= `Enable ;
                     case(addr_mod4)
                         2'b00: begin
                             mem_sel_o <= 4'b1100;
-                            wdata_o <= {{16'b0},mem_data_i[15:0]};
+                            wdata_o <= {{16'b0},{mem_byte[1], mem_byte[0]}};
                         end
                         2'b10: begin
                             mem_sel_o <= 4'b0011;
-                            wdata_o <= {{16'b0},mem_data_i[31:16]};
+                            wdata_o <= {{16'b0},{mem_byte[3], mem_byte[2]}};
                         end
                         default: begin
                             mem_sel_o <= 4'b0000;
                             wdata_o <= `Zero;
-                            wreg_o <= `Disable ;
                         end
                     endcase
                 end
                 `MEM_LW: begin
                     mem_we <= `Disable;
                     mem_ce_o <= `Enable;
-                    wreg_o <= `Enable ;
                     case(addr_mod4)
                         2'b00: begin
                             mem_sel_o <= 4'b1111;
-                            wdata_o <= mem_data_i;
+                            wdata_o <= {mem_byte[3], mem_byte[2], mem_byte[1], mem_byte[0]};
                         end
                         default: begin
                             mem_sel_o <= 4'b0000;
                             wdata_o <= `Zero;
-                            wreg_o <= `Disable ;
                         end
                     endcase
                 end
@@ -221,19 +218,18 @@ module mem(
                     mem_ce_o <= `Enable;
                     mem_sel_o <= 4'b1111;
                     mem_addr_o <= {mem_addr_i[31:2],2'b00};
-                    wreg_o <= `Enable ;
                     case(addr_mod4)
                         2'b00: begin
-                            wdata_o <= mem_data_i;
+                            wdata_o <= {mem_byte[3], mem_byte[2], mem_byte[1], mem_byte[0]};
                         end
                         2'b01: begin
-                            wdata_o <= {mem_data_i[23:0], reg2_i[7:0]};
+                            wdata_o <= {{mem_byte[2], mem_byte[1], mem_byte[0]}, reg2_i[7:0]};
                         end
                         2'b10: begin
-                            wdata_o <= {mem_data_i[15:0], reg2_i[15:0]};
+                            wdata_o <= {{mem_byte[1], mem_byte[0]}, reg2_i[15:0]};
                         end
                         2'b11: begin
-                            wdata_o <= {mem_data_i[7:0], reg2_i[23:0]};
+                            wdata_o <= {mem_byte[0], reg2_i[23:0]};
                         end
                     endcase
                 end
@@ -242,19 +238,18 @@ module mem(
                     mem_ce_o <= `Enable;
                     mem_sel_o <= 4'b1111;
                     mem_addr_o <= {mem_addr_i[31:2],2'b00};
-                    wreg_o <= `Enable ;
                     case(addr_mod4)
                         2'b00: begin
-                            wdata_o <= {reg2_i[31:8], mem_data_i[31:24]};
+                            wdata_o <= {reg2_i[31:8], mem_byte[0]};
                         end
                         2'b01: begin
-                            wdata_o <= {reg2_i[31:16], mem_data_i[31:16]};
+                            wdata_o <= {reg2_i[31:16], {mem_byte[1], mem_byte[0]}};
                         end
                         2'b10: begin
-                            wdata_o <= {reg2_i[31:24], mem_data_i[31:8]};
+                            wdata_o <= {reg2_i[31:24], {mem_byte[2], mem_byte[1], mem_byte[0]}};
                         end
                         2'b11: begin
-                            wdata_o <=  mem_data_i;
+                            wdata_o <=  {mem_byte[3], mem_byte[2], mem_byte[1], mem_byte[0]};
                         end
                     endcase
                 end
@@ -265,16 +260,16 @@ module mem(
                     mem_data_o <= {4{reg2_i[7:0]}};
                     case(addr_mod4)
                         2'b00: begin
-                            mem_sel_o <= 4'b0001;
+                            mem_sel_o <= 4'b1000;
                         end
                         2'b01: begin
-                            mem_sel_o <= 4'b0010;
-                        end
-                        2'b10: begin
                             mem_sel_o <= 4'b0100;
                         end
+                        2'b10: begin
+                            mem_sel_o <= 4'b0010;
+                        end
                         2'b11: begin
-                            mem_sel_o <= 4'b1000;
+                            mem_sel_o <= 4'b0001;
                         end
                     endcase
                 end
@@ -282,13 +277,13 @@ module mem(
                     mem_we <= `Enable;
                     mem_ce_o <= `Enable;
                     mem_addr_o <= mem_addr_i;
-                    mem_data_o <= {2{reg2_i[15:0]}};
+                    mem_data_o <= {2{reg2_i[7:0], reg2_i[15:8]}};
                     case(addr_mod4)
                         2'b00: begin
-                            mem_sel_o <= 4'b0011;
+                            mem_sel_o <= 4'b1100;
                         end
                         2'b10: begin
-                            mem_sel_o <= 4'b1100;
+                            mem_sel_o <= 4'b0011;
                         end
                         default: begin
                             mem_sel_o <= 4'b0000;
@@ -299,7 +294,7 @@ module mem(
                     mem_we <= `Enable;
                     mem_ce_o <= `Enable;
                     mem_addr_o <= mem_addr_i;
-                    mem_data_o <= reg2_i;
+                    mem_data_o <= {reg2_i[7:0], reg2_i[15:8], reg2_i[23:16], reg2_i[31:24]};
                     case(addr_mod4)
                         2'b00: begin
                             mem_sel_o <= 4'b1111;
@@ -316,15 +311,15 @@ module mem(
                     case(addr_mod4)
                         2'b00: begin
                             mem_sel_o <= 4'b1111;
-                            mem_data_o <= reg2_i;
+                            mem_data_o <= {reg2_i[7:0], reg2_i[15:8], reg2_i[23:16], reg2_i[31:24]};
                         end
                         2'b01: begin
                             mem_sel_o <= 4'b0111;
-                            mem_data_o <= {8'b0, reg2_i[31:8]};
+                            mem_data_o <= {8'b0, {reg2_i[15:8], reg2_i[23:16], reg2_i[31:24]}};
                         end
                         2'b10: begin
                             mem_sel_o <= 4'b0011;
-                            mem_data_o <= {16'b0, reg2_i[31:16]};
+                            mem_data_o <= {16'b0, {reg2_i[23:16], reg2_i[31:24]}};
                         end
                         2'b11: begin
                             mem_sel_o <= 4'b0001;
@@ -343,15 +338,15 @@ module mem(
                         end
                         2'b01: begin
                             mem_sel_o <= 4'b1100;
-                            mem_data_o <= {reg2_i[15:0], 16'b0};
+                            mem_data_o <= {{reg2_i[7:0], reg2_i[15:8]}, 16'b0};
                         end
                         2'b10: begin
                             mem_sel_o <= 4'b1110;
-                            mem_data_o <= {reg2_i[23:0], 8'b0};
+                            mem_data_o <= {{reg2_i[7:0], reg2_i[15:8], reg2_i[23:16]}, 8'b0};
                         end
                         2'b11: begin
                             mem_sel_o <= 4'b1111;
-                            mem_data_o <= reg2_i;
+                            mem_data_o <= {reg2_i[7:0], reg2_i[15:8], reg2_i[23:16], reg2_i[31:24]};
                         end
                     endcase
                 end

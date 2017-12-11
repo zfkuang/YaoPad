@@ -41,13 +41,14 @@
 `include "controller/sram_controller.v"
 `include "controller/led_controller.v"
 `include "wb_conmax.v"
+//`include "clk_wiz_0.xci"
 
 module openmips_min_sopc(
 
 	input wire clk,
 	input wire	rst,
-  input wire clk100,
 	input wire	click,
+	input wire clk100,
 	
 	inout wire[`WordBus] base_ram_data, // [7:0] also connected to CPLD
   output wire[19:0] base_ram_addr,
@@ -89,6 +90,13 @@ module openmips_min_sopc(
  assign base_ram_we_n = 1'b1;
  assign base_ram_data = (base_ram_oe_n==1'b0) ? 32'bz : 32'b0;*/
  
+ /*wire clk100 ;
+clk_wiz_0 clk_wiz_00(
+    .clk_out1(clk100),
+    .reset(rst),
+    .clk_in1(clk)
+)*/
+ 
  reg[25:0] slowclk ;
  initial begin slowclk = 22'b0 ;end
  always @ (posedge clk) begin
@@ -109,7 +117,8 @@ always @(*)
  wire[`WordBus] debugdata;
  wire[`WordBus] ramdebugdata;
  wire[`WordBus] leddebugdata;
- assign led_o = (debug[7]==0) ? ((debug[6] == 0) ? debugdata : ramdebugdata) : leddebugdata ;
+ wire[`WordBus] cp0debugdata ;
+ assign led_o = (debug[7]==0) ? ((debug[6] == 0) ? debugdata : ramdebugdata) : ((debug[6] == 0) ? leddebugdata : cp0debugdata) ;
  //assign led[31:24] = inst_get[7:0];
 
 wire[`WordBus] wb_m0_data_i ;
@@ -156,6 +165,7 @@ wire wb_m1_ack_o ;
   	.timer_int_o(timer_int),
   	.int_i(int),
     .debugdata(debugdata),
+    .cp0debugdata(cp0debugdata),
     .debug(debug)
 	);
 
@@ -348,13 +358,13 @@ wire wb_m1_ack_o ;
     .ram0_oe(base_ram_oe_n),
     .ram0_ce(base_ram_ce_n),
     .ram0_we(base_ram_we_n), 
-    .ram0_data(debug_base_ram_data),
+    .ram0_data(base_ram_data),
 
     .ram1_addr(ext_ram_addr), 
     .ram1_oe(ext_ram_oe_n), 
     .ram1_ce(ext_ram_ce_n), 
     .ram1_we(ext_ram_we_n),
-    .ram1_data(debug_ext_ram_data),
+    .ram1_data(ext_ram_data),
     
     .debugdata(ramdebugdata)
     );
@@ -376,11 +386,11 @@ wire wb_m1_ack_o ;
     );
    
    // fake mem
-	data_ram data_ram0(
+	/*data_ram data_ram0(
 		.we(~base_ram_we_n),
     .sel(~base_ram_be_n),
     .ce(~base_ram_ce_n),
 		.addr(base_ram_addr),
 		.data(debug_base_ram_data)
-	);
+	);*/
 endmodule

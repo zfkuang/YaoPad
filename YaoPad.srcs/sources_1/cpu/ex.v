@@ -174,9 +174,9 @@ module ex(
                 end
                 `ALU_MFC0: begin
                     cp0_reg_read_addr_o <= inst_i[15:11] ;
-                    if ((mem_cp0_reg_we == `Enable) && (mem_cp0_reg_write_addr == cp0_reg_read_addr_o)) begin
+                    if ((mem_cp0_reg_we == `Enable) && (mem_cp0_reg_write_addr == inst_i[15:11])) begin
                         moveres <= mem_cp0_reg_data ;
-                    end else if ((wb_cp0_reg_we == `Enable) && (wb_cp0_reg_write_addr == cp0_reg_read_addr_o)) begin
+                    end else if ((wb_cp0_reg_we == `Enable) && (wb_cp0_reg_write_addr == inst_i[15:11])) begin
                         moveres <= wb_cp0_reg_data ;
                     end else begin
                         moveres <= cp0_reg_data_i ;

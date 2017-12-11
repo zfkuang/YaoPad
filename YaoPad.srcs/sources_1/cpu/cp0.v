@@ -45,13 +45,35 @@ module cp0(
     output reg[`WordBus] config_o,
     output reg[`WordBus] prid_o,
 
-    output reg timer_int_o
+    output reg timer_int_o,
+
+    input wire[4:0] debug,
+    output reg[`WordBus] debugdata
     );
 
+    always @(*) begin
+        case(debug)
+            5'b00000: begin
+                debugdata <= status_o ;
+            end
+            5'b00001: begin
+                debugdata <= cause_o ;
+            end
+            5'b00010: begin
+                debugdata <= epc_o ;
+            end
+            5'b00011: begin
+                debugdata <= data_o ;
+            end
+            5'b00100: begin
+                debugdata <= {27'b0, raddr_i} ;
+            end
+            
+        endcase
+    end
 
     always @ (posedge clk) begin
         if(rst == `Enable) begin
-            data_o <= `Zero ;
             count_o <= `Zero ;
             compare_o <= `Zero ;
             status_o <= `Zero ;

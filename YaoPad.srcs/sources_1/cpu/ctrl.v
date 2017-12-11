@@ -67,6 +67,9 @@ module ctrl(
                 32'h0000000e: begin
                     new_pc <= cp0_epc_i ;
                 end
+                default: begin
+                    new_pc <= 32'h80000380 ;
+                end
             endcase
         end else if (stallreq_from_mem == `Enable) begin
             stall <= 6'b011111;
