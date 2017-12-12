@@ -94,7 +94,7 @@ module ex(
     output reg stallreq
     );
 
-    assign debugdata = inst_i ;
+    assign debugdata = {aluop_i, inst_i[23:0]} ;
     
     reg[`WordBus] logicres ;
     reg[`WordBus] shiftres ;

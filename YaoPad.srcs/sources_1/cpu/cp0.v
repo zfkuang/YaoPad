@@ -184,6 +184,7 @@ module cp0(
         if(rst == `Enable) begin
             data_o <= `Zero ;
         end else begin
+            data_o <= `Zero ;
             case(raddr_i) 
                 `CP0_COUNT: begin
                     data_o <= count_o ;

@@ -64,7 +64,33 @@ module id_ex(
     );
     
     always @ (posedge clk) begin 
-        if ((rst == `Enable) || ((stall[2] == `Enable) && (stall[3] == `Disable)) || (flush == `Enable)) begin
+        if (rst == `Enable) begin
+            ex_alusel <= `ALUS_NOP ;
+            ex_aluop <= `ALU_NOP ;
+            ex_reg1 <= `Zero ;
+            ex_reg2 <= `Zero ;
+            ex_inst <= `Zero ;
+            ex_wd <= `NopRegAddr ;
+            ex_wreg <= 0 ;           
+            ex_is_in_delayslot <= 0 ;
+            ex_link_addr <= `Zero ;
+            ex_excepttype <= `Zero ;
+            ex_current_inst_addr <= `Zero ;
+            is_in_delayslot_o <= 0 ;
+        end else if ((stall[2] == `Enable) && (stall[3] == `Disable)) begin
+            ex_alusel <= `ALUS_NOP ;
+            ex_aluop <= `ALU_NOP ;
+            ex_reg1 <= `Zero ;
+            ex_reg2 <= `Zero ;
+            ex_inst <= `Zero ;
+            ex_wd <= `NopRegAddr ;
+            ex_wreg <= 0 ;           
+            ex_is_in_delayslot <= 0 ;
+            ex_link_addr <= `Zero ;
+            ex_excepttype <= `Zero ;
+            ex_current_inst_addr <= `Zero ;
+            is_in_delayslot_o <= 0 ;
+        end else if (flush == `Enable) begin
             ex_alusel <= `ALUS_NOP ;
             ex_aluop <= `ALU_NOP ;
             ex_reg1 <= `Zero ;

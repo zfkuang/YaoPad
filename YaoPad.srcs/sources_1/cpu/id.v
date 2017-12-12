@@ -403,7 +403,7 @@ module id(
                     reg1_read_o <= `Disable ;
                     reg2_read_o <= `Disable ;
                     wd_o <= `Disable  ;
-                    wreg_o <= `NopRegAddr ;
+                    wreg_o <= `Disable ;
                     immi <= 32'h0 ;                    
                 end
             endcase

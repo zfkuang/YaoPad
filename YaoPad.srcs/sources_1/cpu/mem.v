@@ -81,7 +81,7 @@ module mem(
     wire [1:0] addr_mod4 = mem_addr_i[1:0];
 
     //assign debugdata = {aluop_i, mem_addr_i[7:0], reg2_i[15:0]} ;
-    assign debugdata = {10'b0, wreg_o, wd_i, wdata_i[15:0]} ;
+    assign debugdata = {2'b0, aluop_i, wreg_o, wd_i, mem_data_i[31:16]} ;
     assign stallreq = mem_ce_o ;
 
     always @ (*) begin
@@ -120,19 +120,19 @@ module mem(
                     wreg_o <= `Enable ;
                     case(addr_mod4)
                         2'b00: begin
-                            mem_sel_o <= 4'b1000;
+                            mem_sel_o <= 4'b0001;
                             wdata_o <= {{24{mem_data_i[7]}},mem_data_i[7:0]};
                         end
                         2'b01: begin
-                            mem_sel_o <= 4'b0100;
+                            mem_sel_o <= 4'b0010;
                             wdata_o <= {{24{mem_data_i[15]}},mem_data_i[15:8]};
                         end
                         2'b10: begin
-                            mem_sel_o <= 4'b0010;
+                            mem_sel_o <= 4'b0100;
                             wdata_o <= {{24{mem_data_i[23]}},mem_data_i[23:16]};
                         end
                         2'b11: begin
-                            mem_sel_o <= 4'b0001;
+                            mem_sel_o <= 4'b1000;
                             wdata_o <= {{24{mem_data_i[31]}},mem_data_i[31:24]};
                         end
                     endcase
@@ -143,19 +143,19 @@ module mem(
                     wreg_o <= `Enable ;
                     case(addr_mod4)
                         2'b00: begin
-                            mem_sel_o <= 4'b1000;
+                            mem_sel_o <= 4'b0001;
                             wdata_o <= {{24'b0},mem_data_i[7:0]};
                         end
                         2'b01: begin
-                            mem_sel_o <= 4'b0100;
+                            mem_sel_o <= 4'b0010;
                             wdata_o <= {{24'b0},mem_data_i[15:8]};
                         end
                         2'b10: begin
-                            mem_sel_o <= 4'b0010;
+                            mem_sel_o <= 4'b0100;
                             wdata_o <= {{24'b0},mem_data_i[23:16]};
                         end
                         2'b11: begin
-                            mem_sel_o <= 4'b0001;
+                            mem_sel_o <= 4'b1000;
                             wdata_o <= {{24'b0},mem_data_i[31:24]};
                         end
                     endcase
@@ -166,12 +166,12 @@ module mem(
                     wreg_o <= `Enable ;
                     case(addr_mod4)
                         2'b00: begin
-                            mem_sel_o <= 4'b1100;
-                            wdata_o <= {{16{mem_data_i[31]}},mem_data_i[15:0]};
+                            mem_sel_o <= 4'b0011;
+                            wdata_o <= {{16{mem_data_i[15]}},mem_data_i[15:0]};
                         end
                         2'b10: begin
-                            mem_sel_o <= 4'b0011;
-                            wdata_o <= {{16{mem_data_i[15]}},mem_data_i[31:16]};
+                            mem_sel_o <= 4'b1100;
+                            wdata_o <= {{16{mem_data_i[31]}},mem_data_i[31:16]};
                         end
                         default: begin
                             mem_sel_o <= 4'b0000;

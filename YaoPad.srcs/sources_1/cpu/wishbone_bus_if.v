@@ -58,7 +58,7 @@ module wishbone_bus_if(
 );
 
     // 留几个总线周期的缓冲
-    parameter delay = 2;
+    parameter delay = 3;
     reg cpu_ack_id;
     reg wishbone_ack_id;
     reg wishbone_ack_valid;

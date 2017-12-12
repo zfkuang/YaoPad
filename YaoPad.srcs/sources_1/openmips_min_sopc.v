@@ -70,7 +70,7 @@ module openmips_min_sopc(
 	
 );
 
-  //����ָ��洢��?
+  //����ָ��洢�?
   wire[`WordBus] inst_addr;
   wire[`WordBus] inst;
   wire rom_ce;

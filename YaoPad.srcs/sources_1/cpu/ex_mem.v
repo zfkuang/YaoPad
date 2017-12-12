@@ -84,7 +84,35 @@ module ex_mem(
     );    
 
     always @ (posedge clk) begin 
-        if ((rst == `Enable) || ((stall[3] == `Enable) && (stall[4] == `Disable)) || (flush == `Enable)) begin
+        if (rst == `Enable) begin
+            mem_wdata <= `Zero ;
+            mem_wd <= `NopRegAddr ;
+            mem_wreg <= `Disable ;
+            mem_whilo <= `Disable ;
+            mem_aluop <= `ALU_NOP;
+            mem_reg2 <= `Zero ;
+            mem_mem_addr <= `Zero;
+            mem_cp0_reg_write_addr <= `NopRegAddr ;
+            mem_cp0_reg_we <= `Disable ;
+            mem_cp0_reg_data <= `Zero ;
+            mem_excepttype <= `Zero ;
+            mem_current_inst_addr <= `Zero ;
+            mem_is_in_delayslot <= `Disable ;
+        end else if ((stall[3] == `Enable) && (stall[4] == `Disable)) begin
+            mem_wdata <= `Zero ;
+            mem_wd <= `NopRegAddr ;
+            mem_wreg <= `Disable ;
+            mem_whilo <= `Disable ;
+            mem_aluop <= `ALU_NOP;
+            mem_reg2 <= `Zero ;
+            mem_mem_addr <= `Zero;
+            mem_cp0_reg_write_addr <= `NopRegAddr ;
+            mem_cp0_reg_we <= `Disable ;
+            mem_cp0_reg_data <= `Zero ;
+            mem_excepttype <= `Zero ;
+            mem_current_inst_addr <= `Zero ;
+            mem_is_in_delayslot <= `Disable ;
+        end else if (flush == `Enable) begin
             mem_wdata <= `Zero ;
             mem_wd <= `NopRegAddr ;
             mem_wreg <= `Disable ;
