@@ -5,7 +5,6 @@
 
 /* 
 States:
-
 IDLE<-----------------------------
 |                                |
 |                                |
@@ -16,7 +15,6 @@ IDLE<-----------------------------
 |                                |
 |                                |
 -->	Read0 -> Read1 ---------------
-
  */
 
 `define SRAM_IDLE 3'b000
@@ -28,7 +26,8 @@ IDLE<-----------------------------
 `define PART_WRITE0   3'b110
 
 module sram(
-	input wire clk,	input wire rst,	
+	input wire clk,	
+	input wire rst,	
 
 	input wire[`WordBus]           wishbone_addr_i,
 	input wire[`WordBus]           wishbone_data_i,
@@ -37,7 +36,7 @@ module sram(
 	input wire                    wishbone_stb_i,
 	input wire                    wishbone_cyc_i,
 	
-	output reg[`WordBus]           wishbone_data_o,
+	output wire[`WordBus]           wishbone_data_o,
 	output reg                    wishbone_ack_o,
 
 	// Ports of 2 SRAM chips
@@ -50,7 +49,7 @@ module sram(
     output wire[`WordBus] debugdata
 );
 
-    assign debugdata = {wishbone_data_i[23:0], reading, writing, ram0_oe, ram1_oe, ram0_ce, ram1_ce, ram0_we, ram1_we} ;
+    assign debugdata = {24'b0, reading, writing, ram0_oe, ram1_oe, ram0_ce, ram1_ce, ram0_we, ram1_we} ;
 	wire reading, writing;
 	// output buffer
 
@@ -83,6 +82,8 @@ module sram(
 	assign datain[0] = ram0_data;
 	assign datain[1] = ram1_data;
 
+	assign wishbone_data_o = datain[chipnum];
+
 	always @ (posedge clk)
 	begin
 		if (rst == `Enable)
@@ -100,8 +101,7 @@ module sram(
 					else
 						state <= `SRAM_IDLE;
 				end
-				`SRAM_READ0: state <= `SRAM_READ1;
-				`SRAM_READ1: state <= `SRAM_IDLE;
+				`SRAM_READ0: state <= `SRAM_IDLE;
 				`SRAM_WRITE0: state <= `SRAM_WRITE1;
 				`SRAM_WRITE1: state <= `SRAM_WRITE2;
 				`SRAM_WRITE2: state <= `SRAM_IDLE;
@@ -186,15 +186,19 @@ module sram(
 	begin
 		if (rst == `Enable)
 		begin
-			wishbone_data_o <= `Zero;
+			// wishbone_data_o <= `Zero;
 			wishbone_ack_o <= 0;
 		end
 		else case (state)
 			// 1-cycle ack when entering R1/W1
-			`SRAM_READ0: begin
-				wishbone_ack_o <= 1'b1;
-				wishbone_data_o <= datain[chipnum];
+			`SRAM_IDLE: begin
+			if (reading)
+				wishbone_ack_o <= 1'b1;	
 			end
+			// `SRAM_READ0: begin
+			// 	wishbone_ack_o <= 1'b1;
+			// 	// wishbone_data_o <= datain[chipnum];
+			// end
 			`SRAM_WRITE1: begin
 				wishbone_ack_o <= 1'b1;
 			end
