@@ -131,7 +131,7 @@ module wishbone_bus_if(
     assign wishbone_we_o = cpu_we_i;
     assign wishbone_sel_o = cpu_sel_i;
     assign wishbone_start = ((!rst) & (((!wishbone_busy) & cpu_ce_i & (!flush)) | (wishbone_busy & (!wishbone_has_acked) & (!flush))));
-    assign wb_early_cyc = (!wb_is_rst) & wishbone_busy & wishbone_has_acked & (!wishbone_wait_cpu) & (wb_cnt == 2'b01);
+    assign wb_early_cyc = (!wb_is_rst) & wishbone_busy & wishbone_has_acked & (!wishbone_wait_cpu) & (wb_cnt == 2'b01) & cpu_ce_i & (!flush);
     assign wishbone_cyc_o = (wishbone_start && !( !wishbone_busy && wb_cnt == 2'b00)) || wb_early_cyc;
     assign wishbone_stb_o = (wishbone_start && !( !wishbone_busy && wb_cnt == 2'b00)) || wb_early_cyc;
     assign stallreq = (wishbone_start && !( !wishbone_busy && wb_cnt == 2'b00)) || wb_early_cyc;
@@ -141,7 +141,7 @@ module wishbone_bus_if(
         if(rst == `Enable) begin
             //stallreq <= `Disable;
             //cpu_data_o <= `Zero;
-            wishbone_has_acked <= `Disable;
+            wishbone_has_acked <= `Enable;
         end else begin
             //stallreq <= `Disable;
             if(wishbone_busy == `Disable) begin
