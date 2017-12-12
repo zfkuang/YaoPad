@@ -97,7 +97,7 @@ module openmips_min_sopc(
  assign base_ram_we_n = 1'b1;*/
  
  reg[25:0] slowclk ;
- // initial begin slowclk = 22'b0 ;end
+ initial begin slowclk = 22'b0 ;end
  always @ (posedge clk) begin
       slowclk <= slowclk+1 ;
  end
@@ -355,13 +355,13 @@ wire wb_m1_ack_o ;
     .ram0_oe(base_ram_oe_n),
     .ram0_ce(base_ram_ce_n),
     .ram0_we(base_ram_we_n), 
-    .ram0_data(base_ram_data),
+    .ram0_data(debug_base_ram_data),
 
     .ram1_addr(ext_ram_addr), 
     .ram1_oe(ext_ram_oe_n), 
     .ram1_ce(ext_ram_ce_n), 
     .ram1_we(ext_ram_we_n),
-    .ram1_data(ext_ram_data),
+    .ram1_data(debug_ext_ram_data),
     
     .debugdata(ramdebugdata)
     );
@@ -383,11 +383,11 @@ wire wb_m1_ack_o ;
     );
    
    // fake mem
-	// data_ram data_ram0(
-	// 	.we(~base_ram_we_n),
-  //   .sel(~base_ram_be_n),
-  //   .ce(~base_ram_ce_n),
-	// 	.addr(base_ram_addr),
-	// 	.data(debug_base_ram_data)
-	// );
+	data_ram data_ram0(
+		.we(~base_ram_we_n),
+    .sel(~base_ram_be_n),
+    .ce(~base_ram_ce_n),
+		.addr(base_ram_addr),
+		.data(debug_base_ram_data)
+	);
 endmodule

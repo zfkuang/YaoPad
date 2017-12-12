@@ -92,7 +92,7 @@ module mem(
             mem_we <= `Disable;
             mem_ce_o <= `Disable;
             mem_data_o <= `Zero;
-            mem_sel_o <= 4'b0;
+            mem_sel_o <= 4'b0000;
             cp0_reg_write_addr_o <= `NopRegAddr ;
             cp0_reg_we_o <= `Disable ;
             cp0_reg_data_o <= `Zero ;
@@ -110,27 +110,31 @@ module mem(
             mem_we <= `Disable;
             mem_ce_o <= `Disable;
             mem_data_o <= reg2_i;
-            mem_sel_o <= 4'b0;
+            mem_sel_o <= 4'b0000;
             case (aluop_i)
                 `MEM_LB: begin
                     mem_we <= `Disable;
                     mem_ce_o <= `Enable;
                     case(addr_mod4)
-                        2'b00: begin
+                        2'b11: begin
                             mem_sel_o <= 4'b1000;
                             wdata_o <= {{24{mem_data_i[31]}},mem_data_i[31:24]};
                         end
-                        2'b01: begin
+                        2'b10: begin
                             mem_sel_o <= 4'b0100;
                             wdata_o <= {{24{mem_data_i[23]}},mem_data_i[23:16]};
                         end
-                        2'b10: begin
+                        2'b01: begin
                             mem_sel_o <= 4'b0010;
                             wdata_o <= {{24{mem_data_i[15]}},mem_data_i[15:8]};
                         end
-                        2'b11: begin
+                        2'b00: begin
                             mem_sel_o <= 4'b0001;
                             wdata_o <= {{24{mem_data_i[7]}},mem_data_i[7:0]};
+                        end
+                        default: begin
+                            mem_sel_o <= 4'b0000;
+                            wdata_o <= 32'b0;
                         end
                     endcase
                 end
@@ -153,6 +157,10 @@ module mem(
                         2'b11: begin
                             mem_sel_o <= 4'b0001;
                             wdata_o <= {{24'b0},mem_data_i[7:0]};
+                        end
+                        default: begin
+                            mem_sel_o <= 4'b0000;
+                            wdata_o <= 32'b0;
                         end
                     endcase
                 end
@@ -224,6 +232,10 @@ module mem(
                         2'b11: begin
                             wdata_o <= {mem_data_i[7:0], reg2_i[23:0]};
                         end
+                        default: begin
+                            mem_sel_o <= 4'b0000;
+                            wdata_o <= 32'b0;
+                        end
                     endcase
                 end
                 `MEM_LWL: begin
@@ -243,6 +255,10 @@ module mem(
                         end
                         2'b11: begin
                             wdata_o <= {mem_data_i[7:0], reg2_i[23:0]};
+                        end
+                        default: begin
+                            mem_sel_o <= 4'b0000;
+                            wdata_o <= 32'b0;
                         end
                     endcase
                 end
@@ -264,6 +280,10 @@ module mem(
                         2'b11: begin
                             wdata_o <=  mem_data_i;
                         end
+                        default: begin
+                            mem_sel_o <= 4'b0000;
+                            wdata_o <= 32'b0;
+                        end
                     endcase
                 end
                 `MEM_SB: begin
@@ -283,6 +303,9 @@ module mem(
                         end
                         2'b11: begin
                             mem_sel_o <= 4'b0001;
+                        end
+                        default: begin
+                            mem_sel_o <= 4'b0000;
                         end
                     endcase
                 end
@@ -338,6 +361,10 @@ module mem(
                             mem_sel_o <= 4'b0001;
                             mem_data_o <= {24'b0, reg2_i[31:24]};
                         end
+                        default: begin
+                            mem_sel_o <= 4'b0000;
+                            wdata_o <= 32'b0;
+                        end
                     endcase
                 end
                 `MEM_SWR: begin
@@ -361,15 +388,18 @@ module mem(
                             mem_sel_o <= 4'b1111;
                             mem_data_o <= reg2_i;
                         end
+                        default: begin
+                            mem_sel_o <= 4'b0000;
+                            wdata_o <= 32'b0;
+                        end
                     endcase
                 end
                 default: begin
-                    //wreg_o <= `Disable;
                 end
             endcase
         end
     end
-    
+
     reg[`WordBus] cp0_status ;
     reg[`WordBus] cp0_cause ;
     reg[`WordBus] cp0_epc ;

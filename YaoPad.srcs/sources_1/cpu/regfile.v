@@ -40,6 +40,11 @@ module regfile(
     output wire[`WordBus] debugdata
     );
     
+    wire[`WordBus] reg1;
+    wire[`WordBus] reg3;
+    assign reg1 = register[1];
+    assign reg3 = register[3];
+
     reg[`WordBus] register[`RegIdBus] ; 
     assign debugdata = register[debug];
     

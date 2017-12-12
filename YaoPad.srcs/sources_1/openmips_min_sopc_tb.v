@@ -59,8 +59,8 @@ module openmips_min_sopc_tb;
 
     initial begin
         rst = `Enable;
-        #195 rst= `Disable;
-        #50000 $stop;
+        #194 rst= `Disable;
+        #5000000 $stop;
     end
 
     openmips_min_sopc openmips_min_sopc0(
@@ -113,7 +113,7 @@ module openmips_min_sopc_tb;
         );
         $dumpfile("openmips_min_sopc_tb.vcd");
         $dumpvars(0, openmips_min_sopc0);
-        #40000;
+        #4000000;
         $finish;
     end
 
