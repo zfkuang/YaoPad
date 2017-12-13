@@ -51,6 +51,16 @@ module regfile(
         end 
     end 
     
+    wire[`WordBus] reg1;
+    wire[`WordBus] reg2;
+    wire[`WordBus] reg3;
+    wire[`WordBus] reg4;
+
+    assign reg1 = register[1];
+    assign reg2 = register[2];
+    assign reg3 = register[3];
+    assign reg4 = register[4];
+
     always @ (*) begin
         
         if((raddr1 == `NopRegAddr) || (re1 == `Disable)) begin

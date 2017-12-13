@@ -98,7 +98,7 @@ clk_wiz_0 clk_wiz_00(
 )*/
  
  reg[25:0] slowclk ;
-//  initial begin slowclk = 22'b0 ;end
+ initial begin slowclk = 22'b0 ;end
  always @ (posedge clk) begin
       slowclk <= slowclk+1 ;
  end
@@ -144,23 +144,23 @@ wire wb_m1_ack_o ;
     .clk100(clk),
 		.rst(rst),
 
-		.iwishbone_addr_o(wb_m0_addr_i),
-		.iwishbone_data_i(wb_m0_data_o),
-		.iwishbone_data_o(wb_m0_data_i),
-    .iwishbone_sel_o(wb_m0_sel_i),
-		.iwishbone_ack_i(wb_m0_ack_o),
-		.iwishbone_stb_o(wb_m0_stb_i),
-		.iwishbone_cyc_o(wb_m0_cyc_i),
-		.iwishbone_we_o(wb_m0_we_i),
+		.iwishbone_addr_o(wb_m1_addr_i),
+		.iwishbone_data_i(wb_m1_data_o),
+		.iwishbone_data_o(wb_m1_data_i),
+    .iwishbone_sel_o(wb_m1_sel_i),
+		.iwishbone_ack_i(wb_m1_ack_o),
+		.iwishbone_stb_o(wb_m1_stb_i),
+		.iwishbone_cyc_o(wb_m1_cyc_i),
+		.iwishbone_we_o(wb_m1_we_i),
 
-		.dwishbone_data_i(wb_m1_data_o),
-    .dwishbone_data_o(wb_m1_data_i),
-    .dwishbone_addr_o(wb_m1_addr_i),
-    .dwishbone_sel_o(wb_m1_sel_i),
-    .dwishbone_we_o(wb_m1_we_i),
-		.dwishbone_ack_i(wb_m1_ack_o),
-		.dwishbone_stb_o(wb_m1_stb_i),
-		.dwishbone_cyc_o(wb_m1_cyc_i),
+		.dwishbone_data_i(wb_m0_data_o),
+    .dwishbone_data_o(wb_m0_data_i),
+    .dwishbone_addr_o(wb_m0_addr_i),
+    .dwishbone_sel_o(wb_m0_sel_i),
+    .dwishbone_we_o(wb_m0_we_i),
+		.dwishbone_ack_i(wb_m0_ack_o),
+		.dwishbone_stb_o(wb_m0_stb_i),
+		.dwishbone_cyc_o(wb_m0_cyc_i),
 
   	.timer_int_o(timer_int),
   	.int_i(int),
@@ -177,6 +177,15 @@ wire wb_m1_ack_o ;
   wire wb_s0_we_o ;
   wire[`WordBus] wb_s0_data_i ;
   wire wb_s0_ack_i ;
+
+  wire[`WordBus] wb_s1_data_o ;
+  wire[`WordBus] wb_s1_addr_o ;
+  wire[3:0] wb_s1_sel_o ;
+  wire wb_s1_stb_o ;
+  wire wb_s1_cyc_o ;
+  wire wb_s1_we_o ;
+  wire[`WordBus] wb_s1_data_i ;
+  wire wb_s1_ack_i ;
 
   wire[`WordBus] wb_s11_data_o ;
   wire[`WordBus] wb_s11_addr_o ;
@@ -267,7 +276,14 @@ wire wb_m1_ack_o ;
     .s0_err_i(`Disable),
     .s0_rty_i(`Disable),
 
-    .s1_ack_i(`Disable),
+    .s1_data_o(wb_s1_data_o),
+    .s1_addr_o(wb_s1_addr_o),
+    .s1_sel_o(wb_s1_sel_o),
+    .s1_we_o(wb_s1_we_o),
+    .s1_cyc_o(wb_s1_cyc_o),
+    .s1_stb_o(wb_s1_stb_o),
+    .s1_data_i(wb_s1_data_i),
+    .s1_ack_i(wb_s1_ack_i),
     .s1_err_i(`Disable),
     .s1_rty_i(`Disable),
 
@@ -358,15 +374,53 @@ wire wb_m1_ack_o ;
     .ram0_oe(base_ram_oe_n),
     .ram0_ce(base_ram_ce_n),
     .ram0_we(base_ram_we_n), 
-    .ram0_data(base_ram_data),
+    .ram0_data(debug_base_ram_data),
 
     .ram1_addr(ext_ram_addr), 
     .ram1_oe(ext_ram_oe_n), 
     .ram1_ce(ext_ram_ce_n), 
     .ram1_we(ext_ram_we_n),
-    .ram1_data(ext_ram_data),
+    .ram1_data(debug_ext_ram_data),
     
     .debugdata(ramdebugdata)
+    );
+
+  wire[19:0] base_ram_addr_1;
+  wire[3:0] base_ram_be_n_1;
+  wire base_ram_ce_n_1;
+  wire base_ram_oe_n_1;
+  wire base_ram_we_n_1;
+
+  wire[`WordBus] debug_base_ram_data_1 ;
+
+  assign base_ram_be_n_1 = 4'b0000;
+
+  sram sram1(
+    .clk(clk), .rst(rst), 
+
+    .wishbone_addr_i(wb_s1_addr_o),
+    .wishbone_data_i(wb_s1_data_o),
+    .wishbone_we_i(wb_s1_we_o),
+    .wishbone_sel_i(wb_s1_sel_o),
+    .wishbone_stb_i(wb_s1_stb_o),
+    .wishbone_cyc_i(wb_s1_cyc_o),
+    
+    .wishbone_data_o(wb_s1_data_i),
+    .wishbone_ack_o(wb_s1_ack_i),
+
+    .ram0_addr(base_ram_addr_1), 
+    .ram0_oe(base_ram_oe_n_1),
+    .ram0_ce(base_ram_ce_n_1),
+    .ram0_we(base_ram_we_n_1), 
+    .ram0_data(debug_base_ram_data_1)
+
+    // .ram1_addr(ext_ram_addr), 
+    // .ram1_oe(ext_ram_oe_n), 
+    // .ram1_ce(ext_ram_ce_n), 
+    // .ram1_we(ext_ram_we_n),
+    // .ram1_data(debug_ext_ram_data_1),
+    
+    // .debugdata(ramdebugdata_1)
     );
 
   led led0(
@@ -386,11 +440,19 @@ wire wb_m1_ack_o ;
     );
    
    // fake mem
-	/*data_ram data_ram0(
+	data_ram data_ram0(
 		.we(~base_ram_we_n),
     .sel(~base_ram_be_n),
     .ce(~base_ram_ce_n),
 		.addr(base_ram_addr),
 		.data(debug_base_ram_data)
-	);*/
+	);
+
+	data_ram data_ram1(
+		.we(~base_ram_we_n_1),
+    .sel(~base_ram_be_n_1),
+    .ce(~base_ram_ce_n_1),
+		.addr(base_ram_addr_1),
+		.data(debug_base_ram_data_1)
+	);
 endmodule
