@@ -50,10 +50,26 @@ module mem_wb(
         output wire[`WordBus] debugdata
     );    
     
-    assign debugdata = {27'b0, wb_wd} ;
+    assign debugdata = {10'b0, wb_wreg, wb_wd, wb_wdata[31:16]} ;
 
     always @ (posedge clk) begin 
-        if ((rst == `Enable) || ((stall[4] == `Enable) && (stall[5] == `Disable)) || (flush == `Enable)) begin
+        if (rst == `Enable) begin
+            wb_wdata <= `Zero ;
+            wb_wd <= `NopRegAddr ;
+            wb_wreg <= 0 ;
+            wb_whilo <= 0 ;
+            wb_cp0_reg_write_addr <= `NopRegAddr ;
+            wb_cp0_reg_we <= 0 ;
+            wb_cp0_reg_data <= `Zero ;
+        end else if ((stall[4] == `Enable) && (stall[5] == `Disable)) begin
+            wb_wdata <= `Zero ;
+            wb_wd <= `NopRegAddr ;
+            wb_wreg <= 0 ;
+            wb_whilo <= 0 ;
+            wb_cp0_reg_write_addr <= `NopRegAddr ;
+            wb_cp0_reg_we <= 0 ;
+            wb_cp0_reg_data <= `Zero ;
+        end else if (flush == `Enable) begin
             wb_wdata <= `Zero ;
             wb_wd <= `NopRegAddr ;
             wb_wreg <= 0 ;
@@ -73,5 +89,4 @@ module mem_wb(
             wb_cp0_reg_data <= mem_cp0_reg_data ;
         end
     end
-    
 endmodule

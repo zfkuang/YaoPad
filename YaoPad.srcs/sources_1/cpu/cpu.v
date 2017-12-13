@@ -63,7 +63,8 @@ module cpu(    input wire rst,
     output wire timer_int_o,
     
     input wire[`DebugBus] debug,
-    output reg[`WordBus] debugdata
+    output reg[`WordBus] debugdata,
+    output wire[`WordBus] cp0debugdata 
     );
     
     wire[`WordBus] ifdebugdata ;
@@ -73,6 +74,7 @@ module cpu(    input wire rst,
     wire[`WordBus] wbdebugdata ;
     wire[`WordBus] regdebugdata ;
     wire[`WordBus] ctrldebugdata ;
+    wire[`WordBus] ex_memdebugdata ;
     always @(*) begin
         case(debug[5:0])
             6'b100000: begin
@@ -239,7 +241,6 @@ module cpu(    input wire rst,
     //assign debugdata[15:0] = pc[15:0];
     //assign debugdata[31:16] = rom_data_i[15:0];
     assign rom_addr_o = pc;
-    
     pc_rom pc_rom0(
         .clk(clk), .rst(rst), 
         .pc(pc), 
@@ -458,7 +459,7 @@ module cpu(    input wire rst,
         .mem_is_in_delayslot(mem_is_in_delayslot_i),
 
         .flush(flush),
-        .stall(stall) 
+        .stall(stall)
     ) ;
     
     mem mem0(
@@ -538,8 +539,9 @@ module cpu(    input wire rst,
         .wb_cp0_reg_write_addr(wb_cp0_reg_write_addr_i),
         .wb_cp0_reg_data(wb_cp0_reg_data_i),
 
-        .debugdata(wbdebugdata),
         .flush(flush),
+
+        .debugdata(wbdebugdata),
         .stall(stall) 
     ) ;
 
@@ -599,9 +601,11 @@ module cpu(    input wire rst,
         .timer_int_o(timer_int_o),
         .int_i(int_i),
 
-        .data_o(cp0_data_o)
+        .data_o(cp0_data_o),
+        .debug(debug[4:0]),
+        .debugdata(cp0debugdata)
     ) ;
-
+ 
     wire[`WordBus] iviraddr ;
     wire[`WordBus] iphyaddr ;
     wire[`WordBus] dviraddr ;

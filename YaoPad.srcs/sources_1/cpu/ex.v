@@ -89,11 +89,12 @@ module ex(
     output wire[`WordBus] current_inst_addr_o,
     output wire is_in_delayslot_o,
 
+
     output wire[`WordBus] debugdata,
     output reg stallreq
     );
 
-    assign debugdata = inst_i ;
+    assign debugdata = {aluop_i, inst_i[23:0]} ;
     
     reg[`WordBus] logicres ;
     reg[`WordBus] shiftres ;
@@ -105,7 +106,6 @@ module ex(
     reg ovassert ;
     reg trapassert ;
 
-    assign debugdata = inst_i ;
     assign reg2_o = reg2_i;
     assign mem_addr_o = reg1_i + {{16{inst_i[15]}},inst_i[15:0]};
     assign aluop_o = aluop_i;
@@ -174,9 +174,9 @@ module ex(
                 end
                 `ALU_MFC0: begin
                     cp0_reg_read_addr_o <= inst_i[15:11] ;
-                    if ((mem_cp0_reg_we == `Enable) && (mem_cp0_reg_write_addr == cp0_reg_read_addr_o)) begin
+                    if ((mem_cp0_reg_we == `Enable) && (mem_cp0_reg_write_addr == inst_i[15:11])) begin
                         moveres <= mem_cp0_reg_data ;
-                    end else if ((wb_cp0_reg_we == `Enable) && (wb_cp0_reg_write_addr == cp0_reg_read_addr_o)) begin
+                    end else if ((wb_cp0_reg_we == `Enable) && (wb_cp0_reg_write_addr == inst_i[15:11])) begin
                         moveres <= wb_cp0_reg_data ;
                     end else begin
                         moveres <= cp0_reg_data_i ;

@@ -26,12 +26,12 @@
 // File:    openmips_min_sopc.v
 // Author:  Lei Silei
 // E-mail:  leishangwen@163.com
-// Description: ����OpenMIPS��������һ����SOPC��������֤�߱���
-//              wishbone���߽ӿڵ�openmips����SOPC����openmips��
-//              wb_conmax��GPIO controller��flash controller��uart 
-//              controller���Լ���������flash��ģ��flashmem��������
-//              �洢ָ����������ⲿram��ģ��datamem�������д洢
-//              ���ݣ����Ҿ���wishbone���߽ӿ�    
+// Description: ????????????OpenMIPS??????????????????????????????????????SOPC?????????????????????????��????��?????????
+//              wishbone??????????????????openmips????????????SOPC????????????openmips??????
+//              wb_conmax??????GPIO controller??????flash controller??????uart 
+//              controller??????????????????????????????????????flash??????????????flashmem????????????????????????
+//              ????????????????????????????????????????????ram??????????????datamem??????????????????????????
+//              ??????????????????????????????????wishbone????????????????    
 // Revision: 1.0
 //////////////////////////////////////////////////////////////////////
 
@@ -49,13 +49,15 @@
 `include "controller/sram_controller.v"
 `include "controller/led_controller.v"
 `include "wb_conmax.v"
+//`include "clk_wiz_0.xci"
 
 module openmips_min_sopc(
 
 	input wire clk,
 	input wire	rst,
-  input wire clk100,
 	input wire	click,
+	input wire rxd,
+  output wire txd,
 	
 	inout wire[`WordBus] base_ram_data, // [7:0] also connected to CPLD
   output wire[19:0] base_ram_addr,
@@ -77,7 +79,7 @@ module openmips_min_sopc(
 	
 );
 
-  //����ָ��洢��?
+
   wire[`WordBus] inst_addr;
   wire[`WordBus] inst;
   wire rom_ce;
@@ -96,13 +98,20 @@ module openmips_min_sopc(
  assign base_ram_oe_n =  1'b0;
  assign base_ram_we_n = 1'b1;*/
  
+ /*wire clk100 ;
+clk_wiz_0 clk_wiz_00(
+    .clk_out1(clk100),
+    .reset(rst),
+    .clk_in1(clk)
+)*/
+ 
  reg[25:0] slowclk ;
-//  initial begin slowclk = 22'b0 ;end
+ // initial begin slowclk = 22'b0 ;end
  always @ (posedge clk) begin
       slowclk <= slowclk+1 ;
  end
  reg halfclk ;
- always @ ( posedge click ) begin
+ always @ ( posedge clk ) begin
     halfclk <= ~halfclk ;
  end
  reg[`WordBus] inst_get;
@@ -116,7 +125,8 @@ always @(*)
  wire[`WordBus] debugdata;
  wire[`WordBus] ramdebugdata;
  wire[`WordBus] leddebugdata;
- assign led_o = (debug[7]==0) ? ((debug[6] == 0) ? debugdata : ramdebugdata) : leddebugdata ;
+ wire[`WordBus] cp0debugdata ;
+ assign led_o = (debug[9]==0) ? ((debug[8]==0) ? ( (debug[7]==0) ? ((debug[6] == 0) ? debugdata : ramdebugdata) : ((debug[6] == 0) ? leddebugdata : cp0debugdata) ) : uart_debug) : dwb_debug;
  //assign led[31:24] = inst_get[7:0];
 
 wire[`WordBus] wb_m0_data_i ;
@@ -163,6 +173,7 @@ wire wb_m1_ack_o ;
   	.timer_int_o(timer_int),
   	.int_i(int),
     .debugdata(debugdata),
+    .cp0debugdata(cp0debugdata),
     .debug(debug)
 	);
 
@@ -183,6 +194,45 @@ wire wb_m1_ack_o ;
   wire wb_s11_we_o ;
   wire[`WordBus] wb_s11_data_i ;
   wire wb_s11_ack_i ;
+  
+  wire[31:0] s1_data_i;
+      wire[31:0] s1_data_o;
+      wire[31:0] s1_addr_o;
+      wire[3:0]  s1_sel_o;
+      wire       s1_we_o; 
+      wire       s1_cyc_o; 
+      wire       s1_stb_o;
+      wire       s1_ack_i;
+  wire[31:0] uart_debug;
+  assign uart_debug = {s1_data_o[7:0], s1_data_i[7:0], s1_we_o, s1_stb_o, s1_cyc_o, s1_ack_i, s1_sel_o, 3'b0, s1_addr_o[4:0]};
+  wire[31:0] dwb_debug;
+  assign dwb_debug = {wb_m0_data_o[7:0], wb_m0_data_i[7:0], wb_m0_we_i, wb_m0_stb_i, wb_m0_cyc_i, wb_m0_ack_o, wb_m0_sel_i, 3'b0, wb_m0_addr_i[4:0]};
+  wire[7:0] uart_data_o;
+  assign s1_data_i = {uart_data_o,uart_data_o,uart_data_o,uart_data_o};
+  uart_top uart_top0(
+              .wb_clk_i(clk), 
+              .wb_rst_i(rst),
+              .wb_adr_i(s1_addr_o[4:0]),
+              .wb_dat_i(s1_data_o),
+              .wb_dat_o(uart_data_o), 
+              .wb_we_i(s1_we_o), 
+              .wb_stb_i(s1_stb_o), 
+              .wb_cyc_i(s1_cyc_o),
+              .wb_ack_o(s1_ack_i),
+              .wb_sel_i({s1_sel_o[0],s1_sel_o[1],s1_sel_o[2],s1_sel_o[3]}),
+              .int_o(uart_int),
+              .stx_pad_o(txd),
+              .srx_pad_i(rxd),
+              .cts_pad_i(1'b0),
+              .dsr_pad_i(1'b0), 
+              .ri_pad_i(1'b0), 
+              .dcd_pad_i(1'b0),
+              .rts_pad_o(),
+              .dtr_pad_o()
+          );
+      
+          
+  
 
   // used interfaces: m0, m1, s0(sram)
   wb_conmax_top wb_conmax0(
@@ -264,9 +314,16 @@ wire wb_m1_ack_o ;
     .s0_err_i(`Disable),
     .s0_rty_i(`Disable),
 
-    .s1_ack_i(`Disable),
-    .s1_err_i(`Disable),
-    .s1_rty_i(`Disable),
+    .s1_data_i(s1_data_i),
+		.s1_data_o(s1_data_o),
+		.s1_addr_o(s1_addr_o),
+		.s1_sel_o(s1_sel_o),
+		.s1_we_o(s1_we_o),
+		.s1_cyc_o(s1_cyc_o),
+		.s1_stb_o(s1_stb_o),
+		.s1_ack_i(s1_ack_i),
+		.s1_err_i(1'b0), 
+		.s1_rty_i(1'b0),
 
     .s2_ack_i(`Disable),
     .s2_err_i(`Disable),
@@ -383,11 +440,11 @@ wire wb_m1_ack_o ;
     );
    
    // fake mem
-	// data_ram data_ram0(
-	// 	.we(~base_ram_we_n),
-  //   .sel(~base_ram_be_n),
-  //   .ce(~base_ram_ce_n),
-	// 	.addr(base_ram_addr),
-	// 	.data(debug_base_ram_data)
-	// );
+	/*data_ram data_ram0(
+		.we(~base_ram_we_n),
+    .sel(~base_ram_be_n),
+    .ce(~base_ram_ce_n),
+		.addr(base_ram_addr),
+		.data(debug_base_ram_data)
+	);*/
 endmodule

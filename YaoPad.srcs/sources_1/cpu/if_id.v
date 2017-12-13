@@ -30,6 +30,7 @@ module if_id(
     input wire[`WordBus] if_inst,
     output reg[`WordBus] id_pc,
     output reg[`WordBus] id_inst,
+
     output wire[`WordBus] debugdata
     );
     

@@ -72,6 +72,7 @@ module id(
     );
 
     assign debugdata = inst_i ;
+
     reg[`WordBus] immi ;
     wire[5:0] op1 = inst_i[31:26] ;
     wire[4:0] op2 = inst_i[10:6] ;
@@ -402,7 +403,7 @@ module id(
                     reg1_read_o <= `Disable ;
                     reg2_read_o <= `Disable ;
                     wd_o <= `Disable  ;
-                    wreg_o <= `NopRegAddr ;
+                    wreg_o <= `Disable ;
                     immi <= 32'h0 ;                    
                 end
             endcase

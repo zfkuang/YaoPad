@@ -24,7 +24,7 @@
 `define MemNumLog 18 
 
 // Buses // 
-`define DebugBus 9:0
+`define DebugBus 12:0
 `define StallBus 5:0
 `define AluOpBus 7:0
 `define AluSelBus 2:0
@@ -195,5 +195,5 @@
 `define CP0_CAUSE 5'b01101
 `define CP0_EPC 5'b01110
 `define CP0_PRId 5'b01111
-`define CP0_CONFIG 5'b1000
+`define CP0_CONFIG 5'b10000
 

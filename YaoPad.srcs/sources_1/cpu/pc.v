@@ -36,6 +36,7 @@ module pc_rom(
     );
     
     reg is_rst;
+
     always @ (*) begin
         ce <= ~rst;
     end
