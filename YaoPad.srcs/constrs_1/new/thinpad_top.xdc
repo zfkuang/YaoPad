@@ -6,6 +6,8 @@ set_property -dict {PACKAGE_PIN C18 IOSTANDARD LVCMOS33} [get_ports clk_uart_in]
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets clk_uart_in_IBUF]
 create_clock -period 90.422 -name clk_uart_in -waveform {0.000 45.211} [get_ports clk_uart_in]
 
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN L19} [get_ports txd] ;#GPIO5
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN K21} [get_ports rxd] ;#GPIO6
 
 set_property IOSTANDARD LVCMOS33 [get_ports rst] ;
 set_property PACKAGE_PIN F22 [get_ports rst] ;#BTN6
@@ -25,6 +27,11 @@ set_property PACKAGE_PIN R5 [get_ports {debug[4]}]
 set_property PACKAGE_PIN T7 [get_ports {debug[5]}]
 set_property PACKAGE_PIN R8 [get_ports {debug[6]}]
 set_property PACKAGE_PIN T8 [get_ports {debug[7]}]
+set_property PACKAGE_PIN N2 [get_ports {debug[8]}]
+set_property PACKAGE_PIN N1 [get_ports {debug[9]}]
+set_property PACKAGE_PIN P1 [get_ports {debug[10]}]
+set_property PACKAGE_PIN R2 [get_ports {debug[11]}]
+set_property PACKAGE_PIN R1 [get_ports {debug[12]}]
 
 #led_o
 set_property IOSTANDARD LVCMOS33 [get_ports {led_o[*]}]

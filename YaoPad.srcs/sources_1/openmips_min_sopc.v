@@ -46,28 +46,30 @@
 module openmips_min_sopc(
 
 	input wire clk,
-	input wire	rst,
-	input wire	click,
+	input wire rst,
+	input wire click,
 	input wire clk100,
-	
+	input wire rxd,
+	output wire txd,
+
 	inout wire[`WordBus] base_ram_data, // [7:0] also connected to CPLD
-  output wire[19:0] base_ram_addr,
-  output wire[3:0] base_ram_be_n,
-  output wire base_ram_ce_n,
-  output wire base_ram_oe_n,
-  output wire base_ram_we_n,
-  
-  inout wire[`WordBus] ext_ram_data,
-  output wire[19:0] ext_ram_addr,
-  output wire[3:0] ext_ram_be_n,
-  output wire ext_ram_ce_n,
-  output wire ext_ram_oe_n,
-  output wire ext_ram_we_n,
-    
-    
+	output wire[19:0] base_ram_addr,
+	output wire[3:0] base_ram_be_n,
+	output wire base_ram_ce_n,
+	output wire base_ram_oe_n,
+	output wire base_ram_we_n,
+
+	inout wire[`WordBus] ext_ram_data,
+	output wire[19:0] ext_ram_addr,
+	output wire[3:0] ext_ram_be_n,
+	output wire ext_ram_ce_n,
+	output wire ext_ram_oe_n,
+	output wire ext_ram_we_n,
+
+
 	input wire[`DebugBus] debug,
 	output wire[`WordBus] led_o
-	
+
 );
 
   //����ָ��洢�?
@@ -84,11 +86,7 @@ module openmips_min_sopc(
   wire timer_int;
   wire[5:0] int = {5'b00000, timer_int};
   
- /*assign  base_ram_addr = inst_addr[21:2];
- assign base_ram_ce_n =  1'b0;
- assign base_ram_oe_n =  1'b0;
- assign base_ram_we_n = 1'b1;
- assign base_ram_data = (base_ram_oe_n==1'b0) ? 32'bz : 32'b0;*/
+
  
  /*wire clk100 ;
 clk_wiz_0 clk_wiz_00(
@@ -103,7 +101,7 @@ clk_wiz_0 clk_wiz_00(
       slowclk <= slowclk+1 ;
  end
  reg halfclk ;
- always @ ( posedge click ) begin
+ always @ ( posedge clk ) begin
     halfclk <= ~halfclk ;
  end
  reg[`WordBus] inst_get;
@@ -118,7 +116,7 @@ always @(*)
  wire[`WordBus] ramdebugdata;
  wire[`WordBus] leddebugdata;
  wire[`WordBus] cp0debugdata ;
- assign led_o = (debug[7]==0) ? ((debug[6] == 0) ? debugdata : ramdebugdata) : ((debug[6] == 0) ? leddebugdata : cp0debugdata) ;
+ assign led_o = (debug[9]==0) ? ((debug[8]==0) ? ( (debug[7]==0) ? ((debug[6] == 0) ? debugdata : ramdebugdata) : ((debug[6] == 0) ? leddebugdata : cp0debugdata) ) : uart_debug) : dwb_debug;
  //assign led[31:24] = inst_get[7:0];
 
 wire[`WordBus] wb_m0_data_i ;
@@ -186,6 +184,45 @@ wire wb_m1_ack_o ;
   wire wb_s11_we_o ;
   wire[`WordBus] wb_s11_data_i ;
   wire wb_s11_ack_i ;
+
+    wire[31:0] s1_data_i;
+      wire[31:0] s1_data_o;
+      wire[31:0] s1_addr_o;
+      wire[3:0]  s1_sel_o;
+      wire       s1_we_o; 
+      wire       s1_cyc_o; 
+      wire       s1_stb_o;
+      wire       s1_ack_i;
+      
+  wire[31:0] uart_debug;
+  assign uart_debug = {s1_data_o[7:0], s1_data_i[7:0], s1_we_o, s1_stb_o, s1_cyc_o, s1_ack_i, s1_sel_o, 3'b0, s1_addr_o[4:0]};
+
+  wire[31:0] dwb_debug;
+  assign dwb_debug = {wb_m0_data_o[7:0], wb_m0_data_i[7:0], wb_m0_we_i, wb_m0_stb_i, wb_m0_cyc_i, wb_m0_ack_o, wb_m0_sel_i, 3'b0, wb_m0_addr_i[4:0]};
+
+  wire[7:0] uart_data_o;
+  assign s1_data_i = {uart_data_o,uart_data_o,uart_data_o,uart_data_o};
+  uart_top uart_top0(
+              .wb_clk_i(slowclk[0]), 
+              .wb_rst_i(rst),
+              .wb_adr_i(s1_addr_o[4:0]),
+              .wb_dat_i(s1_data_o),
+              .wb_dat_o(uart_data_o), 
+              .wb_we_i(s1_we_o), 
+              .wb_stb_i(s1_stb_o), 
+              .wb_cyc_i(s1_cyc_o),
+              .wb_ack_o(s1_ack_i),
+              .wb_sel_i(|s1_sel_o),
+              .int_o(uart_int),
+              .stx_pad_o(txd),
+              .srx_pad_i(rxd),
+              .cts_pad_i(1'b0),
+              .dsr_pad_i(1'b0), 
+              .ri_pad_i(1'b0), 
+              .dcd_pad_i(1'b0),
+              .rts_pad_o(),
+              .dtr_pad_o()
+          );
 
   // used interfaces: m0, m1, s0(sram)
   wb_conmax_top wb_conmax0(
@@ -267,9 +304,16 @@ wire wb_m1_ack_o ;
     .s0_err_i(`Disable),
     .s0_rty_i(`Disable),
 
-    .s1_ack_i(`Disable),
-    .s1_err_i(`Disable),
-    .s1_rty_i(`Disable),
+    .s1_data_i(s1_data_i),
+	.s1_data_o(s1_data_o),
+	.s1_addr_o(s1_addr_o),
+	.s1_sel_o(s1_sel_o),
+	.s1_we_o(s1_we_o),
+	.s1_cyc_o(s1_cyc_o),
+	.s1_stb_o(s1_stb_o),
+	.s1_ack_i(s1_ack_i),
+	.s1_err_i(1'b0), 
+	.s1_rty_i(1'b0),
 
     .s2_ack_i(`Disable),
     .s2_err_i(`Disable),
