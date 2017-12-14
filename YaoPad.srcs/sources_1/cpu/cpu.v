@@ -512,8 +512,7 @@ module cpu(    input wire rst,
         .is_in_delayslot_o(mem_is_in_delayslot_o),
         .cp0_epc_o(mem_cp0_epc_o),
         
-        .debugdata(memdebugdata),
-        .stallreq(stalleq_from_mem)
+        .debugdata(memdebugdata)
     ) ;
     
     mem_wb mem_wb0(

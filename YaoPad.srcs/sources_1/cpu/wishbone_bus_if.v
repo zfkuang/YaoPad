@@ -128,7 +128,7 @@ module wishbone_bus_if(
                     rd_buf_has_read <= `Disable;
                 end
             end else begin
-                if(wishbone_has_acked == `Enable) begin
+                if(wishbone_has_acked == `Enable || wishbone_ack_i == `Enable) begin
                     if((!cpu_we_i) & (!rd_buf_has_read)) begin
                         rd_buf <= wishbone_data_i;
                         rd_buf_has_read <= `Enable;
@@ -156,48 +156,103 @@ module wishbone_bus_if(
     assign wb_early_cyc = (!wb_is_rst) & wishbone_busy & wishbone_has_acked & (!wishbone_wait_cpu) & (wb_cnt == 2'b01) & cpu_ce_i & (!flush);
     assign wishbone_cyc_o = wishbone_start || wb_early_cyc;
     assign wishbone_stb_o = wishbone_start || wb_early_cyc;
-    assign stallreq = stallreq_reg && (stall_cnt != 2'b00);
+    assign stallreq = stallreq_reg ;
+
+
+
+    always @ (*) begin
+        if(rst == `Enable) begin
+            wishbone_has_acked <= `Enable;
+        end else begin
+            if(wishbone_busy == `Disable) begin
+                if((cpu_ce_i == 1'b1) && (flush == `Disable)) begin
+                    wishbone_has_acked <= `Disable;
+                end
+            end else begin
+                if(wishbone_ack_i == 1'b1) begin
+                    wishbone_has_acked <= `Enable;
+                    cpu_data_o <= wishbone_data_i;
+                end else begin
+                    if(wishbone_has_acked == `Enable) begin
+                        cpu_data_o <= rd_buf;
+                    end
+                end
+            end
+            if(flush == `Enable) begin
+                wishbone_has_acked <= `Disable;
+            end
+        end
+    end
+
 
     /* Data Signal Change */
+    always @ (*) begin
+        if(rst == `Enable) begin
+            stallreq_reg <= `Disable;
+        end else begin
+            //if(wb_cnt != 2'b00) begin
+                stallreq_reg <= `Disable;
+                if(wishbone_busy == `Disable) begin
+                    if((cpu_ce_i == 1'b1) && (flush == `Disable)) begin
+                        stallreq_reg <= `Enable;
+                    end
+                end else begin
+                    if(wishbone_ack_i == 1'b1) begin
+                        stallreq_reg <= `Disable;
+                    end else begin
+                        if(wishbone_has_acked == `Disable) begin
+                            stallreq_reg <= `Enable;
+                        end
+                    end
+                end
+            //end
+        end
+    end
+
+
+/*
     always @ (*) begin
         if(rst == `Enable) begin
             stallreq_reg <= `Disable;
             //cpu_data_o <= `Zero;
             wishbone_has_acked <= `Enable;
         end else begin
-            stallreq_reg <= `Disable;
-            if(wishbone_busy == `Disable) begin
-                if((cpu_ce_i == 1'b1) && (flush == `Disable)) begin
-                    stallreq_reg <= `Enable;
-                    //cpu_data_o <= `Zero;
-                    wishbone_has_acked <= `Disable;
-                end
-            end else begin
-                if(wishbone_ack_i == 1'b1) begin
-                    stallreq_reg <= `Disable;
-                    wishbone_has_acked <= `Enable;
-                    // if(wishbone_we_o == `Disable) begin
-                    //     cpu_data_o <= wishbone_data_i;
-                    // end else begin
-                    //     cpu_data_o <= `Zero;
-                    // end
-                    cpu_data_o <= wishbone_data_i;
-                end else begin
-                    if(wishbone_has_acked == `Disable) begin
+            if(stall_cnt != 2'b00) begin
+                stallreq_reg <= `Disable;
+                if(wishbone_busy == `Disable) begin
+                    if((cpu_ce_i == 1'b1) && (flush == `Disable)) begin
                         stallreq_reg <= `Enable;
                         //cpu_data_o <= `Zero;
+                        wishbone_has_acked <= `Disable;
+                    end
+                end else begin
+                    if(wishbone_ack_i == 1'b1) begin
+                        stallreq_reg <= `Disable;
+                        wishbone_has_acked <= `Enable;
+                        // if(wishbone_we_o == `Disable) begin
+                        //     cpu_data_o <= wishbone_data_i;
+                        // end else begin
+                        //     cpu_data_o <= `Zero;
+                        // end
+                        cpu_data_o <= wishbone_data_i;
                     end else begin
-                        // wishbone_has_acked==True, stallReq=False(见上面)
-                        cpu_data_o <= rd_buf;
+                        if(wishbone_has_acked == `Disable) begin
+                            stallreq_reg <= `Enable;
+                            //cpu_data_o <= `Zero;
+                        end else begin
+                            // wishbone_has_acked==True, stallReq=False(见上面)
+                            cpu_data_o <= rd_buf;
+                        end
                     end
                 end
-            end
 
-            if(flush == `Enable) begin
-                // stallReq=False(见上面)
-                wishbone_has_acked <= `Disable;
+                if(flush == `Enable) begin
+                    // stallReq=False(见上面)
+                    wishbone_has_acked <= `Disable;
+                end
             end
         end
     end
+*/
 
 endmodule
