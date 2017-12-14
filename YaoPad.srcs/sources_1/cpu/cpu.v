@@ -39,6 +39,7 @@ module cpu(    input wire rst,
     input wire clk,
     input wire clk100,
     
+    
     // inst wishbone
 	input wire[`WordBus]            iwishbone_data_i,
 	input wire                     iwishbone_ack_i,

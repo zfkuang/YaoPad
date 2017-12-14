@@ -139,8 +139,8 @@ wire[`WordBus] wb_m1_data_o ;
 wire wb_m1_ack_o ;
 
  cpu cpu0(
-		.clk(click),
-    .clk100(click),
+		.clk(slowclk[0]),
+    .clk100(slowclk[0]),
 		.rst(rst),
 
 		.iwishbone_addr_o(wb_m1_addr_i),
@@ -202,9 +202,9 @@ wire wb_m1_ack_o ;
   assign dwb_debug = {wb_m0_data_o[7:0], wb_m0_data_i[7:0], wb_m0_we_i, wb_m0_stb_i, wb_m0_cyc_i, wb_m0_ack_o, wb_m0_sel_i, 3'b0, wb_m0_addr_i[4:0]};
 
   wire[31:0] uart_data_o;
-  assign s1_data_i = {uart_data_o[7:0],uart_data_o[7:0],uart_data_o[7:0],uart_data_o[7:0]};
+  assign s1_data_i = {uart_data_o[7:0],uart_data_o[15:8],uart_data_o[23:16],uart_data_o[31:24]};
   uart_top uart_top0(
-              .wb_clk_i(click), 
+              .wb_clk_i(slowclk[0]), 
               .wb_rst_i(rst),
               .wb_adr_i(s1_addr_o[4:0]),
               .wb_dat_i(s1_data_o),
@@ -213,7 +213,7 @@ wire wb_m1_ack_o ;
               .wb_stb_i(s1_stb_o), 
               .wb_cyc_i(s1_cyc_o),
               .wb_ack_o(s1_ack_i),
-              .wb_sel_i({3'b0,|s1_sel_o}),
+              .wb_sel_i({s1_sel_o[0],s1_sel_o[1],s1_sel_o[2],s1_sel_o[3]}),
               .int_o(uart_int),
               .stx_pad_o(txd),
               .srx_pad_i(rxd),
@@ -227,7 +227,7 @@ wire wb_m1_ack_o ;
 
   // used interfaces: m0, m1, s0(sram)
   wb_conmax_top wb_conmax0(
-    .clk_i(click), 
+    .clk_i(slowclk[0]), 
     .rst_i(rst),
 
     .m0_data_i(wb_m0_data_i),
@@ -387,7 +387,7 @@ wire wb_m1_ack_o ;
   assign base_ram_be_n = 4'b0000;
   assign ext_ram_be_n = 4'b0000;
   sram sram0(
-    .clk(click), .rst(rst), 
+    .clk(slowclk[0]), .rst(rst), 
 
     .wishbone_addr_i(wb_s0_addr_o),
     .wishbone_data_i(wb_s0_data_o),
@@ -415,7 +415,7 @@ wire wb_m1_ack_o ;
     );
 
   led led0(
-    .clk(click), .rst(rst), 
+    .clk(slowclk[0]), .rst(rst), 
 
     .wishbone_addr_i(wb_s11_addr_o),
     .wishbone_data_i(wb_s11_data_o),
