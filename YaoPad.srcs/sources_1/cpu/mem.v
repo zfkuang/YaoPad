@@ -356,7 +356,11 @@ module mem(
                     endcase
                 end
                 default: begin
-                    //wreg_o <= `Disable;
+                    mem_addr_o <= `Zero;
+                    mem_we <= `Disable;
+                    mem_ce_o <= `Disable;
+                    mem_data_o <= `Zero;
+                    mem_sel_o <= 4'b0;
                 end
             endcase
         end
