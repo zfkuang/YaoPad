@@ -43,6 +43,18 @@ module regfile(
     reg[`WordBus] register[`RegIdBus] ; 
     assign debugdata = register[debug];
     
+
+    wire[`WordBus] reg1;
+    assign reg1 = register[1];
+    wire[`WordBus] reg2;
+    assign reg2 = register[2];
+    wire[`WordBus] reg3;
+    assign reg3 = register[3];
+    wire[`WordBus] reg4;
+    assign reg4 = register[4];
+    wire[`WordBus] reg5;
+    assign reg5 = register[5];
+
     always @ (posedge clk) begin
         if (rst == `Disable) begin 
             if (we == `Enable && waddr != `NopRegAddr) begin 

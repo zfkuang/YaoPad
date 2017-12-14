@@ -145,8 +145,6 @@
 //
 //
 
-// synopsys translate_off
-`include "timescale.v"
 // synopsys translate_on
 
 `include "uart_defines.v"

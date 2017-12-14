@@ -41,6 +41,7 @@
 `include "controller/sram_controller.v"
 `include "controller/led_controller.v"
 `include "wb_conmax.v"
+`include "controller/uart_header.v"
 //`include "clk_wiz_0.xci"
 
 module openmips_min_sopc(
@@ -200,8 +201,8 @@ wire wb_m1_ack_o ;
   wire[31:0] dwb_debug;
   assign dwb_debug = {wb_m0_data_o[7:0], wb_m0_data_i[7:0], wb_m0_we_i, wb_m0_stb_i, wb_m0_cyc_i, wb_m0_ack_o, wb_m0_sel_i, 3'b0, wb_m0_addr_i[4:0]};
 
-  wire[7:0] uart_data_o;
-  assign s1_data_i = {uart_data_o,uart_data_o,uart_data_o,uart_data_o};
+  wire[31:0] uart_data_o;
+  assign s1_data_i = {uart_data_o[7:0],uart_data_o[7:0],uart_data_o[7:0],uart_data_o[7:0]};
   uart_top uart_top0(
               .wb_clk_i(slowclk[0]), 
               .wb_rst_i(rst),
@@ -212,7 +213,7 @@ wire wb_m1_ack_o ;
               .wb_stb_i(s1_stb_o), 
               .wb_cyc_i(s1_cyc_o),
               .wb_ack_o(s1_ack_i),
-              .wb_sel_i(|s1_sel_o),
+              .wb_sel_i({3'b0,|s1_sel_o}),
               .int_o(uart_int),
               .stx_pad_o(txd),
               .srx_pad_i(rxd),
@@ -430,11 +431,11 @@ wire wb_m1_ack_o ;
     );
    
    // fake mem
-	// data_ram data_ram0(
-	// 	.we(~base_ram_we_n),
-  //   .sel(~base_ram_be_n),
-  //   .ce(~base_ram_ce_n),
-	// 	.addr(base_ram_addr),
-	// 	.data(debug_base_ram_data)
-	// );
+	/*data_ram data_ram0(
+		.we(~base_ram_we_n),
+    .sel(~base_ram_be_n),
+    .ce(~base_ram_ce_n),
+		.addr(base_ram_addr),
+		.data(debug_base_ram_data)
+	);*/
 endmodule

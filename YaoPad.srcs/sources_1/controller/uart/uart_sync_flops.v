@@ -65,8 +65,6 @@
 //
 
 
-`include "timescale.v"
-
 
 module uart_sync_flops
 (
