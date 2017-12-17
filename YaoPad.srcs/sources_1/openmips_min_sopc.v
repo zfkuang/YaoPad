@@ -196,13 +196,14 @@ wire wb_m1_ack_o ;
       wire       s1_ack_i;
       
   wire[31:0] uart_debug;
-  assign uart_debug = {s1_data_o[7:0], s1_data_i[7:0], s1_we_o, s1_stb_o, s1_cyc_o, s1_ack_i, s1_sel_o, 3'b0, s1_addr_o[4:0]};
+  assign uart_debug = debug[0]==0 ? {s1_data_o[7:0], s1_data_i[7:0], s1_we_o, s1_stb_o, s1_cyc_o, s1_ack_i, s1_sel_o, 3'b0, s1_addr_o[4:0]} : s1_addr_o;
 
   wire[31:0] dwb_debug;
   assign dwb_debug = {wb_m0_data_o[7:0], wb_m0_data_i[7:0], wb_m0_we_i, wb_m0_stb_i, wb_m0_cyc_i, wb_m0_ack_o, wb_m0_sel_i, 3'b0, wb_m0_addr_i[4:0]};
 
   wire[31:0] uart_data_o;
   assign s1_data_i = {uart_data_o[7:0],uart_data_o[15:8],uart_data_o[23:16],uart_data_o[31:24]};
+  //assign s1_data_i = uart_data_o;
   uart_top uart_top0(
               .wb_clk_i(slowclk[0]), 
               .wb_rst_i(rst),
@@ -214,6 +215,7 @@ wire wb_m1_ack_o ;
               .wb_cyc_i(s1_cyc_o),
               .wb_ack_o(s1_ack_i),
               .wb_sel_i({s1_sel_o[0],s1_sel_o[1],s1_sel_o[2],s1_sel_o[3]}),
+              //.wb_sel_i(s1_sel_o),
               .int_o(uart_int),
               .stx_pad_o(txd),
               .srx_pad_i(rxd),
