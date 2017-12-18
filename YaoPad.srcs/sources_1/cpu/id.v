@@ -66,9 +66,12 @@ module id(
     output wire[`WordBus] excepttype_o,
     output wire[`WordBus] current_inst_addr_o,
 
+    output wire[`WordBus] debugdata,
     output wire stallreq,
     output wire timer_int_o
     );
+
+    assign debugdata = inst_i ;
 
     reg[`WordBus] immi ;
     wire[5:0] op1 = inst_i[31:26] ;
@@ -76,6 +79,7 @@ module id(
     wire[5:0] op3 = inst_i[5:0] ;
     wire[4:0] op4 = inst_i[20:16] ;
     wire[31:0] next_pc_i = pc_i+4 ;
+    wire[31:0] next_next_pc_i = pc_i+8 ;
 
     wire pre_inst_is_load = ((ex_aluop_i == `MEM_LB)  ||
                              (ex_aluop_i == `MEM_LBU) ||
@@ -106,7 +110,7 @@ module id(
             branch_flag_o <= 0 ;
             branch_target_address_o <= `Zero ;
             is_in_delayslot_o <= 0;
-            link_addr_o <= 0;
+            link_addr_o <= `Zero ;
             next_inst_in_delayslot_o <= 0;
         end else begin 
         	// default settings for I-type
@@ -123,7 +127,6 @@ module id(
             branch_flag_o <= `Disable ;
             is_in_delayslot_o <= `Disable;
             next_inst_in_delayslot_o <= `Disable;
-            link_addr_o <= pc_i+8 ;
 
             instvalid <= `Enable ;
             except_eret <= `Disable ;
@@ -205,7 +208,8 @@ module id(
                 `EXE_J, `EXE_JAL: begin
                     aluop_o <= `ALU_JUMP ; 
                     alusel_o <= `ALUS_JUMP ;
-                    wd_o <= 31 ;
+                    wd_o <= 5'b11111 ;
+                    link_addr_o <= next_next_pc_i ;
                     branch_target_address_o <= {next_pc_i[31:28], inst_i[25:0], 2'b00} ;
                     next_inst_in_delayslot_o <= `Enable ;
                     branch_flag_o <= `Enable ;
@@ -227,7 +231,7 @@ module id(
                     aluop_o <= `ALU_JUMP ; 
                     alusel_o <= `ALUS_JUMP ;
                     wreg_o <= `Disable ;
-                    if((reg1_o <= 0) ^ (op1 == `EXE_BGTZ)) begin
+                    if(((reg1_o == `Zero) || (reg1_o[31] == 1)) ^ (op1 == `EXE_BGTZ)) begin
                         branch_target_address_o <= next_pc_i+{{14{inst_i[15]}}, inst_i[15:0], 2'b00} ;
                         next_inst_in_delayslot_o <= `Enable ;
                         branch_flag_o <= `Enable ;
@@ -242,7 +246,8 @@ module id(
                             aluop_o <= `ALU_JUMP ; 
                             alusel_o <= `ALUS_JUMP ;
                             wreg_o <= op4[4] ;
-                            wd_o <= 31 ;
+                            wd_o <= 5'b11111 ;
+                            link_addr_o <= next_next_pc_i ;
                             if(reg1_o[31] ^ op4[0]) begin
                                 branch_target_address_o <= next_pc_i+{{14{inst_i[15]}}, inst_i[15:0], 2'b00} ;
                                 next_inst_in_delayslot_o <= `Enable ;
@@ -349,6 +354,7 @@ module id(
                         `ALU_JR, `ALU_JALR: begin
                             aluop_o <= `ALU_JUMP ; 
                             alusel_o <= `ALUS_JUMP ;
+                            link_addr_o <= next_next_pc_i ;
                             branch_target_address_o <= reg1_o ;
                             next_inst_in_delayslot_o <= `Enable ;
                             branch_flag_o <= `Enable ;
@@ -397,7 +403,7 @@ module id(
                     reg1_read_o <= `Disable ;
                     reg2_read_o <= `Disable ;
                     wd_o <= `Disable  ;
-                    wreg_o <= `NopRegAddr ;
+                    wreg_o <= `Disable ;
                     immi <= 32'h0 ;                    
                 end
             endcase

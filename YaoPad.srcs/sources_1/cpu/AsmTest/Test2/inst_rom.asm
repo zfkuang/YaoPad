@@ -4,45 +4,76 @@ inst_rom.om:     file format elf32-tradbigmips
 Disassembly of section .text:
 
 00000000 <_start>:
-   0:	34010100 	li	at,0x100
-   4:	00200008 	jr	at
-   8:	00000000 	nop
+   0:	34038000 	li	v1,0x8000
+   4:	00031c00 	sll	v1,v1,0x10
+   8:	34010001 	li	at,0x1
+   c:	10000004 	b	20 <s1>
+  10:	34010002 	li	at,0x2
+  14:	34011111 	li	at,0x1111
+  18:	34011100 	li	at,0x1100
+  1c:	00000000 	nop
+
+00000020 <s1>:
+  20:	34010003 	li	at,0x3
+  24:	0411000a 	bal	50 <s2>
+  28:	03e1001a 	div	zero,ra,at
+  2c:	34011100 	li	at,0x1100
+  30:	34011111 	li	at,0x1111
+  34:	14200012 	bnez	at,80 <s3>
+  38:	00000000 	nop
+  3c:	34011100 	li	at,0x1100
+  40:	34011111 	li	at,0x1111
 	...
-  40:	3401f0f0 	li	at,0xf0f0
-  44:	3401ffff 	li	at,0xffff
-  48:	34010f0f 	li	at,0xf0f
-  4c:	3403000e 	li	v1,0xe
-  50:	40047000 	mfc0	a0,c0_epc
-  54:	20840004 	addi	a0,a0,4
-  58:	40847000 	mtc0	a0,c0_epc
-  5c:	42000018 	eret
+
+00000050 <s2>:
+  50:	34010004 	li	at,0x4
+  54:	1063000a 	beq	v1,v1,80 <s3>
+  58:	03e00825 	move	at,ra
+  5c:	34011111 	li	at,0x1111
+  60:	34011100 	li	at,0x1100
+  64:	34010007 	li	at,0x7
+  68:	34010008 	li	at,0x8
+  6c:	1c200024 	bgtz	at,100 <s4>
+  70:	34010009 	li	at,0x9
+  74:	34011111 	li	at,0x1111
+  78:	34011100 	li	at,0x1100
+  7c:	00000000 	nop
+
+00000080 <s3>:
+  80:	34010005 	li	at,0x5
+  84:	0421fff7 	bgez	at,64 <s2+0x14>
+  88:	34010006 	li	at,0x6
+  8c:	34011111 	li	at,0x1111
+  90:	34011100 	li	at,0x1100
 	...
- 100:	34011000 	li	at,0x1000
- 104:	34021000 	li	v0,0x1000
- 108:	00220034 	teq	at,v0
- 10c:	34012000 	li	at,0x2000
- 110:	00220036 	tne	at,v0
- 114:	34013000 	li	at,0x3000
- 118:	042c3000 	teqi	at,12288
- 11c:	34014000 	li	at,0x4000
- 120:	042e2000 	tnei	at,8192
- 124:	34015000 	li	at,0x5000
- 128:	00220030 	tge	at,v0
- 12c:	34016000 	li	at,0x6000
- 130:	04284000 	tgei	at,16384
- 134:	34017000 	li	at,0x7000
- 138:	04297000 	tgeiu	at,28672
- 13c:	34018000 	li	at,0x8000
- 140:	00220031 	tgeu	at,v0
- 144:	34019000 	li	at,0x9000
- 148:	00220032 	tlt	at,v0
- 14c:	3401a000 	li	at,0xa000
- 150:	042a9000 	tlti	at,-28672
- 154:	3401b000 	li	at,0xb000
- 158:	042bb000 	tltiu	at,-20480
- 15c:	3401c000 	li	at,0xc000
- 160:	00410033 	tltu	v0,at
- 164:	3401d000 	li	at,0xd000
+
+00000100 <s4>:
+ 100:	3401000a 	li	at,0xa
+ 104:	0471ffde 	bgezal	v1,80 <s3>
+ 108:	001f0825 	or	at,zero,ra
+ 10c:	3401000b 	li	at,0xb
+ 110:	3401000c 	li	at,0xc
+ 114:	3401000d 	li	at,0xd
+ 118:	3401000e 	li	at,0xe
+ 11c:	04600004 	bltz	v1,130 <s5>
+ 120:	3401000f 	li	at,0xf
+ 124:	34011100 	li	at,0x1100
+	...
+
+00000130 <s5>:
+ 130:	34010010 	li	at,0x10
+ 134:	1820ffcb 	blez	at,64 <s2+0x14>
+ 138:	34010011 	li	at,0x11
+ 13c:	34010012 	li	at,0x12
+ 140:	34010013 	li	at,0x13
+ 144:	04700006 	bltzal	v1,160 <s6>
+ 148:	001f0825 	or	at,zero,ra
+ 14c:	34011100 	li	at,0x1100
+	...
+
+00000160 <s6>:
+ 160:	34010014 	li	at,0x14
+ 164:	00000000 	nop
 
 00000168 <_loop>:
  168:	0800005a 	j	168 <_loop>
@@ -50,5 +81,5 @@ Disassembly of section .text:
 Disassembly of section .reginfo:
 
 00000000 <_ram_end-0x170>:
-   0:	0000001e 	0x1e
+   0:	8000000a 	lb	zero,10(zero)
 	...

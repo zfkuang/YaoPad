@@ -19,39 +19,99 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 `include"defines.vh"
-`include"pc.v"
-`include"if_id.v"
-`include"id.v"
-`include"regfile.v"
-`include"id_ex.v"
-`include"ex.v"
-`include"ex_mem.v"
-`include"mem.v"
-`include"mem_wb.v"
-`include"hilo.v"
-`include"ctrl.v"
-`include"div.v"
-`include"cp0.v"
+`include"cpu/pc.v"
+`include"cpu/if_id.v"
+`include"cpu/id.v"
+`include"cpu/regfile.v"
+`include"cpu/id_ex.v"
+`include"cpu/ex.v"
+`include"cpu/ex_mem.v"
+`include"cpu/mem.v"
+`include"cpu/mem_wb.v"
+`include"cpu/hilo.v"
+`include"cpu/ctrl.v"
+`include"cpu/div.v"
+`include"cpu/cp0.v"
+`include"cpu/mmu.v"
+`include"cpu/wishbone_bus_if.v"
 
-module cpu(
-    input wire rst, 
+module cpu(    input wire rst, 
     input wire clk,
+    input wire clk100,
     
-    input wire[`WordBus] rom_data_i,
-    output wire[`WordBus] rom_addr_o,
-    output wire rom_ce_o,
-
-    input wire[`WordBus] ram_data_i,
-    output wire[`WordBus] ram_data_o,
-    output wire[`WordBus] ram_addr_o,
-    output wire[3:0] ram_sel_o,
-    output wire ram_we_o,
-    output wire ram_ce_o,
+    
+    // inst wishbone
+	input wire[`WordBus]            iwishbone_data_i,
+	input wire                     iwishbone_ack_i,
+	output wire[`WordBus]           iwishbone_addr_o,
+	output wire[`WordBus]           iwishbone_data_o,
+	output wire                    iwishbone_we_o,
+	output wire[3:0]               iwishbone_sel_o,
+	output wire                    iwishbone_stb_o,
+	output wire                    iwishbone_cyc_o, 
+	
+	// data wishbone
+	input wire[`WordBus]            dwishbone_data_i,
+	input wire                     dwishbone_ack_i,
+	output wire[`WordBus]           dwishbone_addr_o,
+	output wire[`WordBus]           dwishbone_data_o,
+	output wire                    dwishbone_we_o,
+	output wire[3:0]               dwishbone_sel_o,
+	output wire                    dwishbone_stb_o,
+	output wire                    dwishbone_cyc_o,
 
     input wire[5:0] int_i,
-    output wire timer_int_o 
+    output wire timer_int_o,
+    
+    input wire[`DebugBus] debug,
+    output reg[`WordBus] debugdata,
+    output wire[`WordBus] cp0debugdata 
     );
     
+    wire[`WordBus] ifdebugdata ;
+    wire[`WordBus] iddebugdata ;
+    wire[`WordBus] exdebugdata ;
+    wire[`WordBus] memdebugdata ;
+    wire[`WordBus] wbdebugdata ;
+    wire[`WordBus] regdebugdata ;
+    wire[`WordBus] ctrldebugdata ;
+    wire[`WordBus] ex_memdebugdata ;
+    always @(*) begin
+        case(debug[5:0])
+            6'b100000: begin
+                debugdata <= ifdebugdata ;
+            end
+            6'b100001: begin
+                debugdata <= iddebugdata ;
+            end
+            6'b100010: begin
+                debugdata <= exdebugdata ;
+            end
+            6'b100011: begin
+                debugdata <= memdebugdata ;
+            end
+            6'b100100: begin
+                debugdata <= wbdebugdata ;
+            end           
+            6'b100101: begin
+                debugdata <= ctrldebugdata ;
+            end
+            default: begin
+                debugdata <= regdebugdata ;
+            end
+        endcase
+    end
+    wire[`WordBus] rom_data_i ;
+    wire[`WordBus] rom_addr_o ;
+    wire rom_ce_o ;
+
+    wire[`WordBus] ram_data_i ;
+    wire[`WordBus] ram_data_o ;
+    wire[`WordBus] ram_addr_o ;
+    wire[3:0] ram_sel_o ;
+    wire ram_we_o ;
+    wire ram_ce_o ;
+
     wire[`WordBus] pc ;
     wire[`WordBus] id_pc_i ;
     wire[`WordBus] id_inst_i ;
@@ -172,12 +232,15 @@ module cpu(
     wire[`WordBus] cp0_cause_o ;
 
 
-    wire stalleq_from_id ;
-    wire stalleq_from_ex ;
+    wire stallreq_from_id ;
+    wire stallreq_from_ex ;
+    wire stallreq_from_if ;
+    wire stallreq_from_mem ;
     wire[5:0] stall ;
     wire[`WordBus] new_pc ;
     wire flush ;
-
+    //assign debugdata[15:0] = pc[15:0];
+    //assign debugdata[31:16] = rom_data_i[15:0];
     assign rom_addr_o = pc;
     pc_rom pc_rom0(
         .clk(clk), .rst(rst), 
@@ -197,6 +260,7 @@ module cpu(
         .id_pc(id_pc_i), 
         .id_inst(id_inst_i),
         .stall(stall),
+        .debugdata(ifdebugdata),
         .flush(flush)
     ) ;
     
@@ -239,7 +303,8 @@ module cpu(
         .excepttype_o(id_excepttype_o),
         .current_inst_addr_o(id_current_inst_addr_o),
 
-        .stallreq(stalleq_from_id)
+        .debugdata(iddebugdata),
+        .stallreq(stallreq_from_id)
     ) ;
     
     regfile regfile0(
@@ -255,7 +320,9 @@ module cpu(
         
         .re2(reg2_read),
         .raddr2(reg2_addr),
-        .rdata2(reg2_data)               
+        .rdata2(reg2_data),
+        .debug(debug[4:0]),
+        .debugdata(regdebugdata)
     ) ;
     
     id_ex id_ex0(
@@ -285,12 +352,12 @@ module cpu(
         .next_inst_in_delayslot_i(id_next_inst_in_delayslot_o),
         .is_in_delayslot_o(id_is_in_delayslot_i),
 
-        .flush(flush),
         .id_excepttype(id_excepttype_o),
         .id_current_inst_addr(id_current_inst_addr_o),
         .ex_excepttype(ex_excepttype_i),
         .ex_current_inst_addr(ex_current_inst_addr_i),
 
+        .flush(flush),
         .stall(stall)
     ) ;
     
@@ -353,7 +420,8 @@ module cpu(
         .current_inst_addr_o(ex_current_inst_addr_o),
         .is_in_delayslot_o(ex_is_in_delayslot_o),
 
-        .stallreq(stalleq_from_ex)
+        .debugdata(exdebugdata),
+        .stallreq(stallreq_from_ex)
     ) ;
     
     ex_mem ex_mem0(
@@ -392,7 +460,7 @@ module cpu(
         .mem_is_in_delayslot(mem_is_in_delayslot_i),
 
         .flush(flush),
-        .stall(stall) 
+        .stall(stall)
     ) ;
     
     mem mem0(
@@ -443,7 +511,9 @@ module cpu(
         .excepttype_o(mem_excepttype_o),
         .current_inst_addr_o(mem_current_inst_addr_o),
         .is_in_delayslot_o(mem_is_in_delayslot_o),
-        .cp0_epc_o(mem_cp0_epc_o)
+        .cp0_epc_o(mem_cp0_epc_o),
+        
+        .debugdata(memdebugdata)
     ) ;
     
     mem_wb mem_wb0(
@@ -471,6 +541,7 @@ module cpu(
 
         .flush(flush),
 
+        .debugdata(wbdebugdata),
         .stall(stall) 
     ) ;
 
@@ -486,14 +557,17 @@ module cpu(
 
     ctrl ctrl0(
         .rst(rst),
-        .stalleq_from_id(stalleq_from_id),
-        .stalleq_from_ex(stalleq_from_ex),
+        .stallreq_from_id(stallreq_from_id),
+        .stallreq_from_ex(stallreq_from_ex),
+        .stallreq_from_if(stallreq_from_if),
+        .stallreq_from_mem(stallreq_from_mem),
         .cp0_epc_i(mem_cp0_epc_o),
         .excepttype_i(mem_excepttype_o),
         .new_pc(new_pc),
 
         .flush(flush),
-        .stall(stall)
+        .stall(stall),
+        .debugdata(ctrldebugdata)
     ) ;
 
     assign div_annul = 0 ;
@@ -527,6 +601,95 @@ module cpu(
         .timer_int_o(timer_int_o),
         .int_i(int_i),
 
-        .data_o(cp0_data_o)
+        .data_o(cp0_data_o),
+        .debug(debug[4:0]),
+        .debugdata(cp0debugdata)
     ) ;
+ 
+    wire[`WordBus] iviraddr ;
+    wire[`WordBus] iphyaddr ;
+    wire[`WordBus] dviraddr ;
+    wire[`WordBus] dphyaddr ;
+
+    mmu immu(
+        .rst(rst),
+        .virtual_address_i(iviraddr),
+        .physical_address_o(iphyaddr)
+    ) ;
+    mmu dmmu(
+        .rst(rst),
+        .virtual_address_i(dviraddr),
+        .physical_address_o(dphyaddr)
+    ) ;
+
+	wishbone_bus_if dwishbone_bus_if(      
+        .wishbone_clk(clk100),
+        .cpu_clk(clk),
+		.rst(rst),
+	
+		// ctrl
+		.stall(stall),
+        .stall_this(stall[4]),
+		.flush(flush),
+	
+		// CPU
+        // Here is different from book, seems to be safer.
+		.cpu_ce_i(ram_ce_o & (~(|mem_excepttype_o))),
+		.cpu_data_i(ram_data_o),
+		.cpu_addr_i(ram_addr_o),
+		.cpu_we_i(ram_we_o),
+		.cpu_sel_i(ram_sel_o),
+		.cpu_data_o(ram_data_i),
+
+        .mmu_phy_addr(dphyaddr),
+        .mmu_vir_addr(dviraddr),
+
+		// Wishbone 
+		.wishbone_data_i(dwishbone_data_i),
+		.wishbone_ack_i(dwishbone_ack_i),
+		.wishbone_addr_o(dwishbone_addr_o),
+		.wishbone_data_o(dwishbone_data_o),
+		.wishbone_we_o(dwishbone_we_o),
+		.wishbone_sel_o(dwishbone_sel_o),
+		.wishbone_stb_o(dwishbone_stb_o),
+		.wishbone_cyc_o(dwishbone_cyc_o),
+
+		.stallreq(stallreq_from_mem)	       
+	);
+
+	wishbone_bus_if iwishbone_bus_if(
+		.wishbone_clk(clk100),
+        .cpu_clk(clk),
+		.rst(rst),
+	
+		// ctrl
+		.stall(stall),
+        .stall_this(stall[1]),
+		.flush(flush),
+	
+		// CPU
+        // Here is different from book, seems to be safer. Wait to be fixed in TLB exception.
+		// .cpu_ce_i(rom_ce_o & (~(|if_excepttype_i))),
+        .cpu_ce_i(rom_ce_o),
+		.cpu_data_i(32'h00000000),
+		.cpu_addr_i(rom_addr_o),
+		.cpu_we_i(`Disable),
+		.cpu_sel_i(4'b1111),
+		.cpu_data_o(rom_data_i),
+
+        .mmu_phy_addr(iphyaddr),
+        .mmu_vir_addr(iviraddr),
+
+		// Wishbone 
+		.wishbone_data_i(iwishbone_data_i),
+		.wishbone_ack_i(iwishbone_ack_i),
+		.wishbone_addr_o(iwishbone_addr_o),
+		.wishbone_data_o(iwishbone_data_o),
+		.wishbone_we_o(iwishbone_we_o),
+		.wishbone_sel_o(iwishbone_sel_o),
+		.wishbone_stb_o(iwishbone_stb_o),
+		.wishbone_cyc_o(iwishbone_cyc_o),
+
+		.stallreq(stallreq_from_if)	       
+	);
 endmodule
