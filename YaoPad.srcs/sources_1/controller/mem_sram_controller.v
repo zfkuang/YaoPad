@@ -1,27 +1,24 @@
-/*
- * sram_spartan: a ram wrapper 
- */
 `include "defines.vh"
 
-/* 
+ /*
 States:
-IDLE<-----------------------------
-|                                |
-|                                |
-|-> PartWrite  					 |
-|     |							 |
-|     v							 |
-|->	Write0 -> Write1 -> Write2 --|
-|                                |
-|                                |
----------->	Read --------------->
+->------->READ0<---->READ1---------->
+^                                   |
+^                                   |
+^               --->                |
+^               |  |                |
+<->------------>IDLE<-------------<->
+^                                   |
+^                                   |
+^                                   |
+<--------WRITE1<---->WRITE0<-------<-
  */
 
 `define SRAM_IDLE 3'b000
-`define SRAM_READ 3'b001
+`define SRAM_READ0 3'b001
+`define SRAM_READ1 3'b011
 `define SRAM_WRITE0 3'b010
-`define SRAM_WRITE1 3'b011
-`define PART_WRITE 3'b110
+`define SRAM_WRITE1 3'b110
 
 module sram(
 	input wire clk,	
@@ -80,7 +77,7 @@ module sram(
 
 	assign ram_data_o = datain[chipnum];
 
-	always @ (posedge clk)
+	always @ (edge clk)
 	begin
 		if (rst == `Enable)
 			state <= `SRAM_IDLE;
@@ -88,23 +85,34 @@ module sram(
 			case (state)
 				`SRAM_IDLE: begin
 					if (reading)
-						state <= `SRAM_READ;
+						state <= `SRAM_READ0;
 					else if (writing)
-						if (ram_sel_i == 4'b1111)
-							state <= `SRAM_WRITE0;
-						else
-							state <= `PART_WRITE;
+                        state <= `SRAM_WRITE0;
 					else
 						state <= `SRAM_IDLE;
 				end
-				`SRAM_READ: state <= `SRAM_IDLE;
+				`SRAM_READ0: state <= `SRAM_READ1;
+                `SRAM_READ1: begin
+					if (reading)
+						state <= `SRAM_READ0;
+					else if (writing)
+                        state <= `SRAM_WRITE0;
+					else
+						state <= `SRAM_IDLE;
+                end
 				`SRAM_WRITE0: state <= `SRAM_WRITE1;
-				`SRAM_WRITE1: state <= `SRAM_IDLE;
-				`PART_WRITE: state <= `SRAM_WRITE0;
+				`SRAM_WRITE1: begin:
+					if (reading)
+						state <= `SRAM_READ0;
+					else if (writing)
+                        state <= `SRAM_WRITE0;
+					else
+						state <= `SRAM_IDLE;
+                end
 			endcase
 	end
 
-	always @ (posedge clk)
+	always @ (edge clk)
 	begin
 		if (rst == `Enable) begin
 			oe <= `Disable;
@@ -115,27 +123,17 @@ module sram(
 		case (state)
 			`SRAM_IDLE: begin
 				if(reading) begin
-					// READ with ram_addr_i
 					ce <= `Enable;
 					we <= `Disable;
 					oe <= `Enable;
 					addr <= ram_addr_i[`RamAddrBus];
 				end else if (writing) begin
-					if (ram_sel_i != 4'b1111) begin
-						// Partial WRITE. Read from the given addr first
-						ce <= `Enable;
-						we <= `Disable;
-						oe <= `Enable;
-						addr <= ram_addr_i[`RamAddrBus];
-					end
-					else begin
-						// Full WRITE. Set up data and wait for one cycle
-						ce <= `Enable;
-						we <= `Disable;
-						oe <= `Disable;
-						addr <= ram_addr_i[`RamAddrBus];
-						databuf <= ram_data_i;
-					end
+					// Full WRITE. Set up data and wait for one cycle
+                    ce <= `Enable;
+                    we <= `Disable;
+                    oe <= `Disable;
+                    addr <= ram_addr_i[`RamAddrBus];
+                    databuf <= ram_data_i;
 				end
 				else begin // IDLE, no request
 					ce <= `Disable;
@@ -143,35 +141,55 @@ module sram(
 					oe <= `Disable;
 				end
 			end
-			`PART_WRITE: begin
-				// write with previously read data and input
-				// set up data and wait for 1c
-				ce <= `Enable;
-				we <= `Disable;
+            `SRAM_READ0: begin
 				oe <= `Disable;
-				addr <= ram_addr_i[`RamAddrBus];
-				// mask 
-				if (ram_sel_i[0] == 1'b1)
-					databuf[7:0] <= ram_data_i[7:0];
-				else
-					databuf[7:0] <= datain[chipnum][7:0];
-				if (ram_sel_i[1] == 1'b1)
-					databuf[15:8] <= ram_data_i[15:8];
-				else
-					databuf[15:8] <= datain[chipnum][15:8];
-				if (ram_sel_i[2] == 1'b1)
-					databuf[23:16] <= ram_data_i[23:16];
-				else
-					databuf[23:16] <= datain[chipnum][23:16];
-				if (ram_sel_i[3] == 1'b1)
-					databuf[31:24] <= ram_data_i[31:24];
-				else
-					databuf[31:24] <= datain[chipnum][31:24];
-			end 
+				ce <= `Disable;
+				we <= `Disable;
+            end
+            `SRAM_READ1: begin
+				if(reading) begin
+					ce <= `Enable;
+					we <= `Disable;
+					oe <= `Enable;
+					addr <= ram_addr_i[`RamAddrBus];
+				end else if (writing) begin
+					// Full WRITE. Set up data and wait for one cycle
+                    ce <= `Enable;
+                    we <= `Disable;
+                    oe <= `Disable;
+                    addr <= ram_addr_i[`RamAddrBus];
+                    databuf <= ram_data_i;
+				end
+				else begin // IDLE, no request
+					ce <= `Disable;
+					we <= `Disable;
+					oe <= `Disable;
+				end
+            end
 			`SRAM_WRITE0: begin
 				we <= `Enable;
 			end
-			default: begin // READ, W1: unset controller
+            `SRAM_WRITE1: begin
+				if(reading) begin
+					ce <= `Enable;
+					we <= `Disable;
+					oe <= `Enable;
+					addr <= ram_addr_i[`RamAddrBus];
+				end else if (writing) begin
+					// Full WRITE. Set up data and wait for one cycle
+                    ce <= `Enable;
+                    we <= `Disable;
+                    oe <= `Disable;
+                    addr <= ram_addr_i[`RamAddrBus];
+                    databuf <= ram_data_i;
+				end
+				else begin // IDLE, no request
+					ce <= `Disable;
+					we <= `Disable;
+					oe <= `Disable;
+				end
+            end
+			default: begin
 				oe <= `Disable;
 				ce <= `Disable;
 				we <= `Disable;
