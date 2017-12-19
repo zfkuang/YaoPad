@@ -53,7 +53,7 @@ module openmips_min_sopc_tb;
 
     initial begin
         rst = `Enable;
-        #195 rst= `Disable;
+        #300 rst= `Disable;
         #10000 $stop;
     end
 

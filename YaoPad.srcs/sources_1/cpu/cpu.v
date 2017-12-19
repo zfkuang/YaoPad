@@ -34,6 +34,8 @@
 `include"cpu/cp0.v"
 `include"cpu/mmu.v"
 `include"cpu/wishbone_bus_if.v"
+`include"controller/mem_controller.v"
+`include"controller/mem_sram_controller.v"
 
 module cpu(    input wire rst, 
     input wire clk,
@@ -62,6 +64,21 @@ module cpu(    input wire rst,
 
     input wire[5:0] int_i,
     output wire timer_int_o,
+
+	inout wire[`WordBus] base_ram_data, // [7:0] also connected to CPLD
+	output wire[19:0] base_ram_addr,
+	output wire[3:0] base_ram_be_n,
+	output wire base_ram_ce_n,
+	output wire base_ram_oe_n,
+	output wire base_ram_we_n,
+
+	inout wire[`WordBus] ext_ram_data,
+	output wire[19:0] ext_ram_addr,
+	output wire[3:0] ext_ram_be_n,
+	output wire ext_ram_ce_n,
+	output wire ext_ram_oe_n,
+	output wire ext_ram_we_n,
+
     
     input wire[`DebugBus] debug,
     output reg[`WordBus] debugdata,
@@ -236,6 +253,7 @@ module cpu(    input wire rst,
     wire stallreq_from_ex ;
     wire stallreq_from_if ;
     wire stallreq_from_mem ;
+    wire stallreq_from_sram ;
     wire[5:0] stall ;
     wire[`WordBus] new_pc ;
     wire flush ;
@@ -560,7 +578,7 @@ module cpu(    input wire rst,
         .stallreq_from_id(stallreq_from_id),
         .stallreq_from_ex(stallreq_from_ex),
         .stallreq_from_if(stallreq_from_if),
-        .stallreq_from_mem(stallreq_from_mem),
+        .stallreq_from_mem(stallreq_from_mem | stallreq_from_sram),
         .cp0_epc_i(mem_cp0_epc_o),
         .excepttype_i(mem_excepttype_o),
         .new_pc(new_pc),
@@ -622,6 +640,88 @@ module cpu(    input wire rst,
         .physical_address_o(dphyaddr)
     ) ;
 
+
+    wire[`WordBus] branch_dmem_data_i;
+    wire branch_dmem_ce_o;
+    wire[`WordBus] branch_dmem_data_o;
+    wire branch_dmem_we_o;
+    wire[3:0] branch_dmem_sel_o;
+    wire[`WordBus] branch_dmem_addr_o;
+
+    wire[`WordBus] branch_imem_data_i;
+    wire branch_imem_ce_o;
+    //wire[`WordBus] branch_imem_data_o;
+    //wire branch_imem_we_o;
+    //wire[3:0] branch_imem_sel_o;
+    wire[`WordBus] branch_imem_addr_o;
+
+    wire[`WordBus] sram_data_o;
+    wire sram_ce_i;
+    wire[`WordBus] sram_addr_i;
+	wire[`WordBus] sram_data_i;
+	wire sram_we_i;
+	wire[3:0] sram_sel_i;
+
+
+    mem_controller mem_controller0(
+        .clk(clk),
+        .rst(rst),
+
+        .stall(stall),
+        .flush(flush),
+
+        .mem_ce_i(branch_dmem_ce_o),
+        .mem_data_i(branch_dmem_data_o),
+        .mem_we_i(branch_dmem_we_o),
+        .mem_sel_i(branch_dmem_sel_o),
+        .mem_addr_i(branch_dmem_addr_o),
+        .inst_ce_i(branch_imem_ce_o),
+        .inst_addr_i(branch_imem_addr_o),
+
+        .ram_data_i(sram_data_o),
+
+        .mem_data_o(sram_data_i),
+        .mem_we_o(sram_we_i),
+        .mem_sel_o(sram_sel_i),
+        .mem_addr_o(sram_addr_i),
+        .mem_ce_o(sram_ce_i),
+
+        .ram_data_o(branch_dmem_data_i),
+        .inst_data_o(branch_imem_data_i),
+
+        .data_stallreq(stallreq_from_sram)
+    );
+
+    mem_sram mem_sram0(
+        .clk(clk),
+        .rst(rst),
+
+        .ram_ce_i(sram_ce_i),
+        .ram_addr_i(sram_addr_i),
+        .ram_data_i(sram_data_i),
+        .ram_we_i(sram_we_i),
+        .ram_sel_i(sram_sel_i),
+        
+        .ram_data_o(sram_data_o),
+
+        .ram0_addr(base_ram_addr), 
+        .ram0_oe(base_ram_oe_n),
+        .ram0_ce(base_ram_ce_n),
+        .ram0_we(base_ram_we_n), 
+        .ram0_data(base_ram_data),
+        .ram0_be_n(base_ram_be_n),
+
+        .ram1_addr(ext_ram_addr), 
+        .ram1_oe(ext_ram_oe_n), 
+        .ram1_ce(ext_ram_ce_n), 
+        .ram1_we(ext_ram_we_n),
+        .ram1_data(ext_ram_data),
+        .ram1_be_n(ext_ram_be_n)
+        
+        //.debugdata(ramdebugdata)
+    );
+
+
 	wishbone_bus_if dwishbone_bus_if(      
         .wishbone_clk(clk100),
         .cpu_clk(clk),
@@ -653,6 +753,13 @@ module cpu(    input wire rst,
 		.wishbone_sel_o(dwishbone_sel_o),
 		.wishbone_stb_o(dwishbone_stb_o),
 		.wishbone_cyc_o(dwishbone_cyc_o),
+
+        .branch_mem_data_i(branch_dmem_data_i),
+        .branch_mem_ce_o(branch_dmem_ce_o),
+        .branch_mem_data_o(branch_dmem_data_o),
+        .branch_mem_we_o(branch_dmem_we_o),
+        .branch_mem_sel_o(branch_dmem_sel_o),
+        .branch_mem_addr_o(branch_dmem_addr_o),
 
 		.stallreq(stallreq_from_mem)	       
 	);
@@ -689,6 +796,13 @@ module cpu(    input wire rst,
 		.wishbone_sel_o(iwishbone_sel_o),
 		.wishbone_stb_o(iwishbone_stb_o),
 		.wishbone_cyc_o(iwishbone_cyc_o),
+
+        .branch_mem_data_i(branch_imem_data_i),
+        .branch_mem_ce_o(branch_imem_ce_o),
+        //.branch_mem_data_o(),
+        //.branch_mem_we_o(),
+        //.branch_mem_sel_o(),
+        .branch_mem_addr_o(branch_imem_addr_o),
 
 		.stallreq(stallreq_from_if)	       
 	);

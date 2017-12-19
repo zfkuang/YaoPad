@@ -97,7 +97,7 @@ clk_wiz_0 clk_wiz_00(
 )*/
  
  reg[25:0] slowclk ;
- // initial begin slowclk = 22'b0 ;end
+ initial begin slowclk = 22'b0 ;end
  always @ (posedge clk) begin
       slowclk <= slowclk+1 ;
  end
@@ -138,6 +138,9 @@ wire wb_m1_we_i ;
 wire[`WordBus] wb_m1_data_o ;
 wire wb_m1_ack_o ;
 
+wire[`WordBus] debug_base_ram_data ;
+wire[`WordBus] debug_ext_ram_data ;
+
  cpu cpu0(
 		.clk(slowclk[0]),
     .clk100(slowclk[0]),
@@ -160,6 +163,18 @@ wire wb_m1_ack_o ;
 		.dwishbone_ack_i(wb_m0_ack_o),
 		.dwishbone_stb_o(wb_m0_stb_i),
 		.dwishbone_cyc_o(wb_m0_cyc_i),
+
+    .base_ram_addr(base_ram_addr), 
+    .base_ram_oe_n(base_ram_oe_n),
+    .base_ram_ce_n(base_ram_ce_n),
+    .base_ram_we_n(base_ram_we_n), 
+    .base_ram_data(debug_base_ram_data),
+
+    .ext_ram_addr(ext_ram_addr), 
+    .ext_ram_oe_n(ext_ram_oe_n), 
+    .ext_ram_ce_n(ext_ram_ce_n), 
+    .ext_ram_we_n(ext_ram_we_n),
+    .ext_ram_data(debug_ext_ram_data),
 
   	.timer_int_o(timer_int),
   	.int_i(int),
@@ -296,6 +311,7 @@ wire wb_m1_ack_o ;
     .m7_cyc_i(`Disable),
     .m7_stb_i(`Disable),
 
+/*
     .s0_data_o(wb_s0_data_o),
     .s0_addr_o(wb_s0_addr_o),
     .s0_sel_o(wb_s0_sel_o),
@@ -306,17 +322,21 @@ wire wb_m1_ack_o ;
     .s0_ack_i(wb_s0_ack_i),
     .s0_err_i(`Disable),
     .s0_rty_i(`Disable),
+*/
+    .s0_ack_i(`Disable),
+    .s0_err_i(`Disable),
+    .s0_rty_i(`Disable),
 
     .s1_data_i(s1_data_i),
-	.s1_data_o(s1_data_o),
-	.s1_addr_o(s1_addr_o),
-	.s1_sel_o(s1_sel_o),
-	.s1_we_o(s1_we_o),
-	.s1_cyc_o(s1_cyc_o),
-	.s1_stb_o(s1_stb_o),
-	.s1_ack_i(s1_ack_i),
-	.s1_err_i(1'b0), 
-	.s1_rty_i(1'b0),
+    .s1_data_o(s1_data_o),
+    .s1_addr_o(s1_addr_o),
+    .s1_sel_o(s1_sel_o),
+    .s1_we_o(s1_we_o),
+    .s1_cyc_o(s1_cyc_o),
+    .s1_stb_o(s1_stb_o),
+    .s1_ack_i(s1_ack_i),
+    .s1_err_i(1'b0), 
+    .s1_rty_i(1'b0),
 
     .s2_ack_i(`Disable),
     .s2_err_i(`Disable),
@@ -382,12 +402,9 @@ wire wb_m1_ack_o ;
     .s15_rty_i(`Disable)
   );
 
-
-  wire[`WordBus] debug_base_ram_data ;
-  wire[`WordBus] debug_ext_ram_data ;
-
-  assign base_ram_be_n = 4'b0000;
-  assign ext_ram_be_n = 4'b0000;
+  // assign base_ram_be_n = 4'b0000;
+  // assign ext_ram_be_n = 4'b0000;
+  /*
   sram sram0(
     .clk(slowclk[0]), .rst(rst), 
 
@@ -415,6 +432,7 @@ wire wb_m1_ack_o ;
     
     .debugdata(ramdebugdata)
     );
+    */
 
   led led0(
     .clk(slowclk[0]), .rst(rst), 
@@ -433,11 +451,11 @@ wire wb_m1_ack_o ;
     );
    
    // fake mem
-	/*data_ram data_ram0(
+	data_ram data_ram0(
 		.we(~base_ram_we_n),
     .sel(~base_ram_be_n),
     .ce(~base_ram_ce_n),
 		.addr(base_ram_addr),
 		.data(debug_base_ram_data)
-	);*/
+	);
 endmodule

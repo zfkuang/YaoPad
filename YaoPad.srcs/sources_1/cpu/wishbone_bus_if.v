@@ -53,6 +53,14 @@ module wishbone_bus_if(
     output reg wishbone_stb_o,
     output reg wishbone_cyc_o,
 
+
+    input wire[`WordBus] branch_mem_data_i,
+    output reg branch_mem_ce_o,
+    output reg[`WordBus] branch_mem_data_o,
+    output reg branch_mem_we_o,
+    output reg[3:0] branch_mem_sel_o,
+    output reg[`WordBus] branch_mem_addr_o,
+
     output reg stallreq
 
 );
@@ -81,15 +89,31 @@ module wishbone_bus_if(
             case (wishbone_state)
                 `WB_IDLE:   begin
                     if((cpu_ce_i == `Enable) && (flush == `Disable)) begin
-                        // Initalize and change to WB_BUSY
-                        wishbone_stb_o <= `Enable;
-                        wishbone_cyc_o <= `Enable;
-                        wishbone_addr_o <= mmu_phy_addr;
-                        wishbone_data_o <= cpu_data_i;
-                        wishbone_we_o <= cpu_we_i;
-                        wishbone_sel_o <= cpu_sel_i;
-                        wishbone_state <= `WB_BUSY;
-                        rd_buf <= `Zero;
+                        if(mmu_phy_addr[31:28] == 4'b0000) begin
+                            wishbone_stb_o <= `Disable;
+                            wishbone_cyc_o <= `Disable;
+                            wishbone_addr_o <= `Zero;
+                            wishbone_data_o <= `Zero;
+                            wishbone_we_o <= `Disable;
+                            wishbone_sel_o <= 4'b0000;
+                            rd_buf <= `Zero;
+
+                            branch_mem_ce_o <= cpu_ce_i;
+                            branch_mem_addr_o <= mmu_phy_addr;
+                            branch_mem_data_o <= cpu_data_i;
+                            branch_mem_we_o <= cpu_we_i;
+                            branch_mem_sel_o <= cpu_sel_i;                          
+                        end else begin
+                            // Initalize and change to WB_BUSY
+                            wishbone_stb_o <= `Enable;
+                            wishbone_cyc_o <= `Enable;
+                            wishbone_addr_o <= mmu_phy_addr;
+                            wishbone_data_o <= cpu_data_i;
+                            wishbone_we_o <= cpu_we_i;
+                            wishbone_sel_o <= cpu_sel_i;
+                            wishbone_state <= `WB_BUSY;
+                            rd_buf <= `Zero;
+                        end
                     end
                 end
 
@@ -146,8 +170,13 @@ module wishbone_bus_if(
             case (wishbone_state)
                 `WB_IDLE: begin
                     if((cpu_ce_i == 1'b1) && (flush == `Disable)) begin
-                        stallreq <= `Enable;
-                        cpu_data_o <= `Zero;
+                        if(mmu_phy_addr[31:28] == 4'b0000) begin
+                            stallreq <= `Disable;
+                            cpu_data_o <= branch_mem_data_i;
+                        end else begin
+                            stallreq <= `Enable;
+                            cpu_data_o <= `Zero;
+                        end
                     end
                 end
 
