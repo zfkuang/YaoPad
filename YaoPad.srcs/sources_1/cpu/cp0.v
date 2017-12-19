@@ -33,6 +33,7 @@ module cp0(
 
     input wire[`WordBus] excepttype_i,
     input wire[`WordBus] current_inst_addr_i,
+    input wire[`WordBus] current_data_addr_i,
     input wire is_in_delayslot_i,
 
 
@@ -44,6 +45,18 @@ module cp0(
     output reg[`WordBus] epc_o,
     output reg[`WordBus] config_o,
     output reg[`WordBus] prid_o,
+
+    output reg[`WordBus] index_o,
+    output reg[`WordBus] random_o,
+    output reg[`WordBus] entryhi_o,
+    output reg[`WordBus] entrylo0_o,
+    output reg[`WordBus] entrylo1_o,
+    output reg[`WordBus] context_o,
+    output wire[`WordBus] pagemask_o,
+    output reg[`WordBus] badvaddr_o,
+    output reg[`WordBus] wired_o,
+
+
 
     output reg timer_int_o,
 
@@ -72,6 +85,9 @@ module cp0(
         endcase
     end
 
+    reg random[3:0] ;
+    assign random_o = {28'b0, random} ;
+    assign pagemask_o = `Zero ;
     always @ (posedge clk) begin
         if(rst == `Enable) begin
             count_o <= `Zero ;
@@ -83,10 +99,15 @@ module cp0(
             config_o <= `Zero ;
             config_o[16] <= 1'b1 ;
             prid_o <= 32'b00000000010011000000000100000010 ;
+            entrylo0_o <= 32'b00000000000000000000000000010000 ;
+            entrylo1_o <= 32'b00000000000000000000000000010000 ;
+            entryhi_o <= `Zero ;
+            random <= 4'b0000 ;
             timer_int_o <= `Disable ;
         end
         else begin
             count_o <= count_o + 1 ;
+            random <= random - 1 ;
             cause_o[15:10] <= int_i ;
             if(count_o == compare_o && compare_o != `Zero) begin
                 timer_int_o <= `Enable ;
@@ -111,11 +132,36 @@ module cp0(
                     `CP0_EPC: begin
                         epc_o <= data_i ;
                     end
+                    `CP0_INDEX: begin
+                        index_o <= {28'h0, data_i[3:0]} ;
+                    end
+                    `CP0_RANDOM: begin
+                    end
+                    `CP0_ENTRYLO0: begin
+                        entrylo0_o <= data_i ;
+                        entrylo0_o <= {6'b0, data_i[25:6], 3'b010, data_i[2:0]};
+                    end
+                    `CP0_ENTRYLO1: begin
+                        entrylo1_o <= data_i ;
+                        entrylo1_o <= {6'b0, data_i[25:6], 3'b010, data_i[2:0]};
+                    end
+                    `CP0_CONTEXT: begin
+                        
+                    end
+                    `CP0_PAGEMASK: begin
+                        
+                    end
+                    `CP0_WIRED: begin
+                        
+                    end
+                    `CP0_ENTRYHI: begin
+                        entryhi_o <= {data_i[31:13], 5'b0, data_i[7:0]};
+                    end
                 endcase
             end
 
             case(excepttype_i)
-                32'h00000001:begin
+                32'h00000100:begin
                     cause_o[31] <= is_in_delayslot_i ;
                     if(is_in_delayslot_i == `Enable) begin
                         epc_o <= current_inst_addr_i - 4 ;
@@ -124,6 +170,48 @@ module cp0(
                     end
                     status_o[1] <= 1'b1 ;
                     cause_o[6:2] <= 5'b00000 ;
+                end                
+                32'h00000001:begin
+                    if(status_o[1] == 1'b0) begin
+                        cause_o[31] <= is_in_delayslot_i ;
+                        if(is_in_delayslot_i == `Enable) begin
+                            epc_o <= current_inst_addr_i - 4 ;
+                        end else begin
+                            epc_o <= current_inst_addr_i ;
+                        end
+                    end
+                    badvaddr_o <= current_data_addr_i;
+                    entryhi_o[31:13] <= current_data_addr_i[31:13];
+                    status_o[1] <= 1'b1 ;
+                    cause_o[6:2] <= 5'b00001 ;
+                end                
+                32'h00000002:begin
+                    if(status_o[1] == 1'b0) begin
+                        cause_o[31] <= is_in_delayslot_i ;
+                        if(is_in_delayslot_i == `Enable) begin
+                            epc_o <= current_inst_addr_i - 4 ;
+                        end else begin
+                            epc_o <= current_inst_addr_i ;
+                        end
+                    end
+                    badvaddr_o <= current_data_addr_i;
+                    entryhi_o[31:13] <= current_data_addr_i[31:13];
+                    status_o[1] <= 1'b1 ;
+                    cause_o[6:2] <= 5'b00010 ;
+                end                
+                32'h00000003:begin
+                    if(status_o[1] == 1'b0) begin
+                        cause_o[31] <= is_in_delayslot_i ;
+                        if(is_in_delayslot_i == `Enable) begin
+                            epc_o <= current_inst_addr_i - 4 ;
+                        end else begin
+                            epc_o <= current_inst_addr_i ;
+                        end
+                    end
+                    badvaddr_o <= current_data_addr_i;
+                    entryhi_o[31:13] <= current_data_addr_i[31:13];
+                    status_o[1] <= 1'b1 ;
+                    cause_o[6:2] <= 5'b00011 ;
                 end
                 32'h00000008:begin
                     if(status_o[1] == 1'b0) begin
@@ -206,6 +294,30 @@ module cp0(
                 end
                 `CP0_CONFIG: begin
                     data_o <= config_o ;
+                end                    
+                `CP0_INDEX: begin
+                    data_o <= index_o ;
+                end
+                `CP0_RANDOM: begin
+                    data_o <= random_o ;
+                end
+                `CP0_ENTRYLO0: begin
+                    data_o <= entrylo0_o ;
+                end
+                `CP0_ENTRYLO1: begin
+                    data_o <= entrylo1_o ;
+                end
+                `CP0_CONTEXT: begin
+                    data_o <= context_o ;
+                end
+                `CP0_PAGEMASK: begin
+                    data_o <= pagemask_o ;
+                end
+                `CP0_WIRED: begin
+                    data_o <= wired_o ;
+                end
+                `CP0_ENTRYHI: begin 
+                    data_o <= entryhi_o ;
                 end
             endcase
         end

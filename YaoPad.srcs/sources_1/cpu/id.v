@@ -38,6 +38,8 @@ module id(
 
     input wire is_in_delayslot_i,
     input wire[`AluOpBus] ex_aluop_i,
+    input wire[`WordBus] current_inst_addr_i,
+    input wire[`WordBus] excepttype_i,
 
     input wire[5:0] int_i,
  
@@ -93,8 +95,8 @@ module id(
     reg instvalid ;
     reg except_eret ;
     reg except_syscall ;
-    assign excepttype_o = {19'b0, except_eret, 2'b0, ~instvalid, except_syscall, 8'b0} ;
-    assign current_inst_addr_o = pc_i ;
+    assign excepttype_o = {excepttype_i[31:13], except_eret, 2'b0, ~instvalid, except_syscall, 8'b0} ;
+    assign current_inst_addr_o = current_inst_addr_i ;
 
     always @ (*) begin // interprete instruction
         if(rst == `Enable) begin 

@@ -63,6 +63,13 @@ module ex(
     input wire[`WordBus] excepttype_i,
     input wire[`WordBus] current_inst_addr_i,
 
+    input wire[`WordBus] phy_addr_i,
+    input wire tlbl_miss_exception_i,
+    input wire tlbs_miss_exception_i,
+    input wire tlb_mod_exception_i,
+    
+    output wire[`WordBus] vir_addr_o,
+
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
     output reg[`WordBus] wdata_o,
@@ -87,6 +94,7 @@ module ex(
 
     output wire[`WordBus] excepttype_o,
     output wire[`WordBus] current_inst_addr_o,
+    output wire[`WordBus] current_data_addr_o,
     output wire is_in_delayslot_o,
 
 
@@ -107,7 +115,10 @@ module ex(
     reg trapassert ;
 
     assign reg2_o = reg2_i;
-    assign mem_addr_o = reg1_i + {{16{inst_i[15]}},inst_i[15:0]};
+    assign vir_addr_o = reg1_i + {{16{inst_i[15]}},inst_i[15:0]} ;
+    assign mem_addr_o = phy_addr_i;
+    assign current_data_addr_o = (alusel_i == `ALUS_LOAD_STORE) ? mem_addr_o : current_inst_addr_o ;
+    wire tlb_exception[2:0] = {tlb_mod_exception_i, tlbl_miss_exception_i, tlbs_miss_exception_i} & {3{alusel_i == `ALUS_LOAD_STORE}} ;
     assign aluop_o = aluop_i;
     always @ (*) begin // logic operations 
         if (rst == `Enable) begin 
@@ -323,7 +334,7 @@ module ex(
         end
     end
 
-    assign excepttype_o = {excepttype_i[31:12], ovassert, trapassert, excepttype_i[9:8], 8'h00} ;
+    assign excepttype_o = {excepttype_i[31:16], tlb_exception, excepttype_i[12], ovassert, trapassert, excepttype_i[9:8], 8'h00} ;
     assign is_in_delayslot_o = is_in_delayslot_i ;
     assign current_inst_addr_o = current_inst_addr_i ; 
     always @ (*) begin

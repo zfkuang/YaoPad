@@ -38,11 +38,6 @@ module wishbone_bus_if(
     input wire[3:0] cpu_sel_i,
     output reg[`WordBus] cpu_data_o,
 
-    //MMU interface 
-    input wire[`WordBus] mmu_phy_addr,
-    output wire[`WordBus] mmu_vir_addr,
-
-
     //Wishbone interface
     input wire[`WordBus] wishbone_data_i,
     input wire wishbone_ack_i,
@@ -61,8 +56,6 @@ module wishbone_bus_if(
     reg[1:0] wishbone_state;
     // buffer register of data from wishbone.
     reg[`WordBus] rd_buf;
-
-    assign mmu_vir_addr = cpu_addr_i;
 
     /* State change */
 
@@ -84,7 +77,7 @@ module wishbone_bus_if(
                         // Initalize and change to WB_BUSY
                         wishbone_stb_o <= `Enable;
                         wishbone_cyc_o <= `Enable;
-                        wishbone_addr_o <= mmu_phy_addr;
+                        wishbone_addr_o <= cpu_addr_i;
                         wishbone_data_o <= cpu_data_i;
                         wishbone_we_o <= cpu_we_i;
                         wishbone_sel_o <= cpu_sel_i;

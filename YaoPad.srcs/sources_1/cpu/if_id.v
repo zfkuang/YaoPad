@@ -28,9 +28,12 @@ module if_id(
 
     input wire[`WordBus] if_pc,
     input wire[`WordBus] if_inst,
+    input wire[`WordBus] if_excepttype,
+
     output reg[`WordBus] id_pc,
     output reg[`WordBus] id_inst,
-
+    output reg[`WordBus] id_excepttype,
+    
     output wire[`WordBus] debugdata
     );
     
@@ -40,9 +43,11 @@ module if_id(
         if ((rst == `Enable) || ((stall[1] == `Enable) && (stall[2] == `Disable)) || (flush == `Enable)) begin
             id_pc <= `Zero ;
             id_inst <= `Zero ;
+            id_excepttype <= `Zero ;
         end else if (stall[1] == `Disable) begin
             id_pc <= if_pc ;
             id_inst <= if_inst ;
+            id_excepttype <= if_excepttype ;
         end 
     end
     
