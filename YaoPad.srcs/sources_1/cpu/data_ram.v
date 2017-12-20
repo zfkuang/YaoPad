@@ -2,6 +2,7 @@
 `define DataMemNum 4096
 `define DataMemNumLog2 12
 module data_ram(
+	input wire clk,
 	input wire ce,
 	input wire we,
 	input wire[19:0] addr,
@@ -11,6 +12,10 @@ module data_ram(
 );
 
 	reg[`WordBus]  data_mem[0:`DataMemNum-1];
+
+	wire[`WordBus] datatest;
+	assign datatest = data_mem[4];
+
 	initial $readmemh ( "inst_rom.data", data_mem );
 
 	reg[`WordBus] data_o ;

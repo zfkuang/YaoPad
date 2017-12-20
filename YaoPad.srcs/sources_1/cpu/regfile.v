@@ -54,6 +54,16 @@ module regfile(
     assign reg4 = register[4];
     wire[`WordBus] reg5;
     assign reg5 = register[5];
+    
+    wire[`WordBus] reg8;
+    assign reg8 = register[8];
+    wire[`WordBus] reg9;
+    assign reg9 = register[9];
+    wire[`WordBus] reg10;
+    assign reg10 = register[10];
+
+    wire[`WordBus] reg16;
+    assign reg16 = register[16];
 
     always @ (posedge clk) begin
         if (rst == `Disable) begin 

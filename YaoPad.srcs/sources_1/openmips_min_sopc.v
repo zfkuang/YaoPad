@@ -168,12 +168,14 @@ wire[`WordBus] debug_ext_ram_data ;
     .base_ram_oe_n(base_ram_oe_n),
     .base_ram_ce_n(base_ram_ce_n),
     .base_ram_we_n(base_ram_we_n), 
+    .base_ram_be_n(base_ram_be_n),
     .base_ram_data(debug_base_ram_data),
 
     .ext_ram_addr(ext_ram_addr), 
     .ext_ram_oe_n(ext_ram_oe_n), 
     .ext_ram_ce_n(ext_ram_ce_n), 
     .ext_ram_we_n(ext_ram_we_n),
+    .ext_ram_be_n(ext_ram_be_n),
     .ext_ram_data(debug_ext_ram_data),
 
   	.timer_int_o(timer_int),
@@ -452,8 +454,9 @@ wire[`WordBus] debug_ext_ram_data ;
    
    // fake mem
 	data_ram data_ram0(
+    .clk(clk),
 		.we(~base_ram_we_n),
-    .sel(~base_ram_be_n),
+    .sel(base_ram_be_n),
     .ce(~base_ram_ce_n),
 		.addr(base_ram_addr),
 		.data(debug_base_ram_data)

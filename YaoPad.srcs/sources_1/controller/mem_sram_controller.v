@@ -11,9 +11,10 @@ States:
 		   >-->
  */
 
-`define SRAM_IDLE 2'b00
-`define SRAM_READ 2'b01
-`define SRAM_WRITE 2'b11
+`define SRAM_BEGIN 2'b01
+`define SRAM_IDLE 2'b10
+`define SRAM_READ 2'b11
+`define SRAM_WRITE 2'b00
 
 
 module mem_sram(
@@ -53,7 +54,7 @@ module mem_sram(
 	// Internal Assignments
 	assign reading  = ram_ce_i & ~ram_we_i;
 	assign writing = ram_ce_i & ram_we_i;
-	
+
 	// ram wires
 	assign chipnum = ram_addr_i[`RamAddrLog];
 	assign ram0_oe = ~((~chipnum) ? oe : `Disable);
@@ -93,9 +94,10 @@ module mem_sram(
 	always @ (posedge clk or negedge clk)
 	begin
 		if (is_rst == `Enable)
-			state <= `SRAM_IDLE;
+			state <= `SRAM_BEGIN;
 		else
 			case (state)
+				`SRAM_BEGIN: state <= `SRAM_IDLE;
 				`SRAM_IDLE: begin
 					if (reading)
 						state <= `SRAM_READ;
@@ -123,8 +125,10 @@ module mem_sram(
 			`SRAM_IDLE: begin
                 ce <= `Disable;
                 we <= `Disable;
-				if(ram_ce_i) begin
+				if(reading) begin
 					oe <= `Enable;
+				end else if(writing) begin
+					oe <= `Disable;
 				end else begin // IDLE, no request
 					oe <= `Disable;
 				end
@@ -135,7 +139,7 @@ module mem_sram(
 				ce <= `Enable;
             end
 			`SRAM_WRITE: begin
-				oe <= `Enable;
+				oe <= `Disable;
 				we <= `Enable;
 				ce <= `Enable;
 			end

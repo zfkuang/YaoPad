@@ -74,6 +74,34 @@ module wishbone_bus_if(
 
     /* State change */
 
+    always @ (*) begin
+        if(rst == `Enable) begin
+            branch_mem_ce_o <= `Disable;
+            branch_mem_addr_o <= `Zero;
+            branch_mem_data_o <= `Zero;
+            branch_mem_we_o <= `Disable;
+            branch_mem_sel_o <= 4'b0000; 
+        end else begin
+            branch_mem_ce_o <= `Disable;
+            branch_mem_addr_o <= `Zero;
+            branch_mem_data_o <= `Zero;
+            branch_mem_we_o <= `Disable;
+            branch_mem_sel_o <= 4'b0000; 
+            if(wishbone_state == `WB_IDLE) begin
+                if((cpu_ce_i == `Enable) && (flush == `Disable)) begin
+                    if(mmu_phy_addr[31:28] == 4'b0000) begin
+                        branch_mem_ce_o <= cpu_ce_i;
+                        branch_mem_addr_o <= mmu_phy_addr;
+                        branch_mem_data_o <= cpu_data_i;
+                        branch_mem_we_o <= cpu_we_i;
+                        branch_mem_sel_o <= cpu_sel_i; 
+                    end
+                end
+            end
+        end
+
+    end
+
     always @ (posedge wishbone_clk) begin
         if(rst == `Enable) begin
             // rest, change to WB_IDLE
@@ -96,13 +124,7 @@ module wishbone_bus_if(
                             wishbone_data_o <= `Zero;
                             wishbone_we_o <= `Disable;
                             wishbone_sel_o <= 4'b0000;
-                            rd_buf <= `Zero;
-
-                            branch_mem_ce_o <= cpu_ce_i;
-                            branch_mem_addr_o <= mmu_phy_addr;
-                            branch_mem_data_o <= cpu_data_i;
-                            branch_mem_we_o <= cpu_we_i;
-                            branch_mem_sel_o <= cpu_sel_i;                          
+                            rd_buf <= `Zero;                         
                         end else begin
                             // Initalize and change to WB_BUSY
                             wishbone_stb_o <= `Enable;
