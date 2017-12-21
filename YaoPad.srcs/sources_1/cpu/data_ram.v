@@ -14,7 +14,7 @@ module data_ram(
 	reg[`WordBus]  data_mem[0:`DataMemNum-1];
 
 	wire[`WordBus] datatest;
-	assign datatest = data_mem[4];
+	assign datatest = data_mem[48];
 
 	initial $readmemh ( "inst_rom.data", data_mem );
 

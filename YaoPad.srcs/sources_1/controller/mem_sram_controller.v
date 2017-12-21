@@ -11,10 +11,11 @@ States:
 		   >-->
  */
 
-`define SRAM_BEGIN 2'b01
-`define SRAM_IDLE 2'b10
-`define SRAM_READ 2'b11
-`define SRAM_WRITE 2'b00
+`define SRAM_BEGIN 3'b100
+`define SRAM_IDLE 3'b000
+`define SRAM_READ 3'b001
+`define SRAM_WRITE 3'b010
+`define SRAM_WRITE_TO_READ 3'b011
 
 
 module mem_sram(
@@ -107,7 +108,8 @@ module mem_sram(
 						state <= `SRAM_IDLE;
 				end
 				`SRAM_READ: state <= `SRAM_IDLE;
-				`SRAM_WRITE: state <= `SRAM_IDLE;
+				`SRAM_WRITE: state <= `SRAM_WRITE_TO_READ;
+				`SRAM_WRITE_TO_READ: state<= `SRAM_READ;
 				default: begin
 				end
 			endcase
@@ -129,6 +131,8 @@ module mem_sram(
 					oe <= `Enable;
 				end else if(writing) begin
 					oe <= `Disable;
+					ce <= `Enable;
+					we <= `Enable;
 				end else begin // IDLE, no request
 					oe <= `Disable;
 				end
@@ -140,8 +144,13 @@ module mem_sram(
             end
 			`SRAM_WRITE: begin
 				oe <= `Disable;
-				we <= `Enable;
-				ce <= `Enable;
+				we <= `Disable;
+				ce <= `Disable;
+			end
+			`SRAM_WRITE_TO_READ: begin
+                ce <= `Disable;
+                we <= `Disable;
+				oe <= `Enable;
 			end
 			default: begin
 			end
