@@ -30,7 +30,6 @@ module pc_rom(
     input wire flush,
     input wire[`WordBus] new_pc,   
 
-    output wire[`WordBus] pc,    
     output reg[`WordBus] vir_pc,
     input wire[`WordBus] phy_pc,
     input wire tlbl_miss_exception_i,
@@ -40,12 +39,11 @@ module pc_rom(
     output wire[`WordBus] inst_o,
     output reg ce, 
     output wire[`WordBus] excepttype_o,
-    output wire[`WordBus] debugdata,
+    output wire[`WordBus] debugdata
     );
     
     reg is_rst;
-    wire tlb_exception[2:0] = {tlb_mod_exception_i, tlbl_miss_exception_i, tlbs_miss_exception_i} ;
-    assign pc = phy_pc ;
+    wire[2:0] tlb_exception = {tlbs_miss_exception_i, tlbl_miss_exception_i, tlb_mod_exception_i} ;
     assign excepttype_o = {16'b0, tlb_exception, 13'b0} ;
     assign inst_o = ((tlb_exception) ? (`Zero) : (inst_i)) ;
 

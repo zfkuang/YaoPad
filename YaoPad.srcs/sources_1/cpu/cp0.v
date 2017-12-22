@@ -45,9 +45,10 @@ module cp0(
     output reg[`WordBus] epc_o,
     output reg[`WordBus] config_o,
     output reg[`WordBus] prid_o,
+    output wire[`WordBus] ebase_o,
 
     output reg[`WordBus] index_o,
-    output reg[`WordBus] random_o,
+    output wire[`WordBus] random_o,
     output reg[`WordBus] entryhi_o,
     output reg[`WordBus] entrylo0_o,
     output reg[`WordBus] entrylo1_o,
@@ -85,9 +86,12 @@ module cp0(
         endcase
     end
 
-    reg random[3:0] ;
+    reg[3:0] random ;
+    reg[17:0] ebase_addr ;
     assign random_o = {28'b0, random} ;
     assign pagemask_o = `Zero ;
+    assign ebase_o = {2'b10, ebase_addr, 12'b0} ;
+
     always @ (posedge clk) begin
         if(rst == `Enable) begin
             count_o <= `Zero ;
@@ -102,6 +106,7 @@ module cp0(
             entrylo0_o <= 32'b00000000000000000000000000010000 ;
             entrylo1_o <= 32'b00000000000000000000000000010000 ;
             entryhi_o <= `Zero ;
+            ebase_addr <= 18'b0 ;
             random <= 4'b0000 ;
             timer_int_o <= `Disable ;
         end
@@ -138,11 +143,9 @@ module cp0(
                     `CP0_RANDOM: begin
                     end
                     `CP0_ENTRYLO0: begin
-                        entrylo0_o <= data_i ;
                         entrylo0_o <= {6'b0, data_i[25:6], 3'b010, data_i[2:0]};
                     end
                     `CP0_ENTRYLO1: begin
-                        entrylo1_o <= data_i ;
                         entrylo1_o <= {6'b0, data_i[25:6], 3'b010, data_i[2:0]};
                     end
                     `CP0_CONTEXT: begin
@@ -156,6 +159,9 @@ module cp0(
                     end
                     `CP0_ENTRYHI: begin
                         entryhi_o <= {data_i[31:13], 5'b0, data_i[7:0]};
+                    end
+                    `CP0_EBASE: begin
+                        ebase_addr <= data_i[29:12];
                     end
                 endcase
             end
@@ -263,6 +269,18 @@ module cp0(
                 end
                 32'h0000000e:begin
                     status_o[1] <= 1'b0 ;
+                end
+                32'h00000018:begin // Kaboom!
+                    if(status_o[1] == 1'b0) begin
+                        cause_o[31] <= is_in_delayslot_i ;
+                        if(is_in_delayslot_i == `Enable) begin
+                            epc_o <= current_inst_addr_i - 4 ;
+                        end else begin
+                            epc_o <= current_inst_addr_i ;
+                        end
+                    end
+                    status_o[1] <= 1'b1 ;
+                    cause_o[6:2] <= 5'b11000 ;    
                 end
             endcase
         end

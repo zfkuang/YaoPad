@@ -68,7 +68,12 @@ module ex(
     input wire tlbs_miss_exception_i,
     input wire tlb_mod_exception_i,
     
+    input wire write_tlb_index_i,
+    input wire write_tlb_random_i,
+
     output wire[`WordBus] vir_addr_o,
+    output wire ex_ce_o,
+    output wire ex_we_o,
 
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
@@ -97,11 +102,15 @@ module ex(
     output wire[`WordBus] current_data_addr_o,
     output wire is_in_delayslot_o,
 
+    output wire write_tlb_index_o,
+    output wire write_tlb_random_o,
 
     output wire[`WordBus] debugdata,
     output reg stallreq
     );
 
+    assign write_tlb_index_o = write_tlb_index_i ;
+    assign write_tlb_random_o = write_tlb_random_i ;
     assign debugdata = {aluop_i, inst_i[23:0]} ;
     
     reg[`WordBus] logicres ;
@@ -117,8 +126,10 @@ module ex(
     assign reg2_o = reg2_i;
     assign vir_addr_o = reg1_i + {{16{inst_i[15]}},inst_i[15:0]} ;
     assign mem_addr_o = phy_addr_i;
-    assign current_data_addr_o = (alusel_i == `ALUS_LOAD_STORE) ? mem_addr_o : current_inst_addr_o ;
-    wire tlb_exception[2:0] = {tlb_mod_exception_i, tlbl_miss_exception_i, tlbs_miss_exception_i} & {3{alusel_i == `ALUS_LOAD_STORE}} ;
+    assign ex_ce_o = (alusel_i == `ALUS_LOAD_STORE) ; 
+    assign ex_we_o = (aluop_i == `MEM_SW) || (aluop_i == `MEM_SB) || (aluop_i == `MEM_SH) ; 
+    assign current_data_addr_o = (alusel_i == `ALUS_LOAD_STORE) ? vir_addr_o : current_inst_addr_o ;
+    wire[2:0] tlb_exception = {tlbs_miss_exception_i, tlbl_miss_exception_i, tlb_mod_exception_i} & {3{ex_ce_o}} ;
     assign aluop_o = aluop_i;
     always @ (*) begin // logic operations 
         if (rst == `Enable) begin 

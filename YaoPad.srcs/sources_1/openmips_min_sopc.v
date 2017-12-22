@@ -97,7 +97,7 @@ clk_wiz_0 clk_wiz_00(
 )*/
  
  reg[25:0] slowclk ;
- // initial begin slowclk = 22'b0 ;end
+ initial begin slowclk = 26'b0 ;end
  always @ (posedge clk) begin
       slowclk <= slowclk+1 ;
  end

@@ -79,8 +79,11 @@
 `define EXE_COP0 	6'b010000
 `define EXE_MT 5'b00100
 `define EXE_MF 5'b00000
+`define EXE_OTHERS 5'b10000
 
 `define EXE_ERET 6'b011000
+`define EXE_TLBWI 6'b000010
+`define EXE_TLBWR 6'b000110
 `define EXE_TEQI	5'b01100
 `define EXE_TNEI	5'b01110
 `define EXE_TGEI	5'b01000
@@ -197,6 +200,7 @@
 `define CP0_PAGEMASK 5'b00101
 `define CP0_WIRED 5'b00110
 `define CP0_ENTRYHI 5'b01010
+`define CP0_EBASE 5'b01111
 
 `define CP0_COUNT 5'b01001
 `define CP0_COMPARE 5'b01011

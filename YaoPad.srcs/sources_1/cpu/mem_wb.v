@@ -35,6 +35,9 @@ module mem_wb(
         input wire mem_cp0_reg_we,
         input wire[`WordBus] mem_cp0_reg_data,
 
+        input wire mem_write_tlb_index,
+        input wire mem_write_tlb_random,    
+
         input wire flush,
 
         output reg[`RegAddrBus] wb_wd,
@@ -46,6 +49,9 @@ module mem_wb(
         output reg[`RegAddrBus] wb_cp0_reg_write_addr,
         output reg wb_cp0_reg_we,
         output reg[`WordBus] wb_cp0_reg_data,
+
+        output reg wb_write_tlb_index,
+        output reg wb_write_tlb_random,    
 
         output wire[`WordBus] debugdata
     );    
@@ -60,7 +66,9 @@ module mem_wb(
             wb_whilo <= 0 ;
             wb_cp0_reg_write_addr <= `NopRegAddr ;
             wb_cp0_reg_we <= 0 ;
-            wb_cp0_reg_data <= `Zero ;
+            wb_cp0_reg_data <= `Zero ;        
+            wb_write_tlb_index <= `Disable ;
+            wb_write_tlb_random <= `Disable ;
         end else if (stall[4] == `Disable) begin 
             wb_wdata <= mem_wdata ;
             wb_wd <= mem_wd ;
@@ -71,6 +79,8 @@ module mem_wb(
             wb_cp0_reg_write_addr <= mem_cp0_reg_write_addr ;
             wb_cp0_reg_we <= mem_cp0_reg_we ;
             wb_cp0_reg_data <= mem_cp0_reg_data ;
+            wb_write_tlb_index <= mem_write_tlb_index ;
+            wb_write_tlb_random <= mem_write_tlb_random ;
         end
     end
 endmodule

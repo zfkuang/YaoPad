@@ -65,6 +65,9 @@ module ex_mem(
         input wire[`WordBus] ex_current_data_addr,
         input wire ex_is_in_delayslot,
 
+        input wire ex_write_tlb_index,
+        input wire ex_write_tlb_random,    
+
         output reg[`RegAddrBus] mem_wd,
         output reg mem_wreg,
         output reg[`WordBus] mem_wdata,
@@ -78,6 +81,9 @@ module ex_mem(
         output reg[`RegAddrBus] mem_cp0_reg_write_addr,
         output reg mem_cp0_reg_we,
         output reg[`WordBus] mem_cp0_reg_data,
+
+        output reg mem_write_tlb_index,
+        output reg mem_write_tlb_random,    
 
         output reg[`WordBus] mem_excepttype,
         output reg[`WordBus] mem_current_inst_addr,
@@ -100,6 +106,8 @@ module ex_mem(
             mem_excepttype <= `Zero ;
             mem_current_inst_addr <= `Zero ;
             mem_current_data_addr <= `Zero ;
+            mem_write_tlb_index <= `Disable ;
+            mem_write_tlb_random <= `Disable ; 
             mem_is_in_delayslot <= `Disable ;
         end else if (stall[3] == `Disable) begin 
             mem_wdata <= ex_wdata ;
@@ -118,6 +126,8 @@ module ex_mem(
             mem_current_inst_addr <= ex_current_inst_addr ;
             mem_current_data_addr <= ex_current_data_addr ;
             mem_is_in_delayslot <= ex_is_in_delayslot ;
+            mem_write_tlb_index <= ex_write_tlb_index ;
+            mem_write_tlb_random <= ex_write_tlb_random ; 
         end
     end
         

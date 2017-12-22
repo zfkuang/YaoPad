@@ -41,6 +41,9 @@ module id_ex(
     input wire[`WordBus] id_excepttype,
     input wire[`WordBus] id_current_inst_addr,
 
+    input wire id_write_tlb_index,
+    input wire id_write_tlb_random,    
+
     input wire next_inst_in_delayslot_i,
     input wire flush,
 
@@ -60,49 +63,28 @@ module id_ex(
     output reg[`WordBus] ex_excepttype,
     output reg[`WordBus] ex_current_inst_addr,
 
+    output reg ex_write_tlb_index,
+    output reg ex_write_tlb_random,    
+
     output reg is_in_delayslot_o
     );
     
     always @ (posedge clk) begin 
-        if (rst == `Enable) begin
+        if ((rst == `Enable) || ((stall[2] == `Enable) && (stall[3] == `Disable)) || (flush == `Enable)) begin
             ex_alusel <= `ALUS_NOP ;
             ex_aluop <= `ALU_NOP ;
             ex_reg1 <= `Zero ;
             ex_reg2 <= `Zero ;
             ex_inst <= `Zero ;
             ex_wd <= `NopRegAddr ;
-            ex_wreg <= 0 ;           
-            ex_is_in_delayslot <= 0 ;
+            ex_wreg <= `Disable ;           
+            ex_is_in_delayslot <= `Disable ;
             ex_link_addr <= `Zero ;
             ex_excepttype <= `Zero ;
             ex_current_inst_addr <= `Zero ;
-            is_in_delayslot_o <= 0 ;
-        end else if ((stall[2] == `Enable) && (stall[3] == `Disable)) begin
-            ex_alusel <= `ALUS_NOP ;
-            ex_aluop <= `ALU_NOP ;
-            ex_reg1 <= `Zero ;
-            ex_reg2 <= `Zero ;
-            ex_inst <= `Zero ;
-            ex_wd <= `NopRegAddr ;
-            ex_wreg <= 0 ;           
-            ex_is_in_delayslot <= 0 ;
-            ex_link_addr <= `Zero ;
-            ex_excepttype <= `Zero ;
-            ex_current_inst_addr <= `Zero ;
-            is_in_delayslot_o <= 0 ;
-        end else if (flush == `Enable) begin
-            ex_alusel <= `ALUS_NOP ;
-            ex_aluop <= `ALU_NOP ;
-            ex_reg1 <= `Zero ;
-            ex_reg2 <= `Zero ;
-            ex_inst <= `Zero ;
-            ex_wd <= `NopRegAddr ;
-            ex_wreg <= 0 ;           
-            ex_is_in_delayslot <= 0 ;
-            ex_link_addr <= `Zero ;
-            ex_excepttype <= `Zero ;
-            ex_current_inst_addr <= `Zero ;
-            is_in_delayslot_o <= 0 ;
+            ex_write_tlb_index <= `Disable ;
+            ex_write_tlb_random <= `Disable ;
+            is_in_delayslot_o <= `Disable ;
         end else if (stall[2] == `Disable) begin
             ex_alusel <= id_alusel ;
             ex_aluop <= id_aluop ;
@@ -115,6 +97,8 @@ module id_ex(
             ex_link_addr <= id_link_addr ;
             ex_excepttype <= id_excepttype ;
             ex_current_inst_addr <= id_current_inst_addr ;
+            ex_write_tlb_index <= id_write_tlb_index ;
+            ex_write_tlb_random <= id_write_tlb_random ;
             is_in_delayslot_o <= next_inst_in_delayslot_i ;
         end
     end

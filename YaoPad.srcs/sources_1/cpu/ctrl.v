@@ -30,8 +30,8 @@ module ctrl(
     input wire stallreq_from_mem,
     
     input wire[`WordBus] cp0_epc_i,
+    input wire[`WordBus] cp0_ebase_i,
     input wire[`WordBus] excepttype_i,
-
     output reg[`WordBus] new_pc,
     output reg flush,
     output wire[`WordBus] debugdata,
@@ -49,26 +49,29 @@ module ctrl(
             flush <= `Enable ;
             stall <= 6'b000000 ;
             case(excepttype_i)
-                32'h00000001: begin
-                    new_pc <= 32'h80000380 ;
+                32'h00000100: begin // interrupt
+                    new_pc <= cp0_ebase_i+32'h00000180 ;
                 end
-                32'h00000008: begin
-                    new_pc <= 32'h80000380 ;
+                32'h00000008: begin // syscall
+                    new_pc <= cp0_ebase_i+32'h00000180 ;
                 end
-                32'h0000000a: begin
-                    new_pc <= 32'h80000380 ;
+                32'h0000000a: begin // RI
+                    new_pc <= cp0_ebase_i+32'h00000180 ;
                 end
-                32'h0000000d: begin
-                    new_pc <= 32'h80000380 ;
+                32'h0000000d: begin // OV
+                    new_pc <= cp0_ebase_i+32'h00000180 ;
                 end
-                32'h0000000c: begin
-                    new_pc <= 32'h80000380 ;
+                32'h0000000c: begin // TR
+                    new_pc <= cp0_ebase_i+32'h00000180 ;
                 end
-                32'h0000000e: begin
+                32'h0000000e: begin // ERET
                     new_pc <= cp0_epc_i ;
                 end
+                32'h00000018: begin // MCheck
+                    new_pc <= cp0_ebase_i+32'h00000180 ;
+                end
                 default: begin
-                    new_pc <= 32'h80000380 ;
+                    new_pc <= cp0_ebase_i+32'h00000180 ;
                 end
             endcase
         end else if (stallreq_from_mem == `Enable) begin

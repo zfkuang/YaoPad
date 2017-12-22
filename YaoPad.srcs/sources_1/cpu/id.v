@@ -38,7 +38,6 @@ module id(
 
     input wire is_in_delayslot_i,
     input wire[`AluOpBus] ex_aluop_i,
-    input wire[`WordBus] current_inst_addr_i,
     input wire[`WordBus] excepttype_i,
 
     input wire[5:0] int_i,
@@ -64,6 +63,9 @@ module id(
     output reg is_in_delayslot_o,
     output reg[`WordBus] link_addr_o,
     output reg next_inst_in_delayslot_o,
+
+    output reg write_tlb_index_o,
+    output reg write_tlb_random_o,
 
     output wire[`WordBus] excepttype_o,
     output wire[`WordBus] current_inst_addr_o,
@@ -96,7 +98,7 @@ module id(
     reg except_eret ;
     reg except_syscall ;
     assign excepttype_o = {excepttype_i[31:13], except_eret, 2'b0, ~instvalid, except_syscall, 8'b0} ;
-    assign current_inst_addr_o = current_inst_addr_i ;
+    assign current_inst_addr_o = pc_i ;
 
     always @ (*) begin // interprete instruction
         if(rst == `Enable) begin 
@@ -114,6 +116,8 @@ module id(
             is_in_delayslot_o <= 0;
             link_addr_o <= `Zero ;
             next_inst_in_delayslot_o <= 0;
+            write_tlb_index_o <= `Disable ;
+            write_tlb_random_o <= `Disable ;
         end else begin 
         	// default settings for I-type
             inst_o <= inst_i;
@@ -129,6 +133,9 @@ module id(
             branch_flag_o <= `Disable ;
             is_in_delayslot_o <= `Disable;
             next_inst_in_delayslot_o <= `Disable;
+
+            write_tlb_index_o <= `Disable ;
+            write_tlb_random_o <= `Disable ;
 
             instvalid <= `Enable ;
             except_eret <= `Disable ;
@@ -266,21 +273,36 @@ module id(
                 end
 
                 `EXE_COP0: begin
-                    if(inst_i[5:0] == `EXE_ERET) begin
-                        alusel_o <= `ALUS_NOP ;
-                        aluop_o <= `ALU_ERET ;
-                        reg1_read_o <= `Disable ;
-                        except_eret <= `Enable ;
-                    end
-                    else if(inst_i[25:21] == `EXE_MT) begin
+                    if(inst_i[25:21] == `EXE_MT) begin
                         aluop_o <= `ALU_MTC0 ;
                         alusel_o <= `ALUS_NOP ;
                         wreg_o <= `Disable ;
                         reg1_addr_o <= inst_i[20:16]  ; 
-                    end else begin
+                    end else if(inst_i[25:21] == `EXE_MF) begin
                         aluop_o <= `ALU_MFC0 ;
                         alusel_o <= `ALUS_MOVE ;
-                    end
+                    end else if(inst_i[25:21] == `EXE_OTHERS) begin
+                        case(inst_i[5:0])
+                            `EXE_ERET: begin
+                                alusel_o <= `ALUS_NOP ;
+                                aluop_o <= `ALU_ERET ;
+                                reg1_read_o <= `Disable ;
+                                except_eret <= `Enable ;
+                            end                            
+                            `EXE_TLBWI: begin
+                                alusel_o <= `ALUS_NOP ;
+                                aluop_o <= `ALUS_NOP ;
+                                write_tlb_index_o <= `Enable ;
+                                wreg_o <= `Disable ;
+                            end
+                            `EXE_TLBWR: begin
+                                alusel_o <= `ALUS_NOP ;
+                                aluop_o <= `ALUS_NOP ;
+                                write_tlb_random_o <= `Enable ;
+                                wreg_o <= `Disable ;
+                            end
+                        endcase
+                    end 
                 end
 
                 //------------------------------------------------------------- R-type
