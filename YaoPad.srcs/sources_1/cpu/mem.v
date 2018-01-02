@@ -186,11 +186,11 @@ module mem(
                     wreg_o <= `Enable ;
                     case(addr_mod4)
                         2'b00: begin
-                            mem_sel_o <= 4'b1100;
+                            mem_sel_o <= 4'b0011;
                             wdata_o <= {{16'b0},mem_data_i[15:0]};
                         end
                         2'b10: begin
-                            mem_sel_o <= 4'b0011;
+                            mem_sel_o <= 4'b1100;
                             wdata_o <= {{16'b0},mem_data_i[31:16]};
                         end
                         default: begin

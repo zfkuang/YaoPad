@@ -29,6 +29,7 @@ module mem_sram(
 	input wire[3:0] ram_sel_i,
 	
 	output wire[`WordBus] ram_data_o,
+    output reg ack_o,
 
 	// Ports of 2 SRAM chips
 	output wire[19:0] ram0_addr, ram1_addr, 	// addr bus
@@ -81,82 +82,43 @@ module mem_sram(
 	assign ram_data_o = datain[chipnum];
 
 
-    wire be_n;
+    wire[3:0] be_n;
     wire[`RamAddrBus] addr;
-    assign be_n = ~ram_sel_i;
+    assign be_n = ram_sel_i;
     assign addr = ram_addr_i[`RamAddrBus];
 
-
-    reg is_rst;
-    always @ (negedge clk) begin
-        is_rst <= rst;
-    end
-
-	always @ (posedge clk or negedge clk)
-	begin
-		if (is_rst == `Enable)
-			state <= `SRAM_BEGIN;
-		else
-			case (state)
-				`SRAM_BEGIN: state <= `SRAM_IDLE;
-				`SRAM_IDLE: begin
-					if (reading)
-						state <= `SRAM_READ;
-					else if (writing)
-						state <= `SRAM_WRITE;
-					else
-						state <= `SRAM_IDLE;
-				end
-				`SRAM_READ: state <= `SRAM_IDLE;
-				`SRAM_WRITE: state <= `SRAM_WRITE_TO_READ;
-				`SRAM_WRITE_TO_READ: state<= `SRAM_READ;
-				default: begin
-				end
-			endcase
-	end
-
-	always @ (*)
-	begin
-		if (rst == `Enable) begin
-			oe <= `Disable;
-			ce <= `Disable;
-			we <= `Disable;
-		end
-		else 
-		case (state)
-			`SRAM_IDLE: begin
+    always @ (*)
+    begin
+        if(rst == `Enable) begin
+            oe <= `Disable;
+            ce <= `Disable;
+            we <= `Disable;
+            ack_o <= `Disable;
+        end else begin
+            if(clk) begin
+                oe <= `Disable;
                 ce <= `Disable;
                 we <= `Disable;
-				if(reading) begin
-					oe <= `Enable;
-				end else if(writing) begin
-					oe <= `Disable;
-					ce <= `Enable;
-					we <= `Enable;
-				end else begin // IDLE, no request
-					oe <= `Disable;
-				end
-			end
-            `SRAM_READ: begin
-				oe <= `Enable;
-				we <= `Disable;
-				ce <= `Enable;
+                ack_o <= `Disable;
+            end else begin
+                if(reading) begin
+                    ce <= `Enable;
+                    we <= `Disable;
+                    oe <= `Enable;
+                    ack_o <= `Enable;
+                end else if(writing) begin
+                    ce <= `Enable;
+                    we <= `Enable;
+                    oe <= `Disable;
+                    ack_o <= `Enable;                
+                end else begin
+                    oe <= `Disable;
+                    ce <= `Disable;
+                    we <= `Disable;
+                    ack_o <= `Disable;
+                end
             end
-			`SRAM_WRITE: begin
-				oe <= `Disable;
-				we <= `Disable;
-				ce <= `Disable;
-			end
-			`SRAM_WRITE_TO_READ: begin
-                ce <= `Disable;
-                we <= `Disable;
-				oe <= `Enable;
-			end
-			default: begin
-			end
-		endcase
-	end
-
-
+        end
+    end
 
 endmodule

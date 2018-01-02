@@ -1,4 +1,4 @@
-
+`include "defines.vh"
 `define DataMemNum 4096
 `define DataMemNumLog2 12
 module data_ram(

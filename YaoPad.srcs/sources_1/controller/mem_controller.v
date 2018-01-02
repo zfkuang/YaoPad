@@ -1,10 +1,10 @@
 `timescale 1ns / 1ps
-`include"defines.vh"
+`include "defines.vh"
 
-`define MEM_CTR_BEGIN 2'b10
-`define MEM_CTR_INST 2'b00
-`define MEM_CTR_DATA 2'b01
-`define MEM_CTR_STALL 2'b11
+`define MEM_CTR_BEGIN 2'b00
+`define MEM_CTR_INST 2'b01
+`define MEM_CTR_DATA_FINISH 2'b11
+`define MEM_CTR_STALL 2'b10
 
 module mem_controller(
     input wire clk,
@@ -22,6 +22,7 @@ module mem_controller(
     input wire[`WordBus] inst_addr_i,
 
     input wire[`WordBus] ram_data_i,
+    input wire ack_i,
 
     output reg[`WordBus] mem_data_o,
     output reg mem_we_o,
@@ -36,21 +37,19 @@ module mem_controller(
 
     );
 
-    reg is_rst;
     reg[1:0] state;
     reg[`WordBus] data_buf;
     reg[`WordBus] inst_buf;
 
     always @ (posedge clk) begin
-        is_rst <= rst;
-        if(is_rst == `Enable) begin
+        if(rst == `Enable) begin
             state <= `MEM_CTR_BEGIN;
         end else begin
             if(state == `MEM_CTR_INST) begin
                 if((mem_ce_i == `Enable) && (flush == `Disable)) begin
-                    state <= `MEM_CTR_DATA;
+                    state <= `MEM_CTR_DATA_FINISH;
                 end
-            end else if(state == `MEM_CTR_DATA) begin
+            end else if(state == `MEM_CTR_DATA_FINISH) begin
                 if(inst_ce_i) begin
                     state <= `MEM_CTR_INST;
                 end
@@ -64,13 +63,12 @@ module mem_controller(
     end
 
     always @ (*) begin
-        if(is_rst == `Enable) begin
+        if(rst == `Enable) begin
             mem_data_o <= `Zero;
             mem_we_o <= `Disable;
             mem_sel_o <= 4'b0000;
             mem_addr_o <= `Zero;
             mem_ce_o <= `Disable;
-            data_buf <= `Zero;
         end else begin
             mem_data_o <= `Zero;
             mem_we_o <= `Disable;
@@ -80,8 +78,6 @@ module mem_controller(
             if(state == `MEM_CTR_INST) begin
                 if(flush == `Disable) begin
                     if(mem_ce_i == `Enable) begin
-                        if(mem_we_i == `Disable) data_buf <= ram_data_i;
-                        else data_buf <= `Zero;
                         mem_data_o <= mem_data_i;
                         mem_we_o <= mem_we_i;
                         mem_sel_o <= mem_sel_i;
@@ -95,7 +91,7 @@ module mem_controller(
                         mem_ce_o <= inst_ce_i;
                     end
                 end
-            end else if(state == `MEM_CTR_DATA) begin
+            end else if(state == `MEM_CTR_DATA_FINISH) begin
                 if(flush == `Disable) begin
                     if(inst_ce_i == `Enable) begin
                         mem_data_o <= `Zero;
@@ -112,33 +108,50 @@ module mem_controller(
                 mem_sel_o <= 4'b0000;
                 mem_addr_o <= `Zero;
                 mem_ce_o <= `Disable;
-                data_buf <= `Zero;
             end
         end
     end
 
     always @ (*) begin
-        if(is_rst == `Enable) begin
+        if(rst == `Enable) begin
             ram_data_o <= `Zero;
             inst_data_o <= `Zero;
             data_stallreq <= `Disable;
+            data_buf <= `Zero;
+            inst_buf <= `Zero;
         end else begin
             ram_data_o <= data_buf;
-            inst_data_o <= `Zero;
+            inst_data_o <= inst_buf;
             data_stallreq <= `Disable;
             if(state == `MEM_CTR_INST) begin
                 if(flush == `Disable) begin
                     if(mem_ce_i == `Enable) begin
                         data_stallreq <= `Enable;
-                    end
-                    if(inst_ce_i == `Enable) begin
-                        inst_data_o <= ram_data_i;
+                        if(ack_i) begin
+                            data_buf <= ram_data_i;
+                            ram_data_o <= ram_data_i;
+                        end
+                    end else if(inst_ce_i == `Enable) begin
+                        if(ack_i) begin
+                            inst_buf <= ram_data_i;
+                            inst_data_o <= ram_data_i;
+                        end
                     end
                 end
-            end else if((state == `MEM_CTR_DATA) && inst_ce_i) begin
-                inst_data_o <= ram_data_i;
+            end else if((state == `MEM_CTR_DATA_FINISH) && inst_ce_i) begin
+                if(ack_i) begin
+                    inst_buf <= ram_data_i;
+                    inst_data_o <= ram_data_i;
+                end
             end else if(state == `MEM_CTR_BEGIN) begin
                 data_stallreq <= `Enable;
+            end
+            if(flush) begin
+                ram_data_o <= `Zero;
+                inst_data_o <= `Zero;
+                data_stallreq <= `Disable;
+                data_buf <= `Zero;
+                inst_buf <= `Zero;
             end
         end
     end
