@@ -28,6 +28,7 @@ module mem_sram(
 	input wire ram_we_i,
 	input wire[3:0] ram_sel_i,
 	
+    input wire write_state,
 	output wire[`WordBus] ram_data_o,
     output reg ack_o,
 
@@ -86,6 +87,7 @@ module mem_sram(
     wire[`RamAddrBus] addr;
     assign be_n = ram_sel_i;
     assign addr = ram_addr_i[`RamAddrBus];
+    
 
     always @ (*)
     begin
@@ -100,6 +102,14 @@ module mem_sram(
                 ce <= `Disable;
                 we <= `Disable;
                 ack_o <= `Disable;
+                // if(writing) begin
+                //     if(write_state == 1'b1) begin
+                //         oe <= `Disable;
+                //         ce <= `Enable;
+                //         we <= `Enable;
+                //         ack_o <= `Disable;
+                //     end
+                // end
             end else begin
                 if(reading) begin
                     ce <= `Enable;
@@ -107,10 +117,17 @@ module mem_sram(
                     oe <= `Enable;
                     ack_o <= `Enable;
                 end else if(writing) begin
-                    ce <= `Enable;
-                    we <= `Enable;
-                    oe <= `Disable;
-                    ack_o <= `Enable;                
+                    if(write_state == 1'b0) begin
+                        ce <= `Disable;
+                        we <= `Disable;
+                        oe <= `Disable;
+                        ack_o <= `Disable;
+                    end else begin
+                        ce <= `Enable;
+                        we <= `Enable;
+                        oe <= `Disable;
+                        ack_o <= `Enable;
+                    end           
                 end else begin
                     oe <= `Disable;
                     ce <= `Disable;

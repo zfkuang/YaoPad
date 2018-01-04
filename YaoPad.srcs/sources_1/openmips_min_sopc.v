@@ -89,15 +89,15 @@ module openmips_min_sopc(
   
 
  
- /*wire clk100 ;
-clk_wiz_0 clk_wiz_00(
-    .clk_out1(clk100),
-    .reset(rst),
-    .clk_in1(clk)
-)*/
+//  wire clk40 ;
+// clk_wiz_0 clk_wiz_00(
+//     .clk_out1(clk40),
+//     .reset(rst),
+//     .clk_in1(clk)
+// );
  
  reg[25:0] slowclk ;
-//  initial begin slowclk = 22'b0 ;end
+ // initial begin slowclk = 22'b0 ;end
  always @ (posedge clk) begin
       slowclk <= slowclk+1 ;
  end
@@ -142,8 +142,8 @@ wire[`WordBus] debug_base_ram_data ;
 wire[`WordBus] debug_ext_ram_data ;
 
  cpu cpu0(
-		.clk(slowclk[0]),
-    .clk100(slowclk[0]),
+		.clk(clk),
+    .clk100(clk),
 		.rst(rst),
 
 		.iwishbone_addr_o(wb_m1_addr_i),
@@ -222,7 +222,7 @@ wire[`WordBus] debug_ext_ram_data ;
   assign s1_data_i = {uart_data_o[7:0],uart_data_o[15:8],uart_data_o[23:16],uart_data_o[31:24]};
   //assign s1_data_i = uart_data_o;
   uart_top uart_top0(
-              .wb_clk_i(slowclk[0]), 
+              .wb_clk_i(clk), 
               .wb_rst_i(rst),
               .wb_adr_i(s1_addr_o[4:0]),
               .wb_dat_i(s1_data_o),
@@ -246,7 +246,7 @@ wire[`WordBus] debug_ext_ram_data ;
 
   // used interfaces: m0, m1, s0(sram)
   wb_conmax_top wb_conmax0(
-    .clk_i(slowclk[0]), 
+    .clk_i(clk), 
     .rst_i(rst),
 
     .m0_data_i(wb_m0_data_i),
@@ -408,7 +408,7 @@ wire[`WordBus] debug_ext_ram_data ;
   // assign ext_ram_be_n = 4'b0000;
   /*
   sram sram0(
-    .clk(slowclk[0]), .rst(rst), 
+    .clk(clk), .rst(rst), 
 
     .wishbone_addr_i(wb_s0_addr_o),
     .wishbone_data_i(wb_s0_data_o),
@@ -437,7 +437,7 @@ wire[`WordBus] debug_ext_ram_data ;
     */
 
   led led0(
-    .clk(slowclk[0]), .rst(rst), 
+    .clk(clk), .rst(rst), 
 
     .wishbone_addr_i(wb_s11_addr_o),
     .wishbone_data_i(wb_s11_data_o),
@@ -452,7 +452,7 @@ wire[`WordBus] debug_ext_ram_data ;
     .led_o(leddebugdata)
     );
    
-   // fake mem
+   //fake mem
 	// data_ram data_ram0(
     // .clk(clk),
 	// 	.we(~base_ram_we_n),

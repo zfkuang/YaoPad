@@ -663,6 +663,7 @@ module cpu(    input wire rst,
 	wire[3:0] sram_sel_i;
 
     wire sram_ack;
+    wire write_state;
 
     mem_controller mem_controller0(
         .clk(clk),
@@ -681,6 +682,7 @@ module cpu(    input wire rst,
 
         .ram_data_i(sram_data_o),
         .ack_i(sram_ack),
+        .write_state(write_state),
 
         .mem_data_o(sram_data_i),
         .mem_we_o(sram_we_i),
@@ -706,6 +708,7 @@ module cpu(    input wire rst,
         
         .ram_data_o(sram_data_o),
         .ack_o(sram_ack),
+        .write_state(write_state),
 
         .ram0_addr(base_ram_addr), 
         .ram0_oe(base_ram_oe_n),

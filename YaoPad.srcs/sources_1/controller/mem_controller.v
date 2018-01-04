@@ -1,10 +1,11 @@
 `timescale 1ns / 1ps
 `include "defines.vh"
 
-`define MEM_CTR_BEGIN 2'b00
-`define MEM_CTR_INST 2'b01
-`define MEM_CTR_DATA_FINISH 2'b11
-`define MEM_CTR_STALL 2'b10
+`define MEM_CTR_BEGIN 3'b000
+`define MEM_CTR_INST 3'b001
+`define MEM_CTR_DATA_FINISH 3'b011
+`define MEM_CTR_STALL 3'b010
+`define MEM_CTR_WRITE 3'b101
 
 module mem_controller(
     input wire clk,
@@ -23,6 +24,7 @@ module mem_controller(
 
     input wire[`WordBus] ram_data_i,
     input wire ack_i,
+    output reg write_state,
 
     output reg[`WordBus] mem_data_o,
     output reg mem_we_o,
@@ -37,17 +39,23 @@ module mem_controller(
 
     );
 
-    reg[1:0] state;
+    reg[2:0] state;
     reg[`WordBus] data_buf;
     reg[`WordBus] inst_buf;
 
     always @ (posedge clk) begin
         if(rst == `Enable) begin
             state <= `MEM_CTR_BEGIN;
+            write_state <= 1'b0;
         end else begin
             if(state == `MEM_CTR_INST) begin
                 if((mem_ce_i == `Enable) && (flush == `Disable)) begin
-                    state <= `MEM_CTR_DATA_FINISH;
+                    if(mem_we_i == `Enable) begin
+                        state <= `MEM_CTR_WRITE;
+                        write_state <= 1'b1;
+                    end else begin
+                        state <= `MEM_CTR_DATA_FINISH;
+                    end
                 end
             end else if(state == `MEM_CTR_DATA_FINISH) begin
                 if(inst_ce_i) begin
@@ -55,6 +63,9 @@ module mem_controller(
                 end
             end else if(state == `MEM_CTR_BEGIN) begin
                 state <= `MEM_CTR_INST;
+            end else if(state == `MEM_CTR_WRITE) begin
+                write_state <= 1'b0;
+                state <= `MEM_CTR_DATA_FINISH;
             end
             if(flush  == `Enable) begin
                 state <= `MEM_CTR_INST;
@@ -75,7 +86,7 @@ module mem_controller(
             mem_sel_o <= 4'b0000;
             mem_addr_o <= `Zero;
             mem_ce_o <= `Disable;
-            if(state == `MEM_CTR_INST) begin
+            if(state == `MEM_CTR_INST || state == `MEM_CTR_WRITE) begin
                 if(flush == `Disable) begin
                     if(mem_ce_i == `Enable) begin
                         mem_data_o <= mem_data_i;
@@ -123,7 +134,7 @@ module mem_controller(
             ram_data_o <= data_buf;
             inst_data_o <= inst_buf;
             data_stallreq <= `Disable;
-            if(state == `MEM_CTR_INST) begin
+            if(state == `MEM_CTR_INST || state == `MEM_CTR_WRITE) begin
                 if(flush == `Disable) begin
                     if(mem_ce_i == `Enable) begin
                         data_stallreq <= `Enable;

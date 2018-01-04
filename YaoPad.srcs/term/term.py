@@ -10,6 +10,7 @@ import tempfile
 import subprocess
 import serial
 import binascii
+import time
 
 CCPREFIX = "mips-sde-elf-"
 
@@ -143,7 +144,11 @@ def run_U(addr, num):
 def run_G(addr):
     outp.write('G')
     outp.write(int_to_byte_string(addr))
-    inp.read(2)
+    inp.read(1)
+    time1 = time.time()
+    inp.read(1)
+    time2 = time.time()
+    print(time2 - time1)
 
 
 def MainLoop():
@@ -245,4 +250,3 @@ if __name__ == "__main__":
     if not InitializeTCP(sys.argv[1]):
         Initialize(sys.argv[1])
     Main()
-
